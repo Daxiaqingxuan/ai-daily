@@ -1,0 +1,22 @@
+{
+  "legend": "版级来源说明这一版的信息主要来自哪里；执笔一律是 AI，报尾有内容声明。逐句出处见正文的论据标记，逐条归属见报尾信源表。",
+  "maxAiPages": 4,
+  "pages": {
+    "p01": { "origin": "official", "note": "DeepMind 公布材料与 IACR ePrint 论文说明" },
+    "p02": { "origin": "ai", "note": "社论，本报观点，无外部信源" },
+    "p03": { "origin": "official", "note": "OpenAI / 百度发布页与模型卡" },
+    "p04": { "origin": "official", "note": "Anthropic、Google、Perplexity 产品说明" },
+    "p05": { "origin": "thirdparty", "note": "媒体报道与公开材料，三段的工时为本报推算" },
+    "p06": { "origin": "ai", "note": "方法论，无外部信源" },
+    "p07": { "origin": "official", "note": "四家模型卡与许可页" },
+    "p08": { "origin": "thirdparty", "note": "METR 评估、部委征求意见与媒体报道" },
+    "p09": { "origin": "thirdparty", "note": "预印本与机构公告" },
+    "p10": { "origin": "thirdparty", "note": "融资与上市报道" },
+    "p11": { "origin": "official", "note": "NVIDIA 与 vLLM 发布说明" },
+    "p12": { "origin": "official", "note": "Cloudflare / Dharma / Allen AI 官方文档" },
+    "p13": { "origin": "thirdparty", "note": "峰会报道与法律、用工相关报道" },
+    "p14": { "origin": "thirdparty", "note": "公开披露 + 本报自设评分卡" },
+    "p15": { "origin": "thirdparty", "note": "多家媒体报道聚合" },
+    "p16": { "origin": "ai", "note": "编辑部提案，本期自设" }
+  }
+}

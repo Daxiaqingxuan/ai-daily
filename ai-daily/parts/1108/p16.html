@@ -1,0 +1,102 @@
+<section class="section" id="p16">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">本报提案 · 这一期想怎么改</span>
+      <span class="sec-page">第 16 版 / 共 16 版</span>
+    </div>
+
+    <p class="sec-lede">本版每期由四个身份各提一条改动建议，编号 <b>P006-1…4</b>：<b>读者</b>说哪里读着费劲，<b>编辑</b>说哪里做起来费劲，<b>创刊人</b>说哪里该往前一步，<b>AI</b> 说哪里可以自动化。<b>默认不执行</b>——创刊人点名「采纳 P006-2」才进施工；没人提，下一期自动记「否决（沉默）」。</p>
+
+    <div class="props">
+      <article class="prop">
+        <div class="prop-h"><span class="prop-role">读者</span><span class="prop-id">P006-1</span></div>
+        <h4>给出「自己去核」的入口</h4>
+        <p>读到「1,600 倍」时，我在正文里找不到任何能点开的地方。论据标记只告诉我这是公开报道，不告诉我去核哪一篇。<b>建议报尾的信源表每条给一个可点的原文链接</b>，或者给当期的 JSON 直链。</p>
+        <dl class="prop-meta">
+          <dt>为什么</dt><dd>本期 16 版共有 5 处「本报未复现」；读者要复核只能自己搜，等于把验证成本全推给读者</dd>
+          <dt>成本</dt><dd>小 · 半天 · 改 <code>00-sources.json</code> 加 <code>url</code> 字段、报尾渲染与 <code>A16</code> 各一处</dd>
+        </dl>
+        <div class="prop-st">待定 · <b>沉默即否决</b></div>
+      </article>
+
+      <article class="prop">
+        <div class="prop-h"><span class="prop-role">编辑</span><span class="prop-id">P006-2</span></div>
+        <h4>信源表与论据标记交叉校验</h4>
+        <p>现在 <code>A16</code> 只对账「信源条数」与「报尾行数」。这期有一条标了「厂商口径」，而信源表里其实没有那家厂商的条目——靠人眼才看出来。<b>建议让标记里的来源名必须能在信源表里找到对应条目。</b></p>
+        <dl class="prop-meta">
+          <dt>为什么</dt><dd>「有来源」和「来源能对上」是两件事；只查条数等于只查了版面，没查内容</dd>
+          <dt>成本</dt><dd>中 · 一天 · 改 <code>assemble_issue.py</code> 的 A16 + 补一条反例</dd>
+        </dl>
+        <div class="prop-st">待定 · <b>沉默即否决</b></div>
+      </article>
+
+      <article class="prop">
+        <div class="prop-h"><span class="prop-role">创刊人</span><span class="prop-id">P006-3</span></div>
+        <h4>每月一版「本周被否」</h4>
+        <p>这一期有四个带星号的头条，下一周大概率会有被证伪的。建议每月固定一版，专门回收上个月「曾被广泛传播、后来被推翻」的说法，逐条写清谁先说的、错在哪。<b>这是唯一能让读者相信我们不是在替厂商传话的版面。</b></p>
+        <dl class="prop-meta">
+          <dt>为什么</dt><dd>本期主线就是「谁验过才算数」；只要求别人可核、自己不回收错误，站不住</dd>
+          <dt>成本</dt><dd>大 · 每期多一版要改 <code>A1</code> 版数与 16 条导航，需连续三期素材验证</dd>
+        </dl>
+        <div class="prop-st">待定 · <b>沉默即否决</b></div>
+      </article>
+
+      <article class="prop">
+        <div class="prop-h"><span class="prop-role">AI</span><span class="prop-id">P006-4</span></div>
+        <h4>给每条事实加「到期复核」</h4>
+        <p>事实卡里的数值现在只有时点，没有「什么时候该重看」。<b>建议加 <code>recheckAfter</code>，到期自动进当期待办</b>——比如「次周开源」这类承诺，到期没兑现就该在新一期里被点名。</p>
+        <dl class="prop-meta">
+          <dt>为什么</dt><dd>本期至少 2 条是有条件的承诺（Inkling 权重、OpenAI 剩余交割），不跟踪就会变成永远正确的悬案</dd>
+          <dt>成本</dt><dd>小 · 半天 · 改 <code>00-facts.json</code> 结构 + <code>A13</code> 一条 + 出报前打印到期清单</dd>
+        </dl>
+        <div class="prop-st">待定 · <b>沉默即否决</b></div>
+      </article>
+    </div>
+
+    <p class="prop-rule"><b>怎么算采纳：</b>创刊人在当期明确说「采纳 P006-2」才算；说「先放着」算待定，最多挂三期；<b>没说就是否决，不再追问</b>。已采纳的写进 <code>提案台账.md</code>，在下一期的台账里标「已落地」。</p>
+
+    <div class="table-wrap">
+      <table class="prop-ledger">
+        <caption>提案台账 · 全量明细见 <code>提案台账.md</code>，本表只放最近 8 条</caption>
+        <thead>
+          <tr><th>编号</th><th>视角</th><th>一句话</th><th>状态</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="id">P005-1</td><td>读者</td><td>头版加一行「本期主线」</td><td class="st-no">否决（明确）</td></tr>
+          <tr><td class="id">P005-2</td><td>编辑</td><td>正文外部数字加论据标记</td><td class="st-ok">已落地</td></tr>
+          <tr><td class="id">P005-3</td><td>创刊人</td><td>每期先写主线声明并熔断跑偏</td><td class="st-ok">已落地</td></tr>
+          <tr><td class="id">P005-4</td><td>AI</td><td>每条外部数字落一张事实卡</td><td class="st-ok">已落地</td></tr>
+          <tr><td class="id">P006-1</td><td>读者</td><td>信源表给可点的原文入口</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P006-2</td><td>编辑</td><td>信源表与论据标记交叉校验</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P006-3</td><td>创刊人</td><td>每月一版「本周被否」</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P006-4</td><td>AI</td><td>事实卡加「到期复核」字段</td><td class="st-wait">待定</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版四条提案</span>
+      </div>
+      <p>四条里只有 P006-1 是读者真会提的，其余三条是编辑部自己在补漏。<b>一份报纸开始给自己提改进意见，说明它还想活下去。</b>但要注意顺序：<b>先让读者能核，再让自己更好看。</b>P006-1 不做，另外三条做得再漂亮也没人看。</p>
+    </aside>
+  </section>
+
+  <div class="gloss" id="gloss">
+    <h5>名词速查 · 本期出现的 13 个词<span>正文里带虚线的词点一下就地解释；这张表留作索引</span></h5>
+    <div class="gloss-grid">
+      <dl><dt>预印本 / preprint</dt><dd>未经同行评审的论文稿。公开可查，但没有经过期刊审稿流程，数字要按「作者自述」看。</dd></dl>
+      <dl><dt>MoE / 混合专家</dt><dd>把模型拆成很多「专家」，每个 token 只叫醒其中几个。能力按总量算，成本按叫醒的数量算。</dd></dl>
+      <dl><dt>激活参数</dt><dd>MoE 每次推理真正参与计算的那部分参数。Kimi K3.1 Pro 为 1040 亿（总参 2.8 万亿），它决定账单。</dd></dl>
+      <dl><dt>上下文窗口</dt><dd>一次能送进模型的 token 上限。标称容量不等于可用容量，长上下文里的中间段最容易被忽略。</dd></dl>
+      <dl><dt>权重 / open weights</dt><dd>训练出来的参数文件。给了权重才能自己部署、微调、离线运行；只给 API，能力再强也只能租。</dd></dl>
+      <dl><dt>验收清单 / acceptance checklist</dt><dd>调用方提交任务时一起给的那组检查：产物在不在、格式对不对、关键字段有没有。全绿才算干完。</dd></dl>
+      <dl><dt>远程代码执行 / RCE</dt><dd>攻击者能在目标机器上执行任意命令，通常意味着这台机器已经失守。</dd></dl>
+      <dl><dt>提权 / EoP</dt><dd>elevation of privilege。让普通权限的程序拿到更高权限，是漏洞利用链里最常见的一环。</dd></dl>
+      <dl><dt>端侧推理</dt><dd>模型直接跑在手机、平板、车机上，数据不发到云端。代价是模型必须小，能力有上限。</dd></dl>
+      <dl><dt>检索增强 / RAG</dt><dd>先从资料库检索相关片段，再让模型基于片段回答。既减少胡编，也减少送进模型的 token。</dd></dl>
+      <dl><dt>蒸馏</dt><dd>把大模型的能力搬到小模型上：用大模型的输出当训练目标。搬得好能省算力，搬不好会把偏差一起继承。</dd></dl>
+      <dl><dt>增量遗忘 / unlearning</dt><dd>不重训整个模型，只让它忘掉指定的数据或类别。难点是忘掉目标的同时不伤其他能力。</dd></dl>
+      <dl><dt>计算机操作 / Computer Use</dt><dd>模型看屏幕、点按钮、敲命令行来完成任务。它让「自动办事」成立，也让权限边界变得重要。</dd></dl>
+    </div>
+  </div>

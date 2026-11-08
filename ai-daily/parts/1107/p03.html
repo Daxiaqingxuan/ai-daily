@@ -1,0 +1,36 @@
+<section class="section" id="p03">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">能力底座 · 模型与价格</span>
+      <span class="sec-page">第 03 版 / 共 16 版</span>
+    </div>
+    <p class="sec-lede">把这一周五个动作摆在一张表上，会看到三条不同的线：<b>开源权重在追参数效率，闭源在降价，专用模型在分工。</b>它们不在比同一件事，硬拉到一张榜单上排名，只会得出「谁嗓门大」。</p>
+
+    <div class="table-wrap">
+      <table class="rank">
+        <caption>表 1 · 本周五个模型动作（参数与许可按各家发布口径<span class="src-tag">厂商口径</span>，<b>本报未下载权重、未跑分</b><span class="src-tag low">本报未复现</span>；价格为刊例价，未计折扣）。</caption>
+        <thead>
+          <tr><th>模型</th><th>机构</th><th>参数 / 激活</th><th>关键能力</th><th>可得性与价格</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="name">混元 Hy4</td><td>腾讯</td><td class="num">770B / 49B</td><td>视觉理解 + 电脑操作，1M 上下文</td><td>已上线六款产品；权重「近期开源」未给日期；输入 6 元、输出 18 元每百万 token</td></tr>
+          <tr><td class="name">ERNIE 5.5 Flash Base</td><td>百度</td><td class="num">280B / 14B</td><td>稀疏 MoE，128K 训练、1M 推理</td><td>FP8 与 BF16 权重已上 Hugging Face；后训练版随后</td></tr>
+          <tr><td class="name">Inkling 2 Small</td><td>Thinking Machines</td><td class="num">594B / 17B</td><td>图像输入、可变推理力度</td><td>先经 Tinker 闭权重提供；安全测试后转 Apache 2.0</td></tr>
+          <tr><td class="name">Gemini Omni 1.2 Flash</td><td>Google</td><td class="num">未披露</td><td>原生 15 秒视频生成与编辑</td><td>已 GA；较上版降价 30%，720p 约 0.07 美元/秒</td></tr>
+          <tr><td class="name">GPT-6 Cyber</td><td>OpenAI</td><td class="num">未披露</td><td>找可利用漏洞并起草修复</td><td>定向开放；测试中逾 99% 时间不越出授权范围</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p><b>第一条线：效率。</b>三个开源或准开源模型的<span class="term" tabindex="0">激活参数<i class="tip">MoE 每次推理真正参与计算的那部分。Hy4 49/770 约 6.4%，ERNIE 14/280 为 5%，Inkling 17/594 约 2.9%。</i></span>占比分别是 6.4%、5%、2.9%。这个比例不是越小越好：比例小省算力，比例大留能力。三家不约而同把总参数推到 280B–770B、把激活压到 14B–49B，说明<b>竞争点已经从「能装多少知识」转到「每次只叫醒多少」</b>。ERNIE 5.5 Flash Base 的细节更直白：43 层里 37 层用「每 128 个 token 只缓存一条」的压缩注意力，512 个路由专家每 token 选 10 个——这些设计全都指向推理成本，而不是榜单分数。</p>
+    <p><b>第二条线：价格。</b>Gemini Omni 1.2 Flash 直降 30%，720p 视频约每秒 0.07 美元，还把时长从 8 秒延到 15 秒；GPT-Image-2.6 把生成时间砍掉一半、最快 6 秒出图，并首次原生支持 GIF 与 SVG；Hy4 定价与 preview 持平，靠 TokenHub 五折和个人版二五折抢调用。三条动作方向一致：<b>先把单价打下来，再谈能力</b>。这与第 02 版的判断互为印证——能被验收的能力会迅速商品化。</p>
+    <p><b>第三条线：分工。</b>GPT-6 Cyber 不追求通用，只做「在授权范围内找漏洞、写补丁」；Gemini Omni 1.2 Flash 不追求超长<span class="term" tabindex="0">上下文窗口<i class="tip">一次能送进模型的 token 上限。Hy4 标称 1M，最大输入 960K、输出 64K；标称容量不等于可用容量。</i></span>，只把 15 秒视频做稳。专用模型的价值不在参数，在「边界清楚」：知道什么不做，才敢把权限交出去。<b>通用模型卖可能性，专用模型卖责任。</b></p>
+    <p><b>本报的读法。</b>如果你要选一个模型干活，先问三个问题：权重给不给、激活多少、失败怎么判定。三个都答得上来，再谈价格；答不上来，便宜的也会贵——贵在返工。<b>这一周的五个动作里，只有 Hy4 把三个问题都答了，但它的答案仍待第三方复现。</b></p>
+
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版三条线</span>
+      </div>
+      <p>参数像排量，激活像油耗，通过率像实测续航。<b>车厂最愿意报排量，因为最好核；最不愿意报冬天续航，因为最难看。</b>这一周值得高兴的是，终于有人开始报续航了；值得警惕的是，续航是在自家试车场上跑出来的。</p>
+    </aside>
+  </section>

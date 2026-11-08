@@ -1,0 +1,99 @@
+<section class="section" id="p16">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">本报提案 · 上期四条怎么结算</span>
+      <span class="sec-page">第 16 版 / 共 16 版</span>
+    </div>
+
+    <p class="sec-lede">本期是同日特刊，<b>不新增提案</b>：只结算 004 号那四条。创刊人点名通过 <b>P004-1 / P004-2 / P004-4</b>，三条当班落地，落地位置与验证方式写在下表；<b>P004-3 未获点名，按「沉默即否决」处理</b>，本期不做。下一批四条随 004 期（11 月 7 日）刊出，编号从 P005 起。</p>
+
+    <div class="table-wrap">
+      <table class="prop-ledger">
+        <caption>004 号提案决议 · 全量记录见 <code>提案台账.md</code></caption>
+        <thead>
+          <tr><th>编号</th><th>视角</th><th>一句话</th><th>状态</th><th>落在哪</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="id">P004-1</td><td>读者</td><td>头版加「三行摘要」</td><td class="st-ok">已落地</td><td>第 01 版</td></tr>
+          <tr><td class="id">P004-2</td><td>编辑</td><td>名词首次出现加悬浮注解</td><td class="st-ok">已落地</td><td>6 处 · 6 个版</td></tr>
+          <tr><td class="id">P004-3</td><td>创刊人</td><td>单版分享 <code>#pNN</code></td><td class="st-no">未采纳</td><td>—</td></tr>
+          <tr><td class="id">P004-4</td><td>AI</td><td>每期产出 <code>manifest.json</code></td><td class="st-ok">已落地</td><td><code>special/2026-11-06.json</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="props">
+      <article class="prop">
+        <div class="prop-h"><span class="prop-role">读者</span><span class="prop-id">P004-1</span></div>
+        <h4>头版三行摘要：手机上不用滑三屏了</h4>
+        <p>摘要放在导语与署名之间，三条各 30 字内，编号 01/02/03：降价、开源权重、欧盟合规各一条。桌面三栏并排，手机自动改成三条竖排——<b>首屏就是全部三条</b>，不用等加载完正文。</p>
+        <dl class="prop-meta">
+          <dt>改了什么</dt><dd><code>p01.html</code> 插 <code>.digest</code> 块；<code>00-style-extra.html</code> 加样式与窄屏断点</dd>
+          <dt>怎么验</dt><dd>390px 视口打开，首屏可见三条；<code>scrollWidth === clientWidth</code></dd>
+        </dl>
+        <div class="prop-st ok">已落地 · <b>本期首用</b></div>
+      </article>
+
+      <article class="prop">
+        <div class="prop-h"><span class="prop-role">编辑</span><span class="prop-id">P004-2</span></div>
+        <h4>术语就地解释：虚线词点一下，气泡贴着走</h4>
+        <p>本期标了 6 处，都是该版第一次出现的地方：<b>验收清单</b>（01 版）、<b>Q4 量化</b>（03）、<b>有效成本</b>（05）、<b>幂等键</b>（08）、<b>MoE</b>（09）、<b>录制回放</b>（14）。桌面悬停、键盘 Tab 聚焦、手机点一下都能展开。</p>
+        <dl class="prop-meta">
+          <dt>风险处理</dt><dd>气泡按视口右边界往回缩，不会在窄屏撑出横向滚动；报尾 14 词表原样保留做索引</dd>
+          <dt>怎么验</dt><dd>手机点词出气泡、再点别处收起；<code>scrollWidth</code> 不变</dd>
+        </dl>
+        <div class="prop-st ok">已落地 · <b>本期首用</b></div>
+      </article>
+
+      <article class="prop">
+        <div class="prop-h"><span class="prop-role">创刊人</span><span class="prop-id">P004-3</span></div>
+        <h4>单版分享：这次明确不做</h4>
+        <p>不是没听见，是<b>没有人点名采纳</b>。按本版立的规矩，这就等于否决，不补做、不追问。原始顾虑仍在：16 个版各挂一个分享按钮，会把版面压成一排工具栏；改成浮动按钮又和右侧目录抢位置。</p>
+        <dl class="prop-meta">
+          <dt>要复议</dt><dd>编号写 <code>P004-3R</code>，并说清这次多了什么证据——例如实测「整期分享的打开率」和「想指某一版时怎么办」</dd>
+        </dl>
+        <div class="prop-st no">未采纳 · <b>本期不做</b></div>
+      </article>
+
+      <article class="prop">
+        <div class="prop-h"><span class="prop-role">AI</span><span class="prop-id">P004-4</span></div>
+        <h4>manifest.json：「这期完整吗」变成一条断言</h4>
+        <p>每期在 <code>site/special/</code> 下产出同名 JSON，固定字段：期号、日期、版数、字节数、<code>sha256</code>、正文字数、生成时刻、六项自检结果。验发布不再只靠肉眼和 curl 数关键字——<b>拉一次 JSON 就能比对</b>。</p>
+        <dl class="prop-meta">
+          <dt>改了什么</dt><dd>新增 <code>tools/make_manifest.py</code>，从成品 HTML 反解，不依赖拼版过程</dd>
+          <dt>怎么验</dt><dd>线上 JSON 的 <code>bytes</code> / <code>sha256</code> 与本地文件逐位一致</dd>
+        </dl>
+        <div class="prop-st ok">已落地 · <b>本期首用</b></div>
+      </article>
+    </div>
+
+    <p class="prop-rule"><b>这版的规矩没有变：</b>「通过」必须点名到编号，<b>没说就是不同意</b>；通过的当班做完并在本版写出改了什么、怎么验的；没通过的进「未采纳」，留一次带证据的复议机会。特刊只结算，不夹带新提案。</p>
+
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本期四条提案的结算</span>
+      </div>
+      <p>三条当场做完、一条当场说不做，这是这份报纸第一次把「提案」当决议，而不是许愿池。真正值得记的不是那三条改动——<b>三行摘要、点词解释、一份 JSON，都是半天能做完的事</b>——是第四条被拒的方式：没有拖成「以后再说」，而是直接写进未采纳栏，附上复议要带什么证据。<b>一份敢对自己提案说不的报纸，才有资格要求别人认真读。</b></p>
+    </aside>
+  </section>
+
+  <!-- 名词速查跟着最后一版走（放在 section 之外，不算版面） -->
+  <div class="gloss" id="gloss">
+    <h5>名词速查 · 本期出现的 14 个词<span>正文里带虚线的词点一下就地解释；这张表留作索引</span></h5>
+    <div class="gloss-grid">
+      <dl><dt>任务计价 / task pricing</dt><dd>不按用掉多少 token 收钱，按「通过验收的任务」收钱。没通过就不收，或者只收基础费。</dd></dl>
+      <dl><dt>验收清单 / acceptance checklist</dt><dd>调用方提交任务时一起给的那组检查：文件在不在、退出码是不是零、接口返没返 200。它全绿，这一次才算干完。</dd></dl>
+      <dl><dt>断言 / assertion</dt><dd>一条可以被程序判真假的检查，比如「文件存在且含这一行」。它是「成功」的可执行定义。</dd></dl>
+      <dl><dt>通过率</dt><dd>一次就通过验收的任务占比。它比分数更能预测你的账单和加班时长。</dd></dl>
+      <dl><dt>后置条件 / postcondition</dt><dd>一个动作做完之后必须成立的条件。写不出后置条件的动作，等于没有验收标准。</dd></dl>
+      <dl><dt>幂等 / idempotent</dt><dd>同一操作执行一次和执行十次，结果一样。重试安全的前提，就是它。</dd></dl>
+      <dl><dt>侧信道 / 观测点</dt><dd>用另一个只读接口去确认「事情真的发生了」。不靠当事人汇报，靠外部证据。</dd></dl>
+      <dl><dt>量化 / Q4 / Q2</dt><dd>把权重从 16 位压到 4 位或 2 位，文件缩到四分之一或八分之一，代价是精度。</dd></dl>
+      <dl><dt>MoE / 混合专家</dt><dd>总参数很大，但每次只激活其中一小部分。2.8 万亿参数的模型，一次推理只用约 1040 亿。</dd></dl>
+      <dl><dt>批处理 / batching</dt><dd>把多个请求攒在一起算，一次读权重服务多份请求。自己部署便不便宜，全看这个。</dd></dl>
+      <dl><dt>录制回放</dt><dd>把一次运行原样录下来（含工具返回值），之后不调模型、不调工具地重放，用来稳定复现失败。</dd></dl>
+      <dl><dt>有效成本</dt><dd>（token 费 + 重试费 + 人工收尾工时）÷ 通过的任务数。比单价更能决定一件事该不该做。</dd></dl>
+      <dl><dt>存证 / attestation</dt><dd>用密码学手段证明「这次运行确实发生过、输出确实来自这个模型」。审计时要的就是它。</dd></dl>
+      <dl><dt>熔断 / circuit breaker</dt><dd>同一任务连续失败到设定次数就停下来，不再重试，转人工。防的是无限循环烧钱。</dd></dl>
+    </div>
+  </div>

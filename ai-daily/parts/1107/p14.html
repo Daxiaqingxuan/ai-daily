@@ -1,0 +1,37 @@
+<section class="section" id="p14">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">星探 · 本期唯一候选没过门槛</span>
+      <span class="sec-page">第 14 版 / 共 16 版</span>
+    </div>
+    <p class="sec-lede">本版平时只评「半年后还在的那一个」。这周值得看的开源项目只有一个：Phonon TTS。结果先说：<b>59 分，低于 70 分入选线，本期不入选。</b>理由在表里，也在表后。</p>
+
+    <div class="table-wrap">
+      <table class="rank">
+        <caption>表 7 · 星探指数五项（Phonon TTS，2026-11-07 评分）。<b>评分为本报自设</b><span class="src-tag low">本报自设</span>，<b>非第三方评级；本报未下载权重、未跑分，属预判而非实测</b><span class="src-tag low">本报未复现</span>。</caption>
+        <thead>
+          <tr><th>维度</th><th>得分</th><th>依据</th><th>证据强度</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="name">可跑通度</td><td class="num">14 / 20</td><td>31M 参数、Apache 2.0、本地离线运行，理论上单机可跑；未给完整依赖清单</td><td>中 · 依据模型卡</td></tr>
+          <tr><td class="name">许可清晰度</td><td class="num">12 / 20</td><td>31M 版 Apache 2.0 可商用，其余版本 CC BY-NC，商用边界容易踩错</td><td>高 · 许可写明</td></tr>
+          <tr><td class="name">需求真实性</td><td class="num">15 / 20</td><td>端侧语音是刚需：延迟低、文本不出设备；但同类方案已很多</td><td>中 · 判断而非数据</td></tr>
+          <tr><td class="name">作者持续性</td><td class="num">10 / 20</td><td>背靠大组织，维护可预期；具体路线图与发版节奏未公布</td><td>低 · 未核到</td></tr>
+          <tr><td class="name">证据强度</td><td class="num">8 / 20</td><td>「榜单第一」为自述，未附完整对比表与测试条件</td><td>低 · 未复现</td></tr>
+          <tr><td class="name">合计</td><td class="num">59 / 100</td><td>低于 70 分入选线；本周 3 个候选，2 个未过初筛</td><td>预判</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p><b>为什么给「证据强度」这么低的分。</b>不是怀疑它跑分造假，是<b>它没有给出可核对的条件</b>：用什么测试集、对比哪些基线、在什么设备上测的延迟。第 09 版刚说过，看到「改善」要问三件事；这里同理。一个项目敢把测试脚本随文放出，这一项就能从 8 分涨到 16 分——<b>分不是给能力打的，是给「可验证程度」打的。</b></p>
+    <p><b>许可那一项为什么也不高。</b>31M 版本 Apache 2.0，听起来很友好；但同一项目里其余版本是 CC BY-NC，<b>意味着你不能拿「Phonon」这个名字去概括它的商用条件</b>。真正落地时，团队很容易下载了错的版本，等到法务审核才发现。这不是项目的错，是使用者的坑，但评分要把坑算进去。</p>
+    <p><b>它仍然值得关注。</b>31M 能离线跑 TTS，且文本不上传，这在客服、车机、无障碍这些场景里是硬需求。它没入选，不代表不能用，只代表「本报不打算把它写进半年后仍在的名单」——<b>入选线是给长期跟踪用的，不是给试用判死刑的。</b></p>
+    <p><b>一票否决项仍四条</b>：无许可证或 README 无可复制示例；星数单日垂直拉升而 issue 为零；唯一作者连续 30 天无提交；核心能力依赖某接口且违反其条款。Phonon 未命中任何一条，所以它是「分数不够」，不是「被否」。</p>
+
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版 59 分</span>
+      </div>
+      <p>一个项目最值钱的不是「榜单第一」，是<b>「我把测试脚本放这儿了，你自己跑」</b>。前者要你相信它，后者让你不必相信它。开源社区真正稀缺的，从来不是模型，是这种不怕被验的姿态。</p>
+    </aside>
+  </section>

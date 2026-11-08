@@ -1,0 +1,138 @@
+  <footer class="colophon">
+    <div class="row">
+      <span><b>AI 晨报</b>　第 003-2 期　2026-11-06　共 16 版</span>
+      <span>本报由 AI 自动编撰　数据截至北京时间 10:00　<b>本期为傍晚特刊</b></span>
+    </div>
+    <p><b>信息源：</b>Anthropic 定价公告与 FAQ、月之暗面 Hugging Face 模型卡、Terminal-Bench 与 Agent Arena 榜单快照、arXiv 预印本、欧盟 AI 法案执行细则草案、本报访谈记录（四支团队，匿名）。</p>
+    <p><b>编辑说明：</b>本期只收录人工智能与智能体相关动态，以「智能体怎么被信任」为主线。凡标注「未独立复现」「本报未核」的数字，均取自公开页面，未做二次验证；表 4 的人工口径为访谈中位数，不是行业统计，<b>照抄会失真</b>。</p>
+    <p class="errata"><b>特刊说明：</b>本版是 2026-11-06 的傍晚特刊，正文与当日 08:00 那期同源，改动只在三处：头版新增三行摘要（P004-1）、术语首次出现处可点开注解（P004-2）、每期产出机器可读的 <code>manifest.json</code>（P004-4）。三条均来自第 16 版提案并经创刊人点名采纳；P004-3「单版分享」未获采纳，本期不做。第 16 版改为决议版，逐条交代改了什么、怎么验的。</p>
+    <p><b>往期：</b>第 001 期（2026-11-04）　第 002 期（2026-11-05）　本报每日 08:00 出刊，节假日不休。</p>
+    <p class="disclaimer">本报内容由 AI 自动生成，用于产品演示，不构成事实报道。</p>
+  </footer>
+
+<nav class="rail" aria-label="版面快捷目录">
+  <div class="rail-head">目录</div>
+  <ol class="rail-list">
+    <li><a href="#p01"><i>01</i><span>头条</span></a></li>
+    <li><a href="#p02"><i>02</i><span>社论</span></a></li>
+    <li><a href="#p03"><i>03</i><span>模型</span></a></li>
+    <li><a href="#p04"><i>04</i><span>产品</span></a></li>
+    <li><a href="#p05"><i>05</i><span>深读</span></a></li>
+    <li><a href="#p06"><i>06</i><span>思路</span></a></li>
+    <li><a href="#p07"><i>07</i><span>榜单</span></a></li>
+    <li><a href="#p08"><i>08</i><span>安全</span></a></li>
+    <li><a href="#p09"><i>09</i><span>学术</span></a></li>
+    <li><a href="#p10"><i>10</i><span>资本</span></a></li>
+    <li><a href="#p11"><i>11</i><span>算力</span></a></li>
+    <li><a href="#p12"><i>12</i><span>行情</span></a></li>
+    <li><a href="#p13"><i>13</i><span>回声</span></a></li>
+    <li><a href="#p14"><i>14</i><span>星探</span></a></li>
+    <li><a href="#p15"><i>15</i><span>快讯</span></a></li>
+    <li><a href="#p16"><i>16</i><span>提案</span></a></li>
+  </ol>
+  <a class="rail-top" href="#top" title="回到顶部">↑ 顶</a>
+</nav>
+
+<button class="mob-btn" id="mobBtn" type="button" aria-controls="mobPanel" aria-expanded="false"><i>☰</i>目录</button>
+<div class="mob-panel" id="mobPanel" role="dialog" aria-label="版面目录">
+  <h6>版面目录 · 共 16 版 · 点一下跳过去</h6>
+  <div class="mob-grid">
+    <a href="#p01"><i>01</i>头条</a>
+    <a href="#p02"><i>02</i>社论</a>
+    <a href="#p03"><i>03</i>能力底座</a>
+    <a href="#p04"><i>04</i>产品生态</a>
+    <a href="#p05"><i>05</i>深读·能跑起来</a>
+    <a href="#p06"><i>06</i>思路拆解</a>
+    <a href="#p07"><i>07</i>开源榜</a>
+    <a href="#p08"><i>08</i>安全治理</a>
+    <a href="#p09"><i>09</i>学术前沿</a>
+    <a href="#p10"><i>10</i>商业资本</a>
+    <a href="#p11"><i>11</i>算力本地</a>
+    <a href="#p12"><i>12</i>行情价目</a>
+    <a href="#p13"><i>13</i>平台回声</a>
+    <a href="#p14"><i>14</i>星探</a>
+    <a href="#p15"><i>15</i>快讯</a>
+    <a href="#p16"><i>16</i>提案</a>
+  </div>
+  <p class="mob-tip">宽屏时目录固定在右侧；窄屏（平板、手机）右侧放不下，改用这个面板。点任意一项会自动收起。</p>
+  <a class="mob-top" href="#top">↑ 回到顶部</a>
+</div>
+
+<script>
+(function(){
+  var links = Array.prototype.slice.call(document.querySelectorAll('.rail-list a'));
+  var secs = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  var ticking = false;
+  function update(){
+    var mark = window.pageYOffset + window.innerHeight * 0.35;
+    var idx = 0;
+    for (var i = 0; i < secs.length; i++){
+      if (secs[i] && secs[i].offsetTop <= mark) idx = i;
+    }
+    links.forEach(function(a, i){ a.classList.toggle('active', i === idx); });
+    ticking = false;
+  }
+  function onScroll(){ if(!ticking){ ticking = true; window.requestAnimationFrame(update); } }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  update();
+
+  // 窄屏目录面板
+  var mb = document.getElementById('mobBtn');
+  var mp = document.getElementById('mobPanel');
+  if (mb && mp){
+    function setOpen(open){
+      document.body.classList.toggle('mob-open', open);
+      mb.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    mb.addEventListener('click', function(){
+      setOpen(!document.body.classList.contains('mob-open'));
+    });
+    mp.addEventListener('click', function(e){
+      var t = e.target;
+      while (t && t !== mp){
+        if (t.tagName === 'A'){ setOpen(false); break; }
+        t = t.parentNode;
+      }
+    });
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape') setOpen(false);
+    });
+  }
+
+  // 术语注解（P004-2）：桌面悬停、键盘聚焦、触摸点击都能展开；再点一次或点别处收起。
+  // 气泡会按视口右边界往回缩，避免在窄屏上撑出横向滚动。
+  var terms = Array.prototype.slice.call(document.querySelectorAll('.term'));
+  function place(el){
+    var tip = el.querySelector('.tip');
+    if (!tip) return;
+    var r = el.getBoundingClientRect();
+    var w = tip.offsetWidth || 0, h = tip.offsetHeight || 0;
+    var left = Math.max(10, Math.min(r.left, window.innerWidth - w - 10));
+    var top = r.top - h - 9;
+    if (top < 6) top = r.bottom + 9;
+    tip.style.left = left + 'px';
+    tip.style.top = top + 'px';
+  }
+  terms.forEach(function(el){
+    el.setAttribute('tabindex', '0');
+    el.setAttribute('role', 'button');
+    el.addEventListener('mouseenter', function(){ place(el); });
+    el.addEventListener('focus', function(){ place(el); });
+    el.addEventListener('click', function(e){
+      e.preventDefault();
+      var on = el.classList.contains('on');
+      terms.forEach(function(o){ o.classList.remove('on'); });
+      if (!on){ el.classList.add('on'); place(el); }
+    });
+  });
+  window.addEventListener('resize', function(){
+    terms.forEach(function(o){ if (o.classList.contains('on')) place(o); });
+  });
+  document.addEventListener('click', function(e){
+    if (!e.target.closest || !e.target.closest('.term')){
+      terms.forEach(function(o){ o.classList.remove('on'); });
+    }
+  });
+})();
+</script>

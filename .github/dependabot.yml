@@ -1,0 +1,20 @@
+# Dependabot：只盯 GitHub Actions 本身。
+#
+# 这个项目的主链路零第三方 Python 依赖（requirements.txt 里的 Pillow / qrcode
+# 只服务图标、二维码、APK 三个辅助脚本，缺了只报 WARN），所以没有 pip 生态可更。
+# 真正会随时间腐烂的是 ci.yml 里那几个 action 的大版本——它们一旦被弃用，
+# CI 会在某天毫无预兆地红，而那时已经和这次改动无关了。
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "Asia/Shanghai"
+    open-pull-requests-limit: 3
+    commit-message:
+      prefix: "ci"
+    labels:
+      - "dependencies"

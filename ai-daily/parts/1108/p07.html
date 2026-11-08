@@ -1,0 +1,35 @@
+<section class="section" id="p07">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">开源清单 · 这一周放出来的四份权重</span>
+      <span class="sec-page">第 07 版 / 共 16 版</span>
+    </div>
+    <p class="sec-lede">这一周是「放权重」的一周，但四份放法完全不同：<b>有的只放基座、有的先闭后开、有的只放到工作站能跑为止。</b>放法比参数更能说明厂商在打什么算盘。</p>
+
+    <p><b>月之暗面：Kimi K3.1 Pro。</b>2.8 万亿总参、单次请求激活约 <b>1040 亿</b><span class="src-tag">厂商口径</span>，百万级上下文，文本与图像输入，面向编程与金融研究这类智能体任务；同时给出 NVIDIA、AMD、Google 三种硬件的运行支持。同天发布 Hosted Agents 托管服务：7×24 运行环境、长程任务、多智能体协作，可调 140 余项技能与 30 余款插件。<b>它在卖的不是模型，是「不用自己搭运行时」</b>——权重照给，但真跑起来的那套东西留在云上。</p>
+    <p><b>百度：ERNIE 5.5 Flash Base。</b>稀疏 <span class="term" tabindex="0">MoE<i class="tip">混合专家。把模型拆成很多「专家」，每个 token 只叫醒其中几个；能力按总量算，成本按叫醒的数量算。</i></span> 结构，280B 总参、每 token 激活 14B，基于 <b>33.5T</b> tokens 从零预训练，训练上下文 128K、推理支持 1M<span class="src-tag">厂商口径</span>。FP8 与 BF16 两版已上 Hugging Face，后训练版本随后放。<b>放「预训练终点」而不是「聊天成品」，等于把路线选择的自由交给社区</b>——做垂直微调的人要的正是这个起点。</p>
+    <p><b>Thinking Machines：Inkling 2 Small。</b>594B 总参、<b>17B</b> 激活、1M 上下文、支持图像输入，在 SWE-Bench Pro v2 Hard 上得分 <b>86.3%</b><span class="src-tag">厂商口径</span><span class="src-tag low">本报未复现</span>。眼下只在自家 Tinker 平台提供推理与微调，权重是闭的；官方说外部红队测试结束后<b>次周以 Apache 2.0 放出</b>。演示里它用 Three.js 边看渲染结果边改，做出可交互的城市场景——这类「看结果再改」的循环，是它主打的能力。</p>
+    <p><b>NVIDIA：Cosmos 3 世界模型。</b>开放权重，每份 <b>16B</b> 可训练参数，一共四个，面向驾驶与机器人：给定一个动作，预测摄像头或激光雷达接下来会看到什么。最小配置能在一张工作站显卡上跑起来<span class="src-tag">厂商口径</span>。<b>世界模型的实际用途是省真机时间</b>——机器人策略先在仿真里练，再去停车场试，成本差一个量级。它不性感，但对做具身智能的团队是硬通货。</p>
+
+    <div class="table-wrap">
+      <table>
+        <caption>四份权重的放法对比（参数与指标均为厂商口径）</caption>
+        <thead><tr><th>模型</th><th>规模</th><th>放什么</th><th>什么时候能用</th></tr></thead>
+        <tbody>
+          <tr><td>Kimi K3.1 Pro</td><td>2.8 万亿 / 激活 1040 亿</td><td>权重 + 托管运行时</td><td>权重已放，托管服务同天</td></tr>
+          <tr><td>ERNIE 5.5 Flash Base</td><td>280B / 激活 14B</td><td>只放预训练终点</td><td>已上 Hugging Face</td></tr>
+          <tr><td>Inkling 2 Small</td><td>594B / 激活 17B</td><td>先闭，后开 Apache 2.0</td><td>次周，需过红队</td></tr>
+          <tr><td>Cosmos 3</td><td>16B 可训练参数</td><td>开放权重，四份</td><td>已放，单卡可跑</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p><b>一个趋势值得记：</b>开源正在从「放不放」变成「放哪一段」。放基座是把训练自由交出去，放成品是把使用自由交出去，先闭后开是把安全评估的时间买回来。<b>三种放法对应三种商业位置</b>：卖算力、卖应用、卖合规。看懂放的是哪一段，比看参数量更能预判它明年靠什么收钱。</p>
+
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版四份权重</span>
+      </div>
+      <p>「下周开源」这四个字，今年已经出现过太多次。<b>把日期写出来、把许可证写出来，才算承诺</b>；只写「近期」的，通常是还没决定要不要真放。Inkling 这次至少给了许可证和触发条件——红队过完的次周。<b>有触发条件的承诺，比有日期的口号可靠。</b></p>
+    </aside>
+  </section>

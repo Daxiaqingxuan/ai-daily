@@ -1,0 +1,113 @@
+<section class="section" id="p05">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">深读 · 本周最值得动手的两个</span>
+      <span class="sec-page">第 05 版 / 共 16 版</span>
+    </div>
+    <p class="sec-lede">本版不写「很火」「很强」。每个项目只回答五件事：它做什么、怎么工作、数字、为什么和你有关、会卡在哪。<b>两个项目都在解决今天头条留下的同一个问题：怎么证明这次真的成了。</b></p>
+
+    <div class="plain">
+      <span class="p-h">说人话</span>
+      <p>你让 AI 改一个文件，它说「已完成」。你怎么知道它真改了？<b>大多数人靠「再打开看一眼」</b>。这两个项目就是把「再看一眼」变成机器自动做的一步：一个负责在每个动作后面加检查，一个负责把每次运行的成本算清楚。</p>
+    </div>
+
+    <article class="deep">
+      <div class="deep-head">
+        <span class="deep-idx">01</span>
+        <div>
+          <span class="deep-tag">后置校验 · 回滚</span>
+          <h3 class="deep-title">postcheck：把「怎么算成功」写成一个 YAML 文件</h3>
+        </div>
+      </div>
+      <div class="deep-repo"><b>canary-labs/postcheck</b>　Rust　Apache-2.0　约 7.2K 星　发布 9 天</div>
+      <div class="deep-body">
+        <p><span class="k">它做什么</span>给智能体的每个「写」动作配一组后置条件，跑完立刻验；不通过就回滚到动作前的快照，并把「期望什么、实际什么」写成一条工单。它不是评测框架，<b>它是运行时的安全带</b>——评测发生在事后，它发生在每次调用之后。</p>
+        <p><span class="k">怎么工作</span>三步。第一步，你把检查写成声明式的一小段配置（文件存在、命令退出码、HTTP 状态、字段误差）。第二步，它在你指定的命令外面包一层，执行前后各打一个快照（默认用 git stash + 临时目录，不依赖容器）。第三步，检查失败就回滚、写工单、退出码非零，让上层的 agent 循环自己决定重试还是放弃。</p>
+        <pre class="cmd">postcheck init            <span class="c"># 生成 postcheck.yaml 与 .postcheck/ 快照目录</span>
+postcheck run -- pytest -q <span class="c"># 跑命令，并按 yaml 里的断言逐条验</span>
+postcheck why             <span class="c"># 打印最近一次失败：期望 / 实际 / 回滚点</span></pre>
+        <p><span class="k">数字</span>单次检查开销约 40–90 毫秒（取决于快照大小）；对一个 12 步的任务，总开销不到 1 秒。<b>项目自标「beta」</b>，且明确说不支持 Windows 原生长路径——这一点下面会讲。</p>
+        <p><span class="k">为什么这条和你有关</span>你在写 MonitorWidget，一定遇到过这种事：程序报告「已写入配置」，重启之后配置没变——因为写的是另一个用户目录。<b>这正是后置条件能抓住的东西</b>：不是「函数返回了」，是「文件真的在那个路径上、内容真的包含那一行」。把这个检查写成一条断言，比重读一遍代码便宜得多。</p>
+        <p class="deep-warn"><b>会卡住的地方：</b>快照靠 git，工作区里有未提交改动时回滚会连你的改动一起吃掉；Windows 上长路径与符号链接的行为和 Linux 不一致，官方 issue 里已有 6 条相关报告。<b>别在 production 分支上开自动回滚</b>，先用一个临时分支跑一周。</p>
+      </div>
+    </article>
+
+    <figure class="figure" id="fig1">
+      <div class="fig-title">图 1 · 一次「写动作」的三道闸：执行前留快照 → 执行 → 逐条验断言，失败即回滚并出工单</div>
+      <div class="fig-scroll">
+        <svg viewBox="0 0 900 232" width="900" height="232" role="img" aria-label="后置校验流程：快照、执行、断言、回滚或提交">
+          <g font-family="Microsoft YaHei, PingFang SC, sans-serif">
+            <rect x="20" y="60" width="180" height="96" rx="3" fill="#f4efe2" stroke="#1b1a17" stroke-width="1.2"/>
+            <text x="110" y="86" text-anchor="middle" font-size="13" font-weight="700" fill="#1b1a17">① 快照</text>
+            <text x="110" y="108" text-anchor="middle" font-size="11" fill="#3a3934">git stash + 临时目录</text>
+            <text x="110" y="126" text-anchor="middle" font-size="11" fill="#3a3934">40–90 毫秒</text>
+            <text x="110" y="144" text-anchor="middle" font-size="11" fill="#6d6a60">可回滚点</text>
+
+            <rect x="240" y="60" width="180" height="96" rx="3" fill="#f4efe2" stroke="#1b1a17" stroke-width="1.2"/>
+            <text x="330" y="86" text-anchor="middle" font-size="13" font-weight="700" fill="#1b1a17">② 执行</text>
+            <text x="330" y="108" text-anchor="middle" font-size="11" fill="#3a3934">agent 的写动作</text>
+            <text x="330" y="126" text-anchor="middle" font-size="11" fill="#3a3934">命令 / 接口 / 文件</text>
+            <text x="330" y="144" text-anchor="middle" font-size="11" fill="#6d6a60">不管它自称成功</text>
+
+            <rect x="460" y="60" width="180" height="96" rx="3" fill="#f4efe2" stroke="#1b1a17" stroke-width="1.2"/>
+            <text x="550" y="86" text-anchor="middle" font-size="13" font-weight="700" fill="#1b1a17">③ 断言</text>
+            <text x="550" y="108" text-anchor="middle" font-size="11" fill="#3a3934">文件存在 / 退出码</text>
+            <text x="550" y="126" text-anchor="middle" font-size="11" fill="#3a3934">HTTP 状态 / 误差</text>
+            <text x="550" y="144" text-anchor="middle" font-size="11" fill="#6d6a60">逐条，不合并</text>
+
+            <rect x="700" y="20" width="180" height="70" rx="3" fill="#e8f0e4" stroke="#1b1a17" stroke-width="1.2"/>
+            <text x="790" y="46" text-anchor="middle" font-size="13" font-weight="700" fill="#1b1a17">全绿 → 提交</text>
+            <text x="790" y="68" text-anchor="middle" font-size="11" fill="#3a3934">继续下一步</text>
+
+            <rect x="700" y="126" width="180" height="70" rx="3" fill="#f7e4e0" stroke="#8c1d18" stroke-width="1.2"/>
+            <text x="790" y="152" text-anchor="middle" font-size="13" font-weight="700" fill="#8c1d18">失败 → 回滚</text>
+            <text x="790" y="174" text-anchor="middle" font-size="11" fill="#3a3934">写工单：期望 / 实际</text>
+
+            <path d="M200 108 L236 108" stroke="#1b1a17" stroke-width="1.2" fill="none" marker-end="url(#a1)"/>
+            <path d="M420 108 L456 108" stroke="#1b1a17" stroke-width="1.2" fill="none" marker-end="url(#a1)"/>
+            <path d="M640 92 L696 62" stroke="#1b1a17" stroke-width="1.2" fill="none" marker-end="url(#a1)"/>
+            <path d="M640 124 L696 158" stroke="#8c1d18" stroke-width="1.2" fill="none" marker-end="url(#a2)"/>
+            <path d="M790 196 L790 218 L110 218 L110 158" stroke="#8c1d18" stroke-width="1.2" fill="none" stroke-dasharray="5 4" marker-end="url(#a2)"/>
+            <rect x="330" y="196" width="240" height="16" fill="#f6f1e4"/>
+            <text x="450" y="208" text-anchor="middle" font-size="10.5" fill="#8c1d18">回滚后重试，最多两次；第三次记工单交人</text>
+            <defs>
+              <marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#1b1a17"/></marker>
+              <marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#8c1d18"/></marker>
+            </defs>
+          </g>
+        </svg>
+      </div>
+      <p class="fig-hint">← 左右滑动看全图 →</p>
+      <p class="fig-cap">本图按项目 README 的三步流程绘制。<b>虚线那段是本报补的</b>：原文档只写「失败可重试」，没写重试上限，实际使用中必须自己加，否则会陷入无限循环。</p>
+    </figure>
+
+    <article class="deep">
+      <div class="deep-head">
+        <span class="deep-idx">02</span>
+        <div>
+          <span class="deep-tag">成本 · 账本</span>
+          <h3 class="deep-title">runledger：把「一次任务多少钱」算成一行数</h3>
+        </div>
+      </div>
+      <div class="deep-repo"><b>tally-labs/runledger</b>　Python　MIT　约 3.8K 星　发布 12 天</div>
+      <div class="deep-body">
+        <p><span class="k">它做什么</span>读智能体的运行日志，算出「<span class="term" tabindex="0">有效成本<i class="tip">（token 费 + 重试费 + 人工收尾工时）÷ 通过的任务数。比单价更能决定一件事该不该做。</i></span>」：把 token 费、重试费、等待时间里的人工成本、以及失败任务的沉没成本加在一起，除以真正通过的任务数。<b>它不优化任何东西，只负责让你看见分母。</b></p>
+        <p><span class="k">为什么需要它</span>因为今天的定价方式让「单价」失去了意义。厂商报的是每百万 token 多少钱，你能算的只有「这个月账单多少」，而真正决定业务能不能成立的是「一个通过的任务平均花多少钱」。一家做票据录入的团队用它跑了七天，发现单任务成本里 52% 来自重试——而重试的 78% 是同一类失败：金额字段里混进了全角字符。</p>
+        <p><span class="k">数字</span>接入约 20 行代码（一个装饰器 + 一个环境变量）；支持 Anthropic、OpenAI、DeepSeek 与本地 vLLM 的日志格式；默认按<b>「通过的断言数」</b>而不是「完成任务数」计分母——这个口径是它和别家最大的差别。</p>
+        <p><span class="k">为什么这条和你有关</span>你在做监测器，那种「每 2 秒采一次」的循环最容易被忽略成本：单次调用便宜到无所谓，加起来一个月是笔真钱。<b>把「每次采集的平均成本」做成一条曲线</b>，你会第一次看清自己在为什么付钱。</p>
+        <p class="deep-warn"><b>会卡住的地方：</b>人工介入的分钟数要手填，不填就默认 0，等于自欺欺人；它假设你的日志里有稳定的 task id，如果你的 agent 每次重试都新起一个 id，分母会虚高——<b>先修 id，再用它。</b></p>
+      </div>
+    </article>
+
+    <div class="more-box">
+      <h5>另一个值得留意</h5>
+      <p><b>Dify 1.17.1</b>（热修）：修了昨天版本里「统一追踪」在自托管环境下丢 span 的问题。<b>自托管团队升级前先看这条</b>——追踪丢了，你排查「智能体到底在哪一步失败」的能力会直接归零，而这恰好是今天所有讨论的前提。</p>
+    </div>
+
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版两个项目</span>
+      </div>
+      <p>一个管「这次成没成」，一个管「这次花了多少」，合起来才是今天真正稀缺的能力：<b>把智能体的工作变成可结算的事实。</b>注意它们都做了同一件反直觉的事——不信任 agent 的自述。postcheck 不信「已完成」，runledger 不信「已成功」。这不是对模型不敬，这是把工程里最老的规矩重新搬回来：<b>别听它说，去看副作用。</b></p>
+    </aside>
+  </section>

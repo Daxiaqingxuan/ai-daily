@@ -1,0 +1,106 @@
+<section class="section" id="p16">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">本报提案 · 这一期想怎么改</span>
+      <span class="sec-page">第 16 版 / 共 16 版</span>
+    </div>
+    <p class="sec-lede">本期四条提案，全部来自今天这次返工：<b>一份报纸会因为「主线没写死」而整期跑偏，也会因为「来源没标注」而让读者无法判断哪句能信。</b>创刊人当天拍了三条：<b>P005-2、P005-3、P005-4 采纳并已落进这一版的排版与工具链；P005-1 明确否决</b>——报头与报尾已有主线回显，不必再占头版一行。</p>
+
+    <div class="props">
+      <article class="prop">
+        <div class="prop-h"><span class="prop-role">读者</span><span class="prop-id">P005-1</span></div>
+        <h4>头版加一行「本期主线」</h4>
+        <p>今天这份报纸 16 个版跨了 12 个来源，读者要读到第 05 版才知道「原来这一期讲的是从会答到会办」。头版有一句主线，能省掉这段摸索，也能让读者一眼判断这期是不是自己想看的。</p>
+        <dl class="prop-meta">
+          <dt>为什么</dt><dd>上一版 004 期以市场复盘为主线，头版没有任何地方声明「本期不谈 AI 产品」，读者翻到第 12 版才发现整期是行情。</dd>
+          <dt>成本</dt><dd>小 · 改 parts/&lt;MMDD&gt;/p01.html 与 00-masthead.html，加一行 kicker 即可，不动版式。</dd>
+        </dl>
+        <div class="prop-st no">未采纳 · <b>创刊人明确说不必</b>：报头已有主线，别再加一行</div>
+      </article>
+
+      <article class="prop">
+        <div class="prop-h"><span class="prop-role">编辑</span><span class="prop-id">P005-2</span></div>
+        <h4>把「未复现 / 未同行评审」做成统一标记</h4>
+        <p>本期正文里这类限定散在括注和句尾，一共十几处，读者很难一眼看出哪些数字是本报核过的、哪些是转述。建议统一成一个行内小标（如「厂商口径」「未复现」「预印本」），并在报尾给一次说明。</p>
+        <dl class="prop-meta">
+          <dt>为什么</dt><dd>同一页里既有「本报未复现」，也有直接引用的数字，排版上没有区别；换一个编辑写，标记就会漏。</dd>
+          <dt>成本</dt><dd>中 · 00-style-extra.html 加一个行内类；改 5–8 个版；再给自检加一条「含引用数字的段落必须有标记」。</dd>
+          <dt>落地</dt><dd>本期 22 处小标，六档词表固定在拼版脚本里；新增断言 A10 / A10b / A10c：用了词表外的说法、事实卡覆盖的版缺标、报尾缺图例，任一条都拼不上版。</dd>
+        </dl>
+        <div class="prop-st ok">采纳 · <b>已落地于本期</b></div>
+      </article>
+
+      <article class="prop">
+        <div class="prop-h"><span class="prop-role">创刊人</span><span class="prop-id">P005-3</span></div>
+        <h4>把「主线声明 + 跑偏熔断」写进契约</h4>
+        <p>今天整期跑偏的根因不是写错某个数字，是<b>开工时没有一句话规定「这一期只回答什么」</b>。建议出报前先在 parts/&lt;MMDD&gt;/00-masthead.html 写一行主线，拼版时断言头版 kicker 与主线一致；若 16 版里有 8 版以上主题偏离，直接 BLOCK，不许发布。</p>
+        <dl class="prop-meta">
+          <dt>为什么</dt><dd>改动前 A1–A9 只查版数、期号、术语、配平，一条都不查「内容是否属于本报主线」；跑偏能一路绿灯发到线上。</dd>
+          <dt>成本</dt><dd>中 · 改 AGENTS.md 与 assemble_issue.py，新增一个主线段落解析与一条断言；主线判定用关键词白名单，需维护。</dd>
+          <dt>落地</dt><dd>新增 <code>00-thread.json</code>（主线、跑偏词、阈值）与报头 <code>data-thread</code> 声明。A11 对账「声明 = 文件 = 报尾回显」，A12 命中跑偏词超过 7 版即 BLOCK，头版命中直接拦。<b>不是提醒，是拼不上版。</b></dd>
+        </dl>
+        <div class="prop-st ok">采纳 · <b>已落地于本期</b></div>
+      </article>
+
+      <article class="prop">
+        <div class="prop-h"><span class="prop-role">AI</span><span class="prop-id">P005-4</span></div>
+        <h4>每期产出「事实卡」JSON</h4>
+        <p>本期每个关键数字都写了来源与时点，但散在正文里，下一期复核要重读 16 版。建议由 <code>make_manifest.py</code> 顺带产出一份事实卡：断言、数值、来源、时点、证据强度、是否复现，让「未复现」从一句文案变成可校验字段。</p>
+        <dl class="prop-meta">
+          <dt>为什么</dt><dd>本期光「厂商口径」就有 9 处，人工维护必然漂移；改动前 manifest 只校验文件哈希，不校验内容来源。</dd>
+          <dt>成本</dt><dd>中 · 改 tools/make_manifest.py 与自检，新增一个 JSON 字段；不改现有 manifest 字段，保持幂等。</dd>
+          <dt>落地</dt><dd>本期 12 条事实卡随成品内嵌，<b>已复现 0 条</b>——这是实话，不是谦虚。A13 核对每条数值必须出现在它署名的版面；manifest 里也再核一次，改了正文没改卡会红。</dd>
+        </dl>
+        <div class="prop-st ok">采纳 · <b>已落地于本期</b></div>
+      </article>
+    </div>
+
+    <p class="prop-rule"><b>本期已结清：</b>P005-1 明确否决，P005-2 / 3 / 4 当天采纳并落地。采纳记录与验证方式写进 <code>提案台账.md</code>；下一期只需结算本期新提的四条。<b>沉默仍然等于否决</b>——这一条没有因为今天采纳了三条而改变。</p>
+
+    <p class="prop-rule"><b>另有三条整改指令：</b>当天中午创刊人按一份五维评分点名整改，属指令不属提案，故不占本期四条：一是解开「换台机器跑不起来」的耦合（钉死行尾、加环境体检、探针自起浏览器、上 CI）；二是补齐许可（代码 MIT、内容 CC BY 4.0、第三方归属单列）；三是<b>每版版头标注信息来源，AI 生成的版面不得超过 4 版</b>。第三条从本版起生效——你在这份报纸每个版头看到的「来源 · 官方 / 第三方信息网 / 本报实测 / AI 生成」就是它。明细记在 <code>提案台账.md</code> §六。</p>
+
+    <div class="table-wrap">
+      <table class="prop-ledger">
+        <caption>提案台账 · 最近 8 条（全量明细见 <code>提案台账.md</code>）。前四条为上期结算结果，后四条为本期新增（其中三条当天采纳）。</caption>
+        <thead>
+          <tr><th>编号</th><th>视角</th><th>一句话</th><th>状态</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="id">P004-1</td><td>读者</td><td>头版加三行摘要</td><td class="st-ok">已落地</td></tr>
+          <tr><td class="id">P004-2</td><td>编辑</td><td>名词首次出现加悬浮注解</td><td class="st-ok">已落地</td></tr>
+          <tr><td class="id">P004-3</td><td>创刊人</td><td>单版分享 #pNN</td><td class="st-no">未采纳</td></tr>
+          <tr><td class="id">P004-4</td><td>AI</td><td>每期产出 manifest.json</td><td class="st-ok">已落地</td></tr>
+          <tr><td class="id">P005-1</td><td>读者</td><td>头版加一行「本期主线」</td><td class="st-no">未采纳</td></tr>
+          <tr><td class="id">P005-2</td><td>编辑</td><td>「未复现」做成统一标记</td><td class="st-ok">已落地</td></tr>
+          <tr><td class="id">P005-3</td><td>创刊人</td><td>主线声明 + 跑偏熔断</td><td class="st-ok">已落地</td></tr>
+          <tr><td class="id">P005-4</td><td>AI</td><td>每期产出事实卡 JSON</td><td class="st-ok">已落地</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版四条提案</span>
+      </div>
+      <p>P005-3 是这一期最贵的一条，也是最该做的一条：<b>跑偏不是文笔问题，是流程没有「先写一句话」这一步。</b>P005-1 是它的读者版，P005-2 和 P005-4 是它的证据版——四条其实在修同一件事：<b>让「这一期到底在说什么」变成可以被检查的东西，而不是靠编辑当天记性。</b></p>
+    </aside>
+  </section>
+
+  <div class="gloss" id="gloss">
+    <h5>名词速查 · 本期出现的 13 个词<span>正文里带虚线的词点一下就地解释；这张表留作索引</span></h5>
+    <div class="gloss-grid">
+      <dl><dt>激活参数</dt><dd>MoE 每次推理真正参与计算的那部分参数。Hy4 为 49B（总参 770B），比例约 6.4%；它决定账单，总参数决定上限。</dd></dl>
+      <dl><dt>MoE / 混合专家</dt><dd>把模型拆成很多「专家」，每个 token 只叫醒其中几个。能力按总量算，成本按叫醒的数量算。</dd></dl>
+      <dl><dt>上下文窗口</dt><dd>一次能送进模型的 token 上限。Hy4 标称 1M，最大输入 960K、输出 64K；标称容量不等于可用容量。</dd></dl>
+      <dl><dt>通过率</dt><dd>一次就通过验收的任务占比。比平均分更能预测账单，但换一套任务集就会变，不能跨场景直接比较。</dd></dl>
+      <dl><dt>验收清单 / acceptance checklist</dt><dd>调用方提交任务时一起给的那组检查：产物在不在、格式对不对、关键字段有没有。全绿才算干完。</dd></dl>
+      <dl><dt>权重 / open weights</dt><dd>模型训练出来的参数文件。给了权重才能自己部署、微调、离线运行；只给 API，能力再强也只能租。</dd></dl>
+      <dl><dt>计算机操作 / Computer Use</dt><dd>模型看屏幕、点按钮、敲命令行来完成任务。Hy4 首次支持，并对 Blender、CAD 等专业软件做了专项训练。</dd></dl>
+      <dl><dt>端侧推理</dt><dd>模型直接跑在手机、平板、车机这类设备上，不把数据发到云端。代价是模型必须小，能力有上限。</dd></dl>
+      <dl><dt>提权 / EoP</dt><dd>elevation of privilege。让普通权限的程序拿到更高权限，是漏洞利用链里最常见的一环。</dd></dl>
+      <dl><dt>远程代码执行 / RCE</dt><dd>remote code execution。攻击者能在目标机器上执行任意命令，通常意味着这台机器已经失守。</dd></dl>
+      <dl><dt>蒸馏</dt><dd>把大模型的能力搬到小模型上：用大模型的输出当训练目标。搬得好能省算力，搬不好会把老师的偏差一起继承。</dd></dl>
+      <dl><dt>增量遗忘 / unlearning</dt><dd>不重训整个模型，只让它忘掉指定的数据或类别。难点是忘掉目标的同时不伤其他能力。</dd></dl>
+      <dl><dt>检索增强 / RAG</dt><dd>先从资料库检索相关片段，再让模型基于片段回答。既减少胡编，也减少送进模型的 token。</dd></dl>
+    </div>
+  </div>

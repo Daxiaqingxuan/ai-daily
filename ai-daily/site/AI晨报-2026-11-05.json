@@ -1,0 +1,30 @@
+{
+  "issue": "002",
+  "date": "2026-11-05",
+  "kind": "daily",
+  "file": "AI晨报-2026-11-05.html",
+  "title": "AI 晨报 · 2026年11月5日 · 第 002 期 · 智能体专版（共 15 版）",
+  "pages": 15,
+  "bytes": 134446,
+  "sha256": "49b50d947f50c8605138e81364a5d3a881e380b58583dee4d210d28136ac18cc",
+  "chars": 26538,
+  "terms": 0,
+  "glossary": 13,
+  "facts": null,
+  "missing_terms": [],
+  "generatedAt": "2026-11-06 23:14",
+  "checks": {
+    "pages_eq_nav": true,
+    "nav_matches_sections": true,
+    "sections_continuous": true,
+    "issue_in_title": true,
+    "pages_in_title": true,
+    "pages_all_match": true,
+    "digest_three": null,
+    "glossary_count_matches": true,
+    "terms_in_glossary": null,
+    "facts_card_valid": null
+  },
+  "ok": true,
+  "path": "AI晨报-2026-11-05.html"
+}

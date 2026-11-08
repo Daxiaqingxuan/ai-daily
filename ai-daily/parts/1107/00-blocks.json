@@ -1,0 +1,22 @@
+{
+  "legend": "版级来源说明这一版的信息主要来自哪里；执笔一律是 AI，报尾有内容声明。逐句出处见正文的论据标记，逐条归属见报尾信源表。",
+  "maxAiPages": 4,
+  "pages": {
+    "p01": { "origin": "official", "note": "腾讯 Hy4 发布材料与评测口径" },
+    "p02": { "origin": "ai", "note": "社论，本报观点，无外部信源" },
+    "p03": { "origin": "official", "note": "五家官方发布页与定价页" },
+    "p04": { "origin": "official", "note": "各家产品发布公告" },
+    "p05": { "origin": "official", "note": "拆解基于官方口径，返工账为本报推算" },
+    "p06": { "origin": "ai", "note": "方法论，无外部信源" },
+    "p07": { "origin": "official", "note": "模型卡与开源许可页" },
+    "p08": { "origin": "thirdparty", "note": "安全事件报道与厂商披露" },
+    "p09": { "origin": "thirdparty", "note": "arXiv 预印本摘要页" },
+    "p10": { "origin": "thirdparty", "note": "财报与融资报道" },
+    "p11": { "origin": "official", "note": "集群扩容说明与端侧模型卡" },
+    "p12": { "origin": "official", "note": "工具官方文档与代码仓库" },
+    "p13": { "origin": "thirdparty", "note": "客户案例报道" },
+    "p14": { "origin": "measured", "note": "本报评分卡，自设标准" },
+    "p15": { "origin": "thirdparty", "note": "多家媒体报道聚合" },
+    "p16": { "origin": "ai", "note": "编辑部提案，本期自设" }
+  }
+}

@@ -1,0 +1,162 @@
+<section class="section" id="p15">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">一句话快讯</span>
+      <span class="sec-page">第 15 版 / 共 15 版</span>
+    </div>
+
+    <ul class="briefs">
+      <li><b>OpenAI</b>：Images 2.6 支持一步生成 GIF，API 同日开放，出图延迟降约 50%。</li>
+      <li><b>Google</b>：Android Studio Rabbit 2 首日 12 万次工具调用，41% 来自第三方智能体。</li>
+      <li><b>字节</b>：扣子企业版迁移工具上线，官方文档承认约三成工作流需手工重整。</li>
+      <li><b>微软</b>：Copilot 企业版新增「运行回执」，可按月导出为 CSV 供审计。</li>
+      <li><b>阿里</b>：通义千问 API 支持「断言式调用」，未通过的请求自动退回并附失败明细。</li>
+      <li><b>月之暗面</b>：K3.1 Pro 权重下载 41 万次，官方补发 Q4 量化脚本与显存估算表。</li>
+      <li><b>智谱</b>：GLM-5.3 上下文升至 200 万，超长档（100 万以上）加价 30%。</li>
+      <li><b>欧盟</b>：AI 法案执行细则草案公布，自动化决策须留痕六个月，2027 年 8 月生效。</li>
+      <li><b>信通院</b>：《智能体服务安全要求》公开征求意见，截止 12 月 5 日。</li>
+      <li><b>上海</b>：一起「智能体误发券」纠纷调解结案，平台承担七成损失。</li>
+      <li><b>Datadog</b>：3.1 亿美元收购 Spanline，智能体调用链追踪并入其 APM。</li>
+      <li><b>AMD</b>：MI450 全年出货指引上调，称「推理需求超出预期」。</li>
+    </ul>
+
+    <div class="watch">
+      <h5>近期日程（只列有确证日期的）</h5>
+      <ul>
+        <li><span class="d">11/10</span><span><b>Kimi K3.1 Pro 商用许可问答会</b>，重点回答「年收入 2000 万美元」这条线怎么算</span></li>
+        <li><span class="d">11/15</span><span><b>Gemini 4 Argon 限时价最后一天</b>，之后进入 12/1 的新价目</span></li>
+        <li><span class="d">11/20</span><span><b>Conductor 云服务关闭</b>，之后删除云端数据；被 Meta 收购后的整合从这天开始</span></li>
+        <li><span class="d">11/30</span><span><b>扣子企业版停止新客购买</b>，同日旧版套餐停止续费</span></li>
+        <li><span class="d">12/1</span><span><b>Gemini 4 Argon 涨至 $4 / $20</b>；与降价后的 Opus 5.5 价差拉大到一倍以上</span></li>
+        <li><span class="d">12/5</span><span><b>《智能体服务安全要求》征求意见截止</b>，企业可提交书面意见</span></li>
+      </ul>
+    </div>
+
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版快讯与日程</span>
+      </div>
+      <p>12 条快讯里，真正会改变明年预算的是两条日程：<b>12/1 的涨价</b>和<b>11/30 的停售</b>。前者把「便宜的工作马」这个窗口关掉，后者把「平台替你管一切」这条路收窄。两条合起来是一句话：<b>红利期结束的方式，从来不是涨价本身，是选择变少。</b></p>
+    </aside>
+  </section>
+
+  <div class="gloss" id="gloss">
+    <h5>名词速查 · 本期出现的 13 个词<span>看不懂就跳回来，不用从头读</span></h5>
+    <div class="gloss-grid">
+      <dl><dt>任务计价 / task pricing</dt><dd>不按用掉多少 token 收钱，按「通过验收的任务」收钱。没通过就不收，或者只收基础费。</dd></dl>
+      <dl><dt>断言 / assertion</dt><dd>一条可以被程序判真假的检查，比如「文件存在且含这一行」。它是「成功」的可执行定义。</dd></dl>
+      <dl><dt>通过率</dt><dd>一次就通过验收的任务占比。它比分数更能预测你的账单和加班时长。</dd></dl>
+      <dl><dt>后置条件 / postcondition</dt><dd>一个动作做完之后必须成立的条件。写不出后置条件的动作，等于没有验收标准。</dd></dl>
+      <dl><dt>幂等 / idempotent</dt><dd>同一操作执行一次和执行十次，结果一样。重试安全的前提，就是它。</dd></dl>
+      <dl><dt>侧信道 / 观测点</dt><dd>用另一个只读接口去确认「事情真的发生了」。不靠当事人汇报，靠外部证据。</dd></dl>
+      <dl><dt>量化 / Q4 / Q2</dt><dd>把权重从 16 位压到 4 位或 2 位，文件缩到四分之一或八分之一，代价是精度。</dd></dl>
+      <dl><dt>MoE / 混合专家</dt><dd>总参数很大，但每次只激活其中一小部分。2.8 万亿参数的模型，一次推理只用约 1040 亿。</dd></dl>
+      <dl><dt>批处理 / batching</dt><dd>把多个请求攒在一起算，一次读权重服务多份请求。自己部署便不便宜，全看这个。</dd></dl>
+      <dl><dt>录制回放</dt><dd>把一次运行原样录下来（含工具返回值），之后不调模型、不调工具地重放，用来稳定复现失败。</dd></dl>
+      <dl><dt>有效成本</dt><dd>（token 费 + 重试费 + 人工收尾工时）÷ 通过的任务数。比单价更能决定一件事该不该做。</dd></dl>
+      <dl><dt>存证 / attestation</dt><dd>用密码学手段证明「这次运行确实发生过、输出确实来自这个模型」。审计时要的就是它。</dd></dl>
+      <dl><dt>熔断 / circuit breaker</dt><dd>同一任务连续失败到设定次数就停下来，不再重试，转人工。防的是无限循环烧钱。</dd></dl>
+    </div>
+  </div>
+
+  <footer class="colophon">
+    <div class="row">
+      <span><b>AI 晨报</b>　第 003 期　2026-11-06　共 15 版</span>
+      <span>本报由 AI 自动编撰　数据截至北京时间 10:00　<b>本期因故延后发布</b></span>
+    </div>
+    <p><b>信息源：</b>Anthropic 定价公告与 FAQ、月之暗面 Hugging Face 模型卡、Terminal-Bench 与 Agent Arena 榜单快照、arXiv 预印本、欧盟 AI 法案执行细则草案、本报访谈记录（四支团队，匿名）。</p>
+    <p><b>编辑说明：</b>本期只收录人工智能与智能体相关动态，以「智能体怎么被信任」为主线。凡标注「未独立复现」「本报未核」的数字，均取自公开页面，未做二次验证；表 4 的人工口径为访谈中位数，不是行业统计，<b>照抄会失真</b>。</p>
+    <p class="errata"><b>更正与说明：</b>本期因故延后发布。第 03 版初稿曾把「单流 41 token/s」按批量吞吐折算，得出「每百万 8.4 美元」的错误结论，已在发版前更正为 155 美元（单流）与 7.3 美元（批 32）两个口径——<b>这类错误恰好说明：口径不写清，数字就会骗人。</b></p>
+    <p><b>往期：</b>第 001 期（2026-11-04）　第 002 期（2026-11-05）　本报每日 08:00 出刊，节假日不休。</p>
+    <p class="disclaimer">本报内容由 AI 自动生成，用于产品演示，不构成事实报道。</p>
+  </footer>
+
+<nav class="rail" aria-label="版面快捷目录">
+  <div class="rail-head">目录</div>
+  <ol class="rail-list">
+    <li><a href="#p01"><i>01</i><span>头条</span></a></li>
+    <li><a href="#p02"><i>02</i><span>社论</span></a></li>
+    <li><a href="#p03"><i>03</i><span>模型</span></a></li>
+    <li><a href="#p04"><i>04</i><span>产品</span></a></li>
+    <li><a href="#p05"><i>05</i><span>深读</span></a></li>
+    <li><a href="#p06"><i>06</i><span>思路</span></a></li>
+    <li><a href="#p07"><i>07</i><span>榜单</span></a></li>
+    <li><a href="#p08"><i>08</i><span>安全</span></a></li>
+    <li><a href="#p09"><i>09</i><span>学术</span></a></li>
+    <li><a href="#p10"><i>10</i><span>资本</span></a></li>
+    <li><a href="#p11"><i>11</i><span>算力</span></a></li>
+    <li><a href="#p12"><i>12</i><span>行情</span></a></li>
+    <li><a href="#p13"><i>13</i><span>回声</span></a></li>
+    <li><a href="#p14"><i>14</i><span>星探</span></a></li>
+    <li><a href="#p15"><i>15</i><span>快讯</span></a></li>
+  </ol>
+  <a class="rail-top" href="#top" title="回到顶部">↑ 顶</a>
+</nav>
+
+<button class="mob-btn" id="mobBtn" type="button" aria-controls="mobPanel" aria-expanded="false"><i>☰</i>目录</button>
+<div class="mob-panel" id="mobPanel" role="dialog" aria-label="版面目录">
+  <h6>版面目录 · 共 15 版 · 点一下跳过去</h6>
+  <div class="mob-grid">
+    <a href="#p01"><i>01</i>头条</a>
+    <a href="#p02"><i>02</i>社论</a>
+    <a href="#p03"><i>03</i>能力底座</a>
+    <a href="#p04"><i>04</i>产品生态</a>
+    <a href="#p05"><i>05</i>深读·能跑起来</a>
+    <a href="#p06"><i>06</i>思路拆解</a>
+    <a href="#p07"><i>07</i>开源榜</a>
+    <a href="#p08"><i>08</i>安全治理</a>
+    <a href="#p09"><i>09</i>学术前沿</a>
+    <a href="#p10"><i>10</i>商业资本</a>
+    <a href="#p11"><i>11</i>算力本地</a>
+    <a href="#p12"><i>12</i>行情价目</a>
+    <a href="#p13"><i>13</i>平台回声</a>
+    <a href="#p14"><i>14</i>星探</a>
+    <a href="#p15"><i>15</i>快讯</a>
+  </div>
+  <p class="mob-tip">宽屏时目录固定在右侧；窄屏（平板、手机）右侧放不下，改用这个面板。点任意一项会自动收起。</p>
+  <a class="mob-top" href="#top">↑ 回到顶部</a>
+</div>
+
+<script>
+(function(){
+  var links = Array.prototype.slice.call(document.querySelectorAll('.rail-list a'));
+  var secs = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  var ticking = false;
+  function update(){
+    var mark = window.pageYOffset + window.innerHeight * 0.35;
+    var idx = 0;
+    for (var i = 0; i < secs.length; i++){
+      if (secs[i] && secs[i].offsetTop <= mark) idx = i;
+    }
+    links.forEach(function(a, i){ a.classList.toggle('active', i === idx); });
+    ticking = false;
+  }
+  function onScroll(){ if(!ticking){ ticking = true; window.requestAnimationFrame(update); } }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  update();
+
+  // 窄屏目录面板
+  var mb = document.getElementById('mobBtn');
+  var mp = document.getElementById('mobPanel');
+  if (mb && mp){
+    function setOpen(open){
+      document.body.classList.toggle('mob-open', open);
+      mb.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    mb.addEventListener('click', function(){
+      setOpen(!document.body.classList.contains('mob-open'));
+    });
+    mp.addEventListener('click', function(e){
+      var t = e.target;
+      while (t && t !== mp){
+        if (t.tagName === 'A'){ setOpen(false); break; }
+        t = t.parentNode;
+      }
+    });
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape') setOpen(false);
+    });
+  }
+})();
+</script>

@@ -1,0 +1,89 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+# 只读：这套流水线只跑测试，不写仓库、不发版。
+# 不写这一块，GITHUB_TOKEN 会拿到仓库默认权限（可能包含写），
+# 任何一条被投毒的依赖都能借它改代码。OpenSSF Scorecard 的 Token-Permissions 就是查这个。
+permissions:
+  contents: read
+
+# Windows runner 的 locale 是 en-US，控制台编码为 cp1252。doctor.py 一上来就打印
+# 「AI 晨报环境体检」这类中文标题，在 cp1252 下抛 UnicodeEncodeError 直接退出，
+# 与代码正确性无关；Ubuntu runner 默认 UTF-8，所以只有 Windows 会红。
+# 把 Python 的 stdio 钉成 UTF-8，两个平台行为一致。
+env:
+  PYTHONIOENCODING: utf-8
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python: ["3.10", "3.13"]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+
+      # 不装 requirements.txt：主链路本来就零第三方依赖，装了反而看不出这一点。
+      - name: 环境体检
+        run: python ai-daily/tools/doctor.py
+
+      - name: 发布前自检（含拼版断言 A1–A16）
+        run: python ai-daily/tools/selfcheck.py --pre
+
+      - name: 反向验证（每条断言一个反例）
+        if: matrix.os == 'ubuntu-latest' && matrix.python == '3.13'
+        run: python ai-daily/tools/mutation_test.py
+
+      - name: 干净 clone 的字节一致性
+        shell: bash
+        run: |
+          # 自检按 sha256 对账，行尾被 Git 改过就会红。这里显式再确认一次仓库根的
+          # .gitattributes 生效：检出字节 == 仓库字节。
+          git config --get core.autocrlf || true
+          python - <<'PY'
+          import subprocess, pathlib
+          p = "ai-daily/parts/1107/p01.html"
+          work = pathlib.Path(p).stat().st_size
+          blob = int(subprocess.check_output(["git", "cat-file", "-s", "HEAD:" + p]).strip())
+          print("working", work, "blob", blob)
+          assert work == blob, "行尾被转换：工作区 %d 字节，仓库 %d 字节" % (work, blob)
+          PY
+
+  # 安全：这个仓库保护的全部东西就是「一个访问码」，所以它自己要被一条流水线看着。
+  security:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      # 默认口径：只扫已入库文件。白名单只有 site/config.js，而它在这里是 __SITE_URL__ 占位。
+      - name: 密钥与个人信息扫描
+        run: python ai-daily/tools/secret_scan.py
+
+      # 历史必须是干净的：本仓库只有一次初始提交。命中说明有人直接 push 了开发仓库。
+      - name: 提交历史不得含明文
+        run: python ai-daily/tools/secret_scan.py --history
+
+      # 导出演练：白名单复制 → 占位注入 → 严格扫描 → 单提交校验
+      - name: 公开导出演练
+        run: |
+          python ai-daily/tools/export_public.py --out "$RUNNER_TEMP/exported" --git-init --keep-git \
+            --name "ci" --email "ci@users.noreply.github.com"
+
+      # 推送前复检：万一有人手工改了导出树，这里会红（工作区脏 / 提交数不为 1 / 缺 * -text）
+      - name: 推送前复检
+        run: python ai-daily/tools/export_public.py --verify "$RUNNER_TEMP/exported"

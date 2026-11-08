@@ -1,0 +1,115 @@
+/* 由 tools/build_index.py 自动生成，请勿手工编辑 */
+window.AI_DAILY_ISSUES = {
+  "generatedAt": "2026-11-08 11:25",
+  "issues": [
+    {
+      "date": "2026-11-08",
+      "dateCn": "2026年11月8日",
+      "dateShort": "11月8日",
+      "weekday": "星期日",
+      "issue": "005",
+      "isSpecial": false,
+      "issueLabel": "第 005 期",
+      "pages": 16,
+      "headline": "智能体在 1024 位 RSA 上找到两处弱点 · 签名伪造论文值快 1,600 倍、批量分解省 30 倍，两个倍数都没跑过全流程",
+      "deck": "Google DeepMind 与两位密码学家合作，人定方向、智能体动手。真正跑完的是沙箱复现：对一把已被学术团队破解的密钥，CPU 时间少用 3.5 倍公开报道本报未复现。2048 位不受影响。",
+      "kicker": "头版头条 · 谁验过，才算数来源 · 官方",
+      "file": "AI晨报-2026-11-08.html",
+      "size": 128167
+    },
+    {
+      "date": "2026-11-07",
+      "dateCn": "2026年11月7日",
+      "dateShort": "11月7日",
+      "weekday": "星期六",
+      "issue": "004",
+      "isSpecial": false,
+      "issueLabel": "第 004 期",
+      "pages": 16,
+      "headline": "770B 的 Hy4 学会了点鼠标 · 11 月 4 日首发，通过率 96.15%，集群扩容十倍",
+      "deck": "770B 总参、49B 激活，1M 上下文；首次同时具备视觉理解与电脑操作。WorkBuddy 评测通过率 96.15%厂商口径本报未复现。",
+      "kicker": "头版头条 · 从会答到会办来源 · 官方",
+      "file": "AI晨报-2026-11-07.html",
+      "size": 132280
+    },
+    {
+      "date": "2026-11-06",
+      "dateCn": "2026年11月6日",
+      "dateShort": "11月6日",
+      "weekday": "星期五",
+      "issue": "003-2",
+      "label": "特刊",
+      "isSpecial": true,
+      "issueLabel": "第 003-2 期",
+      "headline": "Opus 5.5 降到 $1.85 · 闭源旗舰第一次按「干成的任务」收钱",
+      "deck": "验收清单没全绿的运行不计费，最多重试两次；单任务封顶 $0.90。开放权重落地 20 小时后，定价的锚从 token 换成了「这段活到底算不算干完」。",
+      "pages": 16,
+      "file": "special/2026-11-06.html",
+      "manifest": "special/2026-11-06.json",
+      "size": 129655
+    },
+    {
+      "date": "2026-11-06",
+      "dateCn": "2026年11月6日",
+      "dateShort": "11月6日",
+      "weekday": "星期五",
+      "issue": "003",
+      "isSpecial": false,
+      "issueLabel": "第 003 期",
+      "pages": 15,
+      "headline": "Kimi 把 harness 租出来卖 · 托管智能体上线：7×24 沙箱、留痕可导出",
+      "deck": "模型不再是卖点，运行它的那层外壳成了商品。企业按需配 Agent，沙箱、网络策略、审计与账单由平台兜着。",
+      "kicker": "头版头条 · 智能体",
+      "file": "AI晨报-2026-11-06.html",
+      "size": 141538
+    },
+    {
+      "date": "2026-11-05",
+      "dateCn": "2026年11月5日",
+      "dateShort": "11月5日",
+      "weekday": "星期四",
+      "issue": "002",
+      "isSpecial": false,
+      "issueLabel": "第 002 期",
+      "pages": 15,
+      "headline": "Kimi K3.1 Pro 权重落地 · 1.56TB，开源第一次够到终端",
+      "deck": "Terminal-Bench 4.0 拿到 65.7，只比 Claude Opus 5.5 低 0.7 分；96 个文件、1.56TB——能下载和能跑起来，是两件事。",
+      "kicker": "头版头条 · 开放权重",
+      "file": "AI晨报-2026-11-05.html",
+      "size": 134446
+    },
+    {
+      "date": "2026-11-04",
+      "dateCn": "2026年11月4日",
+      "dateShort": "11月4日",
+      "weekday": "星期三",
+      "issue": "001",
+      "isSpecial": false,
+      "issueLabel": "第 001 期",
+      "pages": 15,
+      "headline": "DeepSeek 开源自主编程智能体 · 融资同步扩大至 1055 亿元",
+      "deck": "从“盯住仓库、复现缺陷、提交修复”到直接开 Pull Request，智能体第一次以“同事”而非“工具”的形态进入生产工作流。",
+      "kicker": "头版头条 · 智能体",
+      "file": "AI晨报-2026-11-04.html",
+      "size": 144592
+    }
+  ],
+  "specials": [
+    {
+      "date": "2026-11-06",
+      "dateCn": "2026年11月6日",
+      "dateShort": "11月6日",
+      "weekday": "星期五",
+      "issue": "003-2",
+      "label": "特刊",
+      "isSpecial": true,
+      "issueLabel": "第 003-2 期",
+      "headline": "Opus 5.5 降到 $1.85 · 闭源旗舰第一次按「干成的任务」收钱",
+      "deck": "验收清单没全绿的运行不计费，最多重试两次；单任务封顶 $0.90。开放权重落地 20 小时后，定价的锚从 token 换成了「这段活到底算不算干完」。",
+      "pages": 16,
+      "file": "special/2026-11-06.html",
+      "manifest": "special/2026-11-06.json",
+      "size": 129655
+    }
+  ]
+};

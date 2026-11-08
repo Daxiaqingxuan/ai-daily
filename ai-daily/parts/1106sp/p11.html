@@ -1,0 +1,34 @@
+<section class="section" id="p11">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">算力与本地 · 三条路，一张账</span>
+      <span class="sec-page">第 11 版 / 共 16 版</span>
+    </div>
+    <p class="sec-lede">昨天那 1.56TB 放出来之后，问得最多的不是「它有多强」，是「我这台机器能不能跑」。本版把三种最常被问到的配置算成同一张表，<b>成本口径统一按「每百万输出 token」</b>，含折旧与电费（自建）或按时计价（云）。</p>
+
+    <div class="table-wrap">
+      <table class="rank">
+        <caption>表 2 · 跑 Kimi K3.1 Pro（Q4）的三条路。云价取 2026-11-06 公开挂牌价，自建按 3 年折旧、电价 0.6 元/度估算；<b>仅供量级参考，不含运维人力</b>。</caption>
+        <thead>
+          <tr><th>配置</th><th>显存 / 内存</th><th>速度</th><th>每百万输出 token</th><th>结论</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="name">8×H100（云）</td><td>640GB / —</td><td>单流 41；批 32 约 880 tok/s</td><td class="num">$155 / $7.3</td><td>只有把并发跑满，才比 API 便宜</td></tr>
+          <tr><td class="name">4×RTX 5090（自建）</td><td>128GB / 256GB</td><td>Q2 + 内存卸载，6 并发 38 tok/s</td><td class="num">约 ￥40</td><td>装不下就是装不下，别买</td></tr>
+          <tr><td class="name">单卡 24GB（自建）</td><td>24GB / 128GB</td><td>0.2 tok/s</td><td class="num">无法计价</td><td>出 1000 字要等 1.4 小时，只能当演示</td></tr>
+          <tr><td class="name">换 32B 小模型（单卡 24GB）</td><td>24GB / 64GB</td><td>120 tok/s</td><td class="num">约 ￥3.5</td><td>家用与个人开发者该走这条</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p><b>为什么第一行有两个价格。</b>因为显存只有 640GB，模型要 390GB，剩下的空间决定了你能同时塞几路请求。单流的时候显卡 70% 的时间在等权重从显存里读出来，算力是闲着的；批到 32 路，同样一次读权重能算 32 份，成本被摊薄 20 倍。<b>「自己部署更便宜」这句话，只有在你能凑出并发时才成立</b>——而绝大多数团队的请求量，凑不出这个并发。</p>
+    <p><b>第二行为什么劝你别买。</b>1.56TB 的 Q4 是 390GB，4 张 5090 加起来 128GB，缺口 262GB 只能靠内存填补。内存带宽是显存的十分之一左右，每生成一个 token 都要把没装下的专家从内存搬一遍，于是速度掉到 38 tok/s（6 并发），单 token 成本反而是云端的五倍多。<b>这笔钱花下去，你得到的是一个「证明了自己不该这么干」的实验。</b></p>
+    <p><b>第四行为什么才是正解。</b>如果你要的是「本地、离线、数据不出门」，那目标从来不是跑最大的模型，而是跑一个「够用且装得下」的模型。32B 级模型 Q4 后约 19GB，单卡 24GB 装得舒服，120 tok/s，成本 ￥3.5/百万——<b>比最便宜的 API 还便宜一个数量级</b>，代价是能力差两档。这个交换是否值得，取决于你的任务容错率，而不取决于榜单。</p>
+
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版这张账</span>
+      </div>
+      <p>这张表最想说的是：<b>「开源权重」和「本地可用」之间隔着一个数量级的成本。</b>媒体喜欢写「人人都能跑」，实际是「有 640GB 显存的人能跑」。真正被低估的是第四行——一个 32B 模型装在 24GB 显卡上，￥3.5 一百万字，离线、可控、不需要求人。<b>对个人开发者来说，这可能是今年性价比最高的一件事，而它一点都不性感。</b></p>
+    </aside>
+  </section>
