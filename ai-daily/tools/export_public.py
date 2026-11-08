@@ -365,7 +365,9 @@ def verify_tree(out):
                                   capture_output=True).stdout.decode("utf-8", "replace").strip()
 
         count = git("rev-list", "--count", "HEAD") or "0"
-        add(count == "1", "提交数为 1", "实际 %s 个提交" % count)
+        # 首次发布是单提交。分支保护禁止 force push 之后，更新只能在原地追加提交，
+        # 所以这里判「至少 1 个」而不是「恰好 1 个」；历史是否干净由上一步的身份检查兜住。
+        add(count.isdigit() and int(count) >= 1, "提交数至少 1", "实际 %s 个提交" % count)
 
         dirty = git("status", "--porcelain")
         n_dirty = len(dirty.splitlines())
