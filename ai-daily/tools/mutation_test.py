@@ -823,6 +823,52 @@ def run_export_coverage_mutation():
                     "ai-daily/_private/notes.md")
 
 
+def run_public_mutation():
+    """第 19 项：公开面混进访问码 / 卡片页被删 → 必须红。
+
+    公开面是唯一一处主动把内容放到访问码之外的地方，所以两种失败都必须拦住：
+    ① 生成器把 sharecode 写进了页面（不可撤销：Pages 有 CDN 缓存，可能已被抓取）；
+    ② 索引更新了、公开面还是旧的（访客看到过期卡片，线上一切正常，没人会发现）。
+    两种情况都在临时副本里造，真实 docs/ 一个字节不动。
+    """
+    real = REAL_ROOT.parent / "docs"
+    if not (real / "index.html").is_file():
+        results.append((SKIP, "公开面底板", "docs/ 还没生成"))
+        print("[SKIP] %-32s → docs/ 还没生成" % "公开面底板")
+        return
+    m = re.search(r"sharecode=([A-Za-z0-9_-]{4,})", sc.SITE_URL or "")
+    if not m:
+        results.append((SKIP, "公开面底板", "拿不到入口访问码，造不出泄露反例"))
+        print("[SKIP] %-32s → 拿不到入口访问码" % "公开面底板")
+        return
+    secret = m.group(1)
+
+    with tempfile.TemporaryDirectory(prefix="mt-public-") as t:
+        tmp = Path(t) / "docs"
+        shutil.copytree(real, tmp, ignore=shutil.ignore_patterns("screenshots", "*.png"))
+
+        def plant_leak():
+            (tmp / "leak.txt").write_text("入口 sharecode=" + secret + "\n", encoding="utf-8")
+
+        expect_contrast("公开面底板（应全绿）", "公开面混进访问码", 19,
+                        lambda: sc.check_public(docs=tmp), plant_leak, "访问码")
+
+    with tempfile.TemporaryDirectory(prefix="mt-public2-") as t:
+        tmp = Path(t) / "docs"
+        shutil.copytree(real, tmp, ignore=shutil.ignore_patterns("screenshots", "*.png"))
+        victim = sorted((tmp / "cards").glob("*-F*.html"))
+        if not victim:
+            results.append((SKIP, "公开面卡片被删", "没有卡片页可删"))
+            print("[SKIP] %-32s → 没有卡片页可删" % "公开面卡片被删")
+            return
+
+        def drop_card():
+            victim[0].unlink()
+
+        expect_contrast("公开面卡片齐全（应全绿）", "公开面卡片被删", 19,
+                        lambda: sc.check_public(docs=tmp), drop_card, "过期")
+
+
 def run():
     data = sc.load_issues()                      # 真实索引，作为反例的底板
 
@@ -963,6 +1009,7 @@ def run():
     run_apk_mutation()                 # 第 17 项：离线快照过期 / 改报没重打 / 幽灵条目
     run_manifest_mutation()            # 第 18 项：更新清单与包脱节 / App 不再检查
     run_export_coverage_mutation()     # 第 16 项：已入库必须等于将公开
+    run_public_mutation()              # 第 19 项：公开面泄露访问码 / 卡片过期
     run_graph_mutations()              # 第 1 项：A10–A16（标记 / 主线 / 熔断 / 事实卡 / 版级来源）
 
     npass = sum(1 for s, _, _ in results if s == PASS)

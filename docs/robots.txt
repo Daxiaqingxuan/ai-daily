@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://daxiaqingxuan.github.io/ai-daily/sitemap.xml

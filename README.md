@@ -4,9 +4,11 @@
 
 **一份每天出刊的 AI 主题报纸。** 16 个版面，从选题、查证、写作到排版由脚本完成——但每个外部数字都标了出处，每一版都注明了信息来自哪里。
 
+**不用克隆也能看：** 公开导读面 <https://daxiaqingxuan.github.io/ai-daily/> ——每期的事实卡拆成独立页面，一条断言一个网址，带证据强度与所属版面，免访问码。完整 16 版正文仍需访问码。
+
 <p><em>AI Morning Post — a daily AI newspaper generated end-to-end by scripts, shipped as a single static HTML file.<br>
 16 fixed sections; every external figure carries a source tag, and every section labels where its information came from.<br>
-Nothing ships until 18 checks and 55 counter-examples pass — that gate is the actual product.</em></p>
+Nothing ships until 19 checks and 59 counter-examples pass — that gate is the actual product.</em></p>
 
 <p align="center">
   <img src="docs/screenshots/reader-desktop.png" alt="AI 晨报桌面阅读器：报头、16 个版面的目录与正文" width="100%">
@@ -16,7 +18,7 @@ Nothing ships until 18 checks and 55 counter-examples pass — that gate is the 
   <img src="docs/screenshots/reader-mobile.png" alt="手机版" width="250">
 </p>
 
-报纸是纯静态 HTML，没有构建步骤。克隆下来用浏览器打开 `ai-daily/site/index.html` 就能读，断网也能读（离线快照随安装包与 Service Worker 一起带着）。线上入口受访问码保护，不在本仓库公开。
+报纸是纯静态 HTML，没有构建步骤。克隆下来用浏览器打开 `ai-daily/site/index.html` 就能读，断网也能读（离线快照随安装包与 Service Worker 一起带着）。线上全文入口受访问码保护，不在本仓库公开；**公开导读面在 `docs/`**（GitHub Pages 发布），只放导读、事实卡与归档索引。
 
 ## 这不是又一个 AI 摘要器
 
@@ -29,7 +31,7 @@ Nothing ships until 18 checks and 55 counter-examples pass — that gate is the 
 正文里的外部数字带论据标记——厂商口径 / 公开报道 / 预印本 / 本报实测 / 本报自设。同一批数字在当期 `00-facts.json` 里各占一行，正文与卡片对不上，拼版阶段直接失败。每版版头另有一个来源标（官方 / 第三方信息网 / 本报实测 / AI 生成），「AI 生成」的版面每期不得超过 4 版——这条也由断言看着。
 
 **三、出刊有闸门，不是「生成完就发」。**
-18 项自检、每条检查项配一个反例（共 55 条）、根目录成品与站点副本逐字节对账。任何一项 FAIL 就不发布；反向验证里出现 SKIP 也算没测。
+19 项自检、每条检查项配一个反例（共 59 条）、根目录成品与站点副本逐字节对账。任何一项 FAIL 就不发布；反向验证里出现 SKIP 也算没测。
 
 ## 30 秒开始
 
@@ -38,7 +40,7 @@ Nothing ships until 18 checks and 55 counter-examples pass — that gate is the 
 ```bash
 git clone <this-repo> && cd <this-repo>
 python ai-daily/tools/doctor.py           # 环境体检
-python ai-daily/tools/selfcheck.py --pre  # 18 项自检
+python ai-daily/tools/selfcheck.py --pre  # 19 项自检
 ```
 
 然后直接看报纸：打开 `ai-daily/site/index.html`（Windows 上 `start ai-daily/site/index.html`）。
@@ -51,8 +53,8 @@ python ai-daily/tools/selfcheck.py --pre  # 18 项自检
 选题与查证  →  parts/<MMDD>/00-facts.json      每个数字一行，带论据档位
 写作与拼版  →  parts/<MMDD>/p01…p16.html       16 个版面，各带来源标
 拼版断言    →  assemble_issue.py                A1–A16，缺版/漂移/超限直接失败
-索引与副本  →  build_index.py                   生成 issues.js，单向写入 site/
-发布前自检  →  selfcheck.py --pre               18 项
+索引与副本  →  build_index.py                   生成 issues.js，单向写入 site/，顺带重生成公开面
+发布前自检  →  selfcheck.py --pre               19 项
 发布        →  site/ 静态托管
 发布后验证  →  selfcheck.py --online            线上 sha256 与本地逐字节比对
 ```

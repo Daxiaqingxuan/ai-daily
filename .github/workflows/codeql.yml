@@ -1,0 +1,46 @@
+name: codeql
+
+# 第三道静态检查：CI 跑的是"这套流水线自己能不能跑通"，CodeQL 跑的是
+# "代码里有没有已知形态的漏洞"。两者不重叠——前者靠断言，后者靠数据流分析。
+# 只读权限：分析结果走 security-events，不碰仓库内容。
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    - cron: "23 4 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  analyze:
+    name: analyze (${{ matrix.language }})
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
+      actions: read
+    strategy:
+      fail-fast: false
+      matrix:
+        # 只扫真正会对不可信输入做处理的两门：Python 是整条出刊流水线，
+        # JavaScript 是站点里读 localStorage / URL 参数的那部分。
+        language: [python, javascript-typescript]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 初始化 CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: ${{ matrix.language }}
+          # 本项目的 Python 不编译、JS 没有构建步骤，用 none 就够了；
+          # 用 autobuild 反而会因为找不到构建脚本而失败。
+          build-mode: none
+
+      - name: 分析并上传结果
+        uses: github/codeql-action/analyze@v3
+        with:
+          category: "/language:${{ matrix.language }}"

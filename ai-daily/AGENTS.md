@@ -68,6 +68,8 @@
 34. **更新清单与包同源**：`site/version.json` 由 `build_apk.py` 在打包成功后写，字段 `code/name/sha256/bytes` 全部来自刚刚签完名的那个包——不许手工维护，也不许另写一份。App 启动后拉它比 `versionCode`（自己的版本号从 PackageManager 读，不注入常量），有新版才弹窗；请求必须带 `sharecode`（线上无码即 403），失败一律静默。同日重打时 `versionName` 追加 `.<当日序号>`，否则弹窗会显示与当前相同的版本号。`selfcheck.py` 第 18 项对账清单与包、与打包记录，并确认 `MainActivity.java` 里的检查逻辑还在；第 13 项线上检查也会拉一次清单（没发布 = 提示永远不出现）。
 35. **模板必须与当期同源，徽章地址走注入**：`parts/_template/00-style-extra.html` 是三行摘要、术语气泡、手机报头压缩与窄屏目录按钮的唯一样式追加源，必须与最近一期保持一致——它曾落后于当期，照模板复制会**静默丢样式**，而这类丢失自检看不出来，只有肉眼能发现。改样式永远改这份 + 当期那份，别只改当期。README 顶部的 CI 徽章地址用 `__REPO_SLUG__` 占位，导出时由 `export_public.py --repo owner/name` 注入；`--verify` 有「仓库地址已注入」一项，残留占位意味着徽章是坏图。
 
+36. **公开面是唯一主动出访问码的地方，所以它必须有硬断言**：`tools/build_public.py` 把各期事实卡生成到仓库根 `docs/`（GitHub Pages 的发布目录），一条断言一个 URL，带证据强度、所属版面与 Article 结构化数据。它只读 `issues.js` 与 `parts/<MMDD>/00-{facts,sources,blocks}.json`，**绝不读 `siteUrl`**——页面里出现 `sharecode` 就是不可撤销的泄露（Pages 有 CDN 缓存、可能已被抓取），所以 `selfcheck.py` 第 19 项把「无访问码」写成硬断言而不是靠人记。`build_index.py` 末尾自动重生成；`mutation_test.py` 有两条反例（混进访问码、卡片被删）。公开面只放导读与卡片，全文仍在受访问码保护的私有站点——**不要把它当成"另一个报纸站"来加功能**。
+
 ## 3. 常用命令
 
 ```

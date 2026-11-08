@@ -150,6 +150,34 @@ def refresh_apk() -> None:
             print("    " + l)
 
 
+def refresh_public() -> None:
+    """索引落盘后重生成公开导读面（GitHub Pages 的 /docs）。
+
+    和 refresh_apk 同一个道理：这一步漏了线上完全正常，只有访客看到旧卡片，
+    没有任何人会主动发现。所以挂在链路里，不靠记性。生成是幂等的，内容没变
+    就只有 mtime 变化（写盘仍会写，故调用方不必判重）。
+    """
+    script = HERE / "build_public.py"
+    if not script.exists():
+        return
+    try:
+        p = subprocess.run([sys.executable, str(script)],
+                           capture_output=True, timeout=300)
+    except Exception as exc:
+        print("[build_index] 公开面没生成（%s）；selfcheck 第 19 项会拦发布" % exc)
+        return
+    out = (p.stdout or b"").decode("utf-8", "replace")
+    lines = [l.strip() for l in out.splitlines() if l.strip()]
+    if p.returncode == 0:
+        head = next((l for l in lines if l.startswith("[公开面] 期次")), "")
+        print("[build_index] 公开面：%s" % (head.replace("[公开面] ", "") or "已就绪"))
+    else:
+        print("[build_index] ⚠ 公开面生成失败（退出码 %d）——selfcheck 第 19 项会拦住发布"
+              % p.returncode)
+        for l in (lines or ["(无输出)"])[-3:]:
+            print("    " + l)
+
+
 def main() -> None:
     SITE.mkdir(parents=True, exist_ok=True)
     found = {}
@@ -266,6 +294,9 @@ def main() -> None:
 
     # 出报链路的一环：索引变了就把离线包也跟到当期（幂等，内容没变直接跳过）
     refresh_apk()
+
+    # 同理：公开面（免访问码的导读 + 事实卡）也要跟到当期
+    refresh_public()
 
 
 if __name__ == "__main__":

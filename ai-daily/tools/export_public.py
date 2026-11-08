@@ -43,9 +43,11 @@ ALLOW_FILES = {
     "CHANGELOG.md",
     "SECURITY.md",
     "CONTRIBUTING.md",
+    "CODE_OF_CONDUCT.md",
     ".gitignore",
     ".gitattributes",
     ".github/workflows/ci.yml",
+    ".github/workflows/codeql.yml",
     ".github/dependabot.yml",
     ".github/PULL_REQUEST_TEMPLATE.md",
     ".github/ISSUE_TEMPLATE/bug_report.yml",
@@ -55,6 +57,7 @@ ALLOW_FILES = {
     "产物清单.md",
     "ai-daily/AGENTS.md",
     "ai-daily/requirements.txt",
+    "ai-daily/public_site.json",
     "ai-daily/提案台账.md",
     "ai-daily/apk/AndroidManifest.xml",
 }
@@ -97,6 +100,10 @@ PLACEHOLDER_HOST = "https://your-site.example/"
 # 开发树里留 __REPO_SLUG__，导出时用 --repo owner/name 注入，推送前复检会拦残留。
 REPO_PLACEHOLDER = "__REPO_SLUG__"
 
+# README 里指向公开导读面（GitHub Pages）的链接同理：地址随 owner/name 变化，
+# 开发树留占位，导出时按 --repo 推导成 https://<owner>.github.io/<name>/。
+PAGES_PLACEHOLDER = "__PAGES_URL__"
+
 
 def repo_slug():
     """`owner/name`。没配就返回空串——导出照做，复检会明确报「徽章还指着占位」。"""
@@ -110,10 +117,20 @@ REPO_FILES = {"README.md", "CHANGELOG.md"}
 
 
 def repo_left(out):
-    """导出树里还剩多少处 __REPO_SLUG__（只看该注入的那几个文件）。"""
-    mark = REPO_PLACEHOLDER.encode("utf-8")
-    return sum((out / rel).read_bytes().count(mark)
+    """导出树里还剩多少处占位（只看该注入的那几个文件）。
+
+    两处都要数：徽章用的 __REPO_SLUG__，公开面链接用的 __PAGES_URL__。
+    只数一处的话，另一处会以「死链」的形式漏到公开仓库里。
+    """
+    marks = (REPO_PLACEHOLDER.encode("utf-8"), PAGES_PLACEHOLDER.encode("utf-8"))
+    return sum(sum((out / rel).read_bytes().count(m) for m in marks)
                for rel in REPO_FILES if (out / rel).is_file())
+
+
+def pages_url(slug):
+    """`owner/name` → GitHub Pages 地址。空 slug 返回空串。"""
+    owner, _, name = (slug or "").partition("/")
+    return "https://%s.github.io/%s/" % (owner.lower(), name) if name else ""
 
 
 def site_url():
@@ -237,6 +254,8 @@ def export(out, force, dry):
                     mark = REPO_PLACEHOLDER.encode("utf-8")
                     n_repo += data.count(mark)
                     data = data.replace(mark, slug.encode("utf-8"))
+                    data = data.replace(PAGES_PLACEHOLDER.encode("utf-8"),
+                                        pages_url(slug).encode("utf-8"))
         dst.write_bytes(data)
 
     print("占位注入：%d 处（%s）" % (
@@ -244,6 +263,7 @@ def export(out, force, dry):
         "入口地址 → " + PLACEHOLDER if url else "源里已是占位，无需注入"))
     if slug:
         print("           %d 处（仓库地址 → %s）" % (n_repo, slug))
+        print("           %s → %s" % (PAGES_PLACEHOLDER, pages_url(slug)))
     elif repo_left(out):
         print("           ！%s 未注入：README 的 CI 徽章是坏的（推送前用 "
               "--repo owner/name 重导）" % REPO_PLACEHOLDER)
@@ -356,8 +376,9 @@ def verify_tree(out):
 
     left = repo_left(out)
     add(not left, "仓库地址已注入",
-        "无 %s 残留" % REPO_PLACEHOLDER if not left else
-        "%d 处 %s：徽章图是坏的，导出时加 --repo owner/name" % (left, REPO_PLACEHOLDER))
+        "无 %s / %s 残留" % (REPO_PLACEHOLDER, PAGES_PLACEHOLDER) if not left else
+        "%d 处占位（%s / %s）：徽章或公开面链接是死的，导出时加 --repo owner/name"
+        % (left, REPO_PLACEHOLDER, PAGES_PLACEHOLDER))
 
     if (out / ".git").exists():
         def git(*args):

@@ -543,12 +543,35 @@ def check_ci(ci_path=None, readme_path=None, dep_path=None):
             except Exception as exc:
                 bad.append("dependabot.yml 解析失败：%s" % str(exc).splitlines()[0][:60])
 
+    # 6) 其余 workflow 也必须是能解析的 YAML。一个坏文件不会报错，它只是
+    #    「在 Actions 页面上从没出现过」——比跑红更难发现，所以在这里拦。
+    #    dependabot.yml 不是 workflow（没有 on/jobs），反向验证会把它和 ci.yml
+    #    放同一目录，所以按文件名排除，而不是靠结构判断。
+    others = sorted(p for p in ci.parent.glob("*.yml")
+                    if p.resolve() != ci.resolve()
+                    and p.name.lower() not in ("dependabot.yml", "dependabot.yaml"))
+    for other in others:
+        otext = other.read_text(encoding="utf-8", errors="replace")
+        if not re.search(r"^on:", otext, re.M):
+            bad.append("%s 缺 on:" % other.name)
+        if "jobs:" not in otext:
+            bad.append("%s 缺 jobs:" % other.name)
+        try:
+            import yaml as _yaml
+        except Exception:
+            break
+        try:
+            if not isinstance(_yaml.safe_load(otext), dict):
+                bad.append("%s 解析结果不是映射" % other.name)
+        except Exception as exc:
+            bad.append("%s 解析失败：%s" % (other.name, str(exc).splitlines()[0][:50]))
+
     if bad:
         return add(15, "CI 与自动化配置合法", FAIL, "；".join(bad[:4]))
     mode = "pyyaml 已解析" if parsed else "仅结构检查（无 pyyaml）"
     add(15, "CI 与自动化配置合法", PASS,
-        "%d 字节，%s，含 jobs/runs-on/steps%s；dependabot 盯 github-actions"
-        % (len(text.encode("utf-8")), mode, claim))
+        "%d 字节，%s，含 jobs/runs-on/steps%s；%d 个 workflow 均可解析；dependabot 盯 github-actions"
+        % (len(text.encode("utf-8")), mode, claim, len(others) + 1))
 
 
 # ---------- 16 导出覆盖索引 ----------
@@ -732,6 +755,71 @@ def check_update_manifest(site=None, src=None):
         "%s / versionCode %d · %d 字节 · 与包内 sha256 一致" % (name, code, size))
 
 
+def check_public(docs=None):
+    """第 19 项：公开面（GitHub Pages 的 /docs）完整、与生成一致、且不含入口地址。
+
+    这一项存在的理由和别的项不一样：公开面是**唯一一处主动把内容放出访问码之外**
+    的地方。一旦生成器把 siteUrl 或 sharecode 写进页面，泄露是不可撤销的（Pages 有
+    CDN 缓存、可能已被抓取）。所以「无访问码」必须是硬断言，而不是靠人记得检查。
+
+    docs 可指向临时副本——反向验证要造「公开面里混进访问码」的反例。
+    """
+    docs = Path(docs) if docs else (ROOT.parent / "docs")
+    idx = docs / "index.html"
+    if not idx.is_file():
+        return add(19, "公开面完整且无入口地址", FAIL,
+                   "docs/index.html 不存在：公开面未生成（python tools/build_public.py）")
+
+    script = HERE / "build_public.py"
+    if not script.is_file():
+        return add(19, "公开面完整且无入口地址", FAIL,
+                   "build_public.py 不见了，公开面没有人能重建")
+
+    try:
+        p = subprocess.run([sys.executable, str(script), "--check", "--out", str(docs)],
+                           capture_output=True, timeout=300)
+    except Exception as exc:
+        return add(19, "公开面完整且无入口地址", FAIL, "公开面对账跑不起来：%s" % exc)
+    if p.returncode != 0:
+        raw = (p.stdout or b"").decode("utf-8", "replace") + (p.stderr or b"").decode("utf-8", "replace")
+        first = next((l.strip() for l in raw.splitlines() if l.strip()), "与生成结果不一致")
+        return add(19, "公开面完整且无入口地址", FAIL,
+                   "公开面过期或有多余页：%s（重跑 build_index.py）" % first)
+
+    # 安全断言：入口地址里的 sharecode 不得出现在任何公开面文件里
+    secret = ""
+    m = re.search(r"sharecode=([A-Za-z0-9_-]{4,})", SITE_URL or "")
+    if m:
+        secret = m.group(1)
+    leaked = []
+    if secret:
+        for f in docs.rglob("*"):
+            if not f.is_file() or f.suffix.lower() not in (".html", ".xml", ".txt", ".css", ".json", ".js"):
+                continue
+            try:
+                if secret in f.read_text(encoding="utf-8", errors="replace"):
+                    leaked.append(str(f.relative_to(docs)).replace("\\", "/"))
+            except OSError:
+                continue
+    if leaked:
+        return add(19, "公开面完整且无入口地址", FAIL,
+                   "访问码出现在公开面：%s——立刻删除该文件并重新发布" % "、".join(leaked[:3]))
+
+    cards = [f for f in (docs / "cards").glob("*.html") if re.match(r"\d{4}-\d{2}-\d{2}-F\d+", f.name)]
+    sm = docs / "sitemap.xml"
+    locs = len(re.findall(r"<loc>", sm.read_text(encoding="utf-8", errors="replace"))) if sm.is_file() else 0
+    robots_txt = (docs / "robots.txt").read_text(encoding="utf-8", errors="replace") if (docs / "robots.txt").is_file() else ""
+    if "Sitemap:" not in robots_txt:
+        return add(19, "公开面完整且无入口地址", FAIL,
+                   "robots.txt 没指向 sitemap：检索器找不到卡片页")
+    if locs < len(cards) + 2:
+        return add(19, "公开面完整且无入口地址", FAIL,
+                   "sitemap 只有 %d 条，少于卡片数 %d：有页面没进索引" % (locs, len(cards)))
+
+    add(19, "公开面完整且无入口地址", PASS,
+        "%d 张事实卡 · sitemap %d 条 · 与生成结果一致 · 无访问码" % (len(cards), locs))
+
+
 def check_online(data):
     """线上检查要带 sharecode 换来的 cookie，中文文件名要 percent-encode。"""
     if not BASE:
@@ -846,6 +934,7 @@ def main():
     check_export_coverage()
     check_apk(data)
     check_update_manifest()
+    check_public()
 
     print("AI 晨报自检 · %s 第 %s 期 · %s" % (date, issue,
           datetime.datetime.now().strftime("%Y-%m-%d %H:%M")))
