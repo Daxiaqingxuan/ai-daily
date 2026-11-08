@@ -397,9 +397,16 @@ def verify_tree(out):
 
         emails = set(git("log", "--format=%ae").split())
         placeholder_local = {"rehearsal", "test", "your-name", "name"}
-        bad_id = sorted(e for e in emails
-                        if e.endswith("@local") or "example.com" in e
-                        or e.split("@", 1)[0].lower() in placeholder_local)
+        # 域名要精确比对，不能用 `"example.com" in e`：`a@notexample.com` 也会命中，
+        # 于是真的占位身份反而漏掉（CodeQL 的 incomplete-url-substring 就是这个坑）。
+        bad_id = []
+        for e in sorted(emails):
+            dom = e.rsplit("@", 1)[-1].lower()
+            local = e.split("@", 1)[0].lower()
+            if (dom in ("example.com", "example.org", "example.net", "local")
+                    or dom.endswith((".example.com", ".local"))
+                    or local in placeholder_local):
+                bad_id.append(e)
         if bad_id:
             id_note = "用了 %s（应为 <id>+<用户名>@users.noreply.github.com）" % bad_id[0]
         elif len(emails) == 1:
