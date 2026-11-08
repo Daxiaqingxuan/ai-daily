@@ -816,8 +816,39 @@ def check_public(docs=None):
         return add(19, "公开面完整且无入口地址", FAIL,
                    "sitemap 只有 %d 条，少于卡片数 %d：有页面没进索引" % (locs, len(cards)))
 
+    # 信源外链：数据里写了几条 url，期页信源表就该渲染出几处外链。
+    # 少一条不是「样式问题」——读者会以为那条信源本来就没有出处，而这正是本报的卖点。
+    want, bad_url = 0, []
+    for src_json in sorted((ROOT / "parts").glob("*/00-sources.json")):
+        try:
+            src_data = json.loads(src_json.read_text(encoding="utf-8"))
+        except (OSError, ValueError):
+            continue
+        for s in (src_data.get("sources") or []):
+            u = (s.get("url") or "").strip()
+            if not u:
+                continue
+            if not u.startswith(("http://", "https://")) or any(c in u for c in ' <>"\'`'):
+                bad_url.append("%s/%s" % (src_json.parent.name, s.get("id")))
+            else:
+                want += 1
+    if bad_url:
+        return add(19, "公开面完整且无入口地址", FAIL,
+                   "信源链接格式不合法（必须 http(s) 且不含空白引号）：%s" % "、".join(bad_url[:3]))
+    got = 0
+    for f in (docs / "issues").glob("*.html"):
+        try:
+            got += f.read_text(encoding="utf-8", errors="replace").count('rel="noopener noreferrer"')
+        except OSError:
+            continue
+    if got != want:
+        return add(19, "公开面完整且无入口地址", FAIL,
+                   "期页信源外链 %d 条，数据里有 %d 条：渲染漏了（重跑 build_public.py）"
+                   % (got, want))
+
     add(19, "公开面完整且无入口地址", PASS,
-        "%d 张事实卡 · sitemap %d 条 · 与生成结果一致 · 无访问码" % (len(cards), locs))
+        "%d 张事实卡 · sitemap %d 条 · 信源外链 %d 条 · 与生成结果一致 · 无访问码"
+        % (len(cards), locs, got))
 
 
 def check_online(data):

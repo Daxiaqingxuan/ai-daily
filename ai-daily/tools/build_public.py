@@ -131,6 +131,20 @@ def sources_of(src_json) -> list:
     return src_json.get("sources") or []
 
 
+def src_url(s) -> str:
+    """信源原文链接：只认 http(s)，且不含空白与引号。
+
+    宁可不给链接，也不能指向错地方——信源表的可信度就是靠这条守住的。
+    """
+    u = (s or {}).get("url") or ""
+    u = u.strip()
+    if not u.startswith(("http://", "https://")):
+        return ""
+    if any(ch in u for ch in ' <>"\'`'):
+        return ""
+    return u
+
+
 def block_of(blocks_json, page_id: str) -> dict:
     if not blocks_json:
         return {}
@@ -370,7 +384,11 @@ def render_card(conf, issue, card, cards, blocks, sources, disclaimer, now) -> s
                      "measured": "本报实测", "ai": "本报观点"}.get(blk["origin"], blk["origin"])
         rows.append(("版面来源", esc(origin_cn)))
     if sources:
-        rows.append(("本期信源", "%d 条，见报尾信源表" % len(sources)))
+        linked = len([s for s in sources if src_url(s)])
+        rows.append(("本期信源",
+                     '<a href="../issues/%s.html#sources">%d 条%s</a>'
+                     % (esc(issue["date"]), len(sources),
+                        ("，%d 条可跳原文" % linked) if linked else "，见报尾信源表")))
     for k, v in rows:
         body.append("<tr><th>%s</th><td>%s</td></tr>" % (k, v))
     body.append("</table>")
@@ -428,6 +446,9 @@ def render_issue(conf, issue, cards, sources, disclaimer, now) -> str:
         meta.append('<span>%d 张事实卡</span>' % len(cards))
     if sources:
         meta.append('<span>%d 条信源</span>' % len(sources))
+        n_link = len([s for s in sources if src_url(s)])
+        if n_link:
+            meta.append('<span>%d 条可跳原文</span>' % n_link)
     body.append('<p class="meta">%s</p>' % "".join(meta))
     body.append('<p class="note">完整版面（16 版正文、术语气泡、报尾信源表）在受访问码保护的'
                 '私有站点；这里给的是可公开的导读与卡片。</p>')
@@ -443,6 +464,22 @@ def render_issue(conf, issue, cards, sources, disclaimer, now) -> str:
                 % (esc(c["id"]), esc(STRENGTH_CN.get(c.get("strength"), c.get("strength", ""))),
                    esc(d), esc(c["id"]), esc(c.get("value", "")), esc(c.get("claim", "")))
                 for c in by_page[pid]))
+    if sources:
+        n_link = len([s for s in sources if src_url(s)])
+        body.append('<h2 id="sources">本期信源</h2>')
+        body.append('<p class="note">%d 条，其中 %d 条能点到原文或官方页面。'
+                    '其余条目是概括性信源（如「本周报道」「每日通讯摘编」），'
+                    '没有单一稳定地址，本报不做猜测性链接。</p>' % (len(sources), n_link))
+        rows = []
+        for s in sources:
+            label = "%s · %s" % (esc(s.get("outlet", "")), esc(s.get("item", "")))
+            u = src_url(s)
+            if u:
+                label = ('<a class="t" href="%s" rel="noopener noreferrer" target="_blank">%s</a>'
+                         % (esc(u), label))
+            rows.append('<li><span class="d">%s · %s</span>%s</li>'
+                        % (esc(s.get("id", "")), esc(s.get("kind", "")), label))
+        body.append('<ul class="plain">%s</ul>' % "".join(rows))
     body.append('<p class="pager"><a href="index.html">← 归档</a>'
                 '<a href="../index.html">返回导读首页 →</a></p>')
     body.append(footer(conf, disclaimer, now, 1))
