@@ -718,7 +718,7 @@ def run_export_mutation():
     """推送前复检（export_public.py --verify）自己要被检查。
 
     底板是一棵最小的合格导出树：占位 config.js + .gitattributes + 单提交。
-    五个变异各打一条检查：改脏工作区、抽掉 * -text、种明文、再补一个提交、
+    五个变异各打一条检查：改脏工作区、抽掉 * -text、种明文、抽掉所有提交、
     徽章还指着占位仓库。任何一条不红，都说明「推之前再看一眼」是句空话。
     """
     with tempfile.TemporaryDirectory(prefix="mt-export-") as t:
@@ -786,13 +786,18 @@ def run_export_mutation():
         case("推送前有人塞了明文", "严格密钥扫描",
              plant, lambda: (root / "leak.md").unlink())
 
-        def second_commit():
-            (root / "b.txt").write_text("x\n", encoding="utf-8")
-            git("add", "-A")
-            git("-c", "user.name=n", "-c", "user.email=tester@users.noreply.github.com",
-                "commit", "-q", "-m", "第二个")
+        # 分支保护禁掉 force push 之后，公开仓库只能原地追加提交，复检判的是
+        # 「至少一个提交」而不是「恰好一个」。对应的反例于是变成「一个都没有」。
+        saved = {}
 
-        case("导出树有两个提交", "提交数为 1", second_commit, lambda: None)
+        def drop_head():
+            saved["sha"] = git("rev-parse", "HEAD").stdout.strip()
+            git("update-ref", "-d", "HEAD")
+
+        def restore_head():
+            git("update-ref", "HEAD", saved["sha"])
+
+        case("导出树没有任何提交", "提交数至少 1", drop_head, restore_head)
 
         # 徽章指向不存在的仓库：图是坏的，第一屏就露怯。占位没注入 = 忘了 --repo。
         def plant_slug():
