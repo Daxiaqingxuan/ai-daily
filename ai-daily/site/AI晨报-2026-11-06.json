@@ -1,0 +1,30 @@
+{
+  "issue": "003",
+  "date": "2026-11-06",
+  "kind": "daily",
+  "file": "AI晨报-2026-11-06.html",
+  "title": "AI 晨报 · 2026年11月6日 · 第 003 期 · 智能体专版（共 15 版）",
+  "pages": 15,
+  "bytes": 141538,
+  "sha256": "6b2314531446387bd014b4e5d6542113d5aa679b298e908ac44b000ded1da486",
+  "chars": 28654,
+  "terms": 0,
+  "glossary": 13,
+  "facts": null,
+  "missing_terms": [],
+  "generatedAt": "2026-11-06 23:14",
+  "checks": {
+    "pages_eq_nav": true,
+    "nav_matches_sections": true,
+    "sections_continuous": true,
+    "issue_in_title": true,
+    "pages_in_title": true,
+    "pages_all_match": true,
+    "digest_three": null,
+    "glossary_count_matches": true,
+    "terms_in_glossary": null,
+    "facts_card_valid": null
+  },
+  "ok": true,
+  "path": "AI晨报-2026-11-06.html"
+}

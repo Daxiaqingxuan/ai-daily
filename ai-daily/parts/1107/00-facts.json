@@ -1,0 +1,125 @@
+{
+  "asOf": "2026-11-06",
+  "facts": [
+    {
+      "id": "F01",
+      "claim": "Hy4 在 WorkBuddy 评测中的任务通过率",
+      "value": "96.15%",
+      "page": "p01",
+      "source": "腾讯混元 Hy4 发布材料 · WorkBuddy 评测口径",
+      "asOf": "2026-11-04",
+      "strength": "vendor",
+      "reproduced": false
+    },
+    {
+      "id": "F02",
+      "claim": "Hy4 幻觉率（厂商口径）",
+      "value": "7.2%",
+      "page": "p01",
+      "source": "腾讯混元 Hy4 发布材料",
+      "asOf": "2026-11-04",
+      "strength": "vendor",
+      "reproduced": false
+    },
+    {
+      "id": "F03",
+      "claim": "Hy4 平均效果分（厂商口径）",
+      "value": "83.18分",
+      "page": "p01",
+      "source": "腾讯混元 Hy4 发布材料 · WorkBuddy 评测口径",
+      "asOf": "2026-11-04",
+      "strength": "vendor",
+      "reproduced": false
+    },
+    {
+      "id": "F04",
+      "claim": "同场对比中 Kimi 的得分",
+      "value": "3.04分",
+      "page": "p01",
+      "source": "腾讯混元 Hy4 发布材料（对比项由发布方选取）",
+      "asOf": "2026-11-04",
+      "strength": "vendor",
+      "reproduced": false
+    },
+    {
+      "id": "F05",
+      "claim": "Hy4 总参数量",
+      "value": "770B",
+      "page": "p03",
+      "source": "腾讯混元官方发布页",
+      "asOf": "2026-11-04",
+      "strength": "vendor",
+      "reproduced": false
+    },
+    {
+      "id": "F06",
+      "claim": "Hy4 每次推理激活参数量",
+      "value": "49B",
+      "page": "p03",
+      "source": "腾讯混元官方发布页",
+      "asOf": "2026-11-04",
+      "strength": "vendor",
+      "reproduced": false
+    },
+    {
+      "id": "F07",
+      "claim": "Hy4 输入价格（每百万 token，刊例价）",
+      "value": "6元",
+      "page": "p03",
+      "source": "腾讯混元定价页",
+      "asOf": "2026-11-04",
+      "strength": "vendor",
+      "reproduced": false
+    },
+    {
+      "id": "F08",
+      "claim": "按通过率推算的一次不通过概率",
+      "value": "3.85%",
+      "page": "p05",
+      "source": "本报按 96.15% 通过率推算（算术，非实测）",
+      "asOf": "2026-11-07",
+      "strength": "estimate",
+      "reproduced": false
+    },
+    {
+      "id": "F09",
+      "claim": "端侧小模型参数量",
+      "value": "31M",
+      "page": "p07",
+      "source": "模型卡与发布说明",
+      "asOf": "2026-11-06",
+      "strength": "vendor",
+      "reproduced": false
+    },
+    {
+      "id": "F10",
+      "claim": "某预印本声称的训练时间缩短幅度（摘要口径）",
+      "value": "6倍",
+      "page": "p09",
+      "source": "arXiv 预印本摘要页（未同行评审）",
+      "asOf": "2026-11-06",
+      "strength": "preprint",
+      "reproduced": false
+    },
+    {
+      "id": "F11",
+      "claim": "一笔收购的金额",
+      "value": "3.5亿美元",
+      "page": "p10",
+      "source": "TechCrunch 等媒体报道（未核到一手文件）",
+      "asOf": "2026-11-06",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F12",
+      "claim": "本期星探候选的综合评分（本报自设标准）",
+      "value": "59分",
+      "page": "p14",
+      "source": "本报评分卡（自设标准，非第三方评级）",
+      "asOf": "2026-11-07",
+      "strength": "estimate",
+      "reproduced": false
+    }
+  ]
+}

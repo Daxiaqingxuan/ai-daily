@@ -1,0 +1,80 @@
+<section class="section" id="p14">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">星探 · 每日一个希望之星</span>
+      <span class="sec-page">第 14 版 / 共 15 版</span>
+    </div>
+    <p class="sec-lede">本版不看榜单。每天从「发布 30 天内、星数没进任何主榜」的 <b>11 个候选</b>里选出 1 个，刷掉 3 个（另有 7 个未过初筛）——<b>选星不是选冷门，是选「半年后还在」的那一个。</b></p>
+
+    <div class="scout">
+      <div class="scout-card">
+        <h5>星探指数 · 五项各 20 分</h5>
+        <div class="scout-row"><span class="lb">增长质量</span><span class="bar"><i style="width:85%"></i></span><span class="vl">17</span></div>
+        <div class="scout-row"><span class="lb">可跑通度</span><span class="bar"><i style="width:80%"></i></span><span class="vl">16</span></div>
+        <div class="scout-row"><span class="lb">需求真实性</span><span class="bar"><i style="width:90%"></i></span><span class="vl">18</span></div>
+        <div class="scout-row"><span class="lb">作者持续性</span><span class="bar"><i style="width:50%"></i></span><span class="vl">10</span></div>
+        <div class="scout-row"><span class="lb">口碑密度</span><span class="bar"><i style="width:55%"></i></span><span class="vl">11</span></div>
+        <div class="scout-total">
+          <div class="tn">72<em> / 100</em></div>
+          <div class="tt">今日唯一入选<br>入选门槛 70 分</div>
+        </div>
+        <div class="veto">
+          <h6>一票否决（命中即淘汰）</h6>
+          <ul>
+            <li>无许可证，或 README 没有可复制示例</li>
+            <li>星数单日垂直拉升但 issue 为零</li>
+            <li>唯一作者连续 30 天无提交</li>
+            <li>核心能力依赖某接口且违反其条款</li>
+          </ul>
+          <p class="out">今日候选：无一命中否决项。<b>最接近的一条是「作者持续性」</b>——仓库只有一位主作者，但六天里提交 41 次，暂不构成风险。</p>
+        </div>
+        <div class="veto">
+          <h6>五项怎么打分</h6>
+          <ul>
+            <li><b>增长质量</b>近 7 日新增 ÷ 总星数。六天 1.9K，曲线是匀速的，不是一夜爆的。</li>
+            <li><b>可跑通度</b>一条命令装完、不需要私有 key；Windows 上有一处坑（见下）。</li>
+            <li><b>需求真实性</b>issue 里有 9 个人在问「能不能重放线上那次失败」，这是真需求的特征：<b>它来自一次具体的、花过钱的故障。</b></li>
+            <li><b>作者持续性</b>单人维护，42 天内有 release 计划表。</li>
+            <li><b>口碑密度</b>有 3 条「我用它替换了手写 mock」的迁移性发言。</li>
+          </ul>
+          <p class="out">口径：评分为本报自设，非第三方评级，只用于同一天内横向比较；<b>本报未在本机安装复现</b>，只读了源码与 issue。</p>
+        </div>
+      </div>
+
+      <div class="scout-main">
+        <article class="story">
+          <span class="tag">今日希望之星 · 第 003 号</span>
+          <h4>replayd：录下那次失败，然后免费重放它一百次</h4>
+          <div class="deep-repo"><b>harness-labs/replayd</b>　Go　Apache-2.0　约 1.9K 星　发布 6 天　单二进制</div>
+          <div class="scout-body">
+            <p><span class="k">一句话</span>把一次智能体运行完整录下来——每一步的提示、工具返回的真实值、时间戳——之后重放时不调用真工具，直接喂录好的返回。<b>于是你可以用零成本把一个 bug 跑一百遍。</b></p>
+            <p><span class="k">为什么它值得一张票</span>本周所有人都在谈「通过率」，但提高通过率的前提是能稳定复现失败。而智能体的失败天生不可复现：温度、并发、上游接口的随机延迟，每一次都不一样。replayd 换了个思路——<b>不追求「重跑一次能复现」，而是「把那次录下来，之后永远可复现」。</b>这是测试领域最老的办法（录制回放），被搬到了智能体上。</p>
+            <p><span class="k">数字与口径</span>录制开销小于单次运行的 3%；重放速度约为实时的 12 倍（不调模型、不调工具）；录制文件是 JSONL，一次 24 步的任务约 180KB。<b>星数与增速取自仓库公开页，本报未核。</b></p>
+            <p><span class="k">会卡在哪</span>重放用的是<b>当时的返回值</b>，一旦上游接口行为变了（字段改名、限额调整），你会得到一个「永远通过」的假象——它测的是你的代码，不是你依赖的世界。作者在 README 里写了一句很诚实的话：<b>「重放通过不代表现在能跑通，只代表当时跑通过。」</b></p>
+          </div>
+          <div class="cmd">go install github.com/harness-labs/replayd@latest
+replayd record -- <span class="c"># 包住一次真实运行，产出 run-*.jsonl</span>
+replayd replay run-20261106-0931.jsonl --diff <span class="c"># 重放并与当时逐帧对比</span></div>
+          <div class="deep-warn"><b>会卡在哪（操作层）：</b>Windows 上需要用 <code>replayd.exe</code> 显式包住子进程，直接写 shell 会被 PowerShell 吃掉参数；另外录制文件里可能含密钥，<b>默认策略应该是「录制即脱敏」</b>，而它现在要手动加 <code>--redact</code>。</div>
+          <div class="plain">
+            <span class="p-h">说人话</span>
+            <p>你出门旅游拍了一段视频，回家可以反复看，但不用再跑一趟。<b>replayd 就是给 AI 干活的过程录像。</b>好处是省时间省钱，坏处是——视频里的天气，跟今天没关系。</p>
+          </div>
+        </article>
+
+        <div class="more-box">
+          <h5>今天没选它们</h5>
+          <p><b>tiny-verify</b>（约 780 星）：单文件断言库，支持 12 种检查。<b>没选的原因：</b>功能上像个玩具，但更关键的是它把自己定位成「给 agent 用的」——而断言恰恰不该由 agent 自己调。</p>
+          <p><b>agent-sandbox-mac</b>（约 640 星）：用 macOS 的 sandbox-exec 给智能体做隔离，策略写得比同类清楚。<b>没选的原因：</b>只支持 macOS，而本报读者里用 Windows 的占多数；跨平台承诺在 roadmap 里但没有日期。</p>
+          <p><b>prompt-lint</b>（约 1.1K 星）：静态检查提示词里的常见错误（缺输出格式、缺边界条件）。<b>没选的原因：</b>检查的是「提示写得规不规范」，不是「活干没干成」；它能提升一次通过率，但给不了你要的证据。</p>
+        </div>
+      </div>
+    </div>
+
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对今日星探</span>
+      </div>
+      <p>录制回放是个老得掉牙的技术，它今天重新有用，说明一件事：<b>智能体的失败太贵了，贵到人们愿意为「不再重跑一次」付钱。</b>但别把它当万能药——它能固定住「当时的世界」，不能让「现在的世界」讲道理。<b>真正的用法只有一种：把线上那次失败录下来，写成一条永久回归用例。</b>仓库里没有这条用例，工具就只是个录像机。</p>
+    </aside>
+  </section>

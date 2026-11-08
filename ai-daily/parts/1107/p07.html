@@ -1,0 +1,37 @@
+<section class="section" id="p07">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">开源清单 · 这周谁真给了权重</span>
+      <span class="sec-page">第 07 版 / 共 16 版</span>
+    </div>
+    <p class="sec-lede">本版不做涨星榜——<b>拿不到可核的快照，就不排榜。</b>改成一张更硬的表：这一周宣布开源的模型，权重到底下了没有、许可允许什么、还差哪一步。</p>
+
+    <div class="table-wrap">
+      <table class="rank">
+        <caption>表 3 · 本周六个开源 / 准开源动作（参数与许可按各家发布材料<span class="src-tag">厂商口径</span>，<b>本报未下载权重复现</b><span class="src-tag low">本报未复现</span>；「未核到」指发布材料未给出，不是不存在）。</caption>
+        <thead>
+          <tr><th>模型</th><th>机构</th><th>总参 / 激活</th><th>许可</th><th>现在能拿到什么</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="name">混元 Hy4</td><td>腾讯</td><td class="num">770B / 49B</td><td>未公布</td><td>六款产品已上线；权重称「近期开源」，无日期，系统卡片待发</td></tr>
+          <tr><td class="name">ERNIE 5.5 Flash Base</td><td>百度</td><td class="num">280B / 14B</td><td>未核到</td><td>FP8 与 BF16 两版权重已上 Hugging Face；后训练版随后</td></tr>
+          <tr><td class="name">Cosmos 3（四款）</td><td>NVIDIA</td><td class="num">16B 可训练</td><td>OpenMDW 1.1</td><td>权重与技术报告已开放下载，商用与非商用均可用</td></tr>
+          <tr><td class="name">Phonon TTS</td><td>Hugging Face</td><td class="num">31M 版</td><td>31M 版 Apache 2.0；其余 CC BY-NC</td><td>端侧离线运行，文本不上传云端；完整技术复盘已放出</td></tr>
+          <tr><td class="name">Inkling 2 Small</td><td>Thinking Machines</td><td class="num">594B / 17B</td><td>先闭权重，后转 Apache 2.0</td><td>先经 Tinker 提供；安全测试与红队完成后放全量权重</td></tr>
+          <tr><td class="name">NeoHorse-1.5-Flash Preview</td><td>基元律动</td><td class="num">1250 亿 / 60 亿</td><td>未公布</td><td>开放内测；基于 Qwen3.8-Flash 做递归自我改进</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p><b>第一种：现在就能下。</b>Cosmos 3 是这周最干脆的一个：四款开放权重、16B 可训练参数、OpenMDW 1.1 许可，商用与非商用都能用，权重和技术报告一起放。Phonon 的 31M 版本也是 Apache 2.0，其余版本 CC BY-NC——<b>同一个项目里两种许可，商用前必须看清自己下的是哪一个</b>。ERNIE 5.5 Flash Base 把 FP8 与 BF16 两版都传了 Hugging Face，但发布材料里没写许可，本报标「未核到」，不替它补。</p>
+    <p><b>第二种：给了日期。</b>Inkling 2 Small 先经 Tinker 闭权重提供，明确说安全测试与红队完成后放全量权重、转 Apache 2.0。这是这一周<b>唯一一个把「什么时候给」写清楚的动作</b>。给了日期就可以被追责，没给日期的「近期」不能。</p>
+    <p><b>第三种：只说了「近期」。</b>Hy4 是目前能力最强的开源候选，但权重至今只有一句「近期开源」，系统卡片也待发。这不必然是坏事——负责任的开源确实要先做安全评估——但对想部署的人来说，<b>它现在仍然是一个 API 产品，不是一份可下载的权重</b>。把它写进「开源模型」清单时，必须同时写这一句。</p>
+    <p><b>本报的读法。</b>判断一个开源动作，只看三行：<span class="term" tabindex="0">权重<i class="tip">模型训练出来的参数文件。给了权重，你才能自己部署、微调、离线运行；只给 API，能力再强也只能租。</i></span>下没下、许可写了什么、版本和论文对不对得上。三行都过，再谈分数。<b>「开源」是动作，不是形容词；能下载的才叫开放权重。</b></p>
+
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版三档成熟度</span>
+      </div>
+      <p>「近期开源」是这周最软的一句话。它既能让发布稿多一个亮点，又不用承担任何日期责任。<b>衡量一家公司对开源的态度，不看它说得多诚恳，看它敢不敢写月日。</b>Inkling 敢写「下周」，所以它这一项赢的不是参数，是信用。</p>
+    </aside>
+  </section>

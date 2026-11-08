@@ -1,0 +1,45 @@
+name: 内容勘误
+description: 报纸里的数字、日期、归属写错了——这类反馈优先级高于功能建议
+title: "[勘误] "
+labels: ["content"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        每一期的每个外部数字都带论据标记（厂商口径 / 公开报道 / 本报实测 / 本报自设等），
+        并在 `ai-daily/parts/<MMDD>/00-facts.json` 里留一行。指出错误时请一并说明是哪一档标错了，
+        这比「这个数不对」有用得多。
+
+  - type: input
+    id: issue
+    attributes:
+      label: 哪一期、哪一版
+      placeholder: 第 004 期 · 01 头条
+    validations:
+      required: true
+
+  - type: textarea
+    id: original
+    attributes:
+      label: 原文怎么写的
+      description: 把那句话原样抄过来
+      placeholder: WorkBuddy 评测通过率 96.15%
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: 哪里不对
+      placeholder: 96.15% 是 25/26，不是 26/27；分母写错了
+    validations:
+      required: true
+
+  - type: textarea
+    id: source
+    attributes:
+      label: 你的依据
+      description: 链接或出处。没有依据也可以提，但会标成「待核」而不是直接改。
+      placeholder: https://…
+    validations:
+      required: false

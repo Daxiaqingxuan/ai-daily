@@ -1,0 +1,38 @@
+<section class="section" id="p12">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">工具链 · 给智能体修管道</span>
+      <span class="sec-page">第 12 版 / 共 16 版</span>
+    </div>
+    <p class="sec-lede">这一周的工程新闻都不性感：检索、token、数据流动、身份。但企业里真正卡住智能体的，八成是这些管道，而不是模型。本版只列能说清「省了多少」的那几条。</p>
+
+    <div class="table-wrap">
+      <table class="rank">
+        <caption>表 6 · 本周六个工程动作（数字均为厂商或报道口径，<b>本报未独立基准测试</b>）。</caption>
+        <thead>
+          <tr><th>工具 / 动作</th><th>谁做的</th><th>解决什么</th><th>给出的数字或状态</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="name">内容检索系统</td><td>Box + NVIDIA Nemotron</td><td>让智能体在大量文档里更快找到答案</td><td>答案快 4 倍、错误少 20%、token 少 90%</td></tr>
+          <tr><td class="name">自助支持智能体</td><td>DevRev + GPT-6.1 Sol</td><td>企业客服的成本、速度与推理平衡</td><td>案例研究，未给统一基准</td></tr>
+          <tr><td class="name">数据层开放</td><td>SAP + Databricks</td><td>让数据在系统内外自由流动，供智能体调用</td><td>扩大 Apache Iceberg 支持，深化合作</td></tr>
+          <tr><td class="name">智能体信任框架</td><td>Cloudflare</td><td>网站如何验证代用户行动的智能体身份与责任</td><td>框架发布，尚无强制标准</td></tr>
+          <tr><td class="name">ZeroRAG</td><td>研究项目</td><td>不设中心节点的跨 peer 检索路由</td><td>论文阶段，未给生产数据</td></tr>
+          <tr><td class="name">tok 记法</td><td>社区提案</td><td>用纯文本表达 BPMN / DMN 流程，减少 token 消耗</td><td>相对 XML 更省 token，未给统一测量</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p><b>第一条管道：检索。</b>Box 与 NVIDIA 合作的那套系统给出的三个数字很整齐——快 4 倍、错误少 20%、token 少 90%。<span class="src-tag">厂商口径</span>第三个最值钱：<span class="term" tabindex="0">检索增强<i class="tip">RAG，retrieval-augmented generation。先从资料库里检索相关片段，再让模型基于片段回答，减少胡编与长上下文开销。</i></span>的本质是「只把相关的那几段送进模型」，送得越准，token 越省、错得越少。很多团队把 RAG 当搜索用，其实它首先是成本工具。</p>
+    <p><b>第二条管道：数据流动。</b>SAP 扩大 Apache Iceberg 支持、深化与 Databricks 的合作，动机不是技术洁癖，是<b>智能体要读的数据散在十几个系统里</b>。数据搬不动，智能体就只能看一个院子；搬得动，才谈得上跨部门任务。这类动作不会上头条，但它决定了智能体能不能碰到真数据。</p>
+    <p><b>第三条管道：身份与责任。</b>Cloudflare 提出智能体信任框架，问题是：当一个智能体代表用户来访问网站，网站怎么知道它是谁、能做什么、出了事找谁？这不是模型问题，是互联网身份体系的问题。<b>智能体要真的替你办事，先得有一张能被验证的「工牌」。</b></p>
+    <p><b>第四条：token 经济学。</b>tok 记法用纯文本替代 XML 描述流程，ZeroRAG 用去中心路由减少全局索引，两者都在做同一件事：<b>把「不必要的上下文」从账单里删掉。</b>当单价降不下去时，减少输入就是降价。</p>
+    <p><b>本报的读法。</b>如果你的智能体项目卡住了，先别换模型，去查四件事：检索召回准不准、数据能不能流过来、身份能不能被验证、上下文有没有冗余。<b>四件事里通常有一件是瓶颈，而它多半不在模型那一侧。</b></p>
+
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版四条管道</span>
+      </div>
+      <p>智能体项目最常见的死法，不是模型不够聪明，是<b>它根本拿不到该拿的数据，也证明不了自己是谁</b>。发布会讲能力，落地讲管道。管道修不好的公司，换多少模型都还是那句「再过一版就好了」。</p>
+    </aside>
+  </section>

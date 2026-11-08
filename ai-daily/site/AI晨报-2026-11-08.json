@@ -1,0 +1,59 @@
+{
+  "issue": "005",
+  "date": "2026-11-08",
+  "kind": "daily",
+  "file": "AI晨报-2026-11-08.html",
+  "title": "AI 晨报 · 2026年11月8日 · 第 005 期 · 谁验过，才算数（共 16 版）",
+  "pages": 16,
+  "bytes": 128167,
+  "sha256": "2dcb2012a8257d9bf0e53def3de13c7711103e8bcc2dd6b162de86be4ed8057c",
+  "chars": 21314,
+  "terms": 7,
+  "glossary": 13,
+  "facts": {
+    "count": 18,
+    "reproduced": 0,
+    "byStrength": {
+      "media": 8,
+      "preprint": 1,
+      "vendor": 9
+    },
+    "asOf": "2026-11-08",
+    "ids": [
+      "F01",
+      "F02",
+      "F03",
+      "F04",
+      "F05",
+      "F06",
+      "F07",
+      "F08",
+      "F09",
+      "F10",
+      "F11",
+      "F12",
+      "F13",
+      "F14",
+      "F15",
+      "F16",
+      "F17",
+      "F18"
+    ]
+  },
+  "missing_terms": [],
+  "generatedAt": "2026-11-08 11:25",
+  "checks": {
+    "pages_eq_nav": true,
+    "nav_matches_sections": true,
+    "sections_continuous": true,
+    "issue_in_title": true,
+    "pages_in_title": true,
+    "pages_all_match": true,
+    "digest_three": true,
+    "glossary_count_matches": true,
+    "terms_in_glossary": true,
+    "facts_card_valid": true
+  },
+  "ok": true,
+  "path": "AI晨报-2026-11-08.html"
+}

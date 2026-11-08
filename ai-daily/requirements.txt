@@ -1,0 +1,18 @@
+# AI 晨报的可选依赖（主链路零第三方依赖）
+#
+# 出报主链路（assemble_issue / build_index / selfcheck / status / doctor）
+# 只用 Python 标准库，装好 Python 3.10+ 就能跑，不需要先 pip install 任何东西。
+# 这一条有实测背书：干净 venv（未装任何包）+ 全新 clone，selfcheck --pre
+# 11 PASS / 0 FAIL / 1 SKIP（SKIP 项是本地状态机，新克隆仓没有，属预期）。
+#
+# 下面的包只被三个辅助脚本用到：
+#   Pillow  → tools/make_icons.py（图标）、tools/make_qr.py（二维码）、tools/build_apk.py
+#   qrcode  → tools/make_qr.py（二维码卡片）
+# 不跑这三个脚本就不用装。缺包时 tools/doctor.py 报 WARN，不报 FAIL。
+#
+# 安装（本机实测默认 PyPI 源装不上 qrcode，用阿里云镜像）：
+#   python -m pip install -r ai-daily/requirements.txt \
+#       -i https://mirrors.aliyun.com/pypi/simple/
+
+Pillow>=10.0
+qrcode>=7.4

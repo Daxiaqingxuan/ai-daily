@@ -1,0 +1,30 @@
+{
+  "issue": "003-2",
+  "date": "2026-11-06",
+  "kind": "special",
+  "file": "2026-11-06.html",
+  "title": "AI 晨报 · 2026年11月6日 · 第 003-2 期 · 傍晚特刊（共 16 版）",
+  "pages": 16,
+  "bytes": 129655,
+  "sha256": "3e5b0a50fe3fe3f2246864e1cee4226ccd68b3bf76746d97b4a045b039443af5",
+  "chars": 22699,
+  "terms": 6,
+  "glossary": 14,
+  "facts": null,
+  "missing_terms": [],
+  "generatedAt": "2026-11-06 23:14",
+  "checks": {
+    "pages_eq_nav": true,
+    "nav_matches_sections": true,
+    "sections_continuous": true,
+    "issue_in_title": true,
+    "pages_in_title": true,
+    "pages_all_match": true,
+    "digest_three": true,
+    "glossary_count_matches": true,
+    "terms_in_glossary": true,
+    "facts_card_valid": null
+  },
+  "ok": true,
+  "path": "special/2026-11-06.html"
+}

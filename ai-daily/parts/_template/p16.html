@@ -1,0 +1,111 @@
+<!--
+  第 16 版 · 本报提案（模板）
+  用法：
+    1) 复制本文件到 parts/<MMDD>/p16.html；
+    2) 把 00N 换成当期三位期号（如 004），N 换成 1~4；
+    3) 四条建议分别来自 读者 / 编辑 / 创刊人 / AI，一条一句话，写清「为什么」和「成本」；
+    4) 台账里保留历史提案，状态只写 待定 / 采纳 / 否决（沉默）。
+  规则（AGENTS.md §2 第 12 条）：没人点名「采纳」就默认否决，不得自行实施。
+-->
+<section class="section" id="p16">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">本报提案 · 这一期想怎么改</span>
+      <span class="sec-page">第 16 版 / 共 16 版</span>
+    </div>
+
+    <p class="sec-lede">本版每期由四个身份各提一条改动建议，编号 <b>P00N-1…4</b>：<b>读者</b>说哪里读着费劲，<b>编辑</b>说哪里做起来费劲，<b>创刊人</b>说哪里该往前一步，<b>AI</b> 说哪里可以自动化。<b>默认不执行</b>——创刊人点名「采纳 P00N-2」才进施工；没人提，下一期自动记「否决（沉默）」。</p>
+
+    <div class="props">
+      <article class="prop">
+        <div class="prop-h"><span class="prop-role">读者</span><span class="prop-id">P00N-1</span></div>
+        <h4>〔一句话说清要加什么，20 字内〕</h4>
+        <p>〔现在读起来卡在哪：具体到某一版、某一段、某一次翻页。不要写「希望更简洁」这种没法验收的话。〕</p>
+        <dl class="prop-meta">
+          <dt>为什么</dt><dd>〔一句可核对的理由，能带数字最好〕</dd>
+          <dt>成本</dt><dd>〔小 / 中 / 大 · 大约多久，改哪几个文件〕</dd>
+        </dl>
+        <div class="prop-st">待定 · <b>沉默即否决</b></div>
+      </article>
+
+      <article class="prop">
+        <div class="prop-h"><span class="prop-role">编辑</span><span class="prop-id">P00N-2</span></div>
+        <h4>〔一句话〕</h4>
+        <p>〔编这一期时哪里最费手：找素材、拼版、核对口径、还是发布验证。指出具体环节与耗时。〕</p>
+        <dl class="prop-meta">
+          <dt>为什么</dt><dd>〔同上〕</dd>
+          <dt>成本</dt><dd>〔同上〕</dd>
+        </dl>
+        <div class="prop-st">待定 · <b>沉默即否决</b></div>
+      </article>
+
+      <article class="prop">
+        <div class="prop-h"><span class="prop-role">创刊人</span><span class="prop-id">P00N-3</span></div>
+        <h4>〔一句话〕</h4>
+        <p>〔从「这份报纸要变成什么」出发：定位、读者、渠道、商业模式。允许大一点，但要说清第一步做什么。〕</p>
+        <dl class="prop-meta">
+          <dt>为什么</dt><dd>〔同上〕</dd>
+          <dt>成本</dt><dd>〔同上〕</dd>
+        </dl>
+        <div class="prop-st">待定 · <b>沉默即否决</b></div>
+      </article>
+
+      <article class="prop">
+        <div class="prop-h"><span class="prop-role">AI</span><span class="prop-id">P00N-4</span></div>
+        <h4>〔一句话〕</h4>
+        <p>〔从自动化角度：哪个环节还是人肉、哪条断言可以再加、哪个数字其实没人验过。要能被脚本验证。〕</p>
+        <dl class="prop-meta">
+          <dt>为什么</dt><dd>〔同上〕</dd>
+          <dt>成本</dt><dd>〔同上〕</dd>
+        </dl>
+        <div class="prop-st">待定 · <b>沉默即否决</b></div>
+      </article>
+    </div>
+
+    <p class="prop-rule"><b>怎么算采纳：</b>创刊人在当期明确说「采纳 P00N-2」才算；说「先放着」算待定，最多挂三期；<b>没说就是否决，不再追问</b>。已采纳的写进 `提案台账.md`，在下一期的台账里标「已落地」。</p>
+
+    <div class="table-wrap">
+      <table class="prop-ledger">
+        <caption>提案台账 · 全量明细见 <code>提案台账.md</code>，本表只放最近 8 条</caption>
+        <thead>
+          <tr><th>编号</th><th>视角</th><th>一句话</th><th>状态</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="id">P00N-1</td><td>读者</td><td>〔同上〕</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P00N-2</td><td>编辑</td><td>〔同上〕</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P00N-3</td><td>创刊人</td><td>〔同上〕</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P00N-4</td><td>AI</td><td>〔同上〕</td><td class="st-wait">待定</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版四条提案</span>
+      </div>
+      <p>〔锐评只针对本期这一版的四条提案：哪一条是真问题，哪一条是自我感动，为什么。150 字内，最后一句要能被引用。〕</p>
+    </aside>
+  </section>
+
+  <!-- 名词速查跟着最后一版走（放在 </section> 之后，不算版面）。
+       规则：正文每个 <span class="term"> 的词，这里必须有词条（A9 会查）；
+       标题里的「N 个词」必须等于词条数（A9b 会查）。 -->
+  <div class="gloss" id="gloss">
+    <h5>名词速查 · 本期出现的 14 个词<span>看不懂就跳回来，不用从头读</span></h5>
+    <div class="gloss-grid">
+      <dl><dt>〔词 / term〕</dt><dd>〔一句话解释，不用术语解释术语〕</dd></dl>
+      <dl><dt>〔词 / term〕</dt><dd>〔…〕</dd></dl>
+      <dl><dt>〔词 / term〕</dt><dd>〔…〕</dd></dl>
+      <dl><dt>〔词 / term〕</dt><dd>〔…〕</dd></dl>
+      <dl><dt>〔词 / term〕</dt><dd>〔…〕</dd></dl>
+      <dl><dt>〔词 / term〕</dt><dd>〔…〕</dd></dl>
+      <dl><dt>〔词 / term〕</dt><dd>〔…〕</dd></dl>
+      <dl><dt>〔词 / term〕</dt><dd>〔…〕</dd></dl>
+      <dl><dt>〔词 / term〕</dt><dd>〔…〕</dd></dl>
+      <dl><dt>〔词 / term〕</dt><dd>〔…〕</dd></dl>
+      <dl><dt>〔词 / term〕</dt><dd>〔…〕</dd></dl>
+      <dl><dt>〔词 / term〕</dt><dd>〔…〕</dd></dl>
+      <dl><dt>〔词 / term〕</dt><dd>〔…〕</dd></dl>
+      <dl><dt>〔词 / term〕</dt><dd>〔…〕</dd></dl>
+    </div>
+  </div>

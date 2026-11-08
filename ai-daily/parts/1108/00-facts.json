@@ -1,0 +1,23 @@
+{
+  "asOf": "2026-11-08",
+  "facts": [
+    { "id": "F01", "claim": "DeepMind 智能体对 1024 位 RSA 签名伪造的算法提速（理论估算）", "value": "1,600 倍", "page": "p01", "source": "Google DeepMind 公布 / IACR ePrint", "asOf": "2026-11-06", "strength": "media", "reproduced": false },
+    { "id": "F02", "claim": "沙箱复现一把已被破解的 1024 位密钥时少用的 CPU 时间", "value": "3.5 倍", "page": "p01", "source": "Interesting Engineering 等报道", "asOf": "2026-11-06", "strength": "media", "reproduced": false },
+    { "id": "F03", "claim": "批量分解中每多一把同长度密钥的平均成本下降幅度", "value": "30 倍", "page": "p01", "source": "Google DeepMind 公布 / IACR ePrint", "asOf": "2026-11-06", "strength": "media", "reproduced": false },
+    { "id": "F04", "claim": "GPT-6 Cyber 早期测试报出的 Linux 内核漏洞数", "value": "948", "page": "p03", "source": "媒体报道与 OpenAI 说明", "asOf": "2026-11-07", "strength": "media", "reproduced": false },
+    { "id": "F05", "claim": "GPT-6 Cyber 在 ExploitGym 上相对上一代的提升", "value": "51%", "page": "p03", "source": "OpenAI 发布材料", "asOf": "2026-11-07", "strength": "vendor", "reproduced": false },
+    { "id": "F06", "claim": "ERNIE 5.5 Flash Base 的预训练 token 数", "value": "33.5T", "page": "p03", "source": "百度模型卡", "asOf": "2026-11-07", "strength": "vendor", "reproduced": false },
+    { "id": "F07", "claim": "Claude Personal Finance 可连接的美国银行数量", "value": "16 家", "page": "p04", "source": "Anthropic 产品说明", "asOf": "2026-11-07", "strength": "vendor", "reproduced": false },
+    { "id": "F08", "claim": "Gemini Omni 1.2 Flash 720p 视频的每秒价格", "value": "0.07", "page": "p04", "source": "Google 定价页与第三方报道", "asOf": "2026-11-07", "strength": "media", "reproduced": false },
+    { "id": "F09", "claim": "Kimi K3.1 Pro 单次请求激活的参数", "value": "1040 亿", "page": "p07", "source": "月之暗面模型卡", "asOf": "2026-11-07", "strength": "vendor", "reproduced": false },
+    { "id": "F10", "claim": "Inkling 2 Small 在 SWE-Bench Pro v2 Hard 上的得分", "value": "86.3%", "page": "p07", "source": "Thinking Machines 模型卡", "asOf": "2026-11-07", "strength": "vendor", "reproduced": false },
+    { "id": "F11", "claim": "Inkling 2 Small 单次请求激活的参数", "value": "17B", "page": "p07", "source": "Thinking Machines 模型卡", "asOf": "2026-11-07", "strength": "vendor", "reproduced": false },
+    { "id": "F12", "claim": "Cosmos 3 每份权重的可训练参数", "value": "16B", "page": "p07", "source": "NVIDIA 模型卡", "asOf": "2026-11-05", "strength": "vendor", "reproduced": false },
+    { "id": "F13", "claim": "METR 称 Anthropic 研发提速中来自内部 AI 使用的比例", "value": "80%", "page": "p08", "source": "METR 评估报告（证据多被涂黑）", "asOf": "2026-11-07", "strength": "media", "reproduced": false },
+    { "id": "F14", "claim": "Aaronson–Ambainis 猜想提出的年份", "value": "2008", "page": "p09", "source": "PSI 公布材料 / 预印本", "asOf": "2026-11-07", "strength": "preprint", "reproduced": false },
+    { "id": "F15", "claim": "OpenAI 本轮融资首笔交割金额", "value": "110 亿美元", "page": "p10", "source": "融资相关报道", "asOf": "2026-11-07", "strength": "media", "reproduced": false },
+    { "id": "F16", "claim": "Agility Robotics 上市的总募资额", "value": "4.65 亿美元", "page": "p10", "source": "上市与并购报道", "asOf": "2026-11-07", "strength": "media", "reproduced": false },
+    { "id": "F17", "claim": "vLLM REINFORCE Zero 相对同步训练的吞吐", "value": "2.4 倍", "page": "p11", "source": "vLLM 发布说明", "asOf": "2026-11-07", "strength": "vendor", "reproduced": false },
+    { "id": "F18", "claim": "tsrs 对 TypeScript 类型检查的最高提速", "value": "8 倍", "page": "p12", "source": "Cloudflare 与 VoidZero 发布说明", "asOf": "2026-11-07", "strength": "vendor", "reproduced": false }
+  ]
+}

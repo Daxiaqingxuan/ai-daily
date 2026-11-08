@@ -1,0 +1,1385 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Agent 运用完全教程 · 从派活到工程闭环</title>
+<style>
+  :root{--paper:#fbf8f0;--ink:#1b1a17;--red:#8c1d18;--muted:#6b665c;--line:#d9d3c5;--soft:#f2ece0;--code:#f5f0e5;}
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;font-size:15px;line-height:1.85;}
+  .progress{position:fixed;top:0;left:0;height:3px;background:var(--red);width:0;z-index:50;}
+  header{border-top:5px solid var(--red);border-bottom:1px solid var(--line);padding:46px 24px 30px;text-align:center;}
+  header .kicker{font-size:12px;letter-spacing:.28em;color:var(--red);}
+  header h1{font-family:Georgia,"Songti SC","SimSun",serif;font-size:38px;font-weight:400;margin:12px 0 6px;letter-spacing:.04em;}
+  header .sub{font-size:15px;color:var(--muted);}
+  header .meta{margin-top:18px;font-size:12px;color:var(--muted);}
+  header .meta span{margin:0 10px;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 20px 90px;}
+  .toc{position:fixed;top:24px;width:206px;max-height:calc(100vh - 48px);overflow:auto;font-size:12.5px;line-height:1.55;}
+  .toc b{display:block;font-size:11px;letter-spacing:.2em;color:var(--red);margin-bottom:12px;}
+  .toc a{display:block;padding:4px 8px;color:var(--muted);text-decoration:none;border-left:2px solid transparent;}
+  .toc a:hover{color:var(--red);}
+  .toc a.on{color:var(--red);border-left-color:var(--red);background:var(--soft);}
+  main{margin-left:236px;max-width:780px;}
+  section{padding:44px 0 8px;border-bottom:1px solid var(--line);scroll-margin-top:20px;}
+  section:last-of-type{border-bottom:none;}
+  .ch-no{font-family:Georgia,serif;font-size:13px;color:var(--red);letter-spacing:.16em;}
+  h2{font-family:Georgia,"Songti SC","SimSun",serif;font-size:27px;font-weight:400;margin:6px 0 4px;letter-spacing:.02em;}
+  .goal{color:var(--muted);font-size:13.5px;margin:0 0 24px;}
+  h3{font-size:17px;font-weight:600;margin:30px 0 10px;padding-left:11px;border-left:3px solid var(--red);}
+  h4{font-size:14.5px;font-weight:600;margin:22px 0 6px;}
+  p{margin:11px 0;}
+  ul,ol{padding-left:22px;margin:11px 0;}
+  li{margin:5px 0;}
+  b,strong{font-weight:600;}
+  code{font-family:Consolas,"Courier New",monospace;background:var(--code);padding:1px 5px;font-size:12.5px;color:#5a241f;}
+  pre{background:var(--code);border-left:3px solid var(--red);padding:14px 16px;overflow-x:auto;font-size:12.5px;line-height:1.65;margin:14px 0;}
+  pre code{background:none;padding:0;color:var(--ink);}
+  .box{border-left:3px solid var(--line);background:var(--soft);padding:12px 16px;margin:16px 0;font-size:14px;}
+  .box .lb{font-size:11px;letter-spacing:.14em;font-weight:600;display:block;margin-bottom:5px;color:var(--muted);}
+  .box.why{border-left-color:#4a5b6b;background:#eef1f3;}
+  .box.why .lb{color:#4a5b6b;}
+  .box.proj{border-left-color:var(--red);background:#f7ece9;}
+  .box.proj .lb{color:var(--red);}
+  .box.drill{border-left-color:#7a6a3a;background:#f6f1dd;}
+  .box.drill .lb{color:#7a6a3a;}
+  .box.warn{border-left-color:var(--red);}
+  table{width:100%;border-collapse:collapse;font-size:13px;margin:16px 0;}
+  th,td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top;}
+  th{font-weight:600;background:var(--soft);}
+  .fig{background:#fff;border:1px solid var(--line);padding:18px;margin:18px 0;}
+  .fig svg{display:block;width:100%;height:auto;}
+  .cap{font-size:12px;color:var(--muted);text-align:center;margin-top:8px;}
+  .chk{list-style:none;padding:0;}
+  .chk li{padding-left:26px;position:relative;}
+  .chk li:before{content:"□";position:absolute;left:4px;color:var(--red);font-size:16px;}
+  details{background:var(--soft);border:1px solid var(--line);padding:9px 14px;margin:12px 0;font-size:13.5px;}
+  summary{cursor:pointer;font-weight:600;}
+  .foot{text-align:center;color:var(--muted);font-size:12px;padding:40px 0 0;}
+  .mobile-toc{display:none;}
+  @media (max-width:1180px){
+    .toc{display:none;} main{margin-left:0;max-width:none;}
+    .mobile-toc{display:block;background:var(--soft);border:1px solid var(--line);padding:10px 16px;margin:18px 0;}
+    .mobile-toc a{display:inline-block;margin:3px 12px 3px 0;color:var(--muted);text-decoration:none;font-size:13px;}
+  }
+  @media (max-width:620px){ header h1{font-size:27px;} body{font-size:14.5px;} pre{font-size:11.5px;} }
+  @media print{ .toc,.progress,.mobile-toc{display:none;} main{margin:0;max-width:none;} header{padding-top:10px;} section{page-break-inside:auto;} }
+</style>
+</head>
+<body>
+<div class="progress" id="prog"></div>
+<header>
+  <div class="kicker">从 派 活 到 工 程 闭 环</div>
+  <h1>AI Agent 运用完全教程</h1>
+  <div class="sub">不是提示词技巧合集，是一套让 agent 产出可验收、可回滚、可复现的工程方法</div>
+  <div class="meta">
+    <span>基于你 11/01–11/05 的 17 个项目实战</span><span>·</span>
+    <span>8 章 + 5 个附录</span><span>·</span>
+    <span>7 个可运行脚本</span><span>·</span>
+    <span>2026-11-05</span>
+  </div>
+  <div class="meta" style="margin-top:8px;">
+    <a href="教程问答.md" style="color:#8c1d18;text-decoration:underline;text-underline-offset:3px;">教程问答与练习（独立文件）</a>
+    <span>·</span><span>提问记录 + 50 条原题清单</span>
+  </div>
+</header>
+
+<div class="wrap">
+<nav class="toc" id="toc">
+  <b>目 录</b>
+  <a href="#intro">序 · 这门课怎么学</a>
+  <a href="#ch0">第 0 章 地基：四个性质</a>
+  <a href="#ch1">第 1 章 上下文工程</a>
+  <a href="#ch2">第 2 章 验收前置</a>
+  <a href="#ch3">第 3 章 任务分解与流水线</a>
+  <a href="#ch4">第 4 章 工具、权限、副作用</a>
+  <a href="#ch5">第 5 章 自动化与可靠性</a>
+  <a href="#ch6">第 6 章 版本控制与回滚</a>
+  <a href="#ch7">第 7 章 评估与回归</a>
+  <a href="#ch8">第 8 章 把 agent 做进产品</a>
+  <a href="#apxA">附录 A 体检与 4 周路线</a>
+  <a href="#apxB">附录 B 反模式速查</a>
+  <a href="#apxC">附录 C 术语表</a>
+  <a href="#apxD">附录 D 交付前清单</a>
+  <a href="#apxE">附录 E 实例项目 · 七步闭环</a>
+  <a href="#apxF">附录 F 实战复盘 · 假绿到闭环</a>
+</nav>
+
+<main>
+<div class="mobile-toc">
+  <b>目录：</b>
+  <a href="#ch0">0 地基</a><a href="#ch1">1 上下文</a><a href="#ch2">2 验收</a>
+  <a href="#ch3">3 流水线</a><a href="#ch4">4 权限</a><a href="#ch5">5 自动化</a>
+  <a href="#ch6">6 回滚</a><a href="#ch7">7 评估</a><a href="#ch8">8 产品化</a>
+  <a href="#apxA">附录</a><a href="#apxE">实例</a><a href="#apxF">复盘</a>
+</div>
+
+<section id="intro">
+  <div class="ch-no">序</div>
+  <h2>这门课怎么学</h2>
+  <p class="goal">先说清楚它不教什么，以及为什么你需要的不是「更会说 prompt」。</p>
+  <p>市面上大多数 agent 教程在教「怎么写提示词」：给角色、给示例、链式思考、少样本。这些你其实已经会了——你能写出十二段、几千字、带硬检查清单的自动化提示词，能把版式规范从 v1 迭代到 v6，能让 agent 直接装 JDK、编 APK、改桌面快捷方式、发布站点。这是相当靠后的水平。</p>
+  <p>但你这几天也反复遇到同一类麻烦：报纸从 9 版改到 15 版靠一轮轮「感觉少点什么」；规范里写着的自洽硬检查，实际还是靠人眼截图；<code>[hidden]</code> 被 CSS 覆盖这种 bug 要等看到截图才发现；自动化把报纸存到错误目录，两端就都读不到；改了六版却没有一个能回滚的版本。</p>
+  <p>这些不是提示词问题，是<b>工程闭环问题</b>。所以本教程的主线是：</p>
+  <p style="text-align:center;font-size:17px;color:var(--red);margin:22px 0;">把「让 agent 把活干出来」升级成<br>「让 agent 的活能被机器检查、能被回滚、能无人值守地重复跑」</p>
+  <div class="box why">
+    <span class="lb">为什么这样安排</span>
+    一次性交付时，人眼验收就够了，所以你感觉不到缺口。一旦进入「每天 8 点自动出报、两端自动同步」，人不再在回路里，所有含糊的规则都会变成静默故障。你的项目正好走到了这个拐点，所以现在学这些，收益是立刻可见的。
+  </div>
+  <h3>怎么用这套材料</h3>
+  <ul>
+    <li><b>教材</b>：本文件，8 章 + 4 附录，可离线打开，建议按顺序读第 0→2 章，后面按需要查。</li>
+    <li><b>模板</b>：<code>templates/AGENTS.md</code>，可直接拷进项目当「项目契约」。</li>
+    <li><b>可运行示例</b>：<code>examples/validate.py</code>，已在你的 <code>ai-daily/</code> 上实测 <b>32/32 通过</b>，并做过变异测试（故意删一条锐评 → 立刻报错并退出 1）。</li>
+    <li><b>练手对象</b>：就用 <code>ai-daily/</code>。它已经有自动化、规范文档、多端产物、真实故障案例，是一个完整闭环样本，比另起一个玩具项目学得快得多。</li>
+  </ul>
+  <p>每章末尾有「本章自检」，全是是非题。答不上来就回头重读那一节，别往下赶进度。</p>
+</section>
+
+<section id="ch0">
+  <div class="ch-no">CHAPTER 0</div>
+  <h2>地基：agent 的四个性质，推出四条铁律</h2>
+  <p class="goal">这一章是整本书的地基。后面所有做法都是从这四条性质里被逼出来的，不是行业习惯，也不是仪式感。</p>
+
+  <h3>先拆掉一个误解</h3>
+  <p>agent 不是「更聪明的聊天框」，也不是「会自己思考的同事」。从工程上看，它是：</p>
+  <p style="text-align:center;font-size:16px;margin:18px 0;"><b>一个无状态的、概率性的、能调用有副作用工具的循环函数</b></p>
+  <p>拆成可观察的形式就是：</p>
+  <pre><code>context = 任务描述 + 历史 + 工具返回
+while 未完成:
+    action = model(context)        # 模型只负责「下一步做什么」
+    result = execute(action)       # 外壳负责真的去做（读文件 / 跑命令 / 发请求）
+    context += (action, result)    # 把结果追加回上下文
+    if action 是 finish: break</code></pre>
+  <div class="fig">
+    <svg viewBox="0 0 680 200" role="img" xmlns="http://www.w3.org/2000/svg">
+      <title>agent 执行循环</title>
+      <desc>模型根据上下文决策，外壳执行工具并把结果追加回上下文，循环直到完成。</desc>
+      <defs><marker id="a0" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5"/></marker></defs>
+      <rect x="40" y="60" width="160" height="70" rx="8" fill="#eef1f3" stroke="#4a5b6b" stroke-width="0.5"/>
+      <text x="120" y="86" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#1b1a17">上下文 context</text>
+      <text x="120" y="108" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#6b665c">任务 + 历史 + 工具结果</text>
+      <rect x="260" y="60" width="160" height="70" rx="8" fill="#f7ece9" stroke="#8c1d18" stroke-width="0.5"/>
+      <text x="340" y="86" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#1b1a17">模型 model</text>
+      <text x="340" y="108" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#8c1d18">提议下一步动作</text>
+      <rect x="480" y="60" width="160" height="70" rx="8" fill="#f6f1dd" stroke="#7a6a3a" stroke-width="0.5"/>
+      <text x="560" y="86" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#1b1a17">外壳 / 工具</text>
+      <text x="560" y="108" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#7a6a3a">真正执行、产生副作用</text>
+      <path d="M200 95 L260 95" fill="none" stroke="#5F5E5A" stroke-width="1.5" marker-end="url(#a0)"/>
+      <path d="M420 95 L480 95" fill="none" stroke="#5F5E5A" stroke-width="1.5" marker-end="url(#a0)"/>
+      <path d="M560 130 L560 165 L120 165 L120 130" fill="none" stroke="#8c1d18" stroke-width="1.5" marker-end="url(#a0)"/>
+      <text x="340" y="182" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#8c1d18">结果追加回上下文 → 再决策</text>
+    </svg>
+    <div class="cap">模型只提议，外壳才动手；循环靠「把结果写回上下文」推进</div>
+  </div>
+  <p>这个视角很重要：<b>模型不执行任何东西，它只输出文本；真正改文件、发请求的是外壳</b>。所以「agent 会不会搞破坏」这个问题，答案取决于你给外壳开了什么权限，而不是取决于模型多聪明。</p>
+
+  <h3>四个性质 → 四条铁律</h3>
+  <table>
+    <tr><th style="width:23%">性质</th><th style="width:37%">它必然导致什么</th><th>你必须做的（铁律）</th></tr>
+    <tr><td><b>无状态</b><br>每次会话从零开始</td><td>「上次说过」等于没说过；换个会话、换个自动化，约定全部丢失</td><td><b>约定必须落在文件里</b>（第 1 章 <code>AGENTS.md</code>），不能靠对话记忆</td></tr>
+    <tr><td><b>上下文有限且会衰减</b><br>越长的输入越顾此失彼</td><td>几千字 prompt 里，后面的排版细则会压过前面的内容纪律；144KB 样板会把任务本身淹没</td><td><b>把信息分层、按需加载</b>，唯一真源，参考材料与指令分离（第 1 章）</td></tr>
+    <tr><td><b>概率性输出</b><br>同样输入不保证同样结果</td><td>这次 15 版 15 锐评都齐，下次可能少一条；「看起来没问题」不可靠</td><td><b>验收标准写成可执行断言</b>，跑不过就带错误重试（第 2 章）</td></tr>
+    <tr><td><b>工具带副作用</b><br>能覆盖、删除、对外发布</td><td>一步走错会污染真源、把半截文件当成功、把未校验内容推到线上</td><td><b>最小权限 + 备份 + 原子写 + 幂等</b>（第 4、5 章）</td></tr>
+  </table>
+  <div class="box proj">
+    <span class="lb">在你项目里</span>
+    你这四条全踩过：约定散在日志 / 提示词 / 规范三处 → 自动化把报纸存错目录（无状态）；12 段提示词 + 144KB 样板 → 每期要整份重读（上下文）；「自洽硬检查」写在规范里却没代码 → 靠截图发现 <code>[hidden]</code> 被覆盖（概率性）；重新发布、生成快捷方式、改自动化提示词都是不可逆动作（副作用）。<b>所以后面 8 章不是新知识，是把你已经遇到的坑，系统地堵上。</b>
+  </div>
+
+  <h3>由此得到一句总口诀</h3>
+  <p style="font-size:17px;text-align:center;color:var(--red);margin:20px 0;">凡是不能被机器检查的交付，就等于没有交付标准。</p>
+  <p>人眼验收只适合「一次性、有人在场」的场景。你已经有两条每日自动化，人不在回路里，这句话就从建议变成了硬要求。</p>
+
+  <div class="box drill"><span class="lb">本章自检</span>
+    <ul class="chk">
+      <li>能说清「模型输出」和「外壳执行」的分工，以及为什么权限问题属于外壳。</li>
+      <li>能对着自己任一个项目，指出四条性质各造成了哪一个具体麻烦。</li>
+      <li>能解释「为什么要写验收脚本」，而不是回答「因为大家都这么干」。</li>
+    </ul>
+  </div>
+</section>
+
+<section id="ch1">
+  <div class="ch-no">CHAPTER 1</div>
+  <h2>上下文工程：把「给模型看什么」当成设计对象</h2>
+  <p class="goal">长 prompt 不是越强越好。这一章讲怎么把信息分层，让agent 每次只看到它需要的那部分。</p>
+
+  <h3>长 prompt 的三个失效模式</h3>
+  <ol>
+    <li><b>指令稀释</b>：约束从 5 条涨到 50 条，每条的权重都在下降。你写了 5 条自洽硬检查，模型在生成 15 版正文时很容易顾不上第 4 条。</li>
+    <li><b>自相矛盾</b>：文档迭代多次后，旧段落和新段落同时对同一件事给出不同要求。你的版式规范从 v1 到 v6 改了 6 次，章节编号出现过两个「第 13 节」——人或模型读到都会含糊。</li>
+    <li><b>参考材料淹没任务</b>：把 144KB 的完整样板 HTML 塞进上下文，只为复用其中一段 CSS。绝大部分 token 花在不会变的内容上，真正要写的正文反而成了少数派。</li>
+  </ol>
+  <div class="box why"><span class="lb">关键认知</span>上下文不是「越多越好」，是「信息密度越高越好」。每加一段材料都要问：这段在本次任务里会改变模型的决策吗？不会，就别放进本次提示词。</div>
+
+  <h3>三类信息，必须分开存放</h3>
+  <table>
+    <tr><th>类型</th><th>特征</th><th>放哪</th><th>怎么给</th></tr>
+    <tr><td><b>不变量</b></td><td>几个月不变：路径、口径、命令、禁令</td><td><code>AGENTS.md</code>（项目契约）</td><td>每次会话开头读一次，短</td></tr>
+    <tr><td><b>参考样例</b></td><td>大、少变：CSS 骨架、图表模板、样例报纸</td><td>独立文件 <code>reference/</code></td><td>按需引用，或由脚本直接拼装，<b>不进提示词</b></td></tr>
+    <tr><td><b>本次任务</b></td><td>每次都变：今天要什么、哪里改了</td><td>对话 / 自动化提示词</td><td>越短越好，只写差异</td></tr>
+  </table>
+  <p><b>唯一真源原则</b>：同一件事只在一个文件里说。要改，改那一处。你现在把「报纸存哪」同时写在自动化提示词、工作日志和我的记忆里，任何一处过期就会分叉——主自动化存错目录就是这么来的。</p>
+
+  <h3>落地动作一：写 <code>AGENTS.md</code></h3>
+  <p>这是「给 agent 看的 README」，和你写给人看的 README 不一样：不介绍项目多好，只写<b>会出错的地方</b>。配套模板已经写好，结构是固定的七节：</p>
+  <pre><code># 项目名 · 项目契约
+## 1. 路径（唯一真源，最容易出错，写最前）
+## 2. 不变量（改代码不得破坏）
+## 3. 常用命令
+## 4. 交付流程（顺序不可换）
+## 5. 验收（跑什么、什么结果算过）
+## 6. 本机环境事实（别让 agent 重复踩）
+## 7. 明确禁止</code></pre>
+  <div class="box proj"><span class="lb">在你项目里</span>模板里第 6 节已经把你踩过的坑固化了：COM 被安全策略拦、<code>--window-size=390</code> 假象、sharecode cookie、PyPI 源、发布同意不跨轮。这些以前每次都要重新试一遍，现在读文件就知道。</div>
+
+  <h3>落地动作二：把 144KB 样板拆开</h3>
+  <p>当前出报是「模型读整份样板 → 输出整份新报纸」。改成三段式：</p>
+  <pre><code>reference/style.css      ← 不变的 CSS，脚本直接读入
+reference/skeleton.html   ← 只剩结构占位符 {{BODY}} {{ISSUE}} {{DATE}}
+本期正文片段.md           ← 模型只写这个，体量从 144KB 降到几十 KB
+build.py                  ← 拼装 + 校验 + 落盘，模型不参与</code></pre>
+  <p>好处不只是省 token：<b>模型再也不可能把 CSS 改坏</b>，因为它根本看不到 CSS。这就是「用结构约束代替口头约束」——比在提示词里写十遍「不要改样式」有效得多。</p>
+
+  <h3>落地动作三：渐进披露</h3>
+  <p>不要一开始就把全部规范塞进去。先给目录和摘要，等 agent 要写某一版时再给那一版的细则：</p>
+  <pre><code>第 1 轮：AGENTS.md + 任务一句话 + 「需要细则时读 reference/版式规范.md 第 N 节」
+第 2 轮：agent 自己按需打开对应章节
+第 3 轮：交付前跑 validate.py</code></pre>
+
+  <div class="box drill"><span class="lb">动手练</span>
+    <ol>
+      <li>把 <code>templates/AGENTS.md</code> 拷到 <code>ai-daily/</code>，按实际改一遍路径表。</li>
+      <li>数一数：现在「报纸保存位置」这句话在几个文件里出现？把它们改成只指向 <code>AGENTS.md</code>。</li>
+      <li>把 11-04 样板里的 <code>&lt;style&gt;</code> 块抽成 <code>reference/style.css</code>，验证浏览器打开仍正常。</li>
+    </ol>
+  </div>
+  <div class="box drill"><span class="lb">本章自检</span>
+    <ul class="chk">
+      <li>能区分不变量 / 参考样例 / 本次任务，并说出各自该放哪。</li>
+      <li>能解释「为什么把 CSS 抽走比写十遍不要改样式更有效」。</li>
+      <li>能在自己项目里找出至少一处「同一件事写在两个地方」。</li>
+    </ul>
+  </div>
+</section>
+
+<section id="ch2">
+  <div class="ch-no">CHAPTER 2</div>
+  <h2>验收前置：从「看着还行」到「跑得过断言」</h2>
+  <p class="goal">全书最值钱的一章。把「怎样算做对了」写成会跑的代码，这是从「派活」到「工程」的分水岭。</p>
+
+  <h3>核心转变</h3>
+  <p>旧流程：<b>需求 → agent 干活 → 人眼看 → 提意见 → 再干</b>。你的晨报 v1→v6 就是六轮这个循环，每一轮的「意见」其实都是一条本该提前写明的验收标准。</p>
+  <p>新流程：<b>验收标准（代码） → agent 干活 → 机器判 → 不过就把错误原文回传重试 → 通过才允许发布</b>。</p>
+  <div class="fig">
+    <svg viewBox="0 0 680 180" role="img" xmlns="http://www.w3.org/2000/svg">
+      <title>验收闭环</title>
+      <desc>先写断言，agent 交付后机器判定，不通过则带错误原文重试，通过才发布。</desc>
+      <defs><marker id="a2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5"/></marker></defs>
+      <rect x="30" y="50" width="130" height="60" rx="8" fill="#eef1f3" stroke="#4a5b6b" stroke-width="0.5"/>
+      <text x="95" y="80" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#1b1a17">① 写断言</text>
+      <rect x="195" y="50" width="130" height="60" rx="8" fill="#f6f1dd" stroke="#7a6a3a" stroke-width="0.5"/>
+      <text x="260" y="80" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#1b1a17">② agent 交付</text>
+      <rect x="360" y="50" width="130" height="60" rx="8" fill="#f7ece9" stroke="#8c1d18" stroke-width="0.5"/>
+      <text x="425" y="80" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#1b1a17">③ 机器判</text>
+      <rect x="525" y="50" width="125" height="60" rx="8" fill="#eef1f3" stroke="#4a5b6b" stroke-width="0.5"/>
+      <text x="587" y="80" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#1b1a17">④ 发布</text>
+      <path d="M160 80 L195 80" fill="none" stroke="#5F5E5A" stroke-width="1.5" marker-end="url(#a2)"/>
+      <path d="M325 80 L360 80" fill="none" stroke="#5F5E5A" stroke-width="1.5" marker-end="url(#a2)"/>
+      <path d="M490 80 L525 80" fill="none" stroke="#5F5E5A" stroke-width="1.5" marker-end="url(#a2)"/>
+      <path d="M425 110 L425 145 L260 145 L260 110" fill="none" stroke="#8c1d18" stroke-width="1.5" marker-end="url(#a2)"/>
+      <text x="342" y="162" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#8c1d18">FAIL：把失败原文回传 → 重试</text>
+    </svg>
+    <div class="cap">关键不是「多一道检查」，是失败信息能直接被 agent 拿来改</div>
+  </div>
+
+  <h3>三类断言</h3>
+  <table>
+    <tr><th>类型</th><th>例子（你的项目）</th><th>怎么测</th></tr>
+    <tr><td><b>结构断言</b></td><td>15 个 <code>&lt;section&gt;</code>、15 条锐评、5 个说人话框、13 个名词</td><td>正则 / DOM 计数</td></tr>
+    <tr><td><b>一致性断言</b></td><td>报头期号 = 报尾期号 = <code>issues.js</code> 期号；<code>site/</code> 与源文件 md5 相同；跨版星数一致</td><td>跨文件比对</td></tr>
+    <tr><td><b>行为断言</b></td><td>390px 视口 <code>scrollWidth === clientWidth</code>；点上一期能切到 001；线上 APK 返回 200 且 md5 一致</td><td>CDP / curl / 脚本</td></tr>
+  </table>
+  <p>断言要满足三个条件：<b>可执行</b>（不是写在规范里的一句话）、<b>能定位</b>（说清哪个文件、实测几个）、<b>有明确退出码</b>（下游据此决定发不发布）。</p>
+
+  <h3>逐段读配套脚本 <code>examples/validate.py</code></h3>
+  <h4>① 统一收集结果，失败信息可读</h4>
+  <pre><code>results = []
+def check(group, name, ok, detail=""):
+    results.append((group, name, bool(ok), detail))
+    print(f"  [{'OK  ' if ok else 'FAIL'}] {name}  ·  {detail}")
+
+def finish():
+    bad = [r for r in results if not r[2]]
+    if bad:
+        print("未通过（把这些原文回传给 agent，让它自己改）：")
+        for g, n, _, d in bad: print(f"  · [{g}] {n} {d}")
+        return 1                 # 退出码 1 → 下游禁止发布
+    return 0</code></pre>
+  <p>注意 <code>detail</code>：写「实测 14」而不是「不通过」。agent 拿到「15 条锐评 实测 14」就知道去补一条，不需要人再翻译一遍。<b>失败信息是给 agent 的输入，不是给人看的日志。</b></p>
+
+  <h4>② 断言要精确，否则会误报</h4>
+  <p>写「正文只用中文引号」这条时，我实测发现按字面写会报错：正文里有半角引号，但都在命令行示例代码里，属于合理例外；另外报尾「往期：第 001 期」会让「期号唯一」误判。所以脚本里做了两处精确化：</p>
+  <pre><code>def body_text(html):
+    # 排除 script / style / code / pre：命令行示例里的引号不算正文
+    t = re.sub(r"&lt;(script|style|code|pre)\b[^&gt;]*&gt;.*?&lt;/\1&gt;", " ", html, flags=re.S | re.I)
+    return re.sub(r"&lt;[^&gt;]+&gt;", " ", t)
+
+# 期号不要求「全文唯一」，只要求报头与报尾一致
+title_no = issue_from(re.search(r"&lt;title&gt;(.*?)&lt;/title&gt;", t, re.S).group(1))
+colophon  = re.search(r'class="colophon"[^&gt;]*&gt;(.{0,400})', t, re.S)
+check("A", "报头/报尾期号一致", title_no == issue_from(colophon.group(1)))</code></pre>
+  <div class="box why"><span class="lb">这是个重要的方法论副产品</span>把含糊的规则写成代码时，你会被迫回答「命令行算不算正文」「往期引用算不算期号」。也就是说，<b>写断言的过程本身就是澄清需求的过程</b>。规范里那句「正文只用中文引号」从来没被定义清楚，直到要写成代码才暴露出来。</div>
+
+  <h4>③ 把踩过的坑固定成断言，防复发</h4>
+  <pre><code># 这次真实踩过：.btn 的 display 覆盖了 HTML 的 hidden 属性
+check("C", "hidden 兜底仍在",
+      re.search(r"\[hidden\]\s*\{[^}]*display\s*:\s*none", e) is not None)</code></pre>
+  <p>这条断言的价值不在「检查 CSS」，在于<b>以后任何人（或任何一次模型生成）把那行兜底删掉，CI 会立刻拦下</b>。故障复盘的产出不该只是一句「以后注意」，应该是一条断言。</p>
+
+  <h3>实测结果（不是示意）</h3>
+  <pre><code>$ python learn-agent/examples/validate.py
+检查项目：D:\WorkBuddyData\Tasks\2026-11-03-20-15-44\ai-daily
+[A] 每期报纸的结构        ... 15 条 OK
+[B] issues.js 与报纸是否对得上 ... 13 条 OK
+[C] 入口页：把踩过的坑固定成断言 ... 4 条 OK
+====================================================
+结果：32 / 32 条通过
+全部通过 → 允许进入发布步骤
+EXIT=0</code></pre>
+  <h4>变异测试：证明断言不是摆设</h4>
+  <p>配套脚本 <code>examples/repair_loop.py</code> 会在临时沙盒里复制一份可校验的最小项目，故意制造「11-05 少一条锐评 + 新一期还没同步进 site/」，再跑同一套断言：</p>
+  <pre><code>$ python repair_loop.py
+基线：32/32，退出码 0
+--- 第 1 轮：29/31 通过，2 条失败，退出码 1 ---
+  · [A] AI晨报-2026-11-05.html · 15 条锐评 实测 14
+  · [B] 2026-11-05 · 报纸已同步进 site/  site/ 缺 · 源 有
+EXIT=1</code></pre>
+  <p>脚本抓到了，并且返回 1。注意<b>一处退化引发两条失败，且修法不同</b>：一条靠改 HTML 补锐评，一条只能靠跑 <code>build_index.py</code> 同步产物。所以工单必须列出全部失败项，不能只修第一条就宣布完成。<b>没有做过变异测试的断言，你不知道它到底有没有在检查。</b>以后每加一条断言，都故意破坏一次验证它会红。</p>
+
+  <h3>失败闭环：怎么让 agent 自己改</h3>
+  <pre><code>for attempt in range(3):
+    agent_do_task()
+    r = run("python validate.py .")
+    if r.returncode == 0: break
+    agent_fix(prompt="自检未通过，原文如下，只修这些：\n" + r.stdout)
+else:
+    write_status("FAILED")   # 三次仍不过：留状态、停止发布、等人介入</code></pre>
+  <p>三个要点：把<b>原文</b>回传（不要人转述）、限制<b>只修失败项</b>（避免它顺手改坏别处）、设<b>重试上限</b>并留下明确状态（防止无限循环和静默失败）。</p>
+  <div class="box proj"><span class="lb">现场跑过</span><code>examples/repair_loop.py</code> 把上面这段伪代码跑成了真的：<code>python repair_loop.py</code> 两轮收敛（29/31 → 32/32 → ALLOW）；<code>--stubborn</code> 故意漏跑同步，第 2、3 轮始终停在 30/31，触发熔断、写出 <code>status.json</code> 并保留现场；<code>--gate &lt;项目路径&gt;</code> 可对真实项目只判定不改文件。<br>写这个脚本时还抓到一个真实缺陷：<code>validate.py</code> 的「报纸已同步进 site/」原本没有 <code>detail</code>，工单里只剩一句「不通过」，agent 无从下手——现已补成「site/ 缺 · 源 有」。<b>闭环脚本反过来会检验断言本身够不够格：失败信息不是日志，是给模型的输入。</b></div>
+
+  <div class="box drill"><span class="lb">动手练</span>
+    <ol>
+      <li>跑一遍 <code>python learn-agent/examples/validate.py</code>，确认 32/32。</li>
+      <li>加一条你自己的断言（例如「13 个名词速查」），故意破坏一次验证它会红。</li>
+      <li>把脚本接进出报流程：<code>validate.py</code> 退出码非 0 就不许执行重新发布。</li>
+    </ol>
+  </div>
+  <div class="box drill"><span class="lb">本章自检</span>
+    <ul class="chk">
+      <li>能说清「规范里写一条」和「代码里断言一条」的本质差别。</li>
+      <li>能解释为什么失败信息要带实测数字、且原样回传给 agent。</li>
+      <li>知道变异测试是什么，以及为什么新加的断言要故意破坏验证一次。</li>
+      <li>能指出自己项目里至少一条「只写在文档里、没有代码」的硬检查。</li>
+    </ul>
+  </div>
+</section>
+
+<section id="ch3">
+  <div class="ch-no">CHAPTER 3</div>
+  <h2>任务分解与可验证流水线</h2>
+  <p class="goal">一个十二段提示词，不如五个能单独重跑的阶段。</p>
+
+  <h3>为什么长链路会变脆</h3>
+  <p>你现在出报是「检索 → 写作 → 排版 → 自洽检查 → 落盘 → 刷索引 → 发布」一口气完成。三个代价：</p>
+  <ul>
+    <li><b>错误定位成本高</b>：最终发现头条素材不对，无法只重跑检索，只能整期重来。</li>
+    <li><b>中间状态不可见</b>：没有「素材 JSON」这个可检查物，事实核查只能混在写作里做。</li>
+    <li><b>上下文压力</b>：越到后面的步骤，模型离前面的约束越远，这正是「自洽硬检查」容易漏的原因。</li>
+  </ul>
+
+  <h3>分阶段模板</h3>
+  <pre><code>stage1_search    →  material.json      # 只检索，结构化落盘，可人工抽查
+stage2_verify    →  material.checked.json  # 独立一步核对数字/日期/来源
+stage3_write     →  body.md            # 只写正文，不碰 CSS
+stage4_assemble  →  AI晨报-DATE.html   # 脚本拼装（模型不参与）
+stage5_validate  →  validate.py        # 断言，退出码决定去留
+stage6_publish   →  build_index.py + deploy</code></pre>
+  <p>每一步满足三个条件才叫「阶段」：<b>有明确输入输出</b>、<b>产物落盘</b>、<b>能单独重跑且不破坏下游</b>。中间产物用结构化格式（JSON / Markdown 片段），不要自由文本——结构化才容易被断言检查。</p>
+
+  <h3>可验证性设计</h3>
+  <p>这是比「分解」更重要的一步：<b>让每一步的产物天然容易检查</b>。例如素材阶段要求每条带 <code>source</code>、<code>date</code>、<code>number</code> 字段，那么核查阶段就能机器比对「同一项目在不同版的星数是否一致」，而不是靠模型自己记。</p>
+  <div class="box proj"><span class="lb">和你晨报内容的一个呼应</span>你在第 05 版拆过 harness 的思路：<b>模型负责提议，外壳负责记账和校验</b>——工具调用写进模型改不了的 Record，回合末用自述对账。流水线设计是同一个原则的放大版：别指望模型「记得自己说过什么」，把状态交给外壳存成文件，再由代码核对。</div>
+
+  <h3>幂等：同一输入重跑，结果相同</h3>
+  <p>你的 <code>build_index.py</code> 已经做对了：复制前先比文件大小，不重复覆盖；每次完整重写 <code>issues.js</code>。所以今天跑一次和跑三次，结果一样。这叫幂等，是自动化能安全重试的前提。</p>
+  <p>反例：如果脚本是「往索引里追加今天这一期」，重跑两次就会多出一条重复记录。<b>写脚本时优先「全量重建」而不是「增量追加」</b>，全量重建天然幂等。</p>
+
+  <div class="box drill"><span class="lb">动手练</span>
+    <ol>
+      <li>把 <code>build_index.py</code> 连跑两次，比较 <code>issues.js</code> 除 <code>generatedAt</code> 外是否完全一致。</li>
+      <li>设计一个 <code>material.json</code> 的最小 schema，让「跨版数字一致」可以机器比对。</li>
+      <li>挑出出报流程里最该独立成一步的环节，说明它为什么现在混在里面会出问题。</li>
+    </ol>
+  </div>
+<!-- extra:ch3 -->
+<h3>现场演示：把 12 段提示词换成 6 个阶段</h3>
+  <p>配套脚本 <code>examples/pipeline.py</code> 在临时沙盒里跑完整链路，每一步产物都落盘、都带 md5，能单独抽查：</p>
+  <pre><code>$ python examples/pipeline.py
+=== 完整流水线（6 个阶段，每步产物落盘）===
+  [collect  ] 素材落盘（3 条）              md5=47bfd11d44
+  [verify   ] 独立核对通过                  md5=736227d132
+  [write    ] 只写正文片段，模型看不到 CSS   md5=d14914b267
+  [assemble ] 脚本拼装整页                  md5=3d3b2b2b8b
+  [validate ] 断言通过（3 段正文、viewport、style 齐全）
+  [publish  ] （模拟）发布 + 写状态文件      md5=22945f53d1
+最终产物：material.json / material.checked.json / body.md / paper.html / status.json</code></pre>
+  <p>三个开关对应本章三件事：<code>--from write</code> 复用前序产物、只重跑 write 之后四步（实测 4 份产物 md5 与首次完全相同）；<code>--twice</code> 连跑两次比对全部中间产物，结论「完全一致 → 幂等」；<code>--bad-material</code> 注入「素材 99.9k ≠ 口径表 12.4k」的跨来源数字冲突，流水线停在 <code>verify</code>，现场只剩 <code>material.json</code>。</p>
+  <div class="box why"><span class="lb">关键差别</span>旧链路里「事实核查」混在写作中，素材错了只能整期重来；拆成独立阶段后，坏数据在进入写作前就被拦下，而且<b>现场留下一份可检查的 material.json</b>，一眼能看出是哪条数字不对。这就是「可验证性设计」的收益。</div>
+
+  <h3>阶段边界怎么划</h3>
+  <table>
+    <tr><th>判据</th><th>该问自己的问题</th><th>不满足会怎样</th></tr>
+    <tr><td>产物可被断言检查</td><td>这一步的输出能不能用代码判断对错？</td><td>只能靠人眼，等于没分阶段</td></tr>
+    <tr><td>失败不污染上游</td><td>这一步崩了，前面的产物还完好吗？</td><td>要重跑整条链路</td></tr>
+    <tr><td>重跑不破坏下游</td><td>单独重跑它，后面的结果会变吗？</td><td>不敢重试，也无法补偿</td></tr>
+  </table>
+  <p><code>pipeline.py</code> 里给每个阶段写了 <code>REQUIRED</code> 前置产物表：从 <code>write</code> 续跑时若 <code>material.checked.json</code> 不存在，会明确报「缺少前序产物，请先跑完整流水线」，而不是抛一个 <code>FileNotFoundError</code> 让你猜。<b>阶段之间的依赖也要写成代码。</b></p>
+  <div class="box proj"><span class="lb">一个跨章节的真实代价</span>第 7 章的回归套件本想「把 <code>build_index.py</code> 复制进沙盒连跑两次测幂等」，但它硬编码了另一个自动化的工作目录（第 1 章 C5 漂移），复制过去会被真实目录污染，测不准。最后套件改用纯沙盒的 <code>pipeline.py --twice</code>。<b>流水线能不能被安全地搬进测试环境，取决于唯一真源有没有守住。</b></div>
+
+  <h3>中间产物要结构化，不要自由文本</h3>
+  <p>素材阶段强制每条带 <code>id / source / date / number</code> 四个字段，核查阶段就能写机器比对，而不是请模型「自己记得别写错」：</p>
+  <pre><code>material.json
+{ "items": [
+  {"id":"repo-a","source":"github","date":"2026-11-05","number":"12.4k"},
+  {"id":"repo-b","source":"github","date":"2026-11-05","number":"8.1k"}
+]}
+
+verify(items, published_facts):
+  for it in items:
+    for k in ("source","date","number"):
+      assert it.get(k), f"{it['id']} 缺 {k}"
+    assert published_facts[it["id"]] == it["number"],
+           f"{it['id']} 数字冲突"          # 跨版一致性在这里被机器抓住</code></pre>
+  <p>注意失败信息带 <code>id</code> 和实测数字——这和第 2 章「失败信息是给 agent 的输入」是同一条原则，只不过用在了流水线中间而不是最终交付。</p>
+
+  <h4>12 段提示词 → 6 个阶段的映射</h4>
+  <table>
+    <tr><th>原提示词段落</th><th>阶段</th><th>产物</th><th>谁执行</th></tr>
+    <tr><td>①② 十二路检索、锐评素材</td><td>collect</td><td><code>material.json</code></td><td>agent</td></tr>
+    <tr><td>自洽硬检查的数字部分</td><td>verify</td><td><code>material.checked.json</code></td><td>脚本</td></tr>
+    <tr><td>③–⑩ 15 版正文、锐评</td><td>write</td><td><code>body.md</code></td><td>agent</td></tr>
+    <tr><td>复用 144KB 样板与 CSS</td><td>assemble</td><td>整页 HTML</td><td>脚本</td></tr>
+    <tr><td>版式规范、跨版一致性</td><td>validate</td><td>断言结果</td><td>脚本</td></tr>
+    <tr><td>刷索引、重新发布</td><td>publish</td><td><code>status.json</code></td><td>脚本（需授权）</td></tr>
+  </table>
+  <div class="box drill"><span class="lb">补充动手练</span>
+    <ol>
+      <li>跑 <code>python examples/pipeline.py --from write</code>，看它如何复用前序产物；再删掉 <code>material.checked.json</code> 重跑，读它的报错。</li>
+      <li>给 <code>verify</code> 加一条「同一 id 的 date 必须相同」的断言，然后故意改坏一条做变异测试。</li>
+    </ol>
+  </div>
+<!-- /extra:ch3 -->
+  <div class="box drill"><span class="lb">本章自检</span>
+    <ul class="chk"><li>能说出「阶段」的三个条件。</li><li>能解释为什么结构化中间产物比自由文本更容易验收。</li><li>能判断一个脚本是不是幂等，并说出全量重建优于增量追加的理由。</li></ul>
+  </div>
+</section>
+
+<section id="ch4">
+  <div class="ch-no">CHAPTER 4</div>
+  <h2>工具、权限与副作用管理</h2>
+  <p class="goal">agent 造成的一切损失，都发生在「外壳执行」那一刻。管住外壳，比管住提示词有效。</p>
+
+  <h3>四类损害</h3>
+  <table>
+    <tr><th>类型</th><th>你的真实场景</th><th>防线</th></tr>
+    <tr><td>覆盖</td><td>改入口页 / 改自动化提示词 / 重打 APK</td><td>改动前备份或 commit</td></tr>
+    <tr><td>删除</td><td>归档旧 <code>.url</code>、清理发布目录</td><td>回收站 / 先移走不直接删 / 白名单目录</td></tr>
+    <tr><td>外发</td><td>重新发布站点、发邮件、调用第三方 API</td><td>明确授权 + 本轮确认</td></tr>
+    <tr><td>误发布</td><td>未校验的报纸被推到线上</td><td>校验退出码作为发布闸门</td></tr>
+  </table>
+
+  <h3>最小权限与授权边界</h3>
+  <p>把动作分三档，写进 <code>AGENTS.md</code> 让 agent 自己遵守：</p>
+  <pre><code>A 档（可自动）：读文件、跑只读命令、生成本地临时文件、跑 validate.py
+B 档（做完要报备）：写项目内文件、重打 APK、生成桌面快捷方式
+C 档（必须先问）：重新发布线上站点、改自动化提示词、动桌面上已有文件、任何删除</code></pre>
+  <div class="box proj"><span class="lb">你已经在做的一件对的事</span>「发布同意不跨轮」——每次改动已上线站点要重新发布，都在当轮先确认。这就是 C 档动作的正确处理方式，把它写进契约，别只留在我的工作日志里。</div>
+
+  <h3>原子写：杜绝「半截文件被当成成功」</h3>
+  <p>这是你补发检查里一个真实的漏洞：它用「文件是否存在」判断今天出报没有。如果 8 点那次生成到一半崩了，留下一个 15 版只写了 6 版的 HTML，补发检查会认为「已出报」直接跳过。修法是临时文件 + 校验 + 原子改名：</p>
+  <pre><code>import os
+from pathlib import Path
+
+tmp = target.with_suffix(".html.tmp")
+tmp.write_text(html, encoding="utf-8")
+if validate(tmp) != 0:          # 先校验临时文件
+    tmp.unlink(); raise SystemExit("校验未过，不落盘")
+os.replace(tmp, target)         # 同一分区内改名是原子的
+# 观察者在任何瞬间看到的，要么是旧文件，要么是完整新文件</code></pre>
+  <p>配套地，判断「今天成没成」不要看文件存在，要看一个显式状态：</p>
+  <pre><code>status.json = {"date":"2026-11-05", "state":"OK",
+               "validated":32, "published":true, "at":"08:04"}</code></pre>
+
+  <h3>工具描述怎么写</h3>
+  <p>给工具写说明时，<b>写边界不写自由</b>。反例：「可以执行任意命令」。正例：「只允许在 <code>ai-daily/site/</code> 下写文件；不允许删除；发布前必须通过 <code>validate.py</code>」。工具描述本身是上下文的一部分，写得模糊等于放权。</p>
+
+<!-- extra:ch4 -->
+<h3>原子写的完整实现（可运行）</h3>
+  <p><code>examples/pipeline.py</code> 里每个阶段都走同一个函数。它把「校验」做成参数传进来，校验不过就删临时文件、<b>目标文件一个字节都不动</b>：</p>
+  <pre><code>def atomic_write(path, text, validator=None):
+    tmp = path.with_name(path.name + ".tmp")
+    tmp.write_text(text, encoding="utf-8")
+    if validator:
+        code, why = validator(tmp)          # 先校验临时文件
+        if code != 0:
+            tmp.unlink(missing_ok=True)
+            raise RuntimeError(f"原子写被拦下：{why}（目标文件未被触碰）")
+    os.replace(tmp, path)                   # 同分区改名是原子的
+    return md5(path)
+
+# assemble 阶段注入骨架校验：缺 style 或 viewport 就拒绝落盘
+atomic_write("paper.html", html, validator=check_skeleton)</code></pre>
+  <p>为什么是 <code>os.replace</code> 而不是「先删旧文件再写」：前者在文件系统层面是一步完成，任何时刻的观察者看到的<b>要么是旧文件、要么是完整新文件</b>；后者中间存在一个「文件不存在」或「写了一半」的窗口。你补发检查用「文件存在」判断成功，正好会踩进这个窗口。</p>
+
+  <h3>现场演示：副作用被挡在下游之外</h3>
+  <pre><code>$ python examples/pipeline.py --bad-material
+  [collect] 素材落盘（3 条）  md5=fa9c596d4a
+已拦下：事实核查未过：repo-a 数字冲突：素材 99.9k ≠ 口径表 12.4k
+现场产物：['material.json']
+→ 没有 body.md / paper.html / status.json：坏素材没有流到下游</code></pre>
+  <p>注意这里拦截发生在<b>任何写操作之前</b>：<code>collect</code> 已经落盘的是可丢弃的中间产物，而 <code>publish</code> 这个真正有外部影响的动作根本没被执行。权限设计的第一原则不是「拦住坏人」，是<b>让危险动作排在最后、且前面有闸门</b>。</p>
+
+  <h3>把 A / B / C 三档写成代码，而不是写成口号</h3>
+  <p>契约里写「C 档必须先问」只是文字；脚本里应该有一道真的过不去的检查：</p>
+  <pre><code>PERMISSION = {
+  "read":       "A",   # 读文件、跑只读命令、跑 validate.py
+  "write_local":"B",   # 写项目内文件、重打 APK（做完报备）
+  "deploy":     "C",   # 重新发布站点（当轮明确授权）
+  "delete":     "C",
+}
+def guard(action, approved=False):
+    level = PERMISSION[action]
+    if level == "C" and not approved:
+        raise PermissionError(f"{action} 属于 C 档：未获本轮授权，拒绝执行")
+    return True
+
+# 发布闸门：先校验，再授权，最后才动手
+guard("deploy", approved=user_said_yes_this_turn)
+if run("validate.py").returncode != 0:
+    raise SystemExit("断言未过，禁止发布")     # 闸门在副作用之前</code></pre>
+  <div class="box warn"><span class="lb">本机真实案例，三条都踩过</span>① PowerShell 的 <code>WScript.Shell</code> COM 被安全策略拦截，创建 <code>.lnk</code> 失败 → 改成直接生成原生二进制，属于「换执行方式」而非提权；② 旧的浏览器式 <code>.url</code> 是<b>先归档备份再替换</b>，没有直接删除；③ 每次重新发布线上站点都在当轮先确认，且「同意不跨轮」。<b>这三条应该写进 AGENTS.md 第 7 节，而不是只留在工作日志里。</b></div>
+  <div class="box proj"><span class="lb">工具描述也是上下文</span>给工具写说明时写边界不写自由：「只允许在 <code>ai-daily/site/</code> 下写文件；不允许删除；发布前必须通过 <code>validate.py</code>」。模型看得见这段描述，写得模糊等于悄悄放权——这是第 1 章信息密度原则在权限上的应用。</div>
+<!-- /extra:ch4 -->
+  <div class="box drill"><span class="lb">本章自检</span>
+    <ul class="chk"><li>能说出「模型只提议、外壳才动手」对权限设计的含义。</li><li>能解释为什么 <code>os.replace</code> 能防止半截文件被当成成功。</li><li>能把自己手上的 agent 动作分成 A/B/C 三档。</li></ul>
+  </div>
+</section>
+
+<section id="ch5">
+  <div class="ch-no">CHAPTER 5</div>
+  <h2>自动化与可靠性</h2>
+  <p class="goal">定时任务最危险的不是不跑，是「跑了但没成」却看起来成了。</p>
+
+  <h3>定时任务的三个谎言</h3>
+  <ol>
+    <li><b>「跑过了」≠「成功了」</b>：进程退出码、异常、超时都要检查。</li>
+    <li><b>「文件存在」≠「内容正确」</b>：就是你补发检查现在的判断方式。</li>
+    <li><b>「没报错」≠「下游同步了」</b>：出报成功但 <code>build_index.py</code> 或重新发布失败，桌面能看到、手机看不到，而且没人知道。</li>
+  </ol>
+
+  <h3>给你两条自动化逐条体检</h3>
+  <table>
+    <tr><th>现状</th><th>风险</th><th>改法</th></tr>
+    <tr><td>8:00 出报 → 刷索引 → 发布，串在一段提示词里</td><td>任一步失败，后续可能仍被执行或静默跳过</td><td>每步查退出码；失败即中止并写 <code>status.json</code></td></tr>
+    <tr><td>补发检查：文件存在就跳过</td><td>半截文件会被当成已出报</td><td>改为读 <code>status.json</code> 的 <code>state == OK</code>，且跑一次 <code>validate.py</code></td></tr>
+    <tr><td>补发检查每 3 小时跑一次</td><td>正常日子重复判断、异常日子可能反复补发</td><td>加「当天已尝试」标记，避免重复出报</td></tr>
+    <tr><td>没有失败通知</td><td>连续几天没出报，要等你自己打开发现</td><td>至少把失败写进产物；进阶是发一条消息</td></tr>
+  </table>
+
+  <h3>状态可查，是无人值守的最低要求</h3>
+  <p>设计一个任何人（包括下次的 agent）一眼能看懂的状态文件，并且<b>它是流程最后一步写的</b>：</p>
+  <pre><code>{
+  "date": "2026-11-05",
+  "state": "OK",              // OK | FAILED | PARTIAL
+  "steps": {
+    "generate": "OK", "validate": "OK:32/32",
+    "index": "OK", "publish": "OK"
+  },
+  "error": null,
+  "at": "2026-11-05 08:04:12"
+}</code></pre>
+  <p>注意 <code>PARTIAL</code> 这个状态很有用：出报和刷索引成了、发布没成，就该标 PARTIAL，允许下次只补发布，而不是整期重来。这就是<b>补偿</b>：知道断在哪，就能从哪继续。</p>
+
+  <h3>重试、退避与熔断</h3>
+  <ul>
+    <li><b>重试</b>只针对瞬态失败（网络超时、下载源抽风），且同一动作要幂等。</li>
+    <li><b>退避</b>：连续失败别立刻死循环，间隔拉长。</li>
+    <li><b>熔断</b>：连续 N 次失败就停止并留状态，等人介入；不要让自动化无限重试一整夜。</li>
+  </ul>
+  <div class="box why"><span class="lb">一个真实对照</span>这两天装 Android 工具链时，第一次下载脚本因为 <code>sdkmanager.bat</code> 在 Git Bash 下路径问题失败了；改成直接调 <code>java -classpath ... SdkManagerCli</code> 才成功。这类失败就该「换个执行方式重试」，而不是把整条链路从头跑一遍。分阶段的价值在这里也体现出来：JDK 和 SDK 已经解压好了，只重跑第 4 步即可。</div>
+
+<!-- extra:ch5 -->
+<h3>现场演示：状态机的四种结局</h3>
+  <p><code>examples/status.py</code> 用四个场景把「文件存在 ≠ 成功」跑成了可观察的事实：</p>
+  <pre><code>=== 场景 1 · 全绿 ===
+  state=OK       steps=generate:OK validate:OK index:OK publish:OK
+  should_skip(2026-11-05) = True   resume_from = None
+
+=== 场景 2 · 发布失败 ===
+  state=PARTIAL  steps=generate:OK validate:OK index:OK publish:FAILED
+  resume_from = publish   → 只重跑 publish，前三步产物保留
+
+=== 场景 3 · 半截文件 ===
+  文件存在 = True（43 字节，只写了 6 版）
+  state=FAILED   should_skip(2026-11-07) = False  → 补发检查会正确触发
+
+=== 场景 4 · 连续失败 ===
+  第 1/2 次：FAILED    第 3 次：FAILED  error=CIRCUIT_OPEN</code></pre>
+  <p>场景 3 就是你补发检查现在最危险的地方：它只看 <code>AI晨报-YYYY-MM-DD.html</code> 在不在。换成 <code>should_skip()</code> 后，半截文件不会被当成「今天已出报」。</p>
+
+  <h3>状态机的最小实现</h3>
+  <pre><code>STEPS = ["generate", "validate", "index", "publish"]
+
+def mark(step, ok, detail=""):
+    d["steps"][step] = ("OK:" + detail) if ok else ("FAILED:" + detail)
+    save()                                  # 每步都落盘，崩溃也知道断在哪
+
+def finish():
+    vals = [d["steps"].get(s, "PENDING") for s in STEPS]
+    if all(v.startswith("OK") for v in vals):      d["state"] = "OK"
+    elif any(v.startswith("FAILED") for v in vals):
+        d["state"] = "PARTIAL" if any(v.startswith("OK") for v in vals) else "FAILED"
+    if d["state"] == "FAILED" and d["attempt"] &gt;= 3:
+        d["error"] = "CIRCUIT_OPEN：停止重试，等人介入"
+
+def resume_from():                          # 补偿：从第一个没成功的步骤续跑
+    return next((s for s in STEPS if not d["steps"].get(s,"").startswith("OK")), None)
+
+def should_skip(date):                      # 只看状态，不看文件
+    return d.get("date") == date and d.get("state") == "OK"</code></pre>
+  <div class="box why"><span class="lb">两个容易漏掉的顺序</span>① <b>开工先写 RUNNING，收工才写 OK</b>：如果一上来就写 OK，中途崩了反而留下「成功」的假状态；② <b>状态文件自己也要原子写</b>（<code>status.py</code> 里用的 <code>atomic_json</code> 就是 <code>os.replace</code>），否则状态文件本身可能半截。<b>判据自己不能被判据的故障骗过。</b></div>
+
+  <h3>给你两条自动化的改造清单</h3>
+  <p>把现在「一段提示词串到底」改成下面这个形状。注意每一步都有退出码检查、失败即中止、且 <code>finally</code> 里一定留状态：</p>
+  <pre><code># 8:00 每日出报
+book.begin(today)
+try:
+    generate()                              # 写临时文件 → 校验 → 原子改名
+    book.mark("generate", True, "15 版")
+    r = run("validate.py"); book.mark("validate", r.code == 0, r.summary)
+    if r.code != 0: raise GateBlocked(r.stdout)      # 原文留给下一轮 agent
+    run("build_index.py"); book.mark("index", True)
+    guard("deploy", approved=True_asked_this_turn)
+    deploy(); book.mark("publish", True)
+except Exception as e:
+    book.mark(current_step, False, str(e)[:200])     # 失败原文，不转述
+finally:
+    book.finish()                           # OK / PARTIAL / FAILED 三选一
+
+# 每 3 小时补发检查（先读状态，再决定做不做）
+if StatusBook("status.json").should_skip(today):
+    print("今日晨报已出且校验通过，无需补发"); return
+if attempts_today &gt;= 3:
+    print("CIRCUIT_OPEN，等人介入"); return          # 防止反复补发</code></pre>
+  <p>这里有个和第 2 章闭环呼应的地方：<code>GateBlocked(r.stdout)</code> 把失败原文留下来，下一轮 agent 拿到的就是「15 条锐评 实测 14」这种能直接动手的信息，而不是人转述的「校验没过」。</p>
+  <div class="box proj"><span class="lb">PARTIAL 是省钱的状态</span>出报成功、索引刷好、发布超时，标 PARTIAL 并记录 <code>resume_from = publish</code>。下次只需补一次发布，不用重新检索 12 路、重写 15 版。<b>状态越细，补偿越便宜。</b></div>
+  <div class="box drill"><span class="lb">补充动手练</span>
+    <ol>
+      <li>跑 <code>python examples/status.py --json</code>，看最后一份状态文件的完整字段。</li>
+      <li>把「当天已尝试次数」加进状态，验证第 3 次会写 <code>CIRCUIT_OPEN</code> 而第 4 次不再执行。</li>
+    </ol>
+  </div>
+<!-- /extra:ch5 -->
+  <div class="box drill"><span class="lb">本章自检</span>
+    <ul class="chk"><li>能说出三个「谎言」各对应自己项目里的哪个具体风险。</li><li>能解释为什么「文件存在」不能当成功判据。</li><li>能说清 PARTIAL 状态如何支持补偿而不是整期重来。</li></ul>
+  </div>
+</section>
+
+<section id="ch6">
+  <div class="ch-no">CHAPTER 6</div>
+  <h2>版本控制与可回滚</h2>
+  <p class="goal">不需要学完整 git，六条命令就够把「改坏了」从灾难变成一句话。</p>
+
+  <h3>你现在的处境</h3>
+  <p>17 个项目 0 个 git 仓库。晨报改了 6 版、入口页改了多次、APK 重打好几遍，全靠文件名和记忆；这次是我手动把旧 <code>.url</code> 归档成备份文件才没丢。这在一次性交付时还能撑住，一旦每天自动写文件，就是拿运气当备份。</p>
+
+  <h3>最小可用集</h3>
+  <pre><code>git init                          # 一次性
+git add -A &amp;&amp; git commit -m "基线：15 版报纸 + 入口 + APK 打包脚本"
+# 每次让 agent 改之前：
+git add -A &amp;&amp; git commit -m "改动前快照"
+# 改完发现不对：
+git diff                          # 看改了什么
+git checkout -- site/index.html   # 单文件回滚
+git reset --hard HEAD~1           # 整体回到上一版（慎用，先确认无未提交的重要产物）</code></pre>
+  <p>三条纪律：<b>改动前先提交</b>（有快照才敢放手让 agent 改）、<b>一次交付一个 commit</b>（信息明确）、<b>提交信息写「做了什么」而不是「update」</b>。</p>
+
+  <h3>被低估的收益：diff 是最省 token 的上下文</h3>
+  <p>新会话里让 agent 接手，与其把整个 <code>index.html</code> 重读一遍，不如给它 <code>git diff</code>：几十行就精确说清「上次改了什么、为什么」。这是第 1 章「信息密度」原则的具体应用——<b>版本控制不只是备份，也是上下文工具</b>。</p>
+
+  <h3>分支做实验</h3>
+  <pre><code>git checkout -b try-new-layout    # 放心让 agent 大改
+# 满意 → git checkout main; git merge try-new-layout
+# 不满意 → git checkout main     # 一行丢掉整个实验</code></pre>
+  <p>有了分支，「让 agent 大胆试」的心理成本会大幅下降。你现在每次改版式都小心翼翼，部分原因就是没有安全网。</p>
+
+  <div class="box drill"><span class="lb">动手练</span>
+    <ol>
+      <li>给 <code>ai-daily/</code> 做 <code>git init</code>，写 <code>.gitignore</code> 排除 <code>.edge-*</code>、<code>shots/</code>、<code>.build/</code>，打第一个基线 commit。</li>
+      <li>让 agent 改一个无关紧要的细节，用 <code>git diff</code> 复核，再回滚一次。</li>
+      <li>把「改动前先 commit」写进 <code>AGENTS.md</code> 第 4 节交付流程。</li>
+    </ol>
+  </div>
+<!-- extra:ch6 -->
+<h3>六条命令的最小闭环（在临时目录里练，不碰真实项目）</h3>
+  <p>不用先学分支、rebase、远程。下面这一段可以整段复制到一个空目录里跑，跑完你就理解了九成收益：</p>
+  <pre><code>mkdir git-drill &amp;&amp; cd git-drill &amp;&amp; git init
+printf 'v1 正确的入口页\n' &gt; index.html
+git add -A &amp;&amp; git commit -m "基线：入口页 v1"        # 改动前先有快照
+printf 'v2 被 agent 改坏了\n' &gt; index.html             # 模拟一次失误
+git diff                                              # 看清楚改了哪几行
+git checkout -- index.html                            # 一句话回滚
+cat index.html                                        # → v1 正确的入口页
+
+git checkout -b try-new-layout                        # 开分支放心试
+# 满意：git checkout main; git merge try-new-layout
+# 不满意：git checkout main                            # 一行丢掉整个实验</code></pre>
+  <p>重点是<b>顺序</b>：先 commit 再让 agent 动手。改完再提交也有历史，但「改动前快照」才是你敢放手的原因——它保证任何时刻都有一个已知良好的状态可以回去。</p>
+
+  <h3>.gitignore 该写什么（按你的项目实测）</h3>
+  <pre><code># ai-daily/.gitignore
+.edge-*/            # CDP/无头浏览器的用户数据目录，几十 MB 且每次都变
+.edge-check*/
+.edge-online/
+shots/              # 验证截图，可再生
+apk/.build/         # APK 编译中间产物（dex、未签名包）
+*.tmp               # 原子写的临时文件
+__pycache__/
+# 保留：AI晨报-*.html、site/、tools/、apk/src、AndroidManifest.xml
+# 判断标准：丢了能不能用一条命令重新生成？能 → 忽略；不能 → 提交。</code></pre>
+  <p>注意 <code>site/issues.js</code> 虽然由脚本生成，但<b>要提交</b>：它是两端阅读器直接读的索引，提交后出问题时能一眼看出「索引有没有被改坏」。可再生不等于不该跟踪，看它是否在运行时被直接消费。</p>
+
+  <h3>diff 是最省 token 的上下文（量化）</h3>
+  <table>
+    <tr><th>给 agent 的内容</th><th>体量</th><th>信息密度</th></tr>
+    <tr><td>整份样板 HTML</td><td>144481 B ≈ 48k tokens</td><td>99% 是不变 CSS 与旧正文</td></tr>
+    <tr><td>整份入口页重读</td><td>19055 B ≈ 6k tokens</td><td>大部分与本次改动无关</td></tr>
+    <tr><td><code>git diff</code> 一次改动</td><td>通常几十行 ≈ 0.3–1k tokens</td><td>几乎全是「变了什么」</td></tr>
+  </table>
+  <p>新会话接手时，先给 <code>git log --oneline -5</code> 和 <code>git diff HEAD~1</code>，比把三个文件全文贴进上下文有效得多。这是第 1 章「信息密度」原则最具体的一次应用：<b>版本控制不只是备份，也是上下文压缩工具。</b></p>
+  <div class="box proj"><span class="lb">落地顺序</span>① 给 <code>ai-daily/</code> 打第一个基线 commit；② 把「改动前先 commit」写进 <code>AGENTS.md</code> 第 4 节；③ 每次交付一个 commit，信息写「做了什么」而不是 <code>update</code>；④ 大改版式时开分支。四步都不需要额外工具。</div>
+<!-- /extra:ch6 -->
+  <div class="box drill"><span class="lb">本章自检</span>
+    <ul class="chk"><li>能说出「改动前提交」为什么比「改完再提交」更重要。</li><li>能解释 diff 为什么是给 agent 的高效上下文。</li><li>知道自己项目里哪些目录必须进 <code>.gitignore</code>。</li></ul>
+  </div>
+</section>
+
+<section id="ch7">
+  <div class="ch-no">CHAPTER 7</div>
+  <h2>评估与回归</h2>
+  <p class="goal">没有评估，「改进」就只是「感觉」。这一章把主观判断变成可比较的量。</p>
+
+  <h3>两条评估轴</h3>
+  <table>
+    <tr><th>轴</th><th>测什么</th><th>谁判</th><th>例子</th></tr>
+    <tr><td><b>正确性</b></td><td>结构、一致性、可用性</td><td>机器（断言）</td><td><code>validate.py</code> 32 条；CDP 390px；APK 验签</td></tr>
+    <tr><td><b>质量</b></td><td>选题、锐评是否有立场、说人话是否真说人话</td><td>人（评分表）</td><td>你第 14 版那套「星探指数」就是标准范例</td></tr>
+  </table>
+  <div class="box proj"><span class="lb">你已经掌握了一半</span>星探指数：五项各 20 分、入选线 70、四项一票否决、口径写清、附落选对照。这就是一套设计良好的评估量表——<b>维度可枚举、分数有依据、阈值明确、有反例对照</b>。把同样的思路用在「评价 agent 每次交付」上，就能从「感觉这期不错」变成可追踪的分数曲线。</div>
+
+  <h3>golden sample 与回归</h3>
+  <pre><code>golden/
+  AI晨报-2026-11-05.html     # 人工确认过「这期是好的」的基线
+  expected.json               # 期望：15 版 / 15 锐评 / 期号 002 / 首屏截图哈希
+verify.py:
+  1. 跑 validate.py（结构）
+  2. 跑 CDP 截图，与 golden 对比关键区域
+  3. 跑 build_index.py 两次，确认幂等
+  4. 输出一行：PASS / FAIL + 差异摘要</code></pre>
+  <p>以后改版式、改 CSS、换模型，跑一次 <code>verify.py</code> 就知道「哪里退化了」。第 2 章那条 <code>[hidden]</code> 断言，就是最小规模的回归测试；<code>verify.py</code> 是把它体系化。</p>
+
+  <h3>三个运营指标</h3>
+  <ul>
+    <li><b>一次通过率</b>：agent 交付后 <code>validate.py</code> 首次就绿的比例。这个数会直接反映第 1、2 章做得好不好。</li>
+    <li><b>返工轮次</b>：从派活到验收平均几轮。你的 v1→v6 是 6 轮，目标压到 1–2 轮。</li>
+    <li><b>静默故障时长</b>：从故障发生到被发现多久。有 <code>status.json</code> 和告警之前，这个数可能是好几天。</li>
+  </ul>
+  <p>不需要看板，把这三个数记在 <code>status.json</code> 或一个简单的 CSV 里就行。<b>能被看到的东西才会被改善。</b></p>
+
+<!-- extra:ch7 -->
+<h3>现场演示：把临时验证串成一条命令</h3>
+  <p><code>examples/verify_all.py</code> 把前面几章散落的检查收进一个只读套件。默认实测：</p>
+  <pre><code>$ python examples/verify_all.py
+[PASS] structure      32/32 条断言
+[PASS] idempotence    沙盒流水线连跑两次，4 份中间产物 md5 一致
+[PASS] artifacts      dex/assets 齐全；v1 签名文件 3 个；本地与 site 副本 md5 一致
+[FAIL] contract       4 项漂移（C1 契约落地 / C2 结构 / C3 被加载 / C5 跨任务特例）
+[SKIP] online         加 --online 启用
+[SKIP] browser        CDP 390px 真实视口
+[SKIP] golden         golden sample 截图比对
+[SKIP] signing        APK 密码学验签
+--- 结论：PASS 3 / FAIL 1 / SKIP 4 ---     退出码 1
+
+$ python examples/verify_all.py --skip-contract
+--- 结论：PASS 3 / FAIL 0 / SKIP 5 ---     退出码 0
+
+$ python examples/verify_all.py --online --skip-contract
+[PASS] online         线上 185915 字节，md5 一致
+--- 结论：PASS 4 / FAIL 0 / SKIP 4 ---     退出码 0</code></pre>
+  <div class="box why"><span class="lb">这章最重要的一条</span><b>SKIP 不计入通过。</b>浏览器视口、golden 截图、密码学验签这次都没跑，报告就如实列 4 条 SKIP 并给出启用命令。把「没测」写成「通过」是评估里最常见的自欺；<code>--skip-contract</code> 允许把已知技术债显式标为跳过，但绝不把它染绿。<b>报告的价值在于它敢说哪些没验证。</b></div>
+  <p>另外注意：套件默认会报契约 4 项 FAIL，这不是 bug，是第 1 章的落地作业还没做。等 <code>AGENTS.md</code> 拷进项目、脚本引用它、跨任务硬编码清掉，这一项会自己变绿。</p>
+
+  <h3>质量评估：把你第 14 版的量表搬到 agent 交付上</h3>
+  <p>「星探指数」五项各 20 分、入选线 70、四项一票否决——这套设计完全可以直接用来评价 agent 每次交付：</p>
+  <table>
+    <tr><th>维度</th><th>满分</th><th>怎么给分（可查证）</th></tr>
+    <tr><td>验收通过度</td><td>20</td><td><code>validate.py</code> 首次全绿 20，返工一轮扣 5</td></tr>
+    <tr><td>约束遵守</td><td>20</td><td>路径 / 期号 / 引号 / 不变量逐条核对</td></tr>
+    <tr><td>事实可追溯</td><td>20</td><td>每个数字有 source 与 date，跨版无冲突</td></tr>
+    <tr><td>最小改动</td><td>20</td><td><code>git diff</code> 只含本次该改的文件</td></tr>
+    <tr><td>失败透明</td><td>20</td><td>未验证项写进说明，不把未知说成通过</td></tr>
+  </table>
+  <p>一票否决：改了运行中自动化却没备份、发布未经授权、把 SKIP 算成 PASS。<b>量表的关键不是分数，是每一项都能拿出证据</b>，否则又变回「感觉这期不错」。</p>
+
+  <h3>golden sample 怎么建、三个指标怎么记</h3>
+  <pre><code>learn-agent/golden/
+  AI晨报-2026-11-05.html     # 人工确认「这期是好的」
+  expected.json               # {"sections":15,"razors":15,"issue":"002","plain":5}
+# 以后换版式 / 换模型：跑 verify_all.py，再比 expected.json
+
+metrics.csv                  # 每天一行，能被看到才会被改善
+date,first_pass,rounds,silent_fail_hours,note
+2026-11-05,0,6,,v1→v6 靠人眼
+2026-11-06,1,1,0,接了闸门与 status.json</code></pre>
+  <p>三个运营指标：<b>一次通过率</b>（首次就绿的比例，直接反映第 1、2 章成效）、<b>返工轮次</b>（你的基线是 6 轮，目标 1–2）、<b>静默故障时长</b>（从发生到被发现）。不需要看板，一个 CSV 就够。</p>
+  <div class="box drill"><span class="lb">补充动手练</span>
+    <ol>
+      <li>跑 <code>python examples/verify_all.py --json</code>，把结构化报告存成文件，看 SKIP 项是否被如实记录。</li>
+      <li>故意删掉 <code>[hidden]</code> 兜底，跑套件确认 structure 会红；改回来再跑一次。</li>
+      <li>给评分表加一条你自己的一票否决项，并说明它对应哪次真实故障。</li>
+    </ol>
+  </div>
+<!-- /extra:ch7 -->
+  <div class="box drill"><span class="lb">本章自检</span>
+    <ul class="chk"><li>能区分正确性评估与质量评估，各举一例。</li><li>能说出 golden sample 的作用与 <code>verify.py</code> 该包含哪几类检查。</li><li>能解释「一次通过率」为什么能反映上下文工程与验收前置的成效。</li></ul>
+  </div>
+</section>
+
+<section id="ch8">
+  <div class="ch-no">CHAPTER 8</div>
+  <h2>把 agent 做进产品</h2>
+  <p class="goal">前七章是「agent 帮我开发」，这一章是「产品里带一个 agent」。门槛最高，也最能拉开差距。</p>
+
+  <h3>先判断该不该用</h3>
+  <p><b>确定性任务用代码，不要用 agent。</b>「温度超过 85℃ 就标红」是 if 语句；「温度突然升高，结合当前进程、驱动版本、近期改动，判断可能原因并给出建议」才需要 agent。判断标准很简单：如果输出无法用规则枚举，且需要跨来源关联，才值得请模型。</p>
+
+  <h3>最小 function calling 循环</h3>
+  <pre><code>tools = {
+  "read_sensors": lambda: collector.latest(),
+  "list_processes": lambda: ps.top_by_gpu(),
+  "read_log": lambda path, n: tail(path, n),
+  "write_diagnosis": lambda text: db.insert(text)   # 唯一有副作用的工具
+}
+while True:
+    act = model.decide(context, tools_schema)
+    if act.name == "finish": break
+    if act.name not in SAFE_TOOLS and not user_approved(act): continue
+    result = tools[act.name](**act.args)
+    context.append({"tool": act.name, "result": result})  # 留 trace
+    if token_cost(context) &gt; BUDGET: break               # 成本上限</code></pre>
+  <p>四个不可或缺的东西：<b>工具白名单</b>、<b>副作用单独授权</b>、<b>每步 trace 可观测</b>、<b>成本与步数上限</b>。少了任何一个，demo 能跑，长期会出事。</p>
+
+  <h3>两个可在你项目里落地的方案</h3>
+  <h4>方案 A：监测器的异常诊断 agent</h4>
+  <p>现在的 <code>MonitorWidget</code> + <code>server.py</code> / <code>collector.py</code> 是「采集 → 展示」。加一层：温度/占用率异常触发时，agent 拿着只读工具去查当前进程、GPU 占用、最近几分钟曲线，产出一句带依据的诊断（而不是一句「温度偏高」）。<b>只给只读工具</b>，不让它改设置；诊断写进日志，由用户决定是否采纳。</p>
+  <h4>方案 B：晨报的事实核查 agent</h4>
+  <p>把「核对数字、日期、跨版一致性」从写作里拆出来，变成一个独立阶段（第 3 章）：输入 <code>material.json</code>，输出 <code>checked.json</code> + 冲突清单。它甚至可以不参与写作，只做校验——这是最容易落地、风险最低的产品化 agent，因为<b>它只有否决权，没有发布权</b>。</p>
+
+  <div class="box warn"><span class="lb">最常见的翻车点</span>把 agent 直接接到「能改数据 / 能发消息」的工具上，又没留 trace。出问题时你既不知道它为什么这么做，也无法回滚。正确顺序永远是：只读 → 可观测 → 有 dry-run → 最后才给写权限。</div>
+
+<!-- extra:ch8 -->
+<h3>现场演示：四个机制，四种结局</h3>
+  <p><code>examples/agent_loop.py</code> 用确定性规则模拟 <code>model.decide()</code>，不调用真实模型也能把四种情况跑通：</p>
+  <pre><code>=== 正常：只读三件 + 授权写入 ===
+  调用：['read_sensors','list_processes','read_log','write_diagnosis']
+  花费：480 tokens / 步数 4    落库诊断：1 条
+
+=== 未授权：只给只读工具 ===
+  调用：['read_sensors','list_processes','read_log']
+  拦截：副作用工具未授权：只读完成，不写入    落库诊断：0 条
+
+=== 成本上限（200）===
+  调用：['read_sensors']
+  拦截：成本上限：120 + 120 &gt; 200
+
+=== 模型幻觉调用未知工具 ===
+  调用：['read_sensors','list_processes']
+  拦截：白名单拦下未知工具 delete_logs</code></pre>
+  <p>最后一个用例最关键：<b>模型「想」调一个不存在的工具时，外壳直接拒掉</b>，而不是把错误抛给下游或让它换个名字再试。白名单不是文档里的一句话，是循环里的一行 <code>if name not in TOOLS</code>。</p>
+
+  <h3>工具契约：把边界写成 schema，而不是写在提示词里</h3>
+  <pre><code>{
+  "read_sensors":  { "side_effect": false, "args": {},
+                     "desc": "只读：返回 CPU/GPU 温度、占用率、风扇转速" },
+  "list_processes":{ "side_effect": false, "args": {},
+                     "desc": "只读：按 GPU 占用排序列出进程" },
+  "read_log":      { "side_effect": false, "args": {"n": "1-20"},
+                     "desc": "只读：最近 n 条系统日志" },
+  "write_diagnosis":{ "side_effect": true, "needs_approval": true,
+                     "desc": "唯一写操作：把一句带依据的诊断记入日志" }
+}</code></pre>
+  <p>每个工具都写清 <code>side_effect</code> 和参数范围。这段 schema 本身就是喂给模型的上下文——写得含糊等于放权；写成结构化字段，外壳就能在调用前机械判断该不该拦。</p>
+
+  <h3>trace 该记什么，以及四级放行顺序</h3>
+  <table>
+    <tr><th>字段</th><th>为什么必须有</th></tr>
+    <tr><td>step / tool / args</td><td>复盘「它为什么这么做」，而不是只看最终结果</td></tr>
+    <tr><td>result</td><td>区分「模型说错了」和「工具返回错了」</td></tr>
+    <tr><td>cost / 累计 spent</td><td>成本上限才有依据，不是拍脑袋</td></tr>
+    <tr><td>event：TOOL / BLOCKED</td><td>被拦也要留痕，否则你以为它没尝试过</td></tr>
+  </table>
+  <p>放行顺序永远不能跳：<b>只读 → 可观测 → dry-run → 才给写权限（且配回滚）</b>。方案 B「晨报事实核查 agent」之所以是最低风险的起点，是因为它<b>只有否决权、没有发布权</b>：输出一份冲突清单，由人决定是否采纳，连写权限都不用给。</p>
+  <div class="box proj"><span class="lb">方案 A 怎么评价它说得对不对</span>监测器诊断 agent 的输出不能只写「温度偏高」，必须<b>引用 trace 里的具体读数</b>（如「GPU 97%、blender.exe 占 71%、驱动 26.9.1」）。评估方式：把诊断里的每个数字回查 <code>read_sensors</code> / <code>list_processes</code> 的返回值，对不上就判失败。这样第 2 章的断言就能复用在自然语言输出上——<b>让「有依据」变成可机器核对的事</b>。</div>
+  <div class="box drill"><span class="lb">补充动手练</span>
+    <ol>
+      <li>跑 <code>python examples/agent_loop.py</code>，对照完整 trace JSON 找出每一步的 cost 与 event。</li>
+      <li>把 <code>token_budget</code> 改成 1000，观察它是否会走到 <code>write_diagnosis</code>；再改 <code>max_steps=2</code> 看步数上限。</li>
+      <li>给 <code>write_diagnosis</code> 加一个 dry-run 模式：只打印将要写入的内容，不落库。</li>
+    </ol>
+  </div>
+<!-- /extra:ch8 -->
+  <div class="box drill"><span class="lb">本章自检</span>
+    <ul class="chk"><li>能判断一个需求该用规则还是该用 agent，并说出理由。</li><li>能列出 function calling 循环里四个不可或缺的机制。</li><li>能解释「只有否决权、没有发布权」为什么是低风险的产品化起点。</li></ul>
+  </div>
+</section>
+
+<section id="apxA">
+  <div class="ch-no">APPENDIX A</div>
+  <h2>你的项目体检与 4 周练习路线</h2>
+  <p class="goal">数据来自 2026-11-05 对 17 个非空工作区的实际扫描，不是示意。</p>
+  <table>
+    <tr><th>指标</th><th>实测</th><th>说明</th></tr>
+    <tr><td>非空项目</td><td>17</td><td>11/01–11/05，涵盖监测器、亮度托盘、性能监控、备考面板、晨报等</td></tr>
+    <tr><td>有 git 仓库</td><td><b style="color:var(--red)">0</b></td><td>改坏无法回滚</td></tr>
+    <tr><td>有 README</td><td><b style="color:var(--red)">1</b></td><td>新会话的 agent 必须重新摸索</td></tr>
+    <tr><td>带 check / verify 脚本</td><td>3</td><td>截图与视口测量已并入 <code>probe.js</code></td></tr>
+    <tr><td>定时自动化</td><td>2</td><td>每日 8:00 出报 + 每 3 小时补发检查，均 ACTIVE</td></tr>
+  </table>
+  <p>这不是「做得不好」，是典型的<b>一次性交付形态</b>：agent 一把梭出成品、人眼看一眼收货。项目一旦进入每日自动运行，缺口才会显形。</p>
+
+  <h3>4 周路线（全部锚定 ai-daily，不另起玩具项目）</h3>
+  <table>
+    <tr><th>周</th><th>学</th><th>交付物</th><th>验收</th></tr>
+    <tr><td>1</td><td>第 0–2 章</td><td><code>AGENTS.md</code> 落地；<code>validate.py</code> 接入出报流程；每条新断言做变异测试</td><td>32/32 绿；故意破坏能被抓到；失败时不发布</td></tr>
+    <tr><td>2</td><td>第 3–4 章</td><td>把出报拆成 3 个可重跑阶段；原子写 + <code>status.json</code>；A/B/C 权限档写进契约</td><td>断在任一步都能从那步续跑，不整期重来</td></tr>
+    <tr><td>3</td><td>第 5–6 章</td><td>两条自动化改造；<code>git init</code> 打基线；「改动前 commit」成为习惯</td><td>连续 3 天无人干预正常出报；能一句话回滚</td></tr>
+    <tr><td>4</td><td>第 7–8 章</td><td><code>verify.py</code> 一键回归；golden sample；选方案 A 或 B 做只读 agent 原型</td><td>换版式后能报出退化；原型只有只读工具且留 trace</td></tr>
+  </table>
+<!-- extra:apxA -->
+<h3>逐周命令清单（把表格变成能直接跑的动作）</h3>
+  <pre><code># 第 1 周 · 上下文工程 + 验收前置
+cp learn-agent/templates/AGENTS.md ai-daily/AGENTS.md     # 按实际路径表改一遍
+python learn-agent/examples/validate.py ai-daily           # 32/32
+python learn-agent/examples/check_contract.py ai-daily     # 看 4 项漂移
+python learn-agent/examples/repair_loop.py                 # 闭环演示
+python learn-agent/examples/repair_loop.py --gate ai-daily # 发布闸门
+验收：故意删一条锐评 → validate.py 退出 1 → 不发布
+
+# 第 2 周 · 流水线 + 权限
+python learn-agent/examples/pipeline.py                    # 6 阶段
+python learn-agent/examples/pipeline.py --from write       # 续跑
+python learn-agent/examples/pipeline.py --twice            # 幂等
+python learn-agent/examples/pipeline.py --bad-material     # 事实核查拦截
+验收：断在任一步能只补那一步；A/B/C 三档写进 AGENTS.md 第 7 节
+
+# 第 3 周 · 状态 + 回滚
+python learn-agent/examples/status.py --json
+cd ai-daily &amp;&amp; git init &amp;&amp; git add -A &amp;&amp; git commit -m "基线"
+验收：连续 3 天无人干预正常出报；git diff 能定位；一句话回滚
+
+# 第 4 周 · 回归 + 产品化
+python learn-agent/examples/verify_all.py --online --json
+python learn-agent/examples/agent_loop.py
+验收：改版式后套件报出退化；原型只有只读工具且留全 trace</code></pre>
+  <p>四条「现在就能跑」的命令里，前两条是只读体检，后两条在临时沙盒里造文件，<b>都不会碰正在运行的 ai-daily</b>。想练手不用担心搞坏日报。</p>
+
+  <h3>怎么判断「学完了」</h3>
+  <ul class="chk">
+    <li>整套链路连续跑一周、你一次都没手动补过，且每天 <code>status.json</code> 都是 OK。</li>
+    <li>出问题时五分钟内能说出断在 <code>generate / validate / index / publish</code> 的哪一步，依据是状态和断言原文，不是回忆。</li>
+    <li>你敢让 agent 直接改运行中的项目，因为改动前有 commit、改动后有闸门、失败有状态、发布有授权。</li>
+  </ul>
+  <p>三条都不是「读完了 8 章」，而是可验证的行为。<b>判断标准必须是能观察的事实</b>——这和整套教材讲的是同一件事。</p>
+<!-- /extra:apxA -->
+  <p>学完的判断标准不是「读完 8 章」，而是：<b>你敢让整套链路连续跑一周不看它</b>，并且出问题时五分钟内能定位到哪一步。</p>
+</section>
+
+<section id="apxB">
+  <div class="ch-no">APPENDIX B</div>
+  <h2>反模式速查</h2>
+  <p class="goal">每条都来自这两天的真实故障，不是编的例子。</p>
+  <table>
+    <tr><th style="width:38%">反模式</th><th>真实后果</th><th>改成</th></tr>
+    <tr><td>验收标准只写在文档里</td><td>「自洽硬检查」5 条形同虚设，靠人眼截图</td><td>写成 <code>validate.py</code> 断言</td></tr>
+    <tr><td>用「文件存在」判断成功</td><td>半截 HTML 会被补发检查当成已出报</td><td>校验 + 原子写 + <code>status.json</code></td></tr>
+    <tr><td>同一约定写多处</td><td>自动化把报纸存到自己的工作目录，两端读不到</td><td>唯一真源 <code>AGENTS.md</code></td></tr>
+    <tr><td>整份大样板进上下文</td><td>144KB CSS 淹没任务，模型还有机会改坏样式</td><td>CSS 抽离，脚本拼装</td></tr>
+    <tr><td>故障复盘只写「以后注意」</td><td><code>[hidden]</code> 被 CSS 覆盖这类问题会复发</td><td>固定成一条回归断言</td></tr>
+    <tr><td>用不可信的手段验证</td><td>Edge headless <code>--window-size=390</code> 有最小窗口假象，误判手机排版</td><td>CDP <code>Emulation.setDeviceMetricsOverride</code></td></tr>
+    <tr><td>没有版本基线就大改</td><td>改了 6 版报纸、多次重打 APK，回不去</td><td>改动前 commit</td></tr>
+    <tr><td>多步串在一段提示词里</td><td>任一步失败都要整期重来，且不知断在哪</td><td>分阶段 + 中间产物 + 补偿</td></tr>
+    <tr><td>发布没有闸门</td><td>未校验内容可能被推到线上</td><td><code>validate.py</code> 退出码决定发布</td></tr>
+    <tr><td>自动化失败静默</td><td>要等你自己打开发现「今日暂未出报」</td><td>写状态 + 告警</td></tr>
+    <tr><td>增量追加代替全量重建</td><td>重跑会产出重复记录</td><td>全量重建，天然幂等</td></tr>
+    <tr><td>agent 有写权限却没 trace</td><td>出问题既不知原因也无法回滚</td><td>只读优先，每步留日志</td></tr>
+  </table>
+
+<!-- extra:apxB -->
+<h3>本轮新发现的五条（都来自刚才真实跑出来的 bug）</h3>
+  <table>
+    <tr><th style="width:34%">反模式</th><th>真实后果</th><th>改成 / 章节</th></tr>
+    <tr><td>断言失败信息不带实测值</td><td>「报纸已同步进 site/」没有 detail，工单里只有「不通过」，agent 无从下手</td><td>补成「site/ 缺 · 源 有」· 第 2 章</td></tr>
+    <tr><td>把 SKIP 算作通过</td><td>浏览器视口、验签都没跑，报告却显示全绿</td><td>SKIP 显式列出且不计入 PASS · 第 7 章</td></tr>
+    <tr><td>阶段续跑缺少前置检查</td><td><code>--from write</code> 在空沙盒抛 FileNotFoundError，看不出该先跑哪步</td><td>REQUIRED 表 + 可读报错 · 第 3 章</td></tr>
+    <tr><td>状态常量大小写不一致</td><td>trace 记 <code>TOOL</code>、决策数 <code>tool</code>，循环空转六步重复读传感器</td><td>常量统一，且加循环上限 · 第 8 章</td></tr>
+    <tr><td>代码里跨任务硬编码</td><td>构建脚本被复制进沙盒后仍去扫真实目录，幂等测不准</td><td>唯一真源 + 沙盒流水线 · 第 1、3 章</td></tr>
+  </table>
+  <p>这五条有个共同点：<b>都是「看起来能跑、实际没跑对」</b>，人眼扫一遍几乎发现不了，只有把断言、闭环、回归真正跑起来才暴露。这也是为什么故障复盘的产出应该是一条断言，而不是一句「以后注意」。</p>
+  <div class="box drill"><span class="lb">怎么用这张表</span>每次 agent 交付后，花两分钟从上到下扫一遍，命中任何一条就先别发布。等附录 D 的清单脚本化之后，这张表里能自动检测的部分应该交给 <code>verify_all.py</code>，人只负责需要判断的几条。</div>
+<!-- /extra:apxB -->
+</section>
+
+<section id="apxC">
+  <div class="ch-no">APPENDIX C</div>
+  <h2>术语表（按本教程的用法）</h2>
+  <table>
+    <tr><th style="width:24%">词</th><th>这里指什么</th></tr>
+    <tr><td><b>外壳 / harness</b></td><td>模型之外真正执行动作、管理上下文和记录状态的代码。模型只提议，外壳才动手。</td></tr>
+    <tr><td><b>上下文</b></td><td>本次喂给模型的全部文本：任务、历史、工具返回。有限且有衰减。</td></tr>
+    <tr><td><b>工具调用</b></td><td>模型输出一个结构化动作，外壳执行并把结果追加回上下文。</td></tr>
+    <tr><td><b>断言 / 验收</b></td><td>可执行、能定位、有退出码的「怎样算做对了」。</td></tr>
+    <tr><td><b>变异测试</b></td><td>故意破坏一点，验证断言真的会报错。没做过的断言不可信。</td></tr>
+    <tr><td><b>幂等</b></td><td>同一输入重复执行，结果相同；是安全重试的前提。</td></tr>
+    <tr><td><b>原子写</b></td><td>临时文件校验通过后一次性改名，观察者只会看到旧文件或完整新文件。</td></tr>
+    <tr><td><b>补偿</b></td><td>知道断在哪一步，就从那一步续跑，而不是整条链路从头来。</td></tr>
+    <tr><td><b>项目契约</b></td><td><code>AGENTS.md</code>：给 agent 读的路径、不变量、命令、流程、验收、禁令。</td></tr>
+    <tr><td><b>golden sample</b></td><td>人工确认「这是好的」的基线产物，用于比对后续是否退化。</td></tr>
+    <tr><td><b>渐进披露</b></td><td>先给摘要和目录，需要时再给全文，而不是一开始全塞进去。</td></tr>
+    <tr><td><b>唯一真源</b></td><td>同一件事只在一个文件里定义，别处只引用。</td></tr>
+  </table>
+
+<!-- extra:apxC -->
+<h3>补充术语</h3>
+  <table>
+    <tr><th style="width:24%">词</th><th>这里指什么</th></tr>
+    <tr><td><b>发布闸门</b></td><td>校验退出码决定是否允许发布；在副作用动作之前，不在之后。</td></tr>
+    <tr><td><b>失败工单</b></td><td>把断言的失败原文（含实测值）结构化后回传给 agent 的输入，不是日志。</td></tr>
+    <tr><td><b>熔断</b></td><td>连续 N 次失败就停止重试、留状态、等人介入，防止无限循环。</td></tr>
+    <tr><td><b>SKIP</b></td><td>明确记录「本次没测」及启用方式；绝不计入通过数。</td></tr>
+    <tr><td><b>dry-run</b></td><td>只打印将要执行的动作与参数，不产生任何副作用。</td></tr>
+    <tr><td><b>trace</b></td><td>每步工具调用、参数、返回、成本、是否被拦的完整记录。</td></tr>
+    <tr><td><b>schema</b></td><td>中间产物或工具参数的字段约定；结构化才能被断言检查。</td></tr>
+    <tr><td><b>全量重建</b></td><td>每次重算整份索引而非追加；天然幂等，重跑不会重复。</td></tr>
+    <tr><td><b>A/B/C 权限档</b></td><td>可自动 / 做完报备 / 必须先问，三档动作写进契约与 guard 函数。</td></tr>
+    <tr><td><b>一次通过率</b></td><td>agent 首次交付就跑过全部断言的比例，反映上下文工程与验收前置的成效。</td></tr>
+  </table>
+  <h3>三组最容易混淆的</h3>
+  <table>
+    <tr><th>对比</th><th>区别</th></tr>
+    <tr><td>幂等 / 原子写</td><td>幂等说「重跑结果一样」；原子写说「任一瞬间不会看到半截文件」。前者关于重复执行，后者关于并发可见性。</td></tr>
+    <tr><td>PARTIAL / FAILED</td><td>PARTIAL 有成功步骤、可定点补偿；FAILED 全败或从第一步就断，需要整轮重来或人工介入。</td></tr>
+    <tr><td>SKIP / PASS</td><td>PASS 是跑过且通过；SKIP 是根本没跑。报告里混在一起就等于撒谎。</td></tr>
+  </table>
+<!-- /extra:apxC -->
+</section>
+
+<section id="apxD">
+  <div class="ch-no">APPENDIX D</div>
+  <h2>交付前自检清单</h2>
+  <p class="goal">每次让 agent 交付前，花两分钟过一遍。前期靠自觉，后期应该全部变成脚本。</p>
+  <ul class="chk">
+    <li>路径写死在 <code>AGENTS.md</code>，且本次产物落在唯一真源位置。</li>
+    <li>本次任务的验收标准，至少有一条是可执行断言（不是文档里的话）。</li>
+    <li>新加的断言做过变异测试，确认它会红。</li>
+    <li><code>validate.py</code> 退出码为 0，失败原文没有被人工「翻译」过。</li>
+    <li>所有写操作之前有 commit 或备份，能一句话回滚。</li>
+    <li>落盘用临时文件 + 校验 + 原子改名，没有半截产物。</li>
+    <li>「成功」由 <code>status.json</code> 的 state 判定，不是由文件存在判定。</li>
+    <li>多步流程每一步都有退出码检查，失败会中止并留状态。</li>
+    <li>涉及线上的动作有明确授权，且发布闸门在校验之后。</li>
+    <li>跨文件一致性（期号、日期、数字、md5）已被机器比对过。</li>
+    <li>行为验证用的是可信手段（真实视口 / 实际请求），不是看起来像。</li>
+    <li>踩过的坑已固化成回归断言，不靠「以后注意」。</li>
+    <li>脚本重跑一次结果相同（幂等），没有重复记录。</li>
+    <li>失败时有明确状态或告警，不会静默。</li>
+    <li>交付说明里写清了「哪些没验证」，不把未知说成通过。</li>
+  </ul>
+<!-- extra:apxD -->
+<h3>能脚本化的先脚本化，剩下的才靠人</h3>
+  <p>这 15 条里，至少 9 条已经由配套脚本覆盖。交付前先跑这一条：</p>
+  <pre><code>python learn-agent/examples/verify_all.py --online --json
+# 覆盖：结构断言、幂等、APK 完整性、契约漂移、线上 md5
+# 仍需人工：授权确认、commit 快照、golden 截图比对、真实视口 CDP、未验证项说明</code></pre>
+  <table>
+    <tr><th>清单条目</th><th>谁判</th><th>命令 / 依据</th></tr>
+    <tr><td>路径唯一真源、契约被加载</td><td>脚本</td><td><code>check_contract.py</code> C1–C3</td></tr>
+    <tr><td>验收断言全绿、失败原文未转述</td><td>脚本</td><td><code>validate.py</code> / <code>repair_loop.py --gate</code></td></tr>
+    <tr><td>跨文件一致性、幂等、产物完整</td><td>脚本</td><td><code>verify_all.py</code></td></tr>
+    <tr><td>改动前 commit、授权、未验证项说明</td><td>人</td><td><code>git status</code> + 当轮确认 + 交付说明</td></tr>
+    <tr><td>真实视口、golden 截图、密码学验签</td><td>人 / 按需</td><td>套件里列为 SKIP 并给启用命令</td></tr>
+  </table>
+
+  <h3>交付说明模板</h3>
+  <pre><code>做了什么：____（一句话）
+改动文件：____（列具体路径）
+验证结果：validate 32/32、verify_all PASS x / FAIL x / SKIP x
+未验证项：____（照抄报告里的 SKIP，不许省略）
+可回滚点：commit ____；失败时状态文件 ____
+需要我确认的动作：____（C 档，逐条列）</code></pre>
+  <p>最后一行「需要我确认的动作」不能省。C 档动作必须在当轮明确授权，同意不跨轮——这条是本项目踩出来的，写进模板才不会忘。</p>
+<!-- /extra:apxD -->
+  <div class="box proj"><span class="lb">最后一句</span>「彻底学会 agent 的运用」的标志，不是你能写出多漂亮的提示词，而是<b>你敢把一条链路交给它跑一周不看</b>——因为你知道每一步都有断言、有状态、有回滚，出了事五分钟能定位。前七章就是在造这个「敢」。</div>
+</section>
+
+<section id="apxE">
+  <h2>实例项目：晨读卡，七步跑通一条闭环</h2>
+<!-- extra:apxE -->
+<p>八章讲的是方法，这一节给你一个<b>能跑的同构样本</b>：<code>learn-agent/demo/</code>。业务是「每天生成一张晨读卡」，规模只有晨报的 1/20，但工程结构和晨报一模一样——契约、断言、五阶段流水线、状态机、发布闸门、回归套件，一样不少。它不读写 <code>ai-daily/</code> 的任何文件，练坏了只影响它自己。</p>
+
+  <h3>为什么另起一个项目，而不是在晨报上练</h3>
+  <p>不是怕你搞坏，是因为在晨报上练，出了问题你分不清是<b>方法错了</b>还是<b>这一期素材不好</b>。样本项目把业务复杂度压到最低，剩下的全是工程问题——正好是你要练的那部分。</p>
+  <table>
+    <tr><th style="width:26%">晨报</th><th style="width:24%">晨读卡</th><th>迁移时改什么</th></tr>
+    <tr><td>15 个版面的报纸</td><td>1 张卡片</td><td>模板与 CSS</td></tr>
+    <tr><td>12 路检索 + 15 版正文</td><td>1 条本地素材</td><td>素材来源换成检索结果</td></tr>
+    <tr><td><code>issues.js</code> 往期索引</td><td><code>index.json</code> + 卡片墙</td><td>索引字段</td></tr>
+    <tr><td><code>validate.py</code> 32 条断言</td><td>20 条断言</td><td>断言内容</td></tr>
+    <tr><td><code>status.json</code> 状态机</td><td>同一套状态机</td><td><b>不用改</b></td></tr>
+    <tr><td>发布到公网</td><td>不发布（故意留白）</td><td>加一步部署 + 授权</td></tr>
+  </table>
+
+  <h3>七步与八章的对应</h3>
+  <table>
+    <tr><th style="width:9%">步</th><th style="width:30%">做什么</th><th>命令</th><th style="width:22%">为什么（章节）</th></tr>
+    <tr><td>1</td><td>立契约：唯一真源、不变量、权限档</td><td><code>python tools/validate.py</code></td><td>无状态 → 约定落文件（0、1）</td></tr>
+    <tr><td>2</td><td>先写断言，再写生成器</td><td><code>python tools/validate.py</code></td><td>验收前置，先定义「对」（2）</td></tr>
+    <tr><td>3</td><td>拆五阶段：select→render→index→precheck→publish</td><td><code>python tools/build.py --date 2026-11-06</code></td><td>可验证流水线（3）</td></tr>
+    <tr><td>4</td><td>让输出可复现：排期时间 + 幂等</td><td><code>... --twice</code></td><td>非确定性来源（3）</td></tr>
+    <tr><td>5</td><td>原子写与 HTML 转义</td><td><code>--date 2026-11-10</code> 后 grep 实体</td><td>副作用与注入（4）</td></tr>
+    <tr><td>6</td><td>状态机 + 闸门 + 断点续跑</td><td><code>gate.py --break</code> / <code>--resume</code></td><td>失败之后怎么办（5）</td></tr>
+    <tr><td>7</td><td>一键回归 + 变异测试 + 快照回滚</td><td><code>python tools/verify.py</code></td><td>评估与回滚（6、7）</td></tr>
+  </table>
+
+  <h3>实测：一条命令给出的三个答案</h3>
+  <pre><code>$ python tools/verify.py
+[PASS] contract     契约有效 · 零 ai-daily 路径引用
+[PASS] assertions   20/20 通过
+[PASS] idempotence  连跑两次，4 份中间产物 md5 一致
+[PASS] mutation     破坏 2026-11-06.html 后断言返回 1（会红）
+[PASS] escape       尖括号与 &amp; 均为实体
+[SKIP] browser      加 --browser 启用（需本机 Edge，本次未跑）
+--- 结论：PASS 5 / FAIL 0 / SKIP 1 ---     退出码 0</code></pre>
+  <p>三个答案分别是：<b>现在对了吗</b>（assertions）、<b>重跑会变吗</b>（idempotence）、<b>坏了会红吗</b>（mutation）。第三个最容易被省略——不做变异测试，你不知道断言有没有在检查。</p>
+
+  <h3>三个真实踩到的坑（都写进了手册）</h3>
+  <table>
+    <tr><th style="width:30%">坑</th><th>现象</th><th style="width:30%">正确做法</th></tr>
+    <tr><td>断言按 ISO 日期查卡片</td><td>页面显示「11 月 6 日」，断言找 <code>2026-11-06</code>，把正确的卡拦下</td><td>按人看到的东西断言；先怀疑断言</td></tr>
+    <tr><td>补偿点设成 <code>precheck</code></td><td>续跑仍然红——判定不负责修复</td><td>断点指向能重新生成产物的 <code>index</code></td></tr>
+    <tr><td>「互不干扰」检查字眼</td><td>契约里「<b>不</b>引用 ai-daily」这句合法声明被误判</td><td>只认路径式引用 <code>ai-daily/</code></td></tr>
+  </table>
+
+  <div class="box why"><span class="lb">样本项目的价值不在代码</span>这 4 个脚本加起来不到 700 行，照抄到晨报也不能直接用。真正能带走的是<b>三处顺序</b>：断言写在生成之前、闸门排在发布之前、补偿点指向生成而不是判定。<b>顺序错了，代码再漂亮也救不回来。</b></div>
+
+  <div class="box drill"><span class="lb">动手练</span>
+    <ol>
+      <li>跑 <code>python tools/gate.py --date 2026-11-09 --break</code>，把工单里的两条失败分别对应到「哪一步坏了」「该修哪个文件」。</li>
+      <li>在 <code>data/quotes.json</code> 里加一条带 <code>&lt;</code> 的素材，出卡后确认页面上显示原文而不是少字。</li>
+      <li>把 <code>updated</code> 改成 <code>datetime.now()</code>，跑 <code>--twice</code> 看幂等怎么红；再改回来。</li>
+    </ol>
+  </div>
+  <p>完整逐步讲解见 <code>learn-agent/demo/指导手册.md</code>：每步都写了做什么、为什么、怎么算做对了、以及踩过的坑。</p>
+<!-- /extra:apxE -->
+</section>
+
+<section id="apxF">
+  <h2>实战复盘：一天把「假绿」修成闭环</h2>
+
+<!-- extra:apxF -->
+<p>前八章讲「应该怎么设计」，附录 E 给了一个能跑的同构样本。这一节反过来：<b>拿 2026-11-06 这一天真实发生的六轮需求，看这些方法接得住接不住</b>。不教新概念，只练三种判断：检查器全绿为什么还会错、改一处要同步几处才算完成、以及怎么证明闸门真的会红。</p>
+
+  <div class="box why"><span class="lb">怎么学这一节</span>先读 F.3（假绿）、F.4（五层闸门）、F.5（反向验证），再回头看 F.1 的时间线——先有判断框架，流水账才有用。练习一律改在 <code>learn-agent/demo/</code> 里，不要在 <code>ai-daily/</code> 上试，理由和附录 E 一样：生产项目里分不清「方法错了」还是「这期素材不好」。</div>
+
+  <h3>F.1 一天的时间线：改动、暴露的问题、最后固化成什么</h3>
+  <table>
+    <tr><th style="width:13%">时段</th><th style="width:30%">做了哪些修改</th><th style="width:28%">暴露的问题</th><th>固化成的方法</th></tr>
+    <tr><td>10:15–11:00</td><td>出 003 期；撤掉全部定时 automation；新增 <code>boot_check.py</code> 注册为 SessionStart hook</td><td>定时流程与手动拼版写同一个文件名，谁后写谁赢，且不报错；手机看到旧版是启发式缓存</td><td><b>同名闸门</b>（目标已存在且内容不同 → 退出码 3，要 <code>--force</code>）；hook 三态 ok / missing / drift；<code>sw.js</code> 导航 <code>no-store</code></td></tr>
+    <tr><td>11:00–13:10</td><td>立契约 <code>AGENTS.md</code>、四级规则、五阶段状态机、分享三渠道、第 16 版提案模板</td><td>「发布成功」不等于「用户看得见」；状态漏记会让次日启动检查误判</td><td>状态机 parts/assemble/index/deploy/verify；提案<b>沉默即否决</b>；发布后 curl 验四处才记 OK</td></tr>
+    <tr><td>17:30</td><td>采纳 P004 三条，出 16 版傍晚特刊：三行摘要、六处术语注解、每期 manifest</td><td>从 15 版复制成 16 版，<b>14 处页眉的「共 15 版」没跟着改</b>——当时没发现</td><td>（当时只修了气泡定位、词表一致性等表层问题，<b>漏掉的这条到 19:15 才被外部评审抓到</b>）</td></tr>
+    <tr><td>18:40–19:15</td><td>补特刊三处入口、术语 A9 系列断言、每期 json、<code>selfcheck.py</code>；特刊改编号 003-2 并入正刊序列；撤下 11-07 未来期</td><td>特刊只在 <code>site/special/</code> 里，索引和入口都没有它；另一会话预拼了「明天的报」并发布</td><td>三处可见（横幅 / 书架 / 深链）；<b>日期闸门 R07</b> 查根目录、站点、索引、状态机四处；<code>issues</code> 按 <code>(date, issue)</code> 倒序</td></tr>
+    <tr><td>19:15–19:30</td><td>复核外部评审 7 条，修「假绿」：A4d、<code>pages_all_match</code>、自检第 11/12 项、<code>--list</code>、<code>requirements.txt</code></td><td>自检 11 项全绿，读者却看到错版数；只验 HTTP 200 也是假绿</td><td>全文对账、必查项不许 None、线上 sha 比对、文档不再写死项数</td></tr>
+    <tr><td>19:35</td><td>把「定时器未触发」等内部运营话术统一成「本期因故延后发布」，保留更正说明叙事</td><td>同类话术不只在一处：<b>已发布的 002 期也有</b>；新闻正文里的「官方补发脚本」长得像但不能一起替换</td><td>bytes 级精确替换 + 命中数校验；改完走「同步 → 凭证 → 自检 → 发布 → 抽检 → 记状态 → 提交」七步</td></tr>
+  </table>
+  <p>看最后一列：几乎每一轮的终点都不是「改好了」，而是<b>加了一道以后能自动拦住的闸门</b>。只改内容不做固化的修复，下次会换个样子回来。</p>
+
+  <h3>F.2 先给故障分类，再动手修</h3>
+  <table>
+    <tr><th style="width:20%">类别</th><th style="width:38%">今天的实例</th><th>该由哪一层拦</th></tr>
+    <tr><td>写入冲突</td><td>两版 003 互覆盖、同名文件谁后写谁赢</td><td>生成器落盘前的同名闸门</td></tr>
+    <tr><td>一致性漂移</td><td>根目录与 <code>site/</code> 两份、术语注解与报尾词表、文档里的自检项数</td><td>单向同步 + 跨文件断言 + 单一事实源</td></tr>
+    <tr><td>可见性</td><td>特刊没进索引、手机看到缓存旧版、发布成功但打不开</td><td>入口断言 + 线上验证（不是「文件存在」）</td></tr>
+    <tr><td>假绿</td><td>14 处页眉写错版数却全绿、只验 200 不验内容</td><td>全量检查 + 三态收紧 + sha 对账</td></tr>
+    <tr><td>边界越权</td><td>提前发布明天的报、提案没被点名就自行实施</td><td>L0 红线 + 默认行为写死</td></tr>
+  </table>
+  <p>分类不是为写报告，是为了问一句：<b>同一类故障是不是由同一道闸门在管？</b>如果两次「漂移」靠两个不同的补丁挡着，说明还没找到机制层。</p>
+
+  <h3>F.3 假绿：今天最贵的一课</h3>
+  <p>外部评审一句话戳中要害：特刊是 16 版，读者翻到第 15 版，页眉写着「共 15 版」，而自检盖的是全绿章。拆开来是三种形态，<b>每一种单看都很「合理」</b>。</p>
+
+  <h4>① 抽样当全量</h4>
+  <p>断言 A4b 检查了 <code>&lt;title&gt;</code>、报头、报尾三处的版数，三处都对；可页眉有 14 处，一处都没查。<code>make_manifest.py</code> 的 <code>pages_in_title</code> 更省事，只从标题取一个数。修法不是「再加一处抽查」，是<b>把检查对象从「代表样本」换成「全部实例」</b>：</p>
+  <pre><code>claims = re.findall(r"共\s*(\d+)\s*版", full)      # 全文，不是前三处
+if len(claims) != pages or any(int(x) != pages for x in claims):
+    errs.append("A4d 全文 %d 处版数写法与实际 %d 版不符" % (len(claims), pages))
+
+# 页眉还要单独对账：条数 = 版数 - 1，页码 p02..p16 连续
+headers = re.findall(r"第\s*(\d+)\s*版\s*/\s*共\s*(\d+)\s*版", full)
+assert len(headers) == pages - 1 and all(int(m) == pages for _, m in headers)</code></pre>
+
+  <h4>② 三态里的 <code>None</code> 被放行</h4>
+  <p>凭证里用 <code>True / False / None</code> 三态，<code>None</code> 表示「本期没这个版式，不参与判定」。但汇总写成了：</p>
+  <pre><code>ok = all(v is not False for v in checks.values())   # None 也算过
+
+# 正确做法：先分清「必查项」和「可选项」
+REQUIRED = ("pages_eq_nav", "nav_matches_sections",
+            "sections_continuous", "pages_all_match")
+ok = (all(checks[k] is True for k in REQUIRED)          # 必查项取不到就判 False
+      and all(v is not False for v in checks.values())) # 可选项只不许 False</code></pre>
+  <p>「取不到值」和「检查通过」是两件事。把前者当成后者，等于给检查器留了一个静默的后门。</p>
+
+  <h4>③ 只验可达，不验内容</h4>
+  <p>线上检查原来只请求到 HTTP 200 就算过。改完本地文件没发布，200 照样有——于是又出现「本地是新版、线上是旧版、自检全绿」。修法是<b>比对内容摘要</b>：把本地成品的 sha256 与线上响应体算出来的 sha256 对齐，不一致就红。</p>
+
+  <div class="box warn"><span class="lb">一句话定理</span>检查器只能证明它检查过的东西。<b>绿章的可信度等于覆盖面的下界，不等于通过项的数量。</b>所以「自检从 8 项加到 10 项」本身不提升安全性——新增的两项如果仍是抽样，错的东西照样在覆盖之外。</div>
+
+  <h3>F.4 五层闸门：缺一层就漏一类</h3>
+  <table>
+    <tr><th style="width:16%">层</th><th style="width:32%">今天的实例</th><th style="width:26%">拦什么</th><th>为什么不能并到别层</th></tr>
+    <tr><td>L0 红线（契约）</td><td>R06 自检有 FAIL 不许说完成；R07 报纸日期必须是出报当天</td><td>人和 agent 的行为</td><td>代码拦不住「嘴上说已完成」</td></tr>
+    <tr><td>落盘前断言</td><td>A4b/A4c/A4d 版数与期号、A9 系列术语一致</td><td>生成物本身错</td><td>落盘后再查，读者已经能看到</td></tr>
+    <tr><td>交付前自检</td><td><code>selfcheck.py</code>：索引、凭证、期序、日期、全文版数</td><td>跨文件一致性</td><td>单个生成器看不到别的文件</td></tr>
+    <tr><td>发布后线上验证</td><td>curl 五处 200 + sha 比对 + 手机视口 CDP</td><td>部署漏文件、缓存给旧版</td><td>本地全绿推不出线上对</td></tr>
+    <tr><td>状态机与凭证</td><td><code>status.json</code> 五阶段、每期同名 json</td><td>「谁在什么时候验过」</td><td>没记录就无法判断明天该不该重跑</td></tr>
+  </table>
+  <p>每一层都要能<b>独立说红</b>，而且红的时候给出「哪里 / 期望什么 / 实际什么」，不能只给一个退出码。</p>
+  <div class="box proj"><span class="lb">最容易被跳过的是第五层</span>撤下 11-07 未来期时，除了移走文件、删站点副本、重建索引，还必须把 <code>status.json</code> 回滚到 11-06/003。否则次日的启动检查读到「11-07 已完成」，会判定 <code>ok</code> 而静默——<b>明天的报就没人做了</b>。状态不是日志，是下一轮决策的输入。</div>
+
+  <h3>F.5 反向验证：修完还得证明闸门会红</h3>
+  <p>「跑一遍全绿」只证明现在没坏；「故意弄坏看它红」才证明检查器在工作。今天在真实项目里做了五次：</p>
+  <table>
+    <tr><th style="width:42%">故意弄坏</th><th>期望谁红</th></tr>
+    <tr><td>移走一份 json</td><td>自检「每期都有 manifest」红</td></tr>
+    <tr><td>往 <code>p07.html</code> 塞回「共 15 版」</td><td>拼版断言 A4d 红，产物不许落盘</td></tr>
+    <tr><td><code>AI_DAILY_TODAY=2026-11-05</code> 假装是昨天</td><td>日期闸门红（今天这份成了「未来期」）</td></tr>
+    <tr><td>临时目录里放一份 11-07 的报纸</td><td><code>build_index.py</code> 跳过并告警，不同步</td></tr>
+    <tr><td>本地改了文案但不发布</td><td>线上 sha 比对红——这次它真的红了，说明改动没同步</td></tr>
+  </table>
+  <p>这就是第 7 章的变异测试。<b>没做过反向验证的自检项，只能算「写过」，不能算「有用」。</b></p>
+  <div class="box proj"><span class="lb">把一次性验证固化成命令</span>当天这五次全是手工命令，跑完就没了——教案教了，生产项目却没留下入口。后来补了 <code>python ai-daily/tools/mutation_test.py</code>：在临时目录里给每个检查项造一个反例（错版数、缺凭证、等长漂移、未来期……），要求对应检查项变红，反例不碰任何成品。<b>以后每加一条自检项，就在这里补一个变异</b>，否则新项只是「写过」。<br>最初有两项被如实标成 SKIP：术语缺词表缺 HTML fixture、线上 sha 要「改了没发布」不便制造事故。后来都用<b>隔离替身</b>补齐——复制一份真实特刊、把报尾词表整批改错字；起一个 <code>127.0.0.1</code> 随机端口的假站点，只对本地副本做等长替换。<b>不能制造的事故，就造一个隔离的替身</b>，不要因此把检查项留在「没测」里。<br>每个反例还必须先跑一次<b>正向对照</b>：底板全绿了，弄坏后的红才算数——否则服务没起来也会「变红」，那是<b>假红</b>，比假绿更骗人。跑完报告里 SKIP 也要写出来：没测就是没测。</div>
+
+  <h3>F.6 漂移治理：让事实只有一份</h3>
+  <ul>
+    <li><b>单向同步 + 独立对账</b>：根目录成品 → <code>site/</code>，按内容比对，内容不变就不写（保住 mtime，manifest 才幂等）。但「同步跑没跑过」不能靠约定保证：自检再把源与副本<b>逐字节</b>比一次。只比 size 会漏掉等长替换——改一个词、改一处版数，字节数一模一样，两份真相从此分叉却无人报警。</li>
+    <li><b>凭证对账</b>：每份成品有同名 json，记 <code>path / sha256 / bytes / terms / glossary / checks / ok</code>；自检第 4 项拿它跟实际文件逐个对。</li>
+    <li><b>数字不手写第二遍</b>：文档里「自检 8 项 → 10 → 11 → 12」来回改了四轮。最后给脚本加 <code>--list</code>，三份文档统一改成「项数以 <code>--list</code> 为准」，不再写数字；<code>AGENTS.md</code> 里那张手抄的验收表也整个删掉（它一度停在 10 项，脚本已经 12 项），名称和排障提示都由 <code>--list</code> 输出。</li>
+    <li><b>教材自己也是这套</b>：增补片段放在 <code>expand_tutorial.py</code> 的 <code>EXTRA</code> 里，靠 <code>&lt;!-- extra:ID --&gt;</code> 标记幂等替换；练习题只在教材写一份，<code>build_qa_index.py</code> 自动派生到《教程问答.md》。</li>
+  </ul>
+  <p>凡是「同一个事实需要在两处手写」的地方，迟早会漂。能派生就别抄，能比对就别记。</p>
+
+  <h3>F.7 把判断写成规则，而不是靠记得</h3>
+  <h4>日期闸门 R07：查四处，不是查一处</h4>
+  <p>「不许提前发明天的报」听起来是常识，落地要查：根目录成品、<code>site/</code> 副本、<code>issues.js</code> 索引、<code>status.json</code> 状态机。少查一处，就会从那一处漏回读者面前。构建索引时还要主动跳过未来期并告警。</p>
+  <h4>沉默即否决：把默认行为写死</h4>
+  <p>第 16 版每期提四条建议，只有用户明确说「采纳 P004-2」才动工；没说就是否决，不自行实施、也不追问。规则的价值在于<b>把「要不要做」从 agent 的临场判断里拿走</b>。</p>
+  <h4>发布 ≠ 可见：检查「能不能走到」，不是「文件在不在」</h4>
+  <p>特刊当时确实发布成功了，但 <code>issues.js</code> 没有它、入口页没有它，两端都打不开。补齐首屏横幅、往期书架、深链 <code>?d=&amp;s=1</code> 三处才算完成；还要考虑 HTTP 启发式缓存与 Service Worker。</p>
+  <h4>同一天两期：先定排序语义，再写页面</h4>
+  <p>特刊不是单独的书架区，而是当天的第 2 版 <code>003-2</code>，排序键 <code>(date, issue)</code> 倒序。还有一个反直觉的决定：<b>默认落当天正刊</b>，不是「最新一期」——否则横幅形同废码。默认行为要跟着产品意图走，不能图省事。</p>
+
+  <h3>F.8 评审也要验收；编辑决策别替用户做</h3>
+  <p>那份外部评审列了 7 条，逐条核对的结果是：<b>5 条成立、2 条只对一半、3 处细节说错</b>。不核对就照单全收，会白改甚至改坏。</p>
+  <table>
+    <tr><th style="width:44%">评审原话</th><th>核对结果</th></tr>
+    <tr><td>「全项目无来源声明」</td><td>不成立：每期报尾都有「信息源 / 编辑说明 / 本报由 AI 自动编撰」，缺的是项目级演示声明，不是来源</td></tr>
+    <tr><td>「双份真相是 11-06 两版互覆盖的根源」</td><td>归因错：那次是拼版脚本同名覆盖，已有退出码 3 的闸门；单向复制反而是能自愈的</td></tr>
+    <tr><td>「7 次新提交」</td><td>数字错：当天实际 17 次</td></tr>
+  </table>
+  <p>最后那轮「只去内部话术」最能说明边界：搜全项目后发现同类话术在 4 个文件里（含<b>已发布的 002 期</b>），但「官方补发 Q4 量化脚本」是新闻正文，长得像却不能替换；「要不要加一行本报告为演示」是编辑决定，用户没选就不做。<b>先分清楚哪些是工程问题、哪些是内容决定，再动手。</b></p>
+  <div class="box warn"><span class="lb">四个会骗人的工程细节</span>① Windows 上 <code>Path.write_text()</code> 会把 LF 写成 CRLF，git diff 整文件炸开——用 bytes 级替换并校验每处只命中一次；② <code>msedge --headless --screenshot</code> 是桌面模式，会把 390px 顶栏误报成溢出，布局结论只认 CDP <code>mobile:true</code>；③ 线上中文路径要 percent-encode，还要先访问入口换到 cookie，否则 200 都拿不到；④ 后台进程不能用 shell <code>&amp;</code> 起，会被回收。</div>
+
+  <h3>F.9 今天动过的东西（按用途，不按时间）</h3>
+  <table>
+    <tr><th style="width:22%">用途</th><th>文件</th></tr>
+    <tr><td>生成与断言</td><td><code>tools/assemble_issue.py</code>（15/16 自适应、A4b/A4c/A4d/A9、<code>--slug/--label/--force/--no-site/--no-status</code>）、<code>tools/make_manifest.py</code>、<code>tools/build_index.py</code></td></tr>
+    <tr><td>检查与状态</td><td><code>tools/selfcheck.py</code>（项数以 <code>--list</code> 为准；<code>--pre/--online</code>）、<code>tools/mutation_test.py</code>（反向验证）、<code>tools/status.py</code>、<code>tools/boot_check.py</code>、<code>tools/probe.js</code></td></tr>
+    <tr><td>页面与入口</td><td><code>site/index.html</code>、<code>site/sw.js</code>、<code>site/config.js</code>、<code>parts/1106sp/</code>、<code>parts/_template/</code></td></tr>
+    <tr><td>文档与治理</td><td><code>AGENTS.md</code>、<code>项目框架与规则.md</code>（四级规则）、<code>产物清单.md</code>（产出台账）、<code>提案台账.md</code>、<code>requirements.txt</code>、<code>.gitignore</code></td></tr>
+    <tr><td>报纸成品</td><td>001–003 正刊 + <code>003-2</code> 特刊、四份同名 json、<code>_drafts/2026-11-07/</code>（预热稿，禁止直接发布）</td></tr>
+  </table>
+
+  <h3>F.10 三张可以抄走的清单</h3>
+  <pre><code>【改一处文案之后】
+搜全项目 → 分清「运营话术 / 正文内容」→ 改所有源（含备选版本）
+→ 重跑单向同步 → 重生成凭证 → --pre → 发布 → --online + 线上抽检
+→ 记 deploy/verify → git commit
+
+【收到一份评审之后】
+逐条核对（成立 / 部分成立 / 不成立，附证据）→ 只修成立的部分
+→ 把根因固化成闸门 → 故意弄坏一次看它会不会红 → 再发布 → 复验
+
+【说「已完成」之前】
+--pre 全绿 → --online 全绿 → 没有「本地改了没发布」的漂移
+→ 状态机五阶段齐 → 有一个可回滚的 commit → 未验证项如实列出</code></pre>
+
+  <div class="box drill"><span class="lb">动手练</span>
+    <ol>
+      <li>在 <code>learn-agent/demo/</code> 里把 <code>validate.py</code> 的一条断言改成「只检查第一张卡片」，跑 <code>verify.py</code> 看它是否仍然全绿；再改回全量，用一句话说明抽样为什么危险。</li>
+      <li>在 <code>ai-daily/tools/make_manifest.py</code> 里找出一处三态 <code>None</code>，判断它属于「必查项」还是「可选项」；把必查项取不到值的情况改成判 False，并故意让它取不到，确认 <code>ok</code> 变红。</li>
+      <li>用 <code>AI_DAILY_TODAY</code> 分别模拟「昨天」和「明天」，写出日期闸门在两种情况下各应给什么结论，说明为什么状态机也必须一起查。</li>
+      <li>从 R07（日期）、沉默即否决、发布≠可见里挑一条，写成一道能自动判定的断言，并指出它该放在 F.4 五层中的哪一层、为什么。</li>
+      <li>挑一段已发布的正文，列出「改它之前要搜哪些位置、哪些字符串不能一起替换」，写成一份替换清单，再说明哪一步属于编辑决策、不该由你替用户定。</li>
+    </ol>
+  </div>
+
+  <div class="box why"><span class="lb">带走的三个判断</span><b>① 绿章不等于对</b>——先问检查器覆盖了什么；<b>② 改完不等于完成</b>——源、副本、凭证、索引、状态、线上、提交七处对齐；<b>③ 修完不等于会防复发</b>——故意弄坏一次，看它会不会红。这三条比今天新增的任何一个脚本都值钱。</div>
+<!-- /extra:apxF -->
+</section>
+
+<div class="foot">AI Agent 运用完全教程 · 基于 2026-11-01 至 11-06 实战项目编写 · 配套文件见 learn-agent/templates（契约）、examples（7 个可运行脚本）、demo（实例项目 + 逐步手册）、tools（教材与索引构建脚本）</div>
+</main>
+</div>
+
+<script>
+(function(){
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
+  var secs  = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  var prog  = document.getElementById('prog');
+  function update(){
+    var y = window.scrollY || document.documentElement.scrollTop;
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    prog.style.width = (h > 0 ? (y / h * 100) : 0) + '%';
+    var cur = 0;
+    secs.forEach(function(s,i){ if(s && s.getBoundingClientRect().top < 160) cur = i; });
+    links.forEach(function(a,i){ a.classList.toggle('on', i === cur); });
+  }
+  window.addEventListener('scroll', update, {passive:true});
+  window.addEventListener('resize', update);
+  update();
+})();
+</script>
+</body>
+</html>

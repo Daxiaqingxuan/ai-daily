@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AI 晨报</title>
+<meta name="theme-color" content="#8c1d18">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="AI 晨报">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="icon-192.png" type="image/png">
+<style>
+  :root{
+    --bar:56px;
+    --paper:#fbf8f0; --edge:#efeadd; --ink:#1b1a17; --ink-soft:#3a3934;
+    --muted:#6d6a60; --accent:#8c1d18; --rule:#cfc8b6;
+    --sans:"Microsoft YaHei","PingFang SC","Hiragino Sans GB","Helvetica Neue",Arial,sans-serif;
+    --serif:"Songti SC","STSong","Noto Serif SC","SimSun",Georgia,"Times New Roman",serif;
+  }
+  *{box-sizing:border-box;}
+  [hidden]{display:none !important;}   /* 组件自带 display 会盖掉 UA 的 hidden，必须显式兜底 */
+  html,body{height:100%;margin:0;overflow:hidden;}
+  body{background:var(--edge);color:var(--ink);font-family:var(--sans);-webkit-text-size-adjust:100%;}
+  button{font-family:inherit;cursor:pointer;}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+
+  /* ---------- 顶栏 ---------- */
+  .topbar{
+    position:fixed;top:0;left:0;right:0;z-index:20;
+    height:calc(var(--bar) + env(safe-area-inset-top));
+    padding:env(safe-area-inset-top) 14px 0;
+    display:flex;align-items:center;gap:14px;
+    background:var(--paper);border-bottom:2px solid var(--ink);
+  }
+  .brand{display:flex;align-items:baseline;gap:9px;flex:0 0 auto;}
+  .brand-name{font-family:var(--serif);font-size:21px;font-weight:700;letter-spacing:.12em;white-space:nowrap;}
+  .status{font-size:10px;letter-spacing:.06em;padding:3px 7px;border:1px solid var(--rule-soft,var(--rule));color:var(--muted);white-space:nowrap;}
+  .status.ok{color:var(--paper);background:var(--accent);border-color:var(--accent);}
+  .issue-label{
+    flex:1 1 auto;min-width:0;text-align:center;font-size:12px;color:var(--ink-soft);
+    letter-spacing:.04em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  }
+  .issue-label b{color:var(--accent);font-weight:700;}
+  .lbl-short{display:none;}
+  @media (max-width:760px){.lbl-full{display:none;}.lbl-short{display:inline;}}
+  .actions{display:flex;align-items:center;gap:6px;flex:0 0 auto;}
+  .btn{
+    height:34px;min-width:34px;padding:0 10px;border:1px solid var(--rule);background:transparent;
+    color:var(--ink);font-size:12px;letter-spacing:.04em;white-space:nowrap;
+    display:inline-flex;align-items:center;justify-content:center;gap:4px;
+  }
+  .btn:hover:not(:disabled){border-color:var(--accent);color:var(--accent);}
+  .btn:disabled{opacity:.34;cursor:default;}
+  .btn.shelf-btn{border-color:var(--ink);}
+  .btn .arrow{font-size:17px;line-height:1;}
+  .btn .ico{display:inline-flex;align-items:center;}
+  .btn .ico svg{width:15px;height:15px;display:block;}
+  .shelf-count{font-style:normal;font-size:10px;color:var(--paper);background:var(--accent);padding:1px 5px;margin-left:2px;}
+  .btn.on{background:var(--ink);color:var(--paper);border-color:var(--ink);}
+
+  /* ---------- 正文容器 ---------- */
+  .viewer{position:fixed;left:0;right:0;top:calc(var(--bar) + var(--spbar,0px) + env(safe-area-inset-top));bottom:0;z-index:1;background:var(--edge);}
+  .viewer iframe{display:block;width:100%;height:100%;border:0;background:var(--paper);}
+  /* 特刊条：只在「今天另有特刊」时出现，不占位时完全不占高度 */
+  body.has-special{--spbar:34px;}
+  .spbar{
+    position:fixed;left:0;right:0;top:calc(var(--bar) + env(safe-area-inset-top));z-index:3;
+    display:flex;align-items:center;gap:8px;height:34px;padding:0 12px;
+    background:#241f16;color:#f7f2e4;font-family:var(--sans);font-size:11.5px;letter-spacing:.02em;
+  }
+  .spbar-tag{background:var(--accent);color:var(--paper);padding:1px 5px;font-size:9.5px;letter-spacing:.1em;flex:none;}
+  .spbar-txt{flex:1 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;opacity:.92;}
+  .spbar-go{flex:none;background:none;border:1px solid rgba(247,242,228,.4);color:#f7f2e4;
+    font:inherit;padding:3px 9px;cursor:pointer;}
+  .spbar-go:hover{background:rgba(247,242,228,.12);}
+  .spbar-x{flex:none;background:none;border:0;color:#f7f2e4;opacity:.6;font-size:12px;
+    cursor:pointer;padding:2px 3px;line-height:1;}
+  .spbar-x:hover{opacity:1;}
+  .loading{position:fixed;left:0;right:0;top:calc(var(--bar) + env(safe-area-inset-top));height:2px;z-index:10;
+    background:linear-gradient(90deg,transparent,var(--accent),transparent);background-size:200% 100%;
+    opacity:0;transition:opacity .15s;pointer-events:none;}
+  body.is-loading .loading{opacity:1;animation:slide 1s linear infinite;}
+  @keyframes slide{from{background-position:200% 0;}to{background-position:-200% 0;}}
+
+  .empty{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
+    padding:30px;text-align:center;color:var(--muted);font-size:14px;line-height:1.9;}
+  .empty b{font-family:var(--serif);font-size:26px;color:var(--ink);}
+
+  /* ---------- 往期抽屉 ---------- */
+  .scrim{position:fixed;inset:0;z-index:30;background:rgba(27,26,23,.42);opacity:0;pointer-events:none;transition:opacity .22s;}
+  body.shelf-open .scrim{opacity:1;pointer-events:auto;}
+  .shelf{
+    position:fixed;top:0;right:0;bottom:0;z-index:31;width:390px;max-width:90vw;
+    background:var(--paper);border-left:2px solid var(--ink);
+    display:flex;flex-direction:column;transform:translateX(102%);transition:transform .24s ease;
+    box-shadow:-10px 0 30px rgba(0,0,0,.14);
+  }
+  body.shelf-open .shelf{transform:none;}
+  .shelf-head{display:flex;align-items:center;justify-content:space-between;padding:16px 18px 12px;border-bottom:2px solid var(--ink);}
+  .shelf-head b{font-family:var(--serif);font-size:20px;letter-spacing:.1em;}
+  .shelf-head small{display:block;margin-top:3px;font-size:10.5px;color:var(--muted);letter-spacing:.08em;}
+  .shelf-close{width:32px;height:32px;border:1px solid var(--rule);background:transparent;color:var(--ink);font-size:15px;}
+  .shelf-list{flex:1 1 auto;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:4px 18px 14px;}
+  .issue-card.is-special.is-current{box-shadow:inset 3px 0 0 var(--accent);}
+  .ic-sp{background:var(--accent);color:var(--paper);padding:1px 5px;font-size:9px;letter-spacing:.12em;flex:none;}
+  .issue-card{
+    display:block;width:100%;text-align:left;border:0;border-bottom:1px solid var(--rule);
+    background:transparent;padding:15px 2px 14px;color:inherit;
+  }
+  .issue-card:hover{background:#f6f1e4;}
+  .issue-card.is-current{background:#f6f1e4;box-shadow:inset 3px 0 0 var(--accent);padding-left:12px;}
+  .ic-top{display:flex;align-items:baseline;gap:9px;font-size:10.5px;color:var(--muted);letter-spacing:.08em;}
+  .ic-date{font-family:var(--serif);font-size:17px;color:var(--ink);font-weight:700;letter-spacing:.02em;}
+  .ic-no{color:var(--accent);font-weight:700;}
+  .ic-today{background:var(--accent);color:var(--paper);padding:1px 5px;font-size:9.5px;}
+  .ic-current{margin-left:auto;color:var(--accent);font-weight:700;}
+  .ic-title{font-family:var(--serif);font-size:16px;line-height:1.55;font-weight:700;margin:7px 0 5px;}
+  .ic-deck{font-size:11.5px;line-height:1.75;color:var(--ink-soft);margin:0 0 8px;}
+  .ic-foot{font-size:10px;color:var(--muted);letter-spacing:.06em;}
+  .ic-foot .go{float:right;color:var(--accent);font-weight:700;}
+  .shelf-foot{padding:12px 18px calc(14px + env(safe-area-inset-bottom));border-top:1px solid var(--rule);display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
+  .shelf-foot .note{font-size:10.5px;color:var(--muted);line-height:1.6;flex:1 1 100%;}
+  .shelf-foot .btn{height:32px;font-size:11.5px;}
+  .copy-ok{color:var(--accent);font-size:11px;}
+  .apk-dl{font-size:11.5px;color:var(--accent);text-decoration:none;border-bottom:1px dotted currentColor;font-weight:700;}
+  .apk-dl:hover{opacity:.72;}
+
+  /* ---------- 分享面板 ---------- */
+  .share-scrim{position:fixed;inset:0;z-index:40;background:rgba(27,26,23,.42);opacity:0;pointer-events:none;transition:opacity .22s;}
+  body.share-open .share-scrim{opacity:1;pointer-events:auto;}
+  .share-sheet{
+    position:fixed;left:50%;bottom:0;z-index:41;width:min(470px,100%);
+    transform:translate(-50%,102%);transition:transform .24s ease;
+    background:var(--paper);border-top:2px solid var(--ink);
+    box-shadow:0 -12px 40px rgba(0,0,0,.22);
+    padding-bottom:env(safe-area-inset-bottom);
+  }
+  body.share-open .share-sheet{transform:translate(-50%,0);}
+  .share-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding:16px 18px 10px;border-bottom:1px solid var(--rule);}
+  .share-head b{font-family:var(--serif);font-size:18px;letter-spacing:.1em;}
+  .share-sub{display:block;margin-top:4px;font-size:10.5px;color:var(--muted);letter-spacing:.06em;}
+  .share-close{width:30px;height:30px;flex:0 0 auto;border:1px solid var(--rule);background:transparent;color:var(--ink);font-size:14px;}
+  .share-close:hover{border-color:var(--accent);color:var(--accent);}
+  .share-body{padding:12px 18px 16px;}
+  .share-title{font-family:var(--serif);font-size:15px;line-height:1.62;font-weight:700;margin:0 0 11px;color:var(--ink);}
+  .share-link{
+    display:block;width:100%;border:1px solid var(--rule);background:#f6f1e4;
+    padding:9px 10px;font-size:11px;line-height:1.65;color:var(--ink-soft);
+    font-family:ui-monospace,Menlo,Consolas,"Courier New",monospace;
+    word-break:break-all;-webkit-user-select:all;user-select:all;
+  }
+  .share-actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;}
+  .share-actions .btn{flex:1 1 128px;height:38px;font-size:12.5px;}
+  .share-actions .btn.primary{background:var(--accent);border-color:var(--accent);color:var(--paper);}
+  .share-actions .btn.primary:hover:not(:disabled){background:#73150f;border-color:#73150f;color:var(--paper);}
+  .share-note{margin:10px 0 0;font-size:10.5px;line-height:1.75;color:var(--muted);}
+  .share-note.warn{color:var(--accent);}
+
+  /* 渠道按钮：微信 / QQ / 微博，纯文字，避免 18px 下品牌图标糊成一团 */
+  .share-ch{display:flex;gap:8px;margin-top:12px;}
+  .share-ch .btn{flex:1 1 0;height:42px;font-size:13px;letter-spacing:.12em;}
+  /* 渠道引导卡：贴右上角，带小箭头指向「···」菜单 */
+  .share-guide{
+    position:fixed;top:calc(env(safe-area-inset-top) + 12px);right:10px;z-index:60;
+    width:min(310px,calc(100vw - 20px));
+    background:var(--ink);color:var(--paper);padding:13px 15px 14px;
+    box-shadow:0 12px 34px rgba(0,0,0,.34);
+    opacity:0;transform:translateY(-8px);transition:opacity .18s,transform .18s;pointer-events:none;
+  }
+  .share-guide::before{content:"";position:absolute;top:-6px;right:20px;width:12px;height:12px;background:var(--ink);transform:rotate(45deg);}
+  .share-guide.on{opacity:1;transform:none;pointer-events:auto;}
+  .share-guide .sg-t{display:block;font-size:12px;font-weight:700;letter-spacing:.1em;margin-bottom:6px;color:#ffd9a8;}
+  .share-guide p{margin:0;font-size:11.5px;line-height:1.9;color:#f2ecdd;}
+  .share-guide p b{color:#ffd9a8;font-weight:700;}
+  .share-guide .sg-close{position:absolute;top:4px;right:6px;width:26px;height:26px;border:0;background:transparent;color:#bdb6a2;font-size:13px;}
+
+  /* ---------- 添加到主屏幕提示 ---------- */
+  .pwa-tip{
+    position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:25;
+    background:var(--ink);color:var(--paper);padding:11px 12px;border-radius:8px;
+    display:flex;align-items:center;gap:10px;font-size:11.5px;line-height:1.6;
+    box-shadow:0 6px 20px rgba(0,0,0,.24);
+  }
+  .pwa-tip[hidden]{display:none;}
+  .pwa-tip .pwa-txt{flex:1 1 auto;}
+  .pwa-tip .pwa-txt b{color:#f0c9a0;}
+  .pwa-tip button{flex:0 0 auto;border:1px solid rgba(255,255,255,.4);background:transparent;color:var(--paper);
+    font-size:11px;padding:5px 9px;border-radius:4px;}
+
+  @media (max-width:760px){
+    :root{--bar:50px;}
+    .topbar{gap:8px;padding-left:10px;padding-right:10px;}
+    .brand-name{font-size:16px;letter-spacing:.06em;}
+    .status{display:none;}
+    .issue-label{font-size:11.5px;text-align:left;}
+    .actions{gap:4px;}
+    .btn{height:32px;min-width:32px;padding:0 7px;}
+    .btn .txt{display:none;}
+    .shelf-count{display:none;}
+    .shelf{
+      top:auto;left:0;right:0;bottom:0;width:auto;max-width:none;
+      height:min(80dvh,620px);border-left:0;border-top:2px solid var(--ink);
+      border-radius:16px 16px 0 0;transform:translateY(102%);
+    }
+    body.shelf-open .shelf{transform:none;}
+    .shelf-head{padding:14px 16px 10px;}
+    .share-sheet{border-radius:16px 16px 0 0;}
+    .share-head{padding:14px 16px 9px;}
+    .share-body{padding:11px 16px 14px;}
+  }
+  @media (max-width:380px){
+    .issue-label{font-size:10.5px;}
+    .brand-name{font-size:14px;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .shelf,.scrim,.loading{transition:none;animation:none;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand">
+    <span class="brand-name">AI 晨报</span>
+    <span class="status" id="status">载入中</span>
+  </div>
+  <div class="issue-label" id="issueLabel"><span class="lbl-full" id="lblFull">正在取报…</span><span class="lbl-short" id="lblShort"></span></div>
+  <div class="actions">
+    <button class="btn" id="prevBtn" title="上一期（←）" aria-label="上一期"><span class="arrow">‹</span><span class="txt">上一期</span></button>
+    <button class="btn" id="nextBtn" title="下一期（→）" aria-label="下一期"><span class="txt">下一期</span><span class="arrow">›</span></button>
+    <button class="btn shelf-btn" id="shelfBtn" title="往期回顾" aria-expanded="false" aria-controls="shelf"><span class="arrow">☰</span><span class="txt">往期</span><span class="shelf-count" id="shelfCount">0</span></button>
+    <button class="btn" id="shareBtn" title="分享本期（S）" aria-label="分享本期" aria-haspopup="dialog" aria-controls="shareSheet"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M12 3.5v11"/><path d="M8 7l4-3.5 4 3.5"/><path d="M5.5 12v7.5h13V12"/></svg></span><span class="txt">分享</span></button>
+    <button class="btn" id="openBtn" title="单独打开本期（便于分享 / 全屏阅读）" aria-label="单独打开本期"><span class="arrow">↗</span></button>
+    <button class="btn" id="apkBtn" hidden title="检查是否有新一期" aria-label="检查新一期"><span class="arrow">↻</span></button>
+  </div>
+</div>
+
+<div class="loading"></div>
+<div class="spbar" id="spbar" hidden>
+  <span class="spbar-tag">特刊</span>
+  <span class="spbar-txt" id="spbarTxt"></span>
+  <button class="spbar-go" id="spbarGo">阅读 →</button>
+  <button class="spbar-x" id="spbarX" aria-label="收起特刊提示">✕</button>
+</div>
+<div class="viewer" id="viewer"><iframe id="paper" title="AI 晨报正文"></iframe></div>
+
+<div class="scrim" id="scrim"></div>
+<aside class="shelf" id="shelf" aria-hidden="true" aria-label="往期回顾">
+  <header class="shelf-head">
+    <div><b>往期回顾</b><small id="shelfSub">按日期倒序，点一期即可翻阅</small></div>
+    <button class="shelf-close" id="closeShelf" aria-label="关闭">✕</button>
+  </header>
+  <div class="shelf-list" id="shelfList"></div>
+  <footer class="shelf-foot">
+    <div class="note">左右方向键也可翻期；点右上角 ↗ 可单独打开本期全文。</div>
+    <button class="btn" id="copyBtn" hidden>复制手机入口链接</button>
+    <span class="copy-ok" id="copyOk" hidden>已复制</span>
+    <a class="apk-dl" id="apkDl" hidden>↓ 安装安卓版（APK）</a>
+  </footer>
+</aside>
+
+<div class="share-scrim" id="shareScrim"></div>
+<section class="share-sheet" id="shareSheet" role="dialog" aria-modal="true" aria-labelledby="shareHeading" aria-hidden="true">
+  <header class="share-head">
+    <div><b id="shareHeading">分享本期</b><span class="share-sub" id="shareSub">对方打开就是这一期</span></div>
+    <button class="share-close" id="closeShare" aria-label="关闭分享">✕</button>
+  </header>
+  <div class="share-body">
+    <p class="share-title" id="shareTitle"></p>
+    <div class="share-link" id="shareLink" tabindex="0"></div>
+    <div class="share-ch">
+      <button class="btn" id="shareWx" type="button" aria-label="分享到微信">微信</button>
+      <button class="btn" id="shareQq" type="button" aria-label="分享到 QQ">QQ</button>
+      <button class="btn" id="shareWb" type="button" aria-label="分享到微博">微博</button>
+    </div>
+    <div class="share-actions">
+      <button class="btn" id="shareCopy">复制链接</button>
+      <button class="btn primary" id="shareNative" hidden>发送到…</button>
+    </div>
+    <p class="share-note" id="shareNote"></p>
+    <p class="share-note" id="shareDisclaimer"></p>
+  </div>
+</section>
+
+<div class="share-guide" id="shareGuide" role="status" aria-live="polite">
+  <button class="sg-close" id="guideClose" aria-label="关闭提示">✕</button>
+  <span class="sg-t" id="guideTitle"></span>
+  <p id="guideBody"></p>
+</div>
+
+<div class="pwa-tip" id="pwaTip" hidden>
+  <span class="pwa-txt" id="pwaTxt"></span>
+  <button id="pwaDismiss">知道了</button>
+</div>
+
+<script src="config.js"></script>
+<!-- 索引带时间戳请求：绕开浏览器 HTTP 缓存，保证打开就是最新一期 -->
+<script>document.write('<script src="issues.js?v=' + Date.now() + '"><\/script>');</script>
+<script>
+(function(){
+  'use strict';
+  var CFG  = window.AI_DAILY_CONFIG || {};
+  var DATA = window.AI_DAILY_ISSUES || {issues:[]};
+  /* 一期一条，特刊只是编号带 -2 的另一期（如 003-2），不再单列一个区。
+     同一天里后出的在上：日期倒序，再按期号倒序。 */
+  var list = (DATA.issues || []).slice().sort(function(a,b){
+    if(a.date !== b.date) return b.date.localeCompare(a.date);
+    return String(b.issue || '').localeCompare(String(a.issue || ''));
+  });
+  var specials = list.filter(function(x){ return x.isSpecial; });
+  var mains    = list.filter(function(x){ return !x.isSpecial; });
+  var spTarget = null;   // 首屏横幅指向的那份特刊
+  var $ = function(id){ return document.getElementById(id); };
+  /* 内容声明与报尾同源：读 config.js 的 disclaimer，不在入口页再写一份文案 */
+  var dNote = $('shareDisclaimer');
+  if (dNote) dNote.textContent = CFG.disclaimer || '';
+  var frame = $('paper'), viewer = $('viewer'), body = document.body;
+  var idx = 0;
+
+  function pad(n){ return (n<10?'0':'')+n; }
+  function today(){ var d=new Date(); return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate()); }
+  function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g,function(c){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+  }); }
+  function short(s,n){ s=s||''; return s.length>n ? s.slice(0,n)+'…' : s; }
+
+  if(!list.length){
+    viewer.innerHTML = '<div class="empty"><b>还没有晨报</b>'+
+      '<div>请先生成一期 AI 晨报，再运行 <code>tools/build_index.py</code> 刷新入口索引。</div></div>';
+    $('issueLabel').textContent = '暂无期刊';
+    $('status').textContent = '暂无';
+    return;
+  }
+
+  /* 顶栏状态：今日是否出报，如实标注 */
+  var isToday = (list[0].date === today());
+  var st = $('status');
+  st.textContent = isToday ? '今日已出报' : '今日暂未出报';
+  st.className = 'status' + (isToday ? ' ok' : '');
+  $('shelfCount').textContent = list.length;
+  $('shelfSub').textContent = '共 ' + list.length + ' 期' +
+    (specials.length ? '（含 ' + specials.length + ' 份特刊）' : '') +
+    ' · 索引更新于 ' + esc(DATA.generatedAt || '—');
+
+  function current(){ return list[idx]; }
+  function isSp(){ return !!(current() && current().isSpecial); }
+  function setUrl(date, isSp){
+    try {
+      var q = new URLSearchParams(location.search);
+      if(date) q.set('d', date); else q.delete('d');
+      if(isSp) q.set('s', '1'); else q.delete('s');
+      history.pushState({d:date, s:!!isSp}, '', '?' + q.toString());
+    } catch(e){}
+  }
+  function show(i, push){
+    if(i<0 || i>=list.length) return;
+    idx = i;
+    var it = current();
+    body.classList.add('is-loading');
+    frame.src = encodeURI(it.file);
+    $('lblFull').innerHTML = '<b>' + esc(it.issueLabel) + '</b>　' + esc(it.dateCn) + '　' + esc(it.weekday);
+    $('lblShort').innerHTML = '<b>' + esc(it.issueLabel.replace(/\s/g,'')) + '</b> · ' + esc(it.dateShort);
+    document.title = 'AI 晨报 · ' + it.dateCn + ' · ' + it.issueLabel;
+    $('prevBtn').disabled = (i === list.length-1);   // 更早一期
+    $('nextBtn').disabled = (i === 0);               // 更新一期
+    if(body.classList.contains('share-open')) closeShare();
+    if(push) setUrl(it.date, !!it.isSpecial);
+    initSpbar();
+    renderShelf();
+  }
+  frame.addEventListener('load', function(){ body.classList.remove('is-loading'); });
+  frame.addEventListener('error', function(){ body.classList.remove('is-loading'); });
+
+  function renderShelf(){
+    $('shelfList').innerHTML = list.map(function(it,i){
+      var tags = (i===0 ? '<span class="ic-today">最新</span>' : '') +
+                 (i===idx ? '<span class="ic-current">正在阅读</span>' : '');
+      return '<button class="issue-card'+(it.isSpecial?' is-special':'')+
+        (i===idx?' is-current':'')+'" data-i="'+i+'">'+
+        '<div class="ic-top"><span class="ic-date">'+esc(it.dateShort)+'</span>'+
+        '<span class="ic-no">'+esc(it.issueLabel)+'</span>'+
+        (it.isSpecial ? '<span class="ic-sp">特刊</span>' : '')+tags+'</div>'+
+        '<div class="ic-title">'+esc(short(it.headline,42))+'</div>'+
+        (it.deck ? '<p class="ic-deck">'+esc(short(it.deck,62))+'</p>' : '')+
+        '<div class="ic-foot">共 '+esc(it.pages)+' 版 · '+esc(it.weekday)+
+        '<span class="go">阅读 →</span></div></button>';
+    }).join('');
+    Array.prototype.forEach.call($('shelfList').querySelectorAll('.issue-card'), function(btn){
+      btn.addEventListener('click', function(){
+        show(parseInt(btn.getAttribute('data-i'),10), true);
+        closeShelf();
+      });
+    });
+  }
+
+  /* 首屏特刊条：只在最新一期正刊当天有特刊、且当前读的不是特刊时出现。
+     特刊已经排进同一份序列，横幅只是「今天还有一份」的提示，不是唯一入口。 */
+  function hideSpbar(){
+    body.classList.remove('has-special');
+    $('spbar').hidden = true;
+  }
+  function initSpbar(){
+    spTarget = null;
+    hideSpbar();
+    if(!specials.length || !mains.length) return;
+    var cur = list[idx];
+    if(cur && cur.isSpecial) return;              // 已经在读特刊，不必再提示
+    var sp = specials[0];
+    if(sp.date !== mains[0].date) return;         // 只提示最新一期当天的特刊，旧特刊不打扰
+    var off = '';
+    try{ off = localStorage.getItem('aiDailySpOff') || ''; }catch(e){}
+    if(off === sp.date) return;                   // 今天已经手动收起了
+    spTarget = sp;
+    $('spbarTxt').textContent = '今天另有特刊 · 第 ' + sp.issue + ' 期 · 共 ' + sp.pages + ' 版';
+    $('spbar').hidden = false;
+    body.classList.add('has-special');
+  }
+  // 横幅上的两个按钮只绑一次，指向 spTarget（每次 initSpbar 重算）
+  $('spbarGo').addEventListener('click', function(){
+    if(!spTarget) return;
+    var i = list.indexOf(spTarget);
+    if(i >= 0) show(i, true);
+  });
+  $('spbarX').addEventListener('click', function(){
+    hideSpbar();
+    if(spTarget) try{ localStorage.setItem('aiDailySpOff', spTarget.date); }catch(e){}
+  });
+
+  function openShelf(){ body.classList.add('shelf-open'); $('shelfBtn').classList.add('on');
+    $('shelfBtn').setAttribute('aria-expanded','true'); $('shelf').setAttribute('aria-hidden','false'); }
+  function closeShelf(){ body.classList.remove('shelf-open'); $('shelfBtn').classList.remove('on');
+    $('shelfBtn').setAttribute('aria-expanded','false'); $('shelf').setAttribute('aria-hidden','true'); }
+
+  $('shelfBtn').addEventListener('click', function(){ body.classList.contains('shelf-open') ? closeShelf() : openShelf(); });
+  $('closeShelf').addEventListener('click', closeShelf);
+  $('scrim').addEventListener('click', closeShelf);
+  $('prevBtn').addEventListener('click', function(){ show(idx+1, true); });
+  $('nextBtn').addEventListener('click', function(){ show(idx-1, true); });
+  $('openBtn').addEventListener('click', function(){ window.open(encodeURI(current().file), '_blank', 'noopener'); });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape'){ closeShare(); closeShelf(); return; }
+    if(e.target && /^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)) return;
+    if(e.key === 'ArrowLeft'  && !$('prevBtn').disabled){ show(idx+1, true); }
+    if(e.key === 'ArrowRight' && !$('nextBtn').disabled){ show(idx-1, true); }
+    if((e.key === 's' || e.key === 'S') && !e.metaKey && !e.ctrlKey && !e.altKey){
+      body.classList.contains('share-open') ? closeShare() : openShare();
+    }
+  });
+  window.addEventListener('popstate', function(){
+    var q = new URLSearchParams(location.search);
+    var d = q.get('d'), isSp = q.get('s');
+    // 同一天有两期时，按 s=1 区分正刊与特刊；没有 s 就是正刊
+    var i = d ? list.findIndex(function(x){ return x.date===d && (isSp ? !!x.isSpecial : !x.isSpecial); }) : 0;
+    if(i < 0 && d) i = list.findIndex(function(x){ return x.date===d; });
+    show(i>=0 ? i : 0, false);
+  });
+
+  /* 手机：提示添加到主屏幕，之后从图标一点直达 */
+  var standalone = window.matchMedia('(display-mode: standalone)').matches || navigator.standalone;
+  var mobile = window.matchMedia('(pointer: coarse)').matches && window.innerWidth < 768;
+  var tipOff = false;
+  try{ tipOff = !!localStorage.getItem('aiDailyTipOff'); }catch(e){}   // file:// 下可能禁用存储
+  if(mobile && !standalone && location.protocol !== 'file:' && !tipOff){
+    var ua = navigator.userAgent;
+    $('pwaTxt').innerHTML = /iphone|ipad|ipod/i.test(ua)
+      ? '点底部 <b>分享 → 添加到主屏幕</b>，以后从桌面图标直接看今天的晨报'
+      : '点浏览器菜单 <b>添加到主屏幕 / 安装应用</b>，以后一键直达今日晨报';
+    $('pwaTip').hidden = false;
+    $('pwaDismiss').addEventListener('click', function(){
+      $('pwaTip').hidden = true;
+      try{ localStorage.setItem('aiDailyTipOff','1'); }catch(e){}
+    });
+  }
+
+  /* ---------- 分享：本期深链 + 系统分享 + 复制 ---------- */
+  var online = /^https?:$/.test(location.protocol);
+
+  function copyText(text, done){
+    function fallback(){
+      var ta = document.createElement('textarea');
+      ta.value = text; ta.setAttribute('readonly','');
+      ta.style.position = 'fixed'; ta.style.top = '-1000px'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select();
+      try{ document.execCommand('copy'); done(); }catch(e){}
+      document.body.removeChild(ta);
+    }
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(done, fallback);
+    } else fallback();
+  }
+
+  /* 站点根地址：优先 config.js 的固定值，其次当前在线地址；本地且未配置时为空 */
+  function siteBase(){
+    if(CFG.siteUrl) return CFG.siteUrl;
+    if(!online) return '';
+    try{
+      var u = new URL(location.href);
+      u.searchParams.delete('d'); u.hash = '';
+      return u.toString();
+    }catch(e){ return location.href.split('#')[0]; }
+  }
+  /* 某一期的分享链接：保留 sharecode 等参数，只改写 d / s */
+  function issueUrl(date, isSp){
+    var base = siteBase();
+    if(!base) return '';
+    try{
+      var u = new URL(base, location.href);
+      if(date) u.searchParams.set('d', date); else u.searchParams.delete('d');
+      if(isSp) u.searchParams.set('s', '1'); else u.searchParams.delete('s');
+      u.hash = '';
+      return u.toString();
+    }catch(e){ return base; }
+  }
+
+  var sheet = $('shareSheet');
+  function openShare(){
+    var it = current(), url = issueUrl(it.date, isSp()), note = $('shareNote');
+    $('shareTitle').textContent = it.issueLabel + ' · ' + it.dateCn + ' · ' + it.headline;
+    $('shareSub').textContent = it.dateShort + (it.weekday ? ' ' + it.weekday : '') + ' · 共 ' + it.pages + ' 版';
+    $('shareLink').textContent = url || '（本地打开，没有可分享的在线链接）';
+    $('shareCopy').disabled = !url;
+    $('shareNative').hidden = !(url && navigator.share);
+    note.className = 'share-note' + (url ? '' : ' warn');
+    note.innerHTML = url
+      ? '链接带了期号，对方打开直接是这一期。微信 / QQ 会先把链接复制好，再告诉你怎么粘贴；装得下系统面板的，也可以点「发送到…」。'
+      : '当前打开的是本地文件。要分享给别人，请用线上入口，或先发布一次。';
+    body.classList.add('share-open');
+    sheet.setAttribute('aria-hidden','false');
+  }
+  function closeShare(){
+    body.classList.remove('share-open');
+    sheet.setAttribute('aria-hidden','true');
+    hideGuide();
+  }
+  $('shareBtn').addEventListener('click', function(){
+    body.classList.contains('share-open') ? closeShare() : openShare();
+  });
+  $('closeShare').addEventListener('click', closeShare);
+  $('shareScrim').addEventListener('click', closeShare);
+  $('shareLink').addEventListener('click', function(){   // 点一下整段选中，便于手动复制
+    try{
+      var r = document.createRange(); r.selectNodeContents(this);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+    }catch(e){}
+  });
+  $('shareCopy').addEventListener('click', function(){
+    var btn = this, url = issueUrl(current().date, isSp());
+    if(!url) return;
+    copyText(url, function(){
+      btn.textContent = '已复制';
+      btn.disabled = true;
+      setTimeout(function(){ btn.textContent = '复制链接'; btn.disabled = false; }, 1600);
+    });
+  });
+  $('shareNative').addEventListener('click', function(){
+    var it = current(), url = issueUrl(it.date, isSp());
+    if(!url || !navigator.share) return;
+    navigator.share({
+      title: 'AI 晨报 · ' + it.issueLabel + ' · ' + it.dateCn,
+      text: it.headline + (it.deck ? '\n' + it.deck : ''),
+      url: url
+    }).then(closeShare, function(){});   // 用户取消时不打扰
+  });
+
+  /* ---------- 指定渠道：微信 / QQ / 微博 ----------
+     网页没有「直接发到微信」的接口，能做的只有两件：
+     ① 在微信内置浏览器里，引导用右上角菜单转发；
+     ② 在其他浏览器里，把链接复制好，再让用户粘贴过去。
+     不假装能一键发送，省得点完没反应。 */
+  var UA = navigator.userAgent;
+  var inWeChat = /MicroMessenger/i.test(UA);
+  var inQQ = /\bQQ\//.test(UA) || /QQBrowser/i.test(UA);
+  var guideTimer = null;
+  function hideGuide(){
+    clearTimeout(guideTimer);
+    $('shareGuide').classList.remove('on');
+  }
+  function showGuide(title, html, ms){
+    $('guideTitle').textContent = title;
+    $('guideBody').innerHTML = html;
+    $('shareGuide').classList.add('on');
+    clearTimeout(guideTimer);
+    guideTimer = setTimeout(hideGuide, ms || 7000);
+  }
+  $('guideClose').addEventListener('click', hideGuide);
+  $('shareGuide').addEventListener('click', function(e){
+    if(e.target !== $('guideClose')) hideGuide();
+  });
+
+  function shareTo(where){
+    var it = current(), url = issueUrl(it.date, isSp());
+    if(!url){
+      showGuide('还没有在线链接',
+        '现在打开的是本地文件，发出去的链接别人打不开。<br>请从线上入口 <b>' + esc(CFG.siteUrl || '') + '</b> 打开后再分享。', 9000);
+      return;
+    }
+    if(where === 'wx'){
+      if(inWeChat){
+        showGuide('在微信里转发本期',
+          '点右上角 <b>···</b> → <b>发送给朋友</b>；<br>要发朋友圈就选 <b>分享到朋友圈</b>。<br>链接已带期号，对方点开就是这一期。', 9000);
+        return;
+      }
+      copyText(url, function(){
+        showGuide('链接已复制，去微信粘贴',
+          '打开微信 → 选好友或群 → 在输入框长按 <b>粘贴</b>。<br>对方点开直接是这一期；在微信里打开后，也能用右上角 <b>···</b> 再转发。');
+      });
+      return;
+    }
+    if(where === 'qq'){
+      if(inQQ){
+        showGuide('在 QQ 里转发本期',
+          '点右上角 <b>···</b> → <b>分享到 QQ 好友</b> 或 <b>分享到空间</b>。', 9000);
+        return;
+      }
+      copyText(url, function(){
+        showGuide('链接已复制，去 QQ 粘贴',
+          '打开 QQ → 选好友或群 → 在输入框长按 <b>粘贴</b>。<br>手机 QQ 里也可以用右上角 <b>···</b> 转发。');
+      });
+      return;
+    }
+    /* 微博有公开的分享入口，直接开新页 */
+    var u = 'https://service.weibo.com/share/share.php?url=' + encodeURIComponent(url) +
+            '&title=' + encodeURIComponent('AI 晨报 · ' + it.issueLabel + ' · ' + it.headline);
+    window.open(u, '_blank', 'noopener');
+  }
+  $('shareWx').addEventListener('click', function(){ shareTo('wx'); });
+  $('shareQq').addEventListener('click', function(){ shareTo('qq'); });
+  $('shareWb').addEventListener('click', function(){ shareTo('wb'); });
+
+  /* 往期抽屉底部：整站入口（不带期号） */
+  var shareUrl = siteBase();
+  if(shareUrl){
+    $('copyBtn').hidden = false;
+    $('copyBtn').addEventListener('click', function(){
+      copyText(shareUrl, function(){
+        $('copyOk').hidden = false;
+        setTimeout(function(){ $('copyOk').hidden = true; }, 1800);
+      });
+    });
+  }
+
+  /* 离线缓存：仅 http(s) 下启用，本地 file:// 打开不影响 */
+  if('serviceWorker' in navigator && (location.protocol==='https:' || location.hostname==='localhost')){
+    navigator.serviceWorker.register('sw.js').catch(function(){});
+  }
+
+  /* 手机浏览器（非 APK 内）：往期抽屉底部给出安卓版安装入口 */
+  if(/Android/i.test(navigator.userAgent) && !window.AIDaily){
+    var code = new URLSearchParams(location.search).get('sharecode');
+    $('apkDl').href = 'ai-daily.apk' + (code ? '?sharecode=' + encodeURIComponent(code) : '');
+    $('apkDl').setAttribute('download', 'AI晨报.apk');
+    $('apkDl').hidden = false;
+  }
+
+  /* Android APK 内才出现：↻ 重新连线上入口，取当天新报 */
+  if(window.AIDaily && window.AIDaily.isApk){
+    $('apkBtn').hidden = false;
+    $('openBtn').hidden = true;    // WebView 里新窗口打不开，分享面板已覆盖这个场景
+    $('apkBtn').addEventListener('click', function(){
+      $('status').textContent = '正在取新报';
+      window.AIDaily.reload();
+    });
+  }
+
+  var q0 = new URLSearchParams(location.search);
+  var want = q0.get('d'), wantSp = q0.get('s');
+  var start = 0;
+  if(want){
+    // 同一天两期：s=1 落特刊，否则落正刊；都对不上就退到当天任意一期
+    start = list.findIndex(function(x){
+      return x.date === want && (wantSp ? !!x.isSpecial : !x.isSpecial);
+    });
+    if(start < 0) start = list.findIndex(function(x){ return x.date === want; });
+  } else if(wantSp){
+    start = list.findIndex(function(x){ return x.isSpecial; });   // 只带 s=1：落到最新特刊
+  } else {
+    // 默认打开最新一期正刊：特刊是当天加出来的第 2 版，用横幅提示，不抢正刊的位置
+    start = list.findIndex(function(x){ return !x.isSpecial; });
+  }
+  show(start >= 0 ? start : 0, false);   // show() 内部会按当前期刷新横幅
+})();
+</script>
+</body>
+</html>

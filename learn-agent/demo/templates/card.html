@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{TITLE}}</title>
+<style>
+  :root{
+    --paper:#fbf8f0; --edge:#efeadd; --ink:#1b1a17; --muted:#6d6a60;
+    --accent:#8c1d18; --rule:#cfc8b6;
+    --sans:"Microsoft YaHei","PingFang SC","Hiragino Sans GB",Arial,sans-serif;
+    --serif:"Songti SC","STSong","Noto Serif SC",SimSun,Georgia,serif;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; padding:44px 16px; background:var(--edge); color:var(--ink);
+    font-family:var(--sans); display:flex; justify-content:center;
+  }
+  .card{width:100%; max-width:520px; background:var(--paper); border:1px solid var(--rule); padding:42px 38px 30px;}
+  .kicker{font-size:11px; letter-spacing:.34em; color:var(--accent);}
+  .date{margin-top:10px; font-size:12.5px; color:var(--muted);}
+  blockquote{margin:30px 0 26px; font-family:var(--serif); font-size:25px; line-height:1.72; letter-spacing:.01em;}
+  blockquote::before{content:"「"; color:var(--accent);}
+  blockquote::after{content:"」"; color:var(--accent);}
+  .meta{border-top:1px solid var(--rule); padding-top:14px; font-size:12.5px; color:var(--muted); line-height:1.9;}
+  .meta b{color:var(--ink); font-weight:600;}
+  .tags{margin-top:14px;}
+  .tags span{display:inline-block; margin:0 6px 6px 0; padding:2px 8px; border:1px solid var(--rule); font-size:11px; color:var(--muted);}
+  .back{display:inline-block; margin-top:20px; font-size:12px; color:var(--accent); text-decoration:none; border-bottom:1px dotted var(--accent);}
+</style>
+</head>
+<body>
+  <article class="card">
+    <div class="kicker">晨 读 卡</div>
+    <div class="date">{{DATE_CN}} · {{WEEKDAY}}</div>
+    <blockquote>{{TEXT}}</blockquote>
+    <div class="meta">
+      出处：<b>{{SOURCE}}</b><br>
+      作者：{{AUTHOR}}　编号：{{ID}}
+    </div>
+    <div class="tags">{{TAGS}}</div>
+    <a class="back" href="../index.html">← 回到卡片墙</a>
+  </article>
+</body>
+</html>

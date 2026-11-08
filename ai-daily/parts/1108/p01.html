@@ -1,0 +1,56 @@
+<section class="lead" id="p01">
+    <article class="lead-main">
+      <div class="kicker">头版头条 · 谁验过，才算数</div>
+      <h2>智能体在 1024 位 RSA 上找到两处弱点<br><span class="h2-sub">签名伪造论文值快 1,600 倍、批量分解省 30 倍，两个倍数都没跑过全流程</span></h2>
+      <p class="deck">Google DeepMind 与两位密码学家合作，人定方向、智能体动手。真正跑完的是沙箱复现：对一把已被学术团队破解的密钥，CPU 时间少用 3.5 倍<span class="src-tag">公开报道</span><span class="src-tag low">本报未复现</span>。2048 位不受影响。</p>
+      <div class="digest">
+        <div class="digest-h"><span>三行摘要 · 九十秒读完这一期</span><em>005 期</em></div>
+        <ol>
+          <li><i>01</i><span><b>发现是真的，倍数不是</b>：1,600 倍与 30 倍均为理论估算，未端到端实测。</span></li>
+          <li><i>02</i><span><b>这一周每个头条都带星号</b>：审计报告被涂黑、证明没有同行评审、漏洞数字无人复算。</span></li>
+          <li><i>03</i><span><b>钱在往下压</b>：OpenAI 首笔 110 亿美元交割，估值 1.25 万亿，募资目标从 300 亿下调。</span></li>
+        </ol>
+      </div>
+      <div class="byline">本报编辑部　综合报道　2026-11-08</div>
+      <div class="lead-body">
+        <p class="dropcap">11 月 6 日，Google DeepMind 的科研副总裁 Pushmeet Kohli 公布了一项工作：一支人机混合团队在 1024 位 RSA 上找到两处此前未知的弱点。数学部分由加州大学圣迭戈分校的 Nadia Heninger 与 Inria 的 Emmanuel Thomé 把关，动手的是智能体。<b>这是本周最像「能力跃迁」的一条新闻，也是最能说明我们该用什么姿势读它的一条。</b></p>
+        <p>第一处弱点在填充：给消息套上一层结构再签名，本来是为了让伪造变难。团队称，一旦攻击者能控制被签名数据块的一半左右，这层结构几乎不起作用；而在只能控制一小段指纹的场景里，智能体给出的算法被估计比已发表的最好方法快约 1,600 倍<span class="src-tag">公开报道</span><span class="src-tag low">本报未复现</span>。第二处是批量分解：当很多把密钥长度相同时，一次昂贵预计算可以摊到所有密钥上，每多一把的平均成本下降约 30 倍<span class="src-tag">公开报道</span>。</p>
+        <p>然后是这个星号：<b>两个倍数都是理论估算，没有端到端实测。</b>真正跑过的是另一件事——在一把学术团队今年 9 月已破解、并公开在 IACR ePrint 上的 1024 位密钥上做沙箱复现，智能体比直接分解少用约 3.5 倍 CPU 时间<span class="src-tag">公开报道</span>。这个数才是可复算的，前面两个不是。DeepMind 同时说明，现代加密不受影响，2048 位不在结论范围内；本报也没有找到任何仍在生产环境依赖 1024 位 RSA 的机构被点名。</p>
+        <p>所以正确的读法是：<b>加密没有塌，塌的是「这件事只有人类做得来」的假设。</b>密码分析里最慢的一段——猜哪里可能有结构、试哪条路值得走——过去靠人的直觉和多年经验，现在可以交给一个能被监督、能反复试错的系统，在几周内跑掉一大批候选。<span class="term" tabindex="0">预印本<i class="tip">未经同行评审的论文稿。它是公开的，但没有经过期刊的审稿流程，数字要按「作者自述」看。</i></span>挂在公开档案上，等于把复核的门槛降到了「谁愿意跑」。</p>
+        <p>把它和这一周另外三条放在一起看，形状就清楚了。METR 的审计说 Anthropic 的研发速度翻倍、其中八成来自内部 AI 使用，但报告把大部分证据涂黑了；PSI 宣布用一个非公开模型证明了悬置十八年的猜想，Lean 接受了形式化，<b>但没有同行评审</b>；OpenAI 说 GPT-6 Cyber 在 Linux 内核里找到 948 个漏洞，<b>没人复算过其中多少个是真能被利用的</b>。四条新闻，四种「你只能信我」。</p>
+        <p>本报的判断是：<b>这一轮真正的瓶颈不在能力，在认证</b>。能力供给的速度已经快过验证供给的速度，于是每条发布都自带一个免责星号，读者被迫在「相信机构」和「什么都不信」之间二选一。第三条路是把可复算的部分挑出来——第 05 版给了一张三段清单：找到、验过、修掉，每一段都有各自的证据要求。</p>
+      </div>
+      <p class="jump">相关报道见第 02 版《每个头条都带一个星号》、第 05 版《948 个漏洞，卡在哪一段》、第 09 版《Lean 接受了，然后呢》、第 06 版《给机器找到的漏洞定级》</p>
+      <aside class="razor">
+        <div class="razor-h">
+          <span class="razor-mark">锐评</span>
+          <span class="razor-src">本报评论员 · 针对本版头条</span>
+        </div>
+        <p>这条新闻最该被记住的不是 1,600 倍，是<b>「理论估算」四个字被写在了 1,600 倍旁边</b>。愿意把星号一起发出来的团队值得记一笔；更值得记的是我们自己的习惯——<b>看到倍数先问跑没跑过，看到「找到」先问谁验的，看到「突破」先问坏的那一半在哪。</b>不会问这三个问题的人，今年会被同一套话术骗四次。</p>
+      </aside>
+    </article>
+
+    <aside class="lead-side">
+      <div class="side-block">
+        <h3>本期要闻</h3>
+        <ol class="headlines">
+          <li><b>密码</b>DeepMind 智能体在 1024 位 RSA 找到两处弱点；2048 位不受影响</li>
+          <li><b>口径</b>1,600 倍与 30 倍为理论估算；跑完的是沙箱复现的 3.5 倍 CPU 节省</li>
+          <li><b>安全</b>GPT-6 Cyber 称在 Linux 内核发现 948 个漏洞，仅对获批研究客户开放</li>
+          <li><b>审计</b>METR 称 Anthropic 研发提速一倍、八成来自内部 AI 使用，证据多被涂黑</li>
+          <li><b>学术</b>PSI 用非公开模型证明悬置十八年的猜想，Lean 接受，无同行评审</li>
+          <li><b>开源</b>Kimi K3.1 Pro 2.8 万亿参数开放权重；百度放 280B 基座；Inkling 2 Small 下周 Apache 2.0</li>
+          <li><b>资本</b>OpenAI 首笔 110 亿美元交割，投后 1.25 万亿美元；Agility 以 AGLT 上市</li>
+          <li><b>产品</b>Claude 接入 16 家美国银行只读流水；Gemini 视频模型降价三成</li>
+        </ol>
+      </div>
+      <div class="side-block">
+        <h3>本期五个数</h3>
+        <div class="stat"><div class="line"><span class="num">1,600</span><span class="unit">倍</span></div><span class="cap">签名伪造的算法提速，理论估算，未端到端实测<span class="src-tag">公开报道</span></span></div>
+        <div class="stat"><div class="line"><span class="num">3.5</span><span class="unit">倍</span></div><span class="cap">沙箱复现时少用的 CPU 时间——唯一跑完的那个倍数</span></div>
+        <div class="stat"><div class="line"><span class="num">948</span><span class="unit">个</span></div><span class="cap">GPT-6 Cyber 在 Linux 内核报出的漏洞数，未经第三方复算</span></div>
+        <div class="stat"><div class="line"><span class="num">80</span><span class="unit">%</span></div><span class="cap">METR 称 Anthropic 研发提速中来自内部 AI 使用的比例</span></div>
+        <div class="stat"><div class="line"><span class="num">110</span><span class="unit">亿美元</span></div><span class="cap">OpenAI 本轮首笔交割金额，投后估值 1.25 万亿</span></div>
+      </div>
+    </aside>
+  </section>

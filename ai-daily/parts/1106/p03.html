@@ -1,0 +1,38 @@
+<section class="section" id="p03">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">能力底座 · 模型与榜单</span>
+      <span class="sec-page">第 03 版 / 共 15 版</span>
+    </div>
+    <p class="sec-lede">权重放出 20 小时，社区交出的不是掌声，是一张「自己跑要花多少钱」的清单。本版只记三件有数字的事。</p>
+
+    <p><b>第一件：能跑，但账要重算。</b>Hugging Face 上的下载量在 20 小时内到 41 万次，真正跑起来的配置少得可怜。目前流传最广的一套是 8 张 H100（80GB，NVLink）加 Q4 量化，权重占约 390GB 显存，单流实测 41 token/s。按公有云 8 卡每小时 23 美元折算，<b>单流每百万输出 token 的成本是 155 美元</b>——是今天降价后的 Opus 5.5（9.30 美元）的十六倍。想把这个数字压下来只有一条路：把并发批到 32 路以上，吞吐约 880 token/s，成本才落到 7.3 美元，勉强比 API 便宜。<b>「自己能跑」和「自己跑得起」之间，隔着一条批处理流水线。</b></p>
+    <p><b>第二件：量化的账单在精度上寄回来。</b>Q4 之后可用的上下文从标称 100 万缩到 26 万，再长就明显掉点：社区在长文档问答集上实测，26 万 token 处准确率 71%，同条件下未量化的 BF16 是 84%。这条和第 09 版那篇讲「长上下文指令衰减」的论文互相印证——<b>不是模型忘了，是权重被压扁之后，远处的注意力先失真。</b></p>
+    <p><b>第三件：GLM-5.3 把窗口开到 200 万。</b>价格没动，但 100 万以上区间的首 token 延迟从 3.8 秒涨到 22 秒，且官方文档承认「超长上下文不保证工具调用格式正确」。本报的看法是：<b>窗口长度是参数，不是能力</b>；真正能用满的窗口，取决于你的检索和分块做得多细。</p>
+
+    <div class="table-wrap">
+      <table class="rank">
+        <caption>表 1 · Terminal-Bench 4.0 前六（口径：官方榜 2026-11-06 快照，分数为三次运行中位数；<b>本报未独立复现</b>）</caption>
+        <thead>
+          <tr><th>#</th><th>模型</th><th>类型</th><th>分数</th><th>变化</th><th>备注</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="num">01</td><td class="name">Claude Opus 5.5</td><td>闭源</td><td class="num">66.4</td><td class="up">持平</td><td>今日降价 38%，仍居第一</td></tr>
+          <tr><td class="num">02</td><td class="name">Kimi K3.1 Pro</td><td>开放权重</td><td class="num">65.7</td><td class="up">持平</td><td>Q4 量化后复测 61.2</td></tr>
+          <tr><td class="num">03</td><td class="name">GPT-6 Astra</td><td>闭源</td><td class="num">58.2</td><td class="up">持平</td><td>Batch 折扣升至 60%</td></tr>
+          <tr><td class="num">04</td><td class="name">Gemini 4 Argon</td><td>闭源</td><td class="num">57.4</td><td class="up">+0.3</td><td>12/1 起涨至 $4 / $20</td></tr>
+          <tr><td class="num">05</td><td class="name">GLM-5.3</td><td>开放权重</td><td class="num">54.9</td><td class="up">+1.1</td><td>上下文扩至 200 万</td></tr>
+          <tr><td class="num">06</td><td class="name">DeepSeek-V4.1-Flash</td><td>开放权重</td><td class="num">52.6</td><td class="up">—</td><td>价格最低档，见第 12 版</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Agent Arena 那边，K3.1 Pro 的净改进率从昨天的 +5.29% 涨到 +5.9%，原因是今天新增的一批会话里，用户对「Bash 命令写错后自己修好」的正反馈明显变多。榜单方在更新说明里加了一句耐人寻味的话：<b>「我们开始把『用户重复同一句话』计为负信号。」</b>——这等于承认，判断智能体行不行，最可靠的数据不是评分，是人有没被逼着说第二遍。</p>
+
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版三件事</span>
+      </div>
+      <p>三件事其实是一件：<b>所有人都在用「更大」换「更省」，而更省的部分要用户自己承担。</b>1.56TB 换 41 token/s，200 万窗口换 22 秒首字，Q4 换 13 个点的准确率——每一笔都写着「看你信不信」。今天最该记住的不是谁第一，是表 1 里那行小字：Q4 复测 61.2。<b>别人榜单上的分数，和你能跑出来的分数，从来不是同一个数。</b></p>
+    </aside>
+  </section>

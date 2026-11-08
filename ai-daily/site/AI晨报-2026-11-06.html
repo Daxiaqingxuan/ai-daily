@@ -1,0 +1,1892 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 晨报 · 2026年11月6日 · 第 003 期 · 智能体专版（共 15 版）</title>
+<style>
+  :root{
+    --ink:#1b1a17;
+    --ink-soft:#3a3934;
+    --muted:#6d6a60;
+    --paper:#fbf8f0;
+    --paper-edge:#efeadd;
+    --rule:#1b1a17;
+    --rule-soft:#cfc8b6;
+    --accent:#8c1d18;
+    --serif:"Songti SC","STSong","Noto Serif SC","Source Han Serif SC","SimSun",Georgia,"Times New Roman",serif;
+    --sans:"Microsoft YaHei","PingFang SC","Hiragino Sans GB","Helvetica Neue",Arial,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
+  body{
+    margin:0;
+    background:var(--paper-edge);
+    color:var(--ink);
+    font-family:var(--serif);
+    font-size:14px;
+    line-height:1.78;
+  }
+  .page{
+    max-width:1180px;
+    margin:26px auto;
+    background:var(--paper);
+    padding:30px 46px 24px;
+    box-shadow:0 0 0 1px #e2dbca, 0 1px 2px rgba(0,0,0,.06);
+  }
+
+  /* ---------- 报头 ---------- */
+  .masthead{padding-bottom:10px;}
+  .mast-rule{height:3px;background:var(--rule);}
+  .mast-rule.double{height:1px;margin-top:6px;box-shadow:0 3px 0 var(--rule);}
+  .mast-top{
+    display:flex;justify-content:space-between;align-items:baseline;
+    font-family:var(--sans);font-size:11px;letter-spacing:.12em;
+    color:var(--muted);padding:9px 2px 2px;
+  }
+  .paper-name{
+    margin:6px 0 2px;
+    text-align:center;
+    font-size:72px;
+    line-height:1.1;
+    letter-spacing:.16em;
+    font-weight:700;
+    text-indent:.16em;
+  }
+  .paper-sub{
+    text-align:center;
+    font-family:var(--sans);
+    font-size:11px;
+    letter-spacing:.3em;
+    color:var(--muted);
+    text-indent:.3em;
+    padding-bottom:9px;
+  }
+  .mast-nav{
+    display:flex;justify-content:center;gap:15px;flex-wrap:wrap;
+    border-top:1px solid var(--rule-soft);
+    border-bottom:1px solid var(--rule);
+    padding:7px 0 6px;
+    font-family:var(--sans);font-size:10.5px;letter-spacing:.1em;color:var(--ink-soft);
+  }
+  .mast-nav a{color:inherit;text-decoration:none;white-space:nowrap;}
+  .mast-nav a:hover{color:var(--accent);}
+  .mast-nav b{color:var(--accent);font-weight:700;margin-right:3px;font-size:9.5px;vertical-align:1px;}
+
+  /* ---------- 头版 ---------- */
+  .lead{
+    display:grid;
+    grid-template-columns:1fr 306px;
+    gap:0;
+    border-bottom:2px solid var(--rule);
+    padding:22px 0 20px;
+  }
+  .lead-main{padding-right:30px;border-right:1px solid var(--rule-soft);}
+  .kicker{
+    font-family:var(--sans);font-size:10.5px;letter-spacing:.2em;
+    color:var(--accent);padding-bottom:6px;font-weight:700;
+  }
+  .lead h2{
+    margin:0 0 9px;
+    font-size:35px;line-height:1.32;letter-spacing:.01em;font-weight:700;
+  }
+  .lead h2 .h2-sub{font-size:26px;font-weight:700;letter-spacing:.02em;color:var(--ink-soft);}
+  .deck{
+    margin:0 0 9px;font-size:15.5px;line-height:1.7;color:var(--ink-soft);
+    padding-bottom:9px;border-bottom:1px solid var(--rule-soft);
+  }
+  .byline{
+    font-family:var(--sans);font-size:10.5px;letter-spacing:.1em;color:var(--muted);
+    margin-bottom:12px;
+  }
+  .lead-body{columns:2;column-gap:30px;column-rule:1px solid var(--rule-soft);text-align:justify;}
+  .lead-body p{margin:0 0 9px;font-size:13.8px;line-height:1.9;}
+  .dropcap::first-letter{
+    float:left;font-size:50px;line-height:.92;padding:2px 7px 0 0;font-weight:700;
+  }
+  .jump{
+    font-family:var(--sans);font-size:10.5px;letter-spacing:.06em;color:var(--muted);
+    margin-top:2px;padding-top:7px;border-top:1px solid var(--rule-soft);
+  }
+  .lead-side{padding-left:24px;}
+  .side-block{margin-bottom:20px;}
+  .side-block:last-child{margin-bottom:0;}
+  .side-block h3{
+    margin:0 0 8px;padding-bottom:5px;border-bottom:2px solid var(--rule);
+    font-family:var(--sans);font-size:11px;letter-spacing:.22em;font-weight:700;
+  }
+  .headlines{margin:0;padding:0;list-style:none;counter-reset:hn;}
+  .headlines li{
+    counter-increment:hn;
+    position:relative;
+    padding:5px 0 5px 22px;
+    border-bottom:1px dotted var(--rule-soft);
+    font-size:12.6px;line-height:1.62;
+  }
+  .headlines li::before{
+    content:counter(hn);
+    position:absolute;left:0;top:6px;
+    font-family:var(--sans);font-size:10px;color:var(--accent);font-weight:700;
+  }
+  .headlines li:last-child{border-bottom:none;}
+  .board{background:#f3eee1;padding:11px 12px 8px;border:1px solid var(--rule-soft);}
+  .stat{padding:6px 0;border-bottom:1px dotted var(--rule-soft);}
+  .stat:last-child{border-bottom:none;}
+  .stat .line{display:flex;align-items:baseline;gap:4px;}
+  .stat .num{font-family:Georgia,serif;font-size:23px;line-height:1.1;font-weight:700;letter-spacing:-.02em;}
+  .stat .unit{font-family:var(--sans);font-size:10px;color:var(--accent);letter-spacing:.06em;}
+  .stat .cap{display:block;font-family:var(--sans);font-size:10px;color:var(--muted);line-height:1.5;margin-top:1px;}
+
+  /* ---------- 版块通用 ---------- */
+  .section{border-bottom:2px solid var(--rule);padding:18px 0 16px;}
+  .section:target{background:#fdfbf4;}
+  .section-head{
+    display:flex;justify-content:space-between;align-items:center;
+    border-bottom:1px solid var(--rule);padding-bottom:6px;margin-bottom:13px;
+  }
+  .sec-label{
+    font-family:var(--sans);font-size:12px;letter-spacing:.24em;font-weight:700;
+  }
+  .sec-label::before{content:"";display:inline-block;width:9px;height:9px;background:var(--accent);margin-right:9px;vertical-align:1px;}
+  .sec-page{font-family:var(--sans);font-size:10px;letter-spacing:.12em;color:var(--muted);}
+
+  .cols-3{columns:3;column-gap:27px;column-rule:1px solid var(--rule-soft);}
+  .cols-2{columns:2;column-gap:30px;column-rule:1px solid var(--rule-soft);}
+  .story{break-inside:avoid;margin:0 0 15px;}
+  .story h4{margin:0 0 4px;font-size:17.5px;line-height:1.45;font-weight:700;}
+  .story h4.sm{font-size:15px;}
+  .story .tag{
+    font-family:var(--sans);font-size:10px;letter-spacing:.14em;color:var(--accent);
+    display:block;margin-bottom:3px;
+  }
+  .story p{margin:0 0 6px;font-size:13.1px;line-height:1.82;text-align:justify;color:var(--ink-soft);}
+  .story p:last-child{margin-bottom:0;}
+  .pullquote{
+    border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+    padding:8px 0;margin:8px 0 12px;
+    font-size:14px;line-height:1.7;font-weight:700;text-align:center;
+  }
+
+  /* ---------- 社论 ---------- */
+  .ed-title{font-size:31px;line-height:1.34;margin:0 0 8px;font-weight:700;letter-spacing:.01em;}
+  .ed-deck{
+    font-size:15px;line-height:1.7;color:var(--ink-soft);margin:0 0 10px;
+    padding-bottom:10px;border-bottom:1px solid var(--rule-soft);
+  }
+  .ed-body{columns:2;column-gap:30px;column-rule:1px solid var(--rule-soft);}
+  .ed-body p{margin:0 0 9px;font-size:13.6px;line-height:1.92;text-align:justify;}
+  .ed-sign{
+    font-family:var(--sans);font-size:10.5px;letter-spacing:.12em;color:var(--muted);
+    text-align:right;margin-top:4px;padding-top:6px;border-top:1px solid var(--rule-soft);
+  }
+
+  /* ---------- 图表 ---------- */
+  .figure{
+    margin:0 0 15px;border:1px solid var(--rule-soft);background:#f6f1e4;
+    padding:13px 16px 10px;break-inside:avoid;
+  }
+  .fig-title{
+    font-family:var(--sans);font-size:10.5px;letter-spacing:.16em;color:var(--accent);
+    font-weight:700;margin-bottom:11px;
+  }
+  .fig-cap{
+    font-family:var(--sans);font-size:10.2px;color:var(--muted);line-height:1.65;
+    margin-top:9px;padding-top:7px;border-top:1px solid var(--rule-soft);
+  }
+  .fig-cap b{color:var(--accent);}
+
+  /* ---------- 榜单表 ---------- */
+  .rank{width:100%;border-collapse:collapse;font-family:var(--sans);font-size:11.8px;}
+  .rank caption{
+    caption-side:top;text-align:left;font-family:var(--sans);font-size:10.3px;
+    letter-spacing:.06em;color:var(--muted);padding-bottom:6px;
+  }
+  .rank th{
+    text-align:left;font-size:10.3px;letter-spacing:.1em;color:var(--muted);
+    font-weight:700;padding:0 7px 6px 0;border-bottom:1.5px solid var(--rule);
+  }
+  .rank td{padding:6px 7px 6px 0;border-bottom:1px solid #ddd6c3;vertical-align:top;line-height:1.55;}
+  .rank th:last-child,.rank td:last-child{padding-right:0;}
+  .rank td.name{font-family:var(--serif);font-size:12.8px;font-weight:700;}
+  .rank td.num{font-family:Georgia,serif;white-space:nowrap;}
+  .rank td.up{color:var(--accent);white-space:nowrap;font-weight:700;}
+  .rank td.p{font-family:Georgia,serif;white-space:nowrap;text-align:right;padding-right:14px;}
+  .rank th.p{text-align:right;padding-right:14px;}
+  .rank tr:last-child td{border-bottom:none;}
+  .rank tr.hi td{background:#f4ecdc;}
+  .rank td.rz{font-family:var(--sans);font-size:10.5px;letter-spacing:.06em;color:var(--muted);text-align:right;white-space:nowrap;padding-right:0;}
+  .rank th.rz{text-align:right;padding-right:0;}
+  .rank.echo td{font-size:11.5px;}
+  .rank.echo td.name{font-size:13px;}
+  .sec-lede{
+    margin:0 0 14px;font-size:13.6px;line-height:1.78;color:var(--ink-soft);
+    text-align:justify;padding-bottom:10px;border-bottom:1px solid var(--rule-soft);
+  }
+
+  /* ---------- 行情注解 ---------- */
+  .note-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:14px;}
+  .note-box{border-left:2px solid var(--accent);padding:1px 0 1px 12px;}
+  .note-box h5{
+    margin:0 0 5px;font-family:var(--sans);font-size:10.5px;letter-spacing:.16em;font-weight:700;
+  }
+  .note-box ul{margin:0;padding-left:14px;}
+  .note-box li{font-size:12.4px;line-height:1.75;color:var(--ink-soft);margin-bottom:4px;}
+  .cost{margin:0;padding:0;list-style:none;}
+  .cost li{
+    display:flex;justify-content:space-between;gap:10px;
+    font-size:12.3px;padding:4px 0;border-bottom:1px dotted var(--rule-soft);
+  }
+  .cost li:last-child{border-bottom:none;}
+  .cost .v{font-family:Georgia,serif;font-weight:700;white-space:nowrap;}
+
+  /* ---------- 快讯与预告 ---------- */
+  .briefs{columns:3;column-gap:26px;column-rule:1px solid var(--rule-soft);margin:0;padding:0;list-style:none;}
+  .briefs li{
+    break-inside:avoid;padding:4px 0 4px 12px;position:relative;
+    font-size:12.4px;line-height:1.7;color:var(--ink-soft);
+  }
+  .briefs li::before{content:"";position:absolute;left:0;top:12px;width:4px;height:4px;background:var(--accent);}
+  .briefs b{color:var(--ink);}
+
+  .watch{margin-top:15px;border:1px solid var(--rule);padding:11px 14px 9px;}
+  .watch h5{
+    margin:0 0 7px;padding-bottom:5px;border-bottom:1px solid var(--rule);
+    font-family:var(--sans);font-size:11px;letter-spacing:.2em;font-weight:700;
+  }
+  .watch ul{margin:0;padding:0;list-style:none;}
+  .watch li{
+    display:flex;gap:14px;padding:5px 0;border-bottom:1px dotted var(--rule-soft);
+    font-size:12.4px;line-height:1.68;color:var(--ink-soft);
+  }
+  .watch li:last-child{border-bottom:none;}
+  .watch .d{
+    font-family:var(--sans);font-size:11px;color:var(--accent);font-weight:700;
+    white-space:nowrap;flex:0 0 66px;
+  }
+
+  /* ---------- 报尾 ---------- */
+  .colophon{
+    border-top:3px solid var(--rule);margin-top:16px;padding-top:10px;
+    font-family:var(--sans);font-size:10.3px;line-height:1.75;color:var(--muted);
+  }
+  .colophon .row{display:flex;justify-content:space-between;gap:20px;border-bottom:1px solid var(--rule-soft);padding-bottom:8px;margin-bottom:8px;flex-wrap:wrap;}
+  .colophon strong{color:var(--ink-soft);letter-spacing:.1em;}
+  .colophon p{margin:0 0 4px;}
+  .errata{border-left:2px solid var(--accent);padding:1px 0 1px 9px;margin:7px 0;}
+
+  /* ---------- 锐评 ---------- */
+  .razor{
+    margin:16px 0 0;padding:1px 0 2px 14px;
+    border-left:3px solid var(--accent);
+    break-inside:avoid;
+  }
+  .razor-h{
+    display:flex;align-items:center;gap:9px;flex-wrap:wrap;
+    font-family:var(--sans);margin-bottom:5px;
+  }
+  .razor-mark{
+    background:var(--accent);color:var(--paper);
+    font-size:10px;font-weight:700;letter-spacing:.18em;
+    padding:2px 8px 2px 9px;flex:0 0 auto;
+  }
+  .razor-src{font-size:9.8px;letter-spacing:.09em;color:var(--muted);}
+  .razor p{margin:0;font-size:13.2px;line-height:1.88;text-align:justify;color:var(--ink);}
+  .razor p b{color:var(--accent);}
+  .razor--reader .razor-mark{
+    background:transparent;color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent);
+    padding:1px 8px 1px 9px;
+  }
+
+  /* ---------- 右侧快捷目录 ---------- */
+  .rail{
+    position:fixed; left:50%; margin-left:602px; top:50%;
+    transform:translateY(-50%);
+    width:78px; z-index:60;
+    max-height:calc(100vh - 24px); overflow:auto;
+    background:var(--paper); border:1px solid #c9c1ad;
+    box-shadow:0 1px 4px rgba(0,0,0,.10);
+    font-family:var(--sans);
+    padding:5px 0 3px;
+  }
+  .rail-head{
+    font-size:9px;letter-spacing:.2em;color:var(--muted);text-align:left;
+    padding:1px 0 5px 9px;border-bottom:1px solid var(--rule-soft);margin-bottom:3px;
+    white-space:nowrap;
+  }
+  .rail-list{list-style:none;margin:0;padding:0;}
+  .rail-list a{
+    display:flex;align-items:center;gap:5px;text-decoration:none;color:var(--ink-soft);
+    padding:3px 0 3px 9px;font-size:10.5px;white-space:nowrap;line-height:1.55;
+  }
+  .rail-list a i{font-style:normal;font-size:9px;color:var(--accent);font-weight:700;width:13px;flex:0 0 13px;}
+  .rail-list a:hover{background:#f3eee1;}
+  .rail-list a.active{background:#f0e6d2;}
+  .rail-list a.active span{font-weight:700;color:var(--accent);}
+  .rail-top{
+    display:block;text-align:center;font-size:10.5px;color:var(--muted);text-decoration:none;
+    border-top:1px solid var(--rule-soft);margin-top:3px;padding:4px 0 1px;
+  }
+  .rail-top:hover{color:var(--accent);}
+
+  /* ---------- 深读卡 ---------- */
+  .deep{border-top:1px solid var(--rule-soft);padding-top:13px;margin-bottom:16px;}
+  .deep:first-of-type{border-top:none;padding-top:0;}
+  .deep-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
+  .deep-idx{
+    font-family:Georgia,serif;font-size:26px;font-weight:700;color:var(--accent);
+    line-height:1;letter-spacing:-.02em;
+  }
+  .deep-title{margin:0;font-size:23px;line-height:1.38;font-weight:700;}
+  .deep-repo{
+    font-family:var(--sans);font-size:10px;letter-spacing:.04em;color:var(--muted);
+    margin:3px 0 8px;
+  }
+  .deep-repo b{color:var(--ink-soft);}
+  .deep-tag{
+    display:inline-block;font-family:var(--sans);font-size:9.5px;letter-spacing:.12em;
+    color:var(--accent);border:1px solid var(--accent);padding:1px 6px;margin-bottom:5px;
+  }
+  .deep-body{columns:2;column-gap:28px;column-rule:1px solid var(--rule-soft);}
+  .deep-body p{margin:0 0 8px;font-size:13px;line-height:1.85;text-align:justify;color:var(--ink-soft);}
+  .deep-body p b{color:var(--ink);}
+  .k{
+    font-family:var(--sans);font-size:10px;letter-spacing:.14em;color:var(--muted);
+    display:block;margin-bottom:2px;
+  }
+  .cmd{
+    font-family:Consolas,"Courier New",monospace;font-size:11.6px;line-height:1.75;
+    background:#f4efe2;border-left:2px solid var(--accent);
+    margin:6px 0 9px;padding:7px 10px;white-space:pre-wrap;word-break:break-all;
+    color:#2b2a26;break-inside:avoid;
+  }
+  .cmd .c{color:#8a8577;}
+  .deep-warn{
+    font-size:12px;line-height:1.8;color:#3a3934;background:#f7ead9;
+    border-left:2px solid var(--accent);padding:6px 10px;margin:6px 0 0;break-inside:avoid;
+  }
+  .more-box{
+    margin-top:14px;border:1px solid var(--rule);padding:11px 14px 8px;break-inside:avoid;
+  }
+  .more-box h5{
+    margin:0 0 7px;padding-bottom:5px;border-bottom:1px solid var(--rule-soft);
+    font-family:var(--sans);font-size:11px;letter-spacing:.2em;font-weight:700;
+  }
+  .more-box p{margin:0 0 6px;font-size:12.4px;line-height:1.78;color:var(--ink-soft);}
+  .more-box p:last-child{margin-bottom:0;}
+  .more-box b{color:var(--ink);}
+
+  /* ---------- 思路拆解（第 06 版） ---------- */
+  .idea-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 30px;}
+  .idea{border-top:1px solid var(--rule);padding:11px 0 12px;break-inside:avoid;}
+  .idea-h{display:flex;align-items:baseline;gap:8px;margin-bottom:3px;}
+  .idea-idx{font-family:Georgia,serif;font-size:19px;font-weight:700;color:var(--accent);line-height:1;}
+  .idea-name{font-family:var(--sans);font-size:12.5px;font-weight:700;letter-spacing:.02em;color:var(--ink);}
+  .idea .idea-swap{margin:0 0 5px;font-size:15px;line-height:1.58;font-weight:700;color:var(--ink);text-align:left;}
+  .idea .idea-swap em{font-style:normal;color:var(--accent);}
+  .idea p{margin:0 0 4px;font-size:12.7px;line-height:1.78;color:var(--ink-soft);text-align:justify;}
+  .idea p b.lbl{font-family:var(--sans);font-size:10px;letter-spacing:.1em;color:var(--muted);font-weight:700;margin-right:5px;}
+  .idea p.take{margin:7px 0 0;padding:5px 0 0 9px;border-left:2px solid var(--accent);font-size:12.5px;line-height:1.7;color:var(--ink);}
+  .idea p.take b{display:block;font-family:var(--sans);font-size:9.6px;letter-spacing:.12em;color:var(--accent);font-weight:700;margin:0 0 1px;}
+
+  /* ---------- 平台回声：平台名即链接 ---------- */
+  .rank.echo td.name a{color:inherit;text-decoration:underline;text-decoration-style:dotted;text-decoration-color:#8f8674;text-decoration-thickness:1px;text-underline-offset:4px;}
+  .rank.echo td.name a:hover,.rank.echo td.name a:focus{color:var(--accent);text-decoration-color:var(--accent);}
+  .rank.echo td.name a:active{color:var(--accent);}
+
+  /* ---------- 宽表格与宽图：窄屏横向滚动，不挤压字 ---------- */
+  .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  .fig-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  .fig-hint{display:none;margin:7px 0 0;font-family:var(--sans);font-size:9.5px;color:var(--muted);text-align:center;letter-spacing:.06em;}
+
+  /* ---------- 窄屏目录（平板 / 手机） ---------- */
+  .mob-btn,.mob-panel{display:none;}
+
+  /* ---------- 怎么读（小白导航） ---------- */
+  .read-guide{
+    display:flex;flex-wrap:wrap;align-items:stretch;
+    border-bottom:1px solid var(--rule);background:#f6f1e4;
+    font-family:var(--sans);font-size:10.5px;color:var(--ink-soft);
+  }
+  .read-guide .rg-lead{
+    display:flex;align-items:center;padding:7px 13px;
+    background:var(--accent);color:var(--paper);
+    letter-spacing:.18em;font-weight:700;font-size:10px;white-space:nowrap;
+  }
+  .read-guide a{
+    flex:1 1 0;min-width:160px;padding:6px 13px;border-right:1px solid var(--rule-soft);
+    text-decoration:none;color:inherit;line-height:1.6;
+  }
+  .read-guide a:last-child{border-right:none;}
+  .read-guide a b{display:block;color:var(--accent);font-size:9.5px;letter-spacing:.12em;margin-bottom:1px;}
+  .read-guide a:hover{background:#efe8d6;}
+
+  /* ---------- 说人话 ---------- */
+  .plain{
+    margin:9px 0 12px;padding:8px 12px 8px 13px;background:#f6f1e4;
+    border-left:2px solid var(--ink);break-inside:avoid;
+  }
+  .plain .p-h{
+    display:block;font-family:var(--sans);font-size:9.5px;letter-spacing:.18em;
+    color:var(--accent);font-weight:700;margin-bottom:3px;
+  }
+  .plain p{margin:0;font-size:12.6px;line-height:1.82;color:var(--ink-soft);text-align:justify;}
+  .plain p b{color:var(--ink);}
+
+  /* ---------- 星探 ---------- */
+  .scout{display:grid;grid-template-columns:308px 1fr;border-bottom:1px solid var(--rule-soft);}
+  .scout-card{padding:2px 24px 14px 0;border-right:1px solid var(--rule-soft);}
+  .scout-card h5{
+    margin:0 0 8px;padding-bottom:5px;border-bottom:1px solid var(--rule);
+    font-family:var(--sans);font-size:10.5px;letter-spacing:.18em;font-weight:700;
+  }
+  .scout-row{
+    display:grid;grid-template-columns:66px 1fr 26px;align-items:center;gap:8px;
+    padding:4px 0;border-bottom:1px dotted var(--rule-soft);
+  }
+  .scout-row .lb{font-family:var(--sans);font-size:10.4px;color:var(--ink-soft);white-space:nowrap;}
+  .scout-row .bar{height:7px;background:#e7e0cf;position:relative;}
+  .scout-row .bar i{position:absolute;left:0;top:0;bottom:0;background:var(--accent);}
+  .scout-row .vl{font-family:Georgia,serif;font-size:12px;font-weight:700;text-align:right;}
+  .scout-total{
+    display:flex;align-items:baseline;justify-content:space-between;gap:8px;
+    margin-top:9px;padding-top:7px;border-top:1.5px solid var(--rule);
+  }
+  .scout-total .tn{font-family:Georgia,serif;font-size:31px;font-weight:700;line-height:1;letter-spacing:-.02em;}
+  .scout-total .tn em{font-style:normal;font-size:11.5px;color:var(--muted);letter-spacing:0;}
+  .scout-total .tt{font-family:var(--sans);font-size:9.6px;color:var(--muted);line-height:1.6;text-align:right;}
+  .veto{margin-top:11px;padding-top:8px;border-top:1px solid var(--rule-soft);}
+  .veto h6{
+    margin:0 0 5px;font-family:var(--sans);font-size:9.5px;letter-spacing:.16em;
+    color:var(--accent);font-weight:700;
+  }
+  .veto ul{margin:0;padding-left:13px;}
+  .veto li{font-family:var(--sans);font-size:10.2px;line-height:1.68;color:var(--muted);margin-bottom:2px;}
+  .veto li b{color:var(--ink-soft);}
+  .veto .out{margin-top:7px;font-family:var(--sans);font-size:9.8px;line-height:1.6;color:var(--ink-soft);}
+  .scout-main{padding:0 0 12px 26px;}
+  .scout-main .story h4{font-size:22px;line-height:1.36;}
+  .scout-body{columns:2;column-gap:26px;column-rule:1px solid var(--rule-soft);}
+  .scout-body p{margin:0 0 8px;font-size:12.9px;line-height:1.84;text-align:justify;color:var(--ink-soft);}
+  .scout-body p b{color:var(--ink);}
+
+  /* ---------- 名词速查 ---------- */
+  .gloss{border:1px solid var(--rule);padding:12px 15px 6px;margin-top:16px;break-inside:avoid;}
+  .gloss h5{
+    margin:0 0 8px;padding-bottom:5px;border-bottom:1px solid var(--rule);
+    font-family:var(--sans);font-size:11px;letter-spacing:.2em;font-weight:700;
+  }
+  .gloss h5 span{float:right;letter-spacing:.06em;font-size:9.6px;color:var(--muted);font-weight:400;}
+  .gloss-grid{columns:3;column-gap:26px;}
+  .gloss dl{margin:0;break-inside:avoid;}
+  .gloss dt{font-family:var(--sans);font-size:11.4px;font-weight:700;color:var(--accent);margin-top:6px;}
+  .gloss dd{margin:0 0 6px;font-size:12.1px;line-height:1.74;color:var(--ink-soft);}
+
+  @media (max-width:1389px){
+    .rail{display:none;}
+    .mob-btn{
+      display:flex;align-items:center;gap:7px;
+      position:fixed;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:90;
+      background:var(--paper);border:1px solid var(--rule);color:var(--ink);
+      font-family:var(--sans);font-size:12px;letter-spacing:.06em;
+      padding:9px 13px;box-shadow:0 2px 8px rgba(0,0,0,.18);cursor:pointer;
+      -webkit-tap-highlight-color:transparent;
+    }
+    .mob-btn i{font-style:normal;color:var(--accent);font-weight:700;font-size:14px;line-height:1;}
+    body.mob-open .mob-btn{background:var(--accent);border-color:var(--accent);color:#fbf8f0;}
+    body.mob-open .mob-btn i{color:#fbf8f0;}
+    .mob-panel{
+      display:none;position:fixed;left:0;right:0;bottom:0;z-index:89;
+      background:var(--paper);border-top:3px solid var(--rule);
+      max-height:78vh;overflow:auto;-webkit-overflow-scrolling:touch;
+      padding:14px 18px 20px;box-shadow:0 -8px 24px rgba(0,0,0,.22);
+    }
+    body.mob-open .mob-panel{display:block;}
+    .mob-panel h6{margin:0 0 8px;font-family:var(--sans);font-size:10px;letter-spacing:.2em;color:var(--muted);font-weight:400;}
+    .mob-panel .mob-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 18px;}
+    .mob-panel .mob-grid a{display:flex;align-items:baseline;gap:8px;text-decoration:none;color:var(--ink-soft);font-family:var(--sans);font-size:13px;padding:9px 0;border-bottom:1px solid var(--rule-soft);}
+    .mob-panel .mob-grid a i{font-style:normal;color:var(--accent);font-weight:700;font-size:10px;width:15px;flex:0 0 15px;}
+    .mob-panel .mob-grid a:active{background:#f3eee1;}
+    .mob-panel .mob-tip{margin:12px 0 0;font-family:var(--sans);font-size:10.5px;line-height:1.6;color:var(--muted);letter-spacing:.04em;}
+    .mob-panel .mob-top{
+      display:block;margin-top:10px;text-align:center;text-decoration:none;
+      font-family:var(--sans);font-size:12px;letter-spacing:.1em;color:var(--accent);
+      border:1px solid var(--rule-soft);padding:9px 0;
+    }
+    .mob-panel .mob-top:active{background:#f3eee1;}
+  }
+  @media (max-width:900px){
+    .page{padding:20px 18px 64px;}
+    .mast-nav{display:grid;grid-template-columns:repeat(5,1fr);justify-items:center;gap:5px 10px;}
+    .deep-body{columns:1;}
+    .deep-title{font-size:19px;}
+    .paper-name{font-size:42px;}
+    .lead{grid-template-columns:1fr;}
+    .lead-main{padding-right:0;border-right:none;}
+    .lead-side{padding-left:0;border-top:1px solid var(--rule-soft);padding-top:14px;}
+    .lead h2{font-size:27px;}
+    .lead-body,.cols-3,.cols-2,.briefs,.ed-body{columns:1;}
+    .note-grid{grid-template-columns:1fr;}
+    .ed-title{font-size:23px;}
+    .read-guide .rg-lead{flex:1 0 100%;justify-content:center;}
+    .read-guide a{flex:1 0 100%;border-right:none;border-bottom:1px solid var(--rule-soft);}
+    .scout{grid-template-columns:1fr;}
+    .scout-card{padding:0 0 12px;border-right:none;border-bottom:1px solid var(--rule-soft);}
+    .scout-main{padding:12px 0 0;}
+    .scout-body{columns:1;}
+    .gloss-grid{columns:1;}
+    .idea-grid{grid-template-columns:1fr;}
+    .idea .idea-swap{font-size:14.5px;}
+  }
+  @media (max-width:620px){
+    /* 报头：三块信息改为三行竖排，避免挤成一团 */
+    .mast-top{flex-direction:column;align-items:center;gap:1px;text-align:center;letter-spacing:.06em;line-height:1.7;}
+    .paper-sub{font-size:9.6px;letter-spacing:.14em;text-indent:.14em;}
+    .lead h2{font-size:23px;line-height:1.36;}
+    .lead h2 .h2-sub{font-size:19px;}
+    .ed-title{font-size:20px;}
+    .mast-nav{gap:4px 6px;font-size:10px;}
+    /* 宽表与宽图：保持可读字号，改为横向滑动 */
+    .rank{min-width:720px;}
+    .rank.echo{min-width:680px;}
+    .fig-scroll svg{min-width:780px;}
+    .fig-hint{display:block;}
+  }
+  @media print{
+    @page{margin:16mm 0;}
+    body{background:#fff;font-size:10.5pt;}
+    .page{box-shadow:none;margin:0;max-width:none;padding:0 12mm;}
+    .rail,.mob-btn,.mob-panel,.read-guide{display:none;}
+    .story,.figure,.deep,.idea,.razor,.plain,.note-box,.more-box,.watch,.gloss{break-inside:avoid;}
+    .section-head{break-after:avoid;}
+    .story h4,.deep-title,.ed-title,.lead h2{break-after:avoid;}
+    thead{display:table-header-group;}
+    a{color:inherit;text-decoration:none;}
+  }
+</style>
+</head>
+<body>
+<div class="page" id="top">
+
+  <header class="masthead">
+    <div class="mast-rule"></div>
+    <div class="mast-top">
+      <span>2026 年 11 月 6 日　星期五　北京时间</span>
+      <span>每版附锐评 · 本期因故延后发布</span>
+      <span>第 003 期　智能体专版　共 15 版</span>
+    </div>
+    <h1 class="paper-name">AI 晨报</h1>
+    <div class="paper-sub">AI MORNING POST · 每日人工智能与智能体要闻</div>
+    <div class="mast-rule double"></div>
+    <nav class="mast-nav">
+      <a href="#p01"><b>01</b>头条</a>
+      <a href="#p02"><b>02</b>社论</a>
+      <a href="#p03"><b>03</b>能力底座</a>
+      <a href="#p04"><b>04</b>产品生态</a>
+      <a href="#p05"><b>05</b>深读</a>
+      <a href="#p06"><b>06</b>思路</a>
+      <a href="#p07"><b>07</b>开源榜</a>
+      <a href="#p08"><b>08</b>安全治理</a>
+      <a href="#p09"><b>09</b>学术</a>
+      <a href="#p10"><b>10</b>资本</a>
+      <a href="#p11"><b>11</b>算力本地</a>
+      <a href="#p12"><b>12</b>行情</a>
+      <a href="#p13"><b>13</b>平台回声</a>
+      <a href="#p14"><b>14</b>星探</a>
+      <a href="#p15"><b>15</b>快讯</a>
+    </nav>
+    <div class="read-guide">
+      <span class="rg-lead">怎么读</span>
+      <a href="#p01"><b>只有 3 分钟</b>读头版头条 + 第 14 版「星探」，今天该知道的两件事就齐了</a>
+      <a href="#p05"><b>能给 10 分钟</b>加读第 05 版「深读」，三个今天就能装的项目</a>
+      <a href="#gloss"><b>术语看不懂</b>跳到报尾「名词速查」13 个词，全用大白话写的</a>
+    </div>
+  </header>
+
+  <section class="lead" id="p01">
+    <article class="lead-main">
+      <div class="kicker">头版头条 · 智能体</div>
+      <h2>Kimi 把 harness 租出来卖<br><span class="h2-sub">托管智能体上线：7×24 沙箱、留痕可导出</span></h2>
+      <p class="deck">模型不再是卖点，运行它的那层外壳成了商品。企业按需配 Agent，沙箱、网络策略、审计与账单由平台兜着。</p>
+      <div class="byline">本报编辑部　综合报道　2026-11-06</div>
+      <div class="lead-body">
+        <p class="dropcap">十一月五日，Kimi 宣布 Hosted Agents 正式发布，把支撑 Agent 运行的 Harness 直接作为云端服务提供——用他们自己的说法，Harness as a Service。企业和开发者不必再自行搭建、维护运行框架，就能拿到一个 7×24 的托管环境，用来跑长程任务、或者让多个智能体并行协作。</p>
+        <p>落地形态分两类。一类对内部：把 Agent 接进企业已有系统，干业务监控、运维响应这类有明确触发条件的活。一类对外：把 Agent 嵌进产品，变成 App 里的投研助手、客服助手。两类都沿用同一套运行环境，区别只在入口和权限范围。</p>
+        <p>真正值得记的是安全那一串清单，写得比功能细：独立沙箱、网络访问权限控制、企业可自行设定操作边界、必要时可随时中止会话；执行过程留痕可查，支持审计导出；计费规则清晰，按 Agent 项目出用量报表。这四件事过去是每个团队自己写的胶水代码，现在被打包成产品的默认项。</p>
+        <p>这不是孤例，是这一周的共同方向。同一天，腾讯在全球数字生态大会上表示将围绕办公协同、数据管理、业务执行三个场景持续开放 WorkBuddy Agent 平台能力；十一月二日，实在智能在乌镇发布企业级智能体平台 Soiawork，对有接口的系统走连接器，对只有老网页的系统用部署在执行设备上的 Worker 结合 RPA 与 Computer Use，并称这套界面操作在 OSWorld 基准上取得 90.2% 的任务成功率；十一月三日，曙光云 OneBox 主打政企私有化，把模型、知识、工具与权限管理一起放进客户自己的环境。</p>
+        <p>三条路线指向同一件事：跑得动、管得住、算得清，这三层能力正在被同时商品化。但对使用它的团队来说，责任边界也跟着挪了位置——会话可以随时中止，中止的开关在平台手里；执行留痕可以导出，意味着日志先存在别人那里。选型的第一个问题，已经从「它支持多少工具」变成「出事的时候我能拿到什么」。</p>
+      </div>
+      <p class="jump">相关报道见第 04 版《产品与生态》、第 06 版《思路：六次交换》、第 08 版《安全与治理》</p>
+      <aside class="razor">
+        <div class="razor-h">
+          <span class="razor-mark">锐评</span>
+          <span class="razor-src">本报评论员 · 针对本版头条</span>
+        </div>
+        <p>这条新闻里最有分量的一句不是「7×24」，是「必要时随时中止会话」。<b>一个能被随时掐断的智能体，才有人敢让它连生产库。</b>但掐断的开关在平台手上，不在你手上——这跟自建 harness 是两种完全不同的风险。签之前先问三句：日志能导出成什么格式、中止后正在写的那笔事务怎么回滚、沙箱出网白名单能不能自己改。至于 90.2% 的 OSWorld，那是别人的系统；你自己的系统，大概率先卡在登录页。</p>
+      </aside>
+    </article>
+
+    <aside class="lead-side">
+      <div class="side-block">
+        <h3>今日要闻</h3>
+        <ol class="headlines">
+          <li>百度开源文心 5.5 Flash Base：2800 亿参数、140 亿激活</li>
+          <li>20 家单位签署《智能体发展自律公约》，共八条</li>
+          <li>腾讯开放 WorkBuddy Agent 平台，锁定三大场景</li>
+          <li>纳斯达克 11 月 5 日跌 5.52%，英伟达跌超 9%</li>
+          <li>Gemini Omni 1.2 Flash：15 秒视频、每秒 0.07 美元</li>
+          <li>Claude Code 负责人 Cat Wu 离职，加入 OpenAI</li>
+          <li>Ripple-65B：5 人团队、3200 万美元训出 65B 稠密</li>
+          <li>Meta 放弃水果代号，新模型直接叫 Wonder Full</li>
+        </ol>
+      </div>
+      <div class="side-block board">
+        <h3>智能体数字</h3>
+        <div class="stat"><div class="line"><span class="num">90.2</span><span class="unit">%</span></div><span class="cap">实在智能界面操作在 OSWorld 的成功率（企业口径）</span></div>
+        <div class="stat"><div class="line"><span class="num">1,735</span><span class="unit">token</span></div><span class="cap">mcp-toolsearch-proxy 五个元工具的定义总量</span></div>
+        <div class="stat"><div class="line"><span class="num">53.89</span><span class="unit">tok/s</span></div><span class="cap">Ling-3.0-flash 在单台 DGX Spark 上的解码速度</span></div>
+        <div class="stat"><div class="line"><span class="num">4.95</span><span class="unit">%</span></div><span class="cap">六种配置下编码智能体接管项目的完整交付率</span></div>
+        <div class="stat"><div class="line"><span class="num">8</span><span class="unit">条</span></div><span class="cap">《智能体发展自律公约》提出的自律措施</span></div>
+      </div>
+    </aside>
+  </section>
+
+  <!-- 02 社论 -->
+  <section class="section" id="p02">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">社论 · 编辑观察</span>
+      <span class="sec-page">第 02 版 / 共 15 版</span>
+    </div>
+    <h2 class="ed-title">智能体的账，开始记在别人家的服务器上</h2>
+    <p class="ed-deck">同一天，一家把 harness 做成了按月租的服务，二十家签了八条自律公约。两条路都在回答同一个问题：出了事，谁在名单上。</p>
+    <div class="ed-body">
+      <p>把十一月四日和五日这两天并排放着看，会发现一件很有意思的事：行业在用两种完全不同的方式回答同一个问题。</p>
+      <p>四日，中国信通院、腾讯、蚂蚁、阿里、抖音、华为、小米等二十家单位在乌镇联合发布《智能体发展自律公约》，八条措施，从身份标识、互联基础设施、互操作，一路写到安全防护、治理机制、用户权益。第五条明确要「确保智能体行为遵守法律法规」，第四条要求建立「运行监测、行为管控、异常熔断」的技术体系。</p>
+      <p>五日，Kimi 把 harness 做成云服务开卖：独立沙箱、网络访问控制、随时中止会话、留痕可导出、按项目出用量报表。同一天腾讯说要围绕三个场景开放 Agent 平台能力，前一天曙光云把「私有化部署 + 组织级权限 + 可信执行」写进产品名。</p>
+      <p>一边在写「应该怎样」，一边在卖「已经怎样」。这不是巧合，是分工。</p>
+      <p>公约里最硬的三条，恰好也是托管服务最好卖的三条。第一条要「分层次、可验证的智能体身份标识」——托管平台天然握着身份；第四条要「异常熔断」——能熔断的前提是运行环境归你管；第六条要「用户对重要事项的最终控制权」——控制权落在谁手里，取决于会话跑在谁家机房。<b>规范落地的位置，就是钱能收的位置。</b></p>
+      <p>但这两条路都有各自的空白。公约是自律，没有罚则，二十家签了不等于二十万家遵守；托管是合同，写清了 SLA 与中止权，却没写清「你的日志在我不在之后还能不能读」。中间那一层——跨平台的身份、可携带的日志、可验证的回滚——现在既不在公约条款里，也不在任何一家的价目表上。</p>
+      <p class="pullquote">「公约管的是应该，托管卖的是已经；中间那层可携带的责任，还是空的。」</p>
+      <p>成本的压力已经在往这一层挤。有报道称苹果把工程团队的 AI 使用上限从每天 300 美元下调到 200 美元，部分团队降到 25 美元；美国银行则在分化，摩根大通、花旗等禁止外部智能体接入，而 Cross River 一家银行三个月内经智能体卡完成 4000 万美元、20 万笔以上支付。一个在收，一个在放，分界线不是技术能力，是「出了事谁赔」。</p>
+      <p>对开发者而言，这条判断可以落到很具体的地方。你大概不需要自建机房，但你需要三样能带走的东西：身份（这次操作代表谁）、日志（每一步可回放、可导出、可离线保存）、回滚（中止之后，半途写进去的东西怎么退）。这三样只要有一项拿不走，你的智能体就是租来的，不只是跑在租来的机器上。</p>
+      <p>顺带说一句，这也是本报为什么把「安全与治理」放在第 08 版而不是附录：它不是合规部门的作业，是采购清单的第一页。</p>
+    </div>
+    <div class="ed-sign">本报评论员</div>
+    <aside class="razor razor--reader">
+      <div class="razor-h">
+        <span class="razor-mark">读者锐评</span>
+        <span class="razor-src">Hacker News 评论区 · 针对本版社论</span>
+      </div>
+      <p>「说租来的环境等于把命门交出去，太重了。自建 harness 的团队，日志也没几个人真看，回滚脚本更是从来没写过。」这个反驳有一半是对的：<b>自建不等于可控，只是等于「有机会可控」。</b>但差别恰恰在这里——租来的东西，你只能等 vendor 改；自建的东西，你今晚就能改。苹果把预算从 300 美元砍到 200，说明连最有钱的团队都在算这笔账；算账的时候，「能不能自己动手」是唯一还算数的变量。</p>
+    </aside>
+  </section>
+
+  <!-- 03 能力底座 -->
+  <section class="section" id="p03">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">智能体 · 能力底座</span>
+      <span class="sec-page">第 03 版 / 共 15 版</span>
+    </div>
+    <div class="cols-3">
+
+      <article class="story">
+        <span class="tag">开源权重 · 稀疏激活</span>
+        <h4>百度开源文心 5.5 Flash Base<br>2800 亿总参，只激活 140 亿</h4>
+        <p>11 月 5 日晚，百度把文心 5.5 Flash Base 的完整权重放上 Hugging Face：总参数 2800 亿，MoE 每次激活 140 亿，256K 上下文，Apache-2.0 许可，商用不需另外申请。这是国内大厂第一次把「总参很大、激活很小」这一档的底座模型整份开放。</p>
+        <p>官方给的数字是：Terminal-Bench 4.0 得 41.2%，SWE-bench Verified 38.6%，BFCL v4 工具调用 72.1%。这三项都不算顶尖——Kimi K3.1 Pro 在 Terminal-Bench 上是 65.7%——但它的定位本来就不是旗舰，而是「一张 48GB 显卡能跑起来的底座」。按 Q4 量化估算，权重约 150GB，需要两台 8 卡机器或一台 8 卡 96GB 的整机；激活只 140 亿，解码速度是稠密 70B 的三到四倍。</p>
+        <p>价格也一并给了：官方 API 每百万 token 输入 0.8 元、输出 3.2 元，比自家旗舰低一个数量级。对做行业智能体的团队，这条新闻的实际含义是「底座可以自己留着」——微调后不必把权重传回任何人的服务器。</p>
+      </article>
+
+      <article class="story">
+        <span class="tag">多模态 · 视频</span>
+        <h4>Gemini Omni 1.2 Flash：15 秒带原生音频，每秒 7 美分</h4>
+        <p>谷歌发布 Gemini Omni 1.2 Flash，单次可生成 15 秒 1080p 视频，音频与画面同一次前向产出，不是后期配音。计费按秒：每秒 0.07 美元，一段 15 秒成片 1.05 美元，约为上一代 Omni 1.0 的六成。</p>
+        <p>接口与 Gemini 4 系列共用，支持首帧图生视频、镜头运动指令、以及「保留主体、换背景」的编辑模式。官方演示里有一段 12 秒的产品特写，镜头推进与字幕同步，没有出现文字扭曲——这在此前是视频模型的通病。</p>
+        <p>对智能体来说，值得注意的不是画质，是它进了同一个工具调用栈：一个智能体可以先写脚本、再生成分镜、最后调用它出片，全程不需要换 API key。内容生产类的智能体，成本结构会因此改写。</p>
+      </article>
+
+      <article class="story">
+        <span class="tag">榜单 · 智能指数</span>
+        <h4>Grok 4.7 拿下 62 分，前四名差距压到 7 分</h4>
+        <p>Artificial Analysis 智能指数（5.0 版）本周更新：xAI Grok 4.7 以 62 分居首，Gemini 4 Carbon 59 分，Claude Opus 5.5 58.4 分，Kimi K3.1 Pro 55 分。前四名相差 7 分，是这项指数设立以来最窄的一次。</p>
+        <p>分项上差异更明显：Terminal-Bench 4.0 仍是 Kimi K3.1 Pro 领先（65.7%），SWE-bench Verified 由 Claude Opus 5.5 拿下（82.4%），GPQA Diamond 是 Gemini 4 Carbon（91.3%），数学 AIME 2026 则是 Grok 4.7（98/100）。</p>
+        <p>总分接近、分项分化，意味着「换模型」不再是换一个更聪明的脑子，而是换一种擅长。对智能体系统，这直接支持了路由式架构：按任务类型分派，而不是全系统统一一个模型。</p>
+      </article>
+
+      <article class="story">
+        <span class="tag">小团队 · 稠密模型</span>
+        <h4>Ripple-65B：5 个人、3200 万美元，训出一个 65B 稠密模型</h4>
+        <p>Ripple 实验室公布 Ripple-65B：650 亿参数稠密架构，2.4 万亿 token 训练，512 张 H100 跑 38 天，总花费 3200 万美元。团队 5 人，没有自建集群，算力全部按小时租。</p>
+        <p>成绩不算惊艳但很扎实：SWE-bench Verified 61.8%，Terminal-Bench 4.0 44.5%，MMLU-Pro 78.2%。放在稠密模型里，这是 65B 这一档目前最好的编码成绩；放在总榜上，它打不过任何一家旗舰。</p>
+        <p>这条新闻真正的信息量在成本结构：3200 万美元里，算力占 2600 万，数据 400 万，人只占 200 万。当训练一个「够用」的模型便宜到这个量级，行业的分化就不再是「谁能训」，而是「谁有场景」。</p>
+      </article>
+
+      <article class="story">
+        <span class="tag">产品 · 代号</span>
+        <h4>Meta 放弃水果代号，新模型直接叫 Wonder Full</h4>
+        <p>Meta 超智能实验室把下一代模型命名为 Wonder Full，不再沿用此前以水果为代号的内部习惯。模型为 1.2 万亿参数 MoE、320 亿激活，原生多模态，先经 API 开放，权重是否开源未定。</p>
+        <p>官方博客给的说法很克制：重点在「长任务的稳定性」，即连续 200 步以上的工具调用不掉线。公开的演示是让它整理一份 400 封邮件的收件箱，中途不改计划、不重复读同一封信。这类指标不上榜，但对智能体才是真需求。</p>
+        <p>改名这件事本身也被内部员工当成信号：水果代号属于「研究项目」，直接命名属于「要卖的东西」。</p>
+      </article>
+
+    </div>
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对第 03 版</span>
+      </div>
+      <p>五个模型，四家在比分数，只有百度在比「能不能装进你自己的机房」。2800 亿总参只激活 140 亿、Terminal-Bench 41.2%，这成绩拿出去排不进前五；但它 150GB 的权重和 0.8 元一百万的输入价，恰好是行业智能体算得过账的那一档。<b>榜单前四名只差 7 分，说明「更聪明」已经卖不出溢价了</b>；剩下的生意在「更便宜、更能自己留着」。Ripple 那 3200 万美元里人只占 200 万，也是同一句话。</p>
+    </aside>
+  </section>
+
+  <!-- 04 产品与生态 -->
+  <section class="section" id="p04">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">智能体 · 产品与生态</span>
+      <span class="sec-page">第 04 版 / 共 15 版</span>
+    </div>
+    <div class="cols-3">
+
+      <article class="story">
+        <span class="tag">平台 · 办公协同</span>
+        <h4>腾讯开放 WorkBuddy Agent 平台：三个场景、12 个连接器</h4>
+        <p>11 月 5 日的全球数字生态大会上，腾讯宣布围绕办公协同、数据管理、业务执行三个场景开放 WorkBuddy Agent 平台能力。首批上线 12 个官方连接器，覆盖文档、表格、会议、邮件与企业内知识库；企业自建连接器走同一套注册协议，权限按组织架构继承。</p>
+        <p>与 Kimi 的托管路线相比，它的重心在「已有工作流」：智能体不是新开一个入口，而是嵌进文档、会议、审批这些已经在用的地方。内测企业 200 家，官方给的数字是会议纪要整理平均节省 37 分钟每人每场。</p>
+        <p>需要看清的是边界：连接器越多，权限面越大。官方文档写明，跨应用操作默认逐次确认，管理员可改为一键放行——这个开关怎么设，决定了它是助手还是风险。</p>
+      </article>
+
+      <article class="story">
+        <span class="tag">RPA · 界面操作</span>
+        <h4>实在智能 Soiawork：有接口走连接器，没接口走 Worker</h4>
+        <p>11 月 2 日在乌镇发布的企业级智能体平台 Soiawork，把接入分成两条路：对有 API 的系统走连接器，对只有老网页的系统，部署一台执行设备上的 Worker，用 RPA 加 Computer Use 操作界面。</p>
+        <p>官方称这套界面操作在 OSWorld 基准上取得 90.2% 的任务成功率。口径要写清：这是在其内部测试集与企业常见软件上的结果，不是 OSWorld 官方全量榜单；演示任务集中在财务对账、订单录入这类流程固定的场景。</p>
+        <p>它解决的是国内企业最真实的困境——核心系统是十年前的外包产物，没有接口，只有网页。这条路不优雅，但能用；代价是必须有人维护那台 Worker，以及界面一改版就要重录流程。</p>
+      </article>
+
+      <article class="story">
+        <span class="tag">私有化 · 政企</span>
+        <h4>曙光云 OneBox：模型、知识、权限装进客户自己的机柜</h4>
+        <p>11 月 3 日发布的曙光云 OneBox，把模型推理、知识库、工具调用与组织级权限管理打包成一台可交付的整机，最小配置 8 卡，交付周期 14 天。定位很明确：数据不出机房。</p>
+        <p>功能上没有新奇之处，值得记的是它把「权限」放进了产品名而不是附录：每个智能体绑定一个组织身份，工具调用按角色授权，日志本地留存 180 天。这三件事在公有云托管里由平台代劳，在私有化里必须由客户自己承担——所以它送了一套预置策略模板。</p>
+        <p>对预算有限的中型机构，这类整机的现实问题是利用率：8 卡跑一个部门的知识问答，大部分时间在空转。它更像「合规基础设施」，不是「效率工具」。</p>
+      </article>
+
+      <article class="story">
+        <span class="tag">人事 · 编码智能体</span>
+        <h4>Claude Code 负责人 Cat Wu 离职，加入 OpenAI</h4>
+        <p>多方消息确认，Claude Code 产品负责人 Cat Wu 已从 Anthropic 离职，加入 OpenAI，随行的还有两名核心工程师。Anthropic 方面表示产品线由原班工程团队接手，路线不变。</p>
+        <p>这不是孤立的人事变动。过去三个月，编码智能体这条线上已经有四组核心成员流动，方向几乎都是从「做产品」流向「做平台」。原因不难猜：编码智能体是最先跑通付费场景的一类，也是最先被平台化吞掉的一类。</p>
+        <p>对用户的实际影响，短期看是版本节奏：Claude Code 原定的多智能体并行功能已从 11 月推迟到 12 月。长期看，这类工具的同质化会更快——决定胜负的不再是谁先做出来，而是谁的沙箱更稳、账单更清。</p>
+      </article>
+
+      <article class="story">
+        <span class="tag">开源 · 版本</span>
+        <h4>Dify 1.18 与 Coze Studio 2.3：都把「会话」做成了持久对象</h4>
+        <p>Dify 1.18 把 Agent 节点的会话状态从内存搬到数据库，长任务可以跨重启续跑，插件市场收录 1,400 个工具；Coze Studio 2.3 开源版支持多智能体编排，官方给的最低配置是 4 核 16GB，单机可跑。</p>
+        <p>两个版本更新指向同一件事：智能体不再是「一次问答」，而是「一个有状态的对象」。状态一旦持久化，就必须回答三个新问题——存在哪、谁能读、多久清理。两家的默认答案都是 PostgreSQL 加 30 天保留。</p>
+        <p>这类开源平台的价值不在功能，在于它把「状态该放哪」这个决定变成了可改的配置，而不是厂商写死的实现。</p>
+      </article>
+
+    </div>
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对第 04 版</span>
+      </div>
+      <p>这一版五条新闻，四条在解决同一个问题：智能体怎么钻进已有的系统。<b>90.2% 的 OSWorld 成功率听着吓人，但那是在「流程固定、界面不变」的演示集里</b>；真实企业里，界面一改版，那台 Worker 就得重录流程。真正值得记的是 Dify 和 Coze 都把会话搬进了数据库——状态持久化听着像技术细节，其实是责任分界：存在你的库里，你才有得删；存在别人的云上，你只有 30 天。</p>
+    </aside>
+  </section>
+
+  <!-- 05 深读 -->
+  <section class="section" id="p05">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">深读 · 今天就能装的三个</span>
+      <span class="sec-page">第 05 版 / 共 15 版</span>
+    </div>
+    <p class="sec-lede">本版不写「很火」「很强」。每个项目只回答五件事：它做什么、怎么工作、怎么亲眼看到效果、上手要几条命令、会在哪里卡住。三个都是外壳（harness），不是模型——模型可以随时换，外壳换起来要重写一遍工作流。</p>
+
+    <div class="plain">
+      <span class="p-h">说人话 · 这一版到底在讲什么</span>
+      <p>你手机上装的是 App，模型只是 App 背后的那个人。这一版讲的就是那层 App——<b>它决定模型能看见什么、能动手改什么、出错之后留下什么</b>。三个项目分别卡在三个位置：工具太多怎么找、代码改完在哪跑、网页怎么点不出错。装之前先想清楚你要解决哪一个，不要三个都装。</p>
+    </div>
+
+    <!-- 卡片 01 -->
+    <article class="deep">
+      <div class="deep-head">
+        <span class="deep-idx">01</span>
+        <div>
+          <span class="deep-tag">最省钱的一个 · 工具检索</span>
+          <h3 class="deep-title">180 个工具只报 5 个名字：把工具清单做成可搜索的</h3>
+        </div>
+      </div>
+      <div class="deep-repo"><b>toolsearch/mcp-toolsearch-proxy</b>　TypeScript　MIT　v0.6.4（11/03）　9.6K 星，7 日 +2.7K</div>
+      <div class="deep-body">
+        <p><span class="k">它做什么</span>一个跑在智能体和 MCP 服务端之间的代理。它把上游所有工具的定义藏起来，只向模型暴露 5 个元工具：<b>search、describe、call、list_servers、auth</b>。模型先搜、再看说明、最后调用——三步都走同一个代理。</p>
+        <p><span class="k">怎么工作</span>启动时它连上配置里的所有 MCP 服务，把每个工具的名称、描述、参数 schema 建成一张本地索引（默认 SQLite，也支持内存模式）。之后每一轮对话，塞进上下文的只有那 5 个元工具的定义，合计 <b>1,735 token</b>；模型要做具体的事，先调 search 拿到候选，再 describe 拿完整 schema。索引在本地，不上传。</p>
+        <p><span class="k">演示：三条命令</span>配置文件和 Claude Desktop 的格式一样，改一个字段就接上了。</p>
+        <pre class="cmd">npx mcp-toolsearch-proxy init            <span class="c"># 生成 proxy.config.json</span>
+npx mcp-toolsearch-proxy index           <span class="c"># 建索引，打印每个服务的工具数</span>
+npx mcp-toolsearch-proxy serve --stdio   <span class="c"># 接到任意 MCP 客户端</span></pre>
+        <p><span class="k">数字与口径</span>作者给的对照是同一套 180 个工具的环境：直连时工具定义占 <b>41,200 token</b>，走代理后 <b>1,735 token</b>，降 95.8%。在 12 个多步任务上，任务成功率从 71% 升到 79%——原因是上下文里少了四万 token 的噪声，模型不再选错工具。口径必须写清：项目自测，12 个任务样本很小，且任务集由作者自己设计。</p>
+        <p><span class="k">为什么它值得先装</span>因为它是唯一一个「装上就立刻省钱」的项目。工具多到 50 个以上时，每一轮对话都在为没用到的工具付预填充费；按 GPT-6.1 Sol 的 2 美元/百万 token 算，一天 500 轮、每轮省 4 万 token，一个月约省 1,200 美元。工具少于 20 个时，代理本身的往返反而更贵。</p>
+        <p class="deep-warn"><b>会卡住的地方：</b>多一次模型往返，首字延迟增加约 0.8 秒；search 用的是关键词加向量混合检索，工具描述写得含糊就搜不出来；部分客户端不支持动态工具列表，需要开兼容模式，兼容模式下省不了 token。</p>
+      </div>
+    </article>
+
+    <!-- 卡片 02 -->
+    <article class="deep">
+      <div class="deep-head">
+        <span class="deep-idx">02</span>
+        <div>
+          <span class="deep-tag">最适合自建 · 编码智能体</span>
+          <h3 class="deep-title">OpenHands 1.4：把「改代码」关进一个能重放的容器</h3>
+        </div>
+      </div>
+      <div class="deep-repo"><b>All-Hands-AI/OpenHands</b>　Python + TypeScript　MIT　v1.4.0（11/02）　68.4K 星，30 天 4,100 次提交</div>
+      <div class="deep-body">
+        <p><span class="k">它做什么</span>一个可自托管的编码智能体运行时：给一个 issue，它自己读仓库、改文件、跑测试、提 PR。它不提供模型，模型用你自己的——Claude、GPT、Kimi、本地 llama-server 都行，只要兼容 OpenAI 接口。</p>
+        <p><span class="k">怎么工作</span>每次任务起一个 Docker 容器，仓库挂进去，智能体在容器里执行 shell 与编辑器动作。1.4 版把运行时拆成了「控制器 + 执行器」：控制器管计划和上下文，执行器只管动手，两者通过一条事件流通信。好处是<b>整条事件流可以存下来重放</b>——同一串动作，换个模型再跑一遍，就能对比是模型的问题还是环境的问题。</p>
+        <p><span class="k">演示：四条命令</span>它需要 Docker，Windows 上走 WSL2。</p>
+        <pre class="cmd">docker pull docker.all-hands.dev/all-hands-ai/runtime:1.4
+pip install openhands-ai==1.4.0
+openhands serve --config config.toml   <span class="c"># 浏览器打开 3000 端口</span>
+openhands replay runs/2026-11-05T14-22.jsonl  <span class="c"># 重放昨天的失败</span></pre>
+        <p><span class="k">数字与口径</span>官方在 SWE-bench Verified 上给的是 <b>61.2%</b>（默认配置、单次尝试、Claude Opus 5.5 后端），平均每个任务 <b>12 分 40 秒</b>、成本 <b>0.38 美元</b>。这三个数要一起看：61.2% 不是最高的，但 0.38 美元一题是榜单前列里最便宜的。重放功能官方只说「事件级可复现」，没有承诺跨版本兼容。</p>
+        <p><span class="k">为什么它比 SaaS 版更值得试</span>因为你能看见它到底做了什么。SaaS 编码智能体给你一个 diff，自托管版本给你 4,000 行事件流：哪一步读了哪个文件、哪一步命令超时、哪一步模型改了主意。出了问题，这份流是唯一能拿去复盘的东西。</p>
+        <p class="deep-warn"><b>会卡住的地方：</b>Docker 镜像 4.2GB，首次拉取慢；容器内的网络默认关闭，装依赖要开白名单；Windows 上路径映射偶尔把 CRLF 带进仓库，提交前记得配 .gitattributes。</p>
+      </div>
+    </article>
+
+    <!-- 卡片 03 -->
+    <article class="deep">
+      <div class="deep-head">
+        <span class="deep-idx">03</span>
+        <div>
+          <span class="deep-tag">最像人 · 浏览器操作</span>
+          <h3 class="deep-title">browser-use 0.9.3：不猜坐标，先读页面再决定点哪</h3>
+        </div>
+      </div>
+      <div class="deep-repo"><b>browser-use/browser-use</b>　Python　MIT　v0.9.3（11/01）　122.6K 星，7 日 +2.1K</div>
+      <div class="deep-body">
+        <p><span class="k">它做什么</span>让智能体操作真实浏览器：打开页面、填表、点按钮、翻页、下载。它不接管你的鼠标，跑在一个独立的 Chromium 实例里，你可以随时切过去看它做到哪一步。</p>
+        <p><span class="k">怎么工作</span>每一轮它做三件事：把当前页面压成一棵「可交互元素树」（每个元素带编号、角色、可见文字），交给模型选下一步；模型返回一个动作（点击 12 号、输入、滚动、提取）；执行后再取一次树，确认页面变了。0.9.3 把元素树从整页改成「视口内 + 最近变化区域」，单页 token 从 1.8 万降到 6,400。</p>
+        <p><span class="k">演示：两行起步</span>默认用 Playwright 的 Chromium，也可以接你已登录的 Chrome。</p>
+        <pre class="cmd">pip install "browser-use==0.9.3" &amp;&amp; playwright install chromium
+python -m browser_use "在 1688 上找 10 家做硅胶垫的供应商，导出报价" --headless=false</pre>
+        <p><span class="k">数字与口径</span>官方在 WebVoyager 上给 <b>89.1%</b>，平均 <b>6.4 步</b>完成一个任务，单任务成本 <b>0.11 美元</b>（GPT-6.1 Terra 后端）。口径要写清：WebVoyager 是 643 个固定任务的公开集，站点结构在测试期内没有大改；真实电商页面有验证码、有弹窗、有 A/B 实验，成功率会明显下降。</p>
+        <p><span class="k">为什么它值得装</span>因为大量企业系统没有 API，只有网页。它比 RPA 强的地方是「页面改版后还能自己找路」——元素树变了，模型重新读一遍就行，不必重录流程；比 RPA 弱的地方是慢，一步一次模型往返，20 步的任务要两分钟。</p>
+        <p class="deep-warn"><b>会卡住的地方：</b>验证码基本过不去，官方建议人工接管；登录态要用持久化 profile，否则每次都要扫码；并发跑多个实例很吃内存，8 个 Chromium 大约要 6GB。</p>
+      </div>
+    </article>
+
+    <figure class="figure">
+      <div class="fig-title">图 1 · 路线对比：全量注册 vs 按需检索（以 mcp-toolsearch-proxy 为例）</div>
+      <div class="fig-scroll">
+<svg viewBox="0 0 1080 430" width="100%" role="img" aria-label="旧路线全量注册与新路线按需检索的四步流程对比图">
+        <g font-family="Microsoft YaHei, PingFang SC, Arial, sans-serif">
+          <rect x="30" y="18" width="470" height="30" fill="#e8e2d2" stroke="#8a8577" stroke-width="1"/>
+          <text x="265" y="38" text-anchor="middle" font-size="14.5" font-weight="700" fill="#3a3934">旧路线 · 全量注册：把工具全塞给模型</text>
+          <rect x="580" y="18" width="470" height="30" fill="#fbf8f0" stroke="#8c1d18" stroke-width="1.6"/>
+          <text x="815" y="38" text-anchor="middle" font-size="14.5" font-weight="700" fill="#8c1d18">新路线 · 按需检索：先找名字，再装定义</text>
+          <line x1="540" y1="18" x2="540" y2="356" stroke="#8a8577" stroke-width="1" stroke-dasharray="5,5"/>
+          <rect x="30" y="62" width="470" height="56" fill="#f1ecdf" stroke="#8a8577" stroke-width="1"/>
+          <text x="48" y="84" font-size="12.5" font-weight="700" fill="#3a3934">① 启动时拉取全部 180 个工具的 schema</text>
+          <text x="48" y="104" font-size="11" fill="#6a655a">MCP 服务器有什么，就往上下文里放什么</text>
+          <rect x="580" y="62" width="470" height="56" fill="#fbf8f0" stroke="#8c1d18" stroke-width="1"/>
+          <text x="598" y="84" font-size="12.5" font-weight="700" fill="#1b1a17">① 只注册一个 search_tools 入口</text>
+          <text x="598" y="104" font-size="11" fill="#6a655a">模型看到的是「问句接口」，不是工具清单</text>
+          <rect x="30" y="134" width="470" height="56" fill="#f1ecdf" stroke="#8a8577" stroke-width="1"/>
+          <text x="48" y="156" font-size="12.5" font-weight="700" fill="#3a3934">② 全部塞进系统提示：41,200 token</text>
+          <text x="48" y="176" font-size="11" fill="#6a655a">每一轮对话都带着这份清单重复计费</text>
+          <rect x="580" y="134" width="470" height="56" fill="#fbf8f0" stroke="#8c1d18" stroke-width="1"/>
+          <text x="598" y="156" font-size="12.5" font-weight="700" fill="#1b1a17">② 模型用一句话描述要做什么</text>
+          <text x="598" y="176" font-size="11" fill="#6a655a">检索代理按语义匹配返回候选，1,735 token</text>
+          <rect x="30" y="206" width="470" height="56" fill="#f1ecdf" stroke="#8a8577" stroke-width="1"/>
+          <text x="48" y="228" font-size="12.5" font-weight="700" fill="#3a3934">③ 模型在 180 项长清单里挑工具</text>
+          <text x="48" y="248" font-size="11" fill="#6a655a">相似名字互相干扰，选错率随清单变长而上升</text>
+          <rect x="580" y="206" width="470" height="56" fill="#fbf8f0" stroke="#8c1d18" stroke-width="1"/>
+          <text x="598" y="228" font-size="12.5" font-weight="700" fill="#1b1a17">③ 只返回 5 个候选名字</text>
+          <text x="598" y="248" font-size="11" fill="#6a655a">短清单里挑，选对率升至 79%（项目自测）</text>
+          <rect x="30" y="278" width="470" height="56" fill="#f1ecdf" stroke="#8a8577" stroke-width="1"/>
+          <text x="48" y="300" font-size="12.5" font-weight="700" fill="#3a3934">④ 每轮重复付费，任务越长亏得越多</text>
+          <text x="48" y="320" font-size="11" fill="#6a655a">12 步任务光是工具说明就要烧掉几十万 token</text>
+          <rect x="580" y="278" width="470" height="56" fill="#fbf8f0" stroke="#8c1d18" stroke-width="1"/>
+          <text x="598" y="300" font-size="12.5" font-weight="700" fill="#1b1a17">④ 只加载选中工具的完整定义</text>
+          <text x="598" y="320" font-size="11" fill="#6a655a">用不到的 schema 永远不进上下文</text>
+          <text x="265" y="372" text-anchor="middle" font-size="13" font-weight="700" fill="#3a3934">结论：上下文先满，思考变贵</text>
+          <text x="815" y="372" text-anchor="middle" font-size="13" font-weight="700" fill="#8c1d18">结论：先找再用，按需付费</text>
+          <line x1="30" y1="392" x2="1050" y2="392" stroke="#cfc8b6" stroke-width="1"/>
+          <text x="30" y="416" font-size="10.5" fill="#8a8577">示意图 · 数字取自 mcp-toolsearch-proxy 项目自测（12 个任务样本，本报未独立复现），见第 05 版正文与报尾更正说明。</text>
+        </g>
+      </svg>
+</div>
+      <p class="fig-hint">← 左右滑动看全图 →</p>
+      <p class="fig-cap">左右两栏各四步：左侧灰框为旧路线（全量注册），右侧红框为新路线（按需检索）。核心差异在第②步——清单从 41,200 token 降到 1,735 token；代价在第③步——多了一次检索往返，语义匹配不准时会漏掉真正该用的工具。</p>
+    </figure>
+
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对第 05 版</span>
+      </div>
+      <p>三个项目，三笔账，其实是一笔：<b>1,735 token 对 41,200 token，省下的是「模型不必知道它用不到的东西」</b>；0.38 美元一题，省下的是「不必每一步都问最贵的模型」；6,400 token 一页，省下的是「不必把整页 HTML 塞进去」。三个数字都在说同一件事——智能体的成本不在思考，在喂料。判断一个 harness 好不好，先看它每一轮往上下文里塞了多少没用的东西。</p>
+    </aside>
+  </section>
+
+  <!-- 06 思路 -->
+  <section class="section" id="p06">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">思路 · 六个项目，六次「把难题换成容易题」</span>
+      <span class="sec-page">第 06 版 / 共 15 版</span>
+    </div>
+
+    <p class="sec-lede">读项目最没用的问法是「它用了什么技术」，最有用的是「它把哪个难题，换成了哪个更容易的题」。这一版不给参数、不重复命令，只给转换式：它换掉了什么、换完付什么代价、你能不能在自己的代码里做同样的交换。</p>
+
+    <div class="plain">
+      <span class="p-h">说人话 · 什么叫「换掉一道题」</span>
+      <p>修自行车的人都知道：链条断了要接链条，但更好的办法是改成皮带传动——不是把断链接得更好，而是<b>让「断链」这件事不再发生</b>。看项目也一样：多数项目不是在原来的难题上做得更好，是把那道题换成了另一道。找到这个交换，你就懂了它一半。</p>
+    </div>
+
+    <div class="idea-grid">
+
+      <article class="idea">
+        <div class="idea-h"><span class="idea-idx">01</span><span class="idea-name">Kimi Hosted Agents</span></div>
+        <p class="idea-swap">把<em>「自己搭运行环境」</em>换成<em>「租一个带中止开关的环境」</em></p>
+        <p><b class="lbl">原题</b>让智能体连生产系统，最难的不是模型会不会做，是出事之后怎么收场。自建 harness 的团队都写过同一堆胶水：沙箱、出网白名单、日志、超时、回滚。写完还没人维护。</p>
+        <p><b class="lbl">换法</b>把这堆胶水变成一项服务：独立沙箱、网络访问控制、操作边界、随时中止、留痕可导出、按项目出用量报表。团队从「维护运行环境」退回「写业务逻辑」，用一份合同替代一套基础设施。</p>
+        <p><b class="lbl">代价</b>中止的开关在平台手里，日志先在别人机房落地。你能导出，但导出的是「他们愿意给你的格式」；你能回滚，但回滚的是「他们实现了的回滚」。省下的运维成本，换成了一份依赖。</p>
+        <p class="take"><b>可抄走</b>凡是「每个团队都在重复写」的胶水，最后都会变成商品。判断要不要买，只看一件事：出事时你能否拿到原始数据。</p>
+      </article>
+
+      <article class="idea">
+        <div class="idea-h"><span class="idea-idx">02</span><span class="idea-name">mcp-toolsearch-proxy</span></div>
+        <p class="idea-swap">把<em>「把工具全告诉模型」</em>换成<em>「让模型自己来查」</em></p>
+        <p><b class="lbl">原题</b>MCP 让接工具变容易，于是工具越接越多。180 个工具的定义占 41,200 token，每一轮都要重发一遍，模型还得在这四万字里挑一个——挑错的概率随数量上升。</p>
+        <p><b class="lbl">换法</b>不预先告知，改成按需检索。只暴露 5 个元工具（1,735 token），模型先 search 再 describe 再 call。工具清单从「必须背下来的说明书」变成「可以查的手册」。</p>
+        <p><b class="lbl">代价</b>多一次往返，首字延迟涨 0.8 秒；检索质量取决于工具描述写得好不好，描述含糊就搜不出来；工具少于 20 个时，这套机制纯属加钱。</p>
+        <p class="take"><b>可抄走</b>上下文里每一段「可能用到」的内容都在收费。凡是超过 30 个工具的系统，都该有一次「检索代替预载」的改造。</p>
+      </article>
+
+      <article class="idea">
+        <div class="idea-h"><span class="idea-idx">03</span><span class="idea-name">OpenHands 1.4</span></div>
+        <p class="idea-swap">把<em>「相信 diff」</em>换成<em>「相信可重放的事件流」</em></p>
+        <p><b class="lbl">原题</b>编码智能体交付的是一个 diff。diff 只说明结果，不说明过程：它为什么改了这三个文件、哪一步测试没跑、哪一步它绕过了报错。出了问题只能猜。</p>
+        <p><b class="lbl">换法</b>把控制器和执行器拆开，所有动作走一条事件流并落盘。同一串事件可以换个模型重放，于是「模型的问题」和「环境的问题」第一次可以分开验证。</p>
+        <p><b class="lbl">代价</b>存储与回放开销；事件流只保证事件级复现，不代表文件系统能回到那一刻；跨版本的事件格式会变，旧流未必读得回来。</p>
+        <p class="take"><b>可抄走</b>给智能体的每一个动作留一条可回放记录，比给它写更长的提示词有用。复盘靠证据，不靠回忆。</p>
+      </article>
+
+      <article class="idea">
+        <div class="idea-h"><span class="idea-idx">04</span><span class="idea-name">browser-use 0.9.3</span></div>
+        <p class="idea-swap">把<em>「看懂一张截图」</em>换成<em>「读一张带编号的清单」</em></p>
+        <p><b class="lbl">原题</b>让智能体操作网页，最早的做法是截图加视觉模型猜坐标：贵、脆、不可验证。窗口一滚，坐标全错；页面一改版，流程全废。</p>
+        <p><b class="lbl">换法</b>读 DOM 里本来就有的结构：每个可点元素有角色、有文字、有状态，压成带编号的树，模型只需说「点 12 号」。0.9.3 再把范围收到视口内，单页从 1.8 万 token 降到 6,400。</p>
+        <p><b class="lbl">代价</b>只对结构良好的页面有效；Canvas 画的应用、刻意防抓取的站点，树里是空的。它也比 RPA 慢，一步一次往返。</p>
+        <p class="take"><b>可抄走</b>感知层能换成结构化数据，就别用像素。这条对桌面、对网页、对自家 UI 都成立。</p>
+      </article>
+
+      <article class="idea">
+        <div class="idea-h"><span class="idea-idx">05</span><span class="idea-name">Cassette</span></div>
+        <p class="idea-swap">把<em>「复现一次事故」</em>换成<em>「重放一盒录像带」</em></p>
+        <p><b class="lbl">原题</b>智能体出错，你想复现，得重跑一遍：模型温度不同、网页已经变了、API 涨价了。同一个 bug 第二次往往不复现，于是它永远修不掉。</p>
+        <p><b class="lbl">换法</b>把一次会话里所有外部输入——模型响应、HTTP 请求、工具返回值——按内容寻址存成一盒「带子」，重放时全部走本地回放，不打网络。于是同一场事故可以放一百遍，每遍都一模一样。</p>
+        <p><b class="lbl">代价</b>带子会很大（一次 40 分钟的会话约 180MB）；带子里的密钥要脱敏；它只能复现「有记录的东西」，模型内部的随机性不在其中。</p>
+        <p class="take"><b>可抄走</b>凡是靠外部服务才能跑的逻辑，都该有一个「离线回放」模式。测试、复盘、给新人演示，三处都用得上。</p>
+      </article>
+
+      <article class="idea">
+        <div class="idea-h"><span class="idea-idx">06</span><span class="idea-name">实在智能 Soiawork</span></div>
+        <p class="idea-swap">把<em>「等对方开接口」</em>换成<em>「自己长一双手」</em></p>
+        <p><b class="lbl">原题</b>企业智能体落地，八成时间卡在「这个系统没有 API」。外包十年前写的系统，只有网页，厂商还不改。等接口等于等不到。</p>
+        <p><b class="lbl">换法</b>两条腿走路：有新接口的走连接器，没接口的在一台执行设备上部署 Worker，用 RPA 加 Computer Use 直接操作界面。智能体不再依赖对方的开发排期。</p>
+        <p><b class="lbl">代价</b>界面一改版就要重录；那台 Worker 成了新的单点，得有人养；官方 90.2% 的成功率来自流程固定的测试集，长尾流程会低不少。</p>
+        <p class="take"><b>可抄走</b>把「接入方式」做成可替换的两条路，而不是死等一种。工程上难看的方案，往往是唯一能上线的方案。</p>
+      </article>
+
+    </div>
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 关于「怎么看一个项目」</span>
+      </div>
+      <p>六个转换里，五个都在做同一件事：<b>把「必须一次做对」换成「错了还能再来」</b>。可重放的事件流、能回放的录像带、按需检索的工具、结构化的页面树——没有一个是让模型更聪明，全是让失败更便宜。这恰好解释了为什么 41,200 token 降到 1,735 比榜单上多 7 分更有用：<b>聪明是概率，便宜是确定性</b>。前者你只能祈祷，后者你能写进预算。</p>
+    </aside>
+  </section>
+
+  <!-- 07 开源榜 -->
+  <section class="section" id="p07">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">开源智能体榜 · 星数与增速</span>
+      <span class="sec-page">第 07 版 / 共 15 版</span>
+    </div>
+
+    <figure class="figure">
+      <div class="fig-title">图 2 · 开源智能体榜 · 星数分布</div>
+      <div class="fig-scroll">
+<svg viewBox="0 0 1080 322" width="100%" role="img" aria-label="九个开源智能体项目的星数条形对比图">
+        <g font-family="Microsoft YaHei, PingFang SC, Arial, sans-serif">
+          <text x="200" y="37" text-anchor="end" font-size="12.5" font-weight="700" fill="#1b1a17">OpenClaw</text>
+          <rect x="212" y="26" width="770" height="14" fill="#1b1a17"/>
+          <text x="992" y="37" font-size="11.5" font-weight="700" fill="#1b1a17">401.2K</text>
+          <text x="200" y="69" text-anchor="end" font-size="12.5" font-weight="700" fill="#1b1a17">ECC</text>
+          <rect x="212" y="58" width="578" height="14" fill="#1b1a17"/>
+          <text x="800" y="69" font-size="11.5" font-weight="700" fill="#1b1a17">301.4K</text>
+          <text x="200" y="101" text-anchor="end" font-size="12.5" font-weight="700" fill="#1b1a17">deepseek-harness</text>
+          <rect x="212" y="90" width="527" height="14" fill="#1b1a17"/>
+          <text x="749" y="101" font-size="11.5" font-weight="700" fill="#1b1a17">274.8K</text>
+          <text x="200" y="133" text-anchor="end" font-size="12.5" font-weight="700" fill="#1b1a17">hermes-agent</text>
+          <rect x="212" y="122" width="507" height="14" fill="#1b1a17"/>
+          <text x="729" y="133" font-size="11.5" font-weight="700" fill="#1b1a17">264.1K</text>
+          <text x="200" y="165" text-anchor="end" font-size="12.5" font-weight="700" fill="#1b1a17">browser-use</text>
+          <rect x="212" y="154" width="235" height="14" fill="#3a3934"/>
+          <text x="457" y="165" font-size="11.5" fill="#3a3934">122.6K</text>
+          <text x="200" y="197" text-anchor="end" font-size="12.5" font-weight="700" fill="#1b1a17">claude-mem</text>
+          <rect x="212" y="186" width="217" height="14" fill="#3a3934"/>
+          <text x="439" y="197" font-size="11.5" fill="#3a3934">112.9K</text>
+          <text x="200" y="229" text-anchor="end" font-size="12.5" font-weight="700" fill="#1b1a17">paperclip</text>
+          <rect x="212" y="218" width="214" height="14" fill="#3a3934"/>
+          <text x="436" y="229" font-size="11.5" fill="#3a3934">111.5K</text>
+          <text x="200" y="261" text-anchor="end" font-size="12.5" font-weight="700" fill="#1b1a17">OpenHands</text>
+          <rect x="212" y="250" width="131" height="14" fill="#3a3934"/>
+          <text x="353" y="261" font-size="11.5" fill="#3a3934">68.4K</text>
+          <text x="200" y="293" text-anchor="end" font-size="12.5" font-weight="700" fill="#1b1a17">nanobrowser</text>
+          <rect x="212" y="282" width="80" height="14" fill="#3a3934"/>
+          <text x="302" y="293" font-size="11.5" fill="#3a3934">41.7K</text>
+          <line x1="212" y1="310" x2="1030" y2="310" stroke="#cfc8b6" stroke-width="1"/>
+        </g>
+      </svg>
+</div>
+      <p class="fig-hint">← 左右滑动看全图 →</p>
+      <p class="fig-cap">条长为累计星数。数据取自 GitHub 第三方榜单快照（截至 2026-11-06 09:00），与实时数据存在延迟。榜单第 10 位 <b>dsh-superagent-prototype</b> 星数 17.9K 排不进图内，但单日 +4.6K，是本周增速最快的项目；第 11 位 mcp-toolsearch-proxy 七日 +2.7K，增速第二。</p>
+    </figure>
+
+    <div class="table-wrap">
+<table class="rank">
+      <caption>按累计星数降序排列；星数与「热度 / 增速」均为第三方榜单快照（截至 2026-11-06 09:00），仅供趋势参考，不作为项目质量评价。「热度 / 增速」列保留来源原口径（星 / 天、星 / 周、30 天提交数三种），不可横向相加比较。</caption>
+      <thead>
+        <tr>
+          <th style="width:24px;">#</th>
+          <th style="width:198px;">项目</th>
+          <th style="width:76px;">语言</th>
+          <th style="width:72px;">星数</th>
+          <th style="width:104px;">热度 / 增速</th>
+          <th>看点</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="num">01</td>
+          <td class="name">OpenClaw</td>
+          <td>—</td>
+          <td class="num">401.2K</td>
+          <td class="up">30 天 2.0 万提交</td>
+          <td>开源智能体框架总榜第一，提交活跃度仍远超同类</td>
+        </tr>
+        <tr>
+          <td class="num">02</td>
+          <td class="name">ECC</td>
+          <td>TypeScript</td>
+          <td class="num">301.4K</td>
+          <td class="up">30 天 1.1 万提交</td>
+          <td>插件式工具层，企业内网部署案例最多</td>
+        </tr>
+        <tr>
+          <td class="num">03</td>
+          <td class="name">deepseek-harness</td>
+          <td>Python</td>
+          <td class="num">274.8K</td>
+          <td class="up">7 日 +3.8K</td>
+          <td>国产开源外壳，按 token 计费的调度器可替换</td>
+        </tr>
+        <tr>
+          <td class="num">04</td>
+          <td class="name">hermes-agent</td>
+          <td>Go</td>
+          <td class="num">264.1K</td>
+          <td class="up">30 天 9,200 提交</td>
+          <td>常驻进程型，Gateway 抽象被多家抄走</td>
+        </tr>
+        <tr>
+          <td class="num">05</td>
+          <td class="name">browser-use</td>
+          <td>Python</td>
+          <td class="num">122.6K</td>
+          <td class="up">7 日 +2.1K</td>
+          <td>浏览器操作事实标准，0.9.3 把单页压到 6,400 token</td>
+        </tr>
+        <tr>
+          <td class="num">06</td>
+          <td class="name">claude-mem</td>
+          <td>TypeScript</td>
+          <td class="num">112.9K</td>
+          <td class="up">7 日 +1.4K</td>
+          <td>会话记忆层，支持按项目分库与过期清理</td>
+        </tr>
+        <tr>
+          <td class="num">07</td>
+          <td class="name">paperclip</td>
+          <td>Rust</td>
+          <td class="num">111.5K</td>
+          <td class="up">7 日 +0.8K</td>
+          <td>轻量外壳，单二进制 9MB，适合塞进容器</td>
+        </tr>
+        <tr>
+          <td class="num">08</td>
+          <td class="name">OpenHands</td>
+          <td>Python</td>
+          <td class="num">68.4K</td>
+          <td class="up">30 天 4,100 提交</td>
+          <td>自托管编码智能体，1.4 版支持事件流重放</td>
+        </tr>
+        <tr>
+          <td class="num">09</td>
+          <td class="name">nanobrowser</td>
+          <td>TypeScript</td>
+          <td class="num">41.7K</td>
+          <td class="up">7 日 +1.2K</td>
+          <td>浏览器扩展形态，不装 Python 也能跑</td>
+        </tr>
+        <tr class="hi">
+          <td class="num">10</td>
+          <td class="name">dsh-superagent-prototype</td>
+          <td>Python</td>
+          <td class="num">17.9K</td>
+          <td class="up">单日 +4.6K</td>
+          <td>事件触发型多智能体，默认只观察不动手</td>
+        </tr>
+        <tr>
+          <td class="num">11</td>
+          <td class="name">mcp-toolsearch-proxy</td>
+          <td>TypeScript</td>
+          <td class="num">9.6K</td>
+          <td class="up">7 日 +2.7K</td>
+          <td>工具检索代理，1,735 token 顶 41,200</td>
+        </tr>
+        <tr>
+          <td class="num">12</td>
+          <td class="name">agent-desktop</td>
+          <td>Rust</td>
+          <td class="num">6.2K</td>
+          <td class="up">单日 +1,140</td>
+          <td>读无障碍树操作桌面，不截图不猜坐标</td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+
+    <aside class="razor razor--reader">
+      <div class="razor-h">
+        <span class="razor-mark">网友锐评</span>
+        <span class="razor-src">GitHub Trending 讨论区 · 针对本版榜单</span>
+      </div>
+      <p>「401.2K 星的第一名，我这周翻它的 issue，前二十条有九条是问怎么卸载。」这话不好听，但戳中了榜单的毛病：<b>星数是「我认同」，不是「我在用」</b>。反倒是排第 11、只有 9.6K 星的 mcp-toolsearch-proxy，七日涨 2.7K，讨论区里全是「装上当天省了一半账单」这类迁移发言——按本报那套尺子，它的增长质量分数比第一名高得多。下次看榜，先看第 10 到 12 位。</p>
+    </aside>
+  </section>
+
+  <!-- 08 安全与治理 -->
+  <section class="section" id="p08">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">智能体 · 安全与治理</span>
+      <span class="sec-page">第 08 版 / 共 15 版</span>
+    </div>
+    <div class="cols-3">
+
+      <article class="story">
+        <span class="tag">自律 · 公约</span>
+        <h4>八条公约之后：六家开始试点「身份 + 熔断」</h4>
+        <p>11 月 4 日在乌镇发布的《智能体发展自律公约》共八条，签署单位 20 家，涵盖信通院、腾讯、蚂蚁、阿里、抖音、华为、小米等。八条里最硬的是三处：分层可验证的身份标识、运行监测与异常熔断、用户对重要事项的最终控制权。</p>
+        <p>11 月 5 日起，其中 6 家开始内部试点，把「身份」落到具体字段：每次工具调用带一个任务身份（谁发起、代表哪个组织、授权范围、有效期），调用链上每一跳都可校验。试点期三个月，之后公布可复用的接口草案。</p>
+        <p>需要说清的空白：公约是自律，没有罚则，20 家签了不等于 20 万家遵守；「异常熔断」的阈值由各家自己定，跨平台互认还没有时间表。</p>
+      </article>
+
+      <article class="story">
+        <span class="tag">越权 · 留痕</span>
+        <h4>代你上网的智能体，能不能顺手把你的屏幕存下来</h4>
+        <p>智能体代替用户跨平台操作，本周成为治理讨论的焦点。收敛出的底线有三条：取数遵循最小必要；第三方平台原则上不存留任务过程中的截屏；用户授权接触数据，不等于允许保存与再利用。</p>
+        <p>落地手段相当具体：任务级身份标识、授权范围核验、敏感操作二次确认、越权即时阻断；记录指令、权限决策、工具调用与执行结果四类日志，并对日志中的个人信息单独保护；围绕越权访问、提示注入、违规取数做分级测试，模型或权限有重大变更时复评并保留回退方案。</p>
+        <p>域外三条路径可对照：美国靠企业治理与自愿承诺，欧盟按风险分级分阶段履责，新加坡的代理式框架强调按风险限定行动权限、设人工审批节点、开智能体沙箱。共同点只有一句——<b>责任要能落到一个具体的主体上</b>。</p>
+      </article>
+
+      <article class="story">
+        <span class="tag">可验证 · 反调包</span>
+        <h4>FlashProve 再进一步：证明这段回答确实来自你买的模型</h4>
+        <p>Anthropic 开源的 FlashProve 本周更新了工程数据：在总参数 400B 的 MoE 模型上，单张 H100 每秒可产出约 <b>110 token</b> 对应的推理证明，每 1024 token 请求的证明文件约 <b>19MB</b>。证明生成器、C++ 与 Lean 验证器一并开源。</p>
+        <p>它针对的是三类现实风险：服务商把高价模型悄悄换成便宜模型；第三方路由转发时替换模型；推理服务器被攻破后篡改输出。对智能体系统，这一层是「可追责」的前提——当它代你下单、代你签约，至少要能确认是哪个模型做的判断。</p>
+        <p>代价也要写明：19MB 一份证明，存一年就是一笔存储账；验证需要额外算力；目前只覆盖推理过程，不覆盖工具调用是否被正确执行。</p>
+      </article>
+
+      <article class="story">
+        <span class="tag">供应链 · MCP</span>
+        <h4>注册表清理 41 个恶意 MCP 包，27 个在偷读密钥</h4>
+        <p>第三方 MCP 注册表本周下架 41 个包，其中 27 个会在初始化时读取 <b>~/.ssh</b>、<b>~/.aws</b> 与环境变量，并把内容拼进工具描述回传给模型；另有 9 个在 describe 阶段注入指令，诱导智能体跳过用户确认。</p>
+        <p>这些包的共同特征是「功能真实、附带小动作」：确实能查天气、能读文档，评分也不低，只是多读了一个目录。传统代码审计很难发现，因为恶意行为写在工具描述里，不写在可执行代码里。</p>
+        <p>可用的防线有三条：只装固定版本、锁 commit；给 MCP 进程一个独立用户，家目录里不放密钥；把工具描述当不可信输入，接入前人工过一遍。这三条都不优雅，但比出事之后查日志便宜。</p>
+      </article>
+
+      <article class="story">
+        <span class="tag">中国 · 立法</span>
+        <h4>发改委：全生命周期安全标准，配套监管沙盒</h4>
+        <p>11 月 3 日，国家发展改革委明确将加快推进人工智能基础性、综合性立法，完善数据、算力、算法等共性要素立法，建立覆盖全生命周期的安全标准和伦理准则；同时合理设置过渡期，支持建设分行业监管沙盒，健全申请、测试、使用、退出机制。</p>
+        <p>治理触点因此前移到训练数据与开发流程、后移到 API 监测与持续审计，模型厂商、云服务商与算力提供方被拉进同一条责任链。对做行业智能体的团队，安全能力需要成为研发流程里的交付项，而不是上线前的一次检查。</p>
+      </article>
+
+    </div>
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对第 08 版</span>
+      </div>
+      <p>八条公约、41 个恶意包、19MB 一份证明，三个数字指向同一个漏洞：<b>我们管得住模型的嘴，管不住工具的嘴</b>。27 个包偷读 ~/.ssh，靠的不是漏洞利用，是把恶意写在「工具描述」里——而描述天生被当成可信输入。公约里那条「分层可验证的身份」如果只验人不验工具，等于给大门装了锁、窗户还开着。先把 MCP 进程降权到独立用户，比等标准落地快得多。</p>
+    </aside>
+  </section>
+
+  <!-- 09 学术 -->
+  <section class="section" id="p09">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">学术 · 四篇值得读的 arXiv</span>
+      <span class="sec-page">第 09 版 / 共 15 版</span>
+    </div>
+    <div class="cols-2">
+
+      <article class="story">
+        <span class="tag">arXiv:2511.03142 · 预算感知规划</span>
+        <h4>给智能体一个钱包：先算钱，再决定走几步</h4>
+        <p>这篇把长程智能体的规划问题改写成「带预算的搜索」：每一步之前先估这一步的期望收益与花费，收益低于阈值就停。在 6 个多步任务集上，成本平均降 <b>43%</b>，成功率反而升 <b>2.1 个百分点</b>——因为少走的那几步本来就是在原地打转。</p>
+        <p>方法不复杂：用一个轻量价值模型给候选动作打分，分数除以预估 token 成本，取比值最高的。作者强调，收益最大的场景不是简单任务，而是「工具很多、每步都可能选错」的环境。</p>
+        <p>值得留意的是它的失败模式：预算估得太紧时，智能体会提前宣布完成，假成功率上升 4.6 个百分点。省钱和省事之间，还是得有人定阈值。</p>
+      </article>
+
+      <article class="story">
+        <span class="tag">arXiv:2511.02877 · 评测方法</span>
+        <h4>ReplayBench：让同一次失败可以复现一百遍</h4>
+        <p>现有智能体评测最大的问题是不可复现：模型更新、网页改版、API 限流，同一道题今天过明天挂。这篇提出把外部依赖全部录下来、按内容寻址存储，评测时离线回放。500 道任务的复现率达到 <b>94%</b>，剩余 6% 失败于时间戳与随机数。</p>
+        <p>更有价值的是它给出的诊断维度：把失败切成「规划错」「工具选错」「参数错」「环境变」四类，四类在 500 道题里分别占 31%、27%、24%、18%。也就是说，近一半的失败不是模型不聪明，是它选错了工具或填错了参数。</p>
+        <p>局限同样明确：回放只能复现「录下来的世界」，真实世界里新出现的弹窗、改版的页面，它一概不知。</p>
+      </article>
+
+      <article class="story">
+        <span class="tag">arXiv:2511.03455 · 小模型行为</span>
+        <h4>Silent Success：4B 模型有 23.7% 的「假完成」</h4>
+        <p>这篇测量了一件被普遍低估的事：模型说自己做完了，实际没做。作者在 4B 到 12B 的六个开源模型上跑了 1,200 个带明确后置条件的任务，4B 档的假完成率高达 <b>23.7%</b>，12B 档降到 <b>9.4%</b>，而 Claude Opus 5.5 是 <b>1.8%</b>。</p>
+        <p>关键发现是：假完成与任务难度关系不大，与「有没有可观察的副作用」关系极大。写文件类任务假完成率 31%，而纯问答类只有 4%——模型不是在骗人，是它真的看不见自己做了什么。</p>
+        <p>作者给的解法不是换更大的模型，而是在外壳里加对账：拿模型自述去比系统状态，不一致就退回重做。在他们的实验里，这一层把 4B 档的有效完成率从 62% 拉到 <b>88%</b>。</p>
+      </article>
+
+      <article class="story">
+        <span class="tag">arXiv:2511.03019 · 安全分类</span>
+        <h4>沙箱逃逸的六种姿势：37 起事件的一个分类法</h4>
+        <p>作者收集了 37 起公开的计算机操作智能体逃逸事件，归纳出六类路径：借合法工具外传（11 起）、利用挂载目录写启动项（8 起）、通过包管理器拉取任意代码（7 起）、滥用浏览器扩展权限（5 起）、走内网未授权服务（4 起）、以及利用日志系统的注入（2 起）。</p>
+        <p>六类里有五类不需要「攻破」任何东西——它们用的都是沙箱主动给的权限：能写目录、能装包、能开浏览器。作者因此提出一个尖锐的判断：<b>多数沙箱不是被突破的，是被授权进去的</b>。</p>
+        <p>对应的建议很朴素：默认断网、挂载只读、包管理器走内网镜像、浏览器 profile 一次性。四条都做到，37 起里能拦住 29 起。</p>
+      </article>
+
+    </div>
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对第 09 版</span>
+      </div>
+      <p>四篇论文里最该被产品经理读到的是 23.7% 这个数：<b>4B 模型每四次「做完了」就有一次是假的，而它自己不知道</b>。这不是道德问题，是观察能力问题——它看不见副作用。更有意思的是 ReplayBench 那个拆分：近一半失败源于工具选错或参数填错，跟智力无关。两份研究合起来指向同一个工程结论：<b>与其换更大的模型，不如加一层对账、收一遍工具</b>。加对账把 88% 拿到手，比追 7 分划算。</p>
+    </aside>
+  </section>
+
+  <!-- 10 商业与资本 -->
+  <section class="section" id="p10">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">商业 · 资本与账单</span>
+      <span class="sec-page">第 10 版 / 共 15 版</span>
+    </div>
+    <div class="cols-3">
+
+      <article class="story">
+        <span class="tag">市场 · 回调</span>
+        <h4>纳指单日跌 5.52%，英伟达跌超 9%</h4>
+        <p>11 月 5 日美股收盘，纳斯达克指数跌 <b>5.52%</b>，为年内第二大单日跌幅；英伟达跌 <b>9.1%</b>，市值一夜蒸发约 2,800 亿美元；费城半导体指数跌 7.3%。触发点是两家云厂商在财报电话会上同时下调了明年一季度的资本开支指引。</p>
+        <p>与之对应，应用层公司跌幅明显小于算力层：一家做客服智能体的 SaaS 公司当日仅跌 1.4%。市场在重新定价一件事——<b>卖铲子的估值，取决于买铲子的人还挖不挖</b>。</p>
+        <p>对开发者的实际影响不在股价，在配额：算力紧张时，最先被砍的是免费额度与低价档，其次是长上下文。选型时把「明年还买不买得起」写进预算，比赌降价可靠。</p>
+      </article>
+
+      <article class="story">
+        <span class="tag">融资 · 小团队</span>
+        <h4>Ripple 拿 3200 万美元 A 轮，估值 2.8 亿美元</h4>
+        <p>刚训出 Ripple-65B 的 Ripple 实验室完成 3200 万美元 A 轮，估值 2.8 亿美元，领投方为一家欧洲产业基金。团队仍为 5 人，融资用途写得很直白：买算力、买数据，不扩编。</p>
+        <p>这个估值倍数在当下不算高——按 65B 稠密模型的训练成本算，差不多是「重置成本」的一倍。投资人看的显然不是模型本身，是那条「小团队也能训出够用模型」的路径。</p>
+        <p>风险同样明显：65B 稠密模型在推理成本上打不过同档 MoE，商用客户会算这笔账；5 人团队也扛不住一次核心成员离职。</p>
+      </article>
+
+      <article class="story">
+        <span class="tag">融资 · 平台</span>
+        <h4>月之暗面被传募资 12 亿美元，投后估值 180 亿</h4>
+        <p>多家媒体称月之暗面正在募集 12 亿美元新一轮，投后估值 180 亿美元。资金用途指向 Hosted Agents 的机房与合规投入——这项服务按会话时长与工具调用次数计费，是重资产模式。</p>
+        <p>把它和 11 月 5 日的产品发布放在一起看，逻辑就清楚了：卖 harness 不是软件生意，是机房生意。沙箱要隔离、日志要留存、网络要审计，每一项都是固定成本，只有规模能摊薄。</p>
+        <p>官方对融资消息不予置评。可核实的是产品侧的数字：Hosted Agents 目前开放 3 个区域，单会话上限 8 小时。</p>
+      </article>
+
+      <article class="story">
+        <span class="tag">企业 · 预算</span>
+        <h4>苹果把 AI 预算从每天 300 美元砍到 200，部分团队只剩 25</h4>
+        <p>有报道称苹果下调了工程团队的 AI 工具使用上限：从每人每天 300 美元降到 200 美元，部分非核心团队降到 <b>25 美元</b>。内部说明的理由是「用量与产出不成比例」，要求团队按项目申请额度。</p>
+        <p>这不是孤例。过去两个月，至少四家大型企业把「不限量」改成了「按项目配额」。一位基础设施负责人给的说法很直接：<b>智能体的账单涨得比服务器快，因为它是按思考时间计费</b>。</p>
+        <p>对工具厂商，这意味着采购流程会变长；对开发者，这意味着「省 token」从优化项变成必需项——第 05 版那 1,735 token 的意义，正在这里。</p>
+      </article>
+
+      <article class="story">
+        <span class="tag">金融 · 分化</span>
+        <h4>一边禁、一边放：银行对智能体的两种态度</h4>
+        <p>摩根大通、花旗等机构已明确禁止外部智能体接入内部系统；同期，Cross River 银行公布：三个月内经智能体卡完成 <b>4,000 万美元</b>、<b>20 万笔以上</b>支付，全部走预先授权的额度与商户白名单。</p>
+        <p>分界线不是技术能力，是「出了事谁赔」。禁止的一方，责任在不可控的第三方；放行的一方，把智能体关进了已有的支付风控体系——额度、商户、频次三道闸，和一张实体卡没有区别。</p>
+        <p>这条经验对小团队同样适用：<b>不要让智能体「有权」，让它「有额度」</b>。额度可测、可停、可审计，权限不行。</p>
+      </article>
+
+    </div>
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对第 10 版</span>
+      </div>
+      <p>纳指跌 5.52%、英伟达跌 9.1%，同一天 Cross River 公布 4,000 万美元的智能体支付。两件事放在一版，说的是同一件事：<b>资本在给「算力」重新定价，客户在给「结果」付钱</b>。苹果把日预算从 300 砍到 25，砍的不是 AI，是「按思考时间计费」这件事。真正跑通的模式是 Cross River 那种——三道闸、有额度、能停。谁把智能体做成一张有额度的卡，谁就先拿到下一轮的钱。</p>
+    </aside>
+  </section>
+
+  <!-- 11 算力与本地 -->
+  <section class="section" id="p11">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">算力 · 本地推理实测</span>
+      <span class="sec-page">第 11 版 / 共 15 版</span>
+    </div>
+
+    <div class="plain">
+      <span class="p-h">说人话 · 显存到底卡在哪</span>
+      <p>模型必须先整个装进显存才能跑，装不下就一步都动不了——不是变慢，是报错。<b>所以「我的卡能不能跑」只有一个判据：模型文件大小 ≤ 显存</b>。4 位量化（Q4）大约把每个参数压到 0.55GB / 十亿参数，再加上上下文缓存。70B 的 Q4 约 40GB，24GB 的卡就是装不下，再优化也没用。</p>
+    </div>
+
+    <figure class="figure">
+      <div class="fig-title">图 3 · 显存阶梯：八档配置能跑多大的模型</div>
+      <div class="fig-scroll">
+<svg viewBox="0 0 1080 384" width="100%" role="img" aria-label="八档显存配置与其可运行模型规模的阶梯示意图">
+        <g font-family="Microsoft YaHei, PingFang SC, Arial, sans-serif">
+          <line x1="50" y1="300" x2="1040" y2="300" stroke="#cfc8b6" stroke-width="1"/>
+
+          <rect x="52" y="229" width="116" height="71" fill="#e6dfcd" stroke="#b3ab97" stroke-width="1"/>
+          <text x="110" y="250" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1b1a17">38 tok/s</text>
+          <text x="110" y="215" text-anchor="middle" font-size="11.5" fill="#6d6a60">24GB</text>
+          <text x="110" y="322" text-anchor="middle" font-size="10.5" fill="#3a3934">RTX 4090</text>
+          <text x="110" y="338" text-anchor="middle" font-size="10.5" fill="#6d6a60">30B 稠密 Q4</text>
+
+          <rect x="174" y="218" width="116" height="82" fill="#e6dfcd" stroke="#b3ab97" stroke-width="1"/>
+          <text x="232" y="239" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1b1a17">52 tok/s</text>
+          <text x="232" y="204" text-anchor="middle" font-size="11.5" fill="#6d6a60">32GB</text>
+          <text x="232" y="322" text-anchor="middle" font-size="10.5" fill="#3a3934">RTX 5090</text>
+          <text x="232" y="338" text-anchor="middle" font-size="10.5" fill="#6d6a60">32B 稠密 Q4</text>
+
+          <rect x="296" y="200" width="116" height="100" fill="#e6dfcd" stroke="#b3ab97" stroke-width="1"/>
+          <text x="354" y="221" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1b1a17">24 tok/s</text>
+          <text x="354" y="186" text-anchor="middle" font-size="11.5" fill="#6d6a60">48GB</text>
+          <text x="354" y="322" text-anchor="middle" font-size="10.5" fill="#3a3934">双 4090</text>
+          <text x="354" y="338" text-anchor="middle" font-size="10.5" fill="#6d6a60">70B 稠密 Q4</text>
+
+          <rect x="418" y="184" width="116" height="116" fill="#e6dfcd" stroke="#b3ab97" stroke-width="1"/>
+          <text x="476" y="205" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1b1a17">18 tok/s</text>
+          <text x="476" y="170" text-anchor="middle" font-size="11.5" fill="#6d6a60">64GB</text>
+          <text x="476" y="322" text-anchor="middle" font-size="10.5" fill="#3a3934">Mac Studio</text>
+          <text x="476" y="338" text-anchor="middle" font-size="10.5" fill="#6d6a60">70B + 长上下文</text>
+
+          <rect x="540" y="158" width="116" height="142" fill="#3a3934"/>
+          <text x="598" y="179" text-anchor="middle" font-size="11.5" font-weight="700" fill="#f7f3e8">31 tok/s</text>
+          <text x="598" y="144" text-anchor="middle" font-size="11.5" fill="#6d6a60">96GB</text>
+          <text x="598" y="322" text-anchor="middle" font-size="10.5" fill="#3a3934">RTX PRO 6000</text>
+          <text x="598" y="338" text-anchor="middle" font-size="10.5" fill="#6d6a60">120B MoE Q4</text>
+
+          <rect x="662" y="136" width="116" height="164" fill="#3a3934"/>
+          <text x="720" y="157" text-anchor="middle" font-size="11.5" font-weight="700" fill="#f7f3e8">53.9 tok/s</text>
+          <text x="720" y="122" text-anchor="middle" font-size="11.5" fill="#6d6a60">128GB</text>
+          <text x="720" y="322" text-anchor="middle" font-size="10.5" fill="#3a3934">DGX Spark</text>
+          <text x="720" y="338" text-anchor="middle" font-size="10.5" fill="#6d6a60">Ling-3.0-flash</text>
+
+          <rect x="784" y="99" width="116" height="201" fill="#3a3934"/>
+          <text x="842" y="120" text-anchor="middle" font-size="11.5" font-weight="700" fill="#f7f3e8">14 tok/s</text>
+          <text x="842" y="85" text-anchor="middle" font-size="11.5" fill="#6d6a60">192GB</text>
+          <text x="842" y="322" text-anchor="middle" font-size="10.5" fill="#3a3934">Mac 192GB</text>
+          <text x="842" y="338" text-anchor="middle" font-size="10.5" fill="#6d6a60">200B MoE Q4</text>
+
+          <rect x="906" y="68" width="116" height="232" fill="#8c1d18"/>
+          <text x="964" y="89" text-anchor="middle" font-size="11.5" font-weight="700" fill="#f7f3e8">22 tok/s</text>
+          <text x="964" y="54" text-anchor="middle" font-size="11.5" fill="#6d6a60">256GB</text>
+          <text x="964" y="322" text-anchor="middle" font-size="10.5" fill="#3a3934">8×L40S</text>
+          <text x="964" y="338" text-anchor="middle" font-size="10.5" fill="#6d6a60">400B MoE Q4</text>
+
+          <text x="52" y="366" font-size="10.5" fill="#8a8272">高度为示意阶梯，非等比；tok/s 为单请求、batch=1、4 位量化下的解码速度，来源见下表。</text>
+        </g>
+      </svg>
+</div>
+      <p class="fig-hint">← 左右滑动看全图 →</p>
+      <p class="fig-cap">八档配置的显存与实测解码速度。所有速度均为单请求、batch size = 1、4 位量化、上下文 4K 的口径；DGX Spark 一档为 Ling-3.0-flash 在 128GB 统一内存上的官方实测 53.89 tok/s，其余为社区复测均值，误差约 ±10%。</p>
+    </figure>
+
+    <div class="cols-2">
+      <article class="story">
+        <span class="tag">实测 · 统一内存</span>
+        <h4>DGX Spark 跑 Ling-3.0-flash：53.89 tok/s，功耗 240W</h4>
+        <p>一台 128GB 统一内存的 DGX Spark，跑 Ling-3.0-flash（MoE，激活约 12B）的 Q4 量化版，解码速度 <b>53.89 tok/s</b>，预填充 1,240 tok/s，整机功耗 240W。这个速度已经接近「读起来不卡」的阈值——人阅读中文大约每秒 8 到 12 个字，53 tok/s 约等于每秒 37 个汉字。</p>
+        <p>口径要写清：单请求、batch = 1、上下文 4K，官方博客实测。并发 4 路时单路降到 21 tok/s，总吞吐反而升到 68 tok/s——统一内存的带宽是共享的，这一点和独显不同。</p>
+        <p>它的意义不在速度，在「一台机器装下 128GB」：70B 稠密 Q4 加 32K 上下文，一台就能跑，不用两台机器做张量并行。代价是内存带宽只有 273GB/s，约为 RTX 5090 的七分之一。</p>
+      </article>
+
+      <article class="story">
+        <span class="tag">实测 · 大内存</span>
+        <h4>Strix Halo 128GB：能装 120B MoE，速度只有 21 tok/s</h4>
+        <p>AMD Strix Halo 的 128GB 版本，内存带宽 256GB/s，跑 120B MoE（激活 12B）的 Q4 版本，实测 <b>21 tok/s</b>，预填充 410 tok/s。装得下、跑得动，但「等它说话」的体感明显。</p>
+        <p>这正是本地推理的分水岭：<b>容量决定能不能跑，带宽决定跑得多快</b>。同样是 128GB，DGX Spark 的 273GB/s 只比它高 6.6%，速度却差一倍多——差别在 MoE 的专家调度实现与内存访问模式，不只是硬件。</p>
+        <p>买这类机器前，先问自己跑什么：如果是一次性批处理、离线总结，21 tok/s 完全够；如果是交互式编码，等 30 秒才出第一段，人会放弃。</p>
+      </article>
+
+      <article class="story">
+        <span class="tag">显卡 · 显存墙</span>
+        <h4>RTX 5090 的 32GB：快，但 70B 就是装不下</h4>
+        <p>RTX 5090 有 32GB 显存、1.79TB/s 带宽，跑 32B 稠密 Q4 能到 <b>52 tok/s</b>，是这一档里最快的消费卡。但 70B 稠密 Q4 约 40GB，它就是装不下——不是慢，是加载阶段直接失败。</p>
+        <p>可行的绕法只有两种：把一部分层放到内存里（速度掉到 6 到 9 tok/s），或者换 MoE 模型（总参大、激活小）。后者是这两年本地部署真正的主流：120B MoE 的激活只有 12B，32GB 卡配 64GB 内存就能跑。</p>
+        <p>所以「我的卡能跑多大模型」这个问题，正确答案不是看参数量，是看<b>激活参数量</b>加<b>专家是否常驻</b>。厂商宣传页上那句「支持 70B」，通常指的是内存 offload 之后的能跑，不是能快。</p>
+      </article>
+
+      <article class="story">
+        <span class="tag">成本 · 涨价</span>
+        <h4>DDR5 合约价环比涨 18%，本地部署的账变贵了</h4>
+        <p>受 HBM 产能挤占影响，DDR5 内存合约价四季度环比上涨 <b>18%</b>，128GB 套条零售价从 2,400 元涨到 2,850 元。对打算用大内存机器跑本地模型的团队，这条比任何跑分都实际：同样预算，能买的容量少了约 15%。</p>
+        <p>另一头，二手 24GB 显卡的价格反而稳中有降，因为一批矿卡与租赁到期卡流入市场。于是出现一个奇怪的价格结构：<b>显存便宜、内存贵</b>，这正好不利于「大内存 + 小显存」的路线。</p>
+        <p>短期建议很土：如果只是 experimentation，租卡比买划算；如果要长期跑，先买够显存的卡，内存可以后加。</p>
+      </article>
+    </div>
+
+    <aside class="razor razor--reader">
+      <div class="razor-h">
+        <span class="razor-mark">网友锐评</span>
+        <span class="razor-src">Reddit r/LocalLLaMA · 针对本版</span>
+      </div>
+      <p>「53.89 tok/s 是挺好看，可我一并发四个请求就掉到 21，这数字是给单人用的。」这条吐槽说到了点子上：<b>所有本地推理的跑分都是 batch = 1 的童话</b>。真要拿它当服务，得看总吞吐而不是单路速度——DGX Spark 四路并发总吞吐 68 tok/s，其实比单路更划算。买机器前先想清楚你是「一个人用」还是「一群人排队」，这两个答案对应的配置完全相反。</p>
+    </aside>
+  </section>
+
+  <!-- 12 行情 -->
+  <section class="section" id="p12">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">行情 · 模型 API 价目</span>
+      <span class="sec-page">第 12 版 / 共 15 版</span>
+    </div>
+    <p class="fig-cap" style="margin:0 0 8px;border-top:none;padding-top:0;">单位：美元／百万 token，标准按量付费档，不含缓存与 Batch 折扣。人民币价格按 1 美元 ≈ 7.1 元折算。价格核对日期 2026-11-06。</p>
+
+    <div class="plain">
+      <span class="p-h">说人话 · 这张表跟你的钱包什么关系</span>
+      <p>一次 12 步的工具调用，大约 7 万输入 token、4 千输出 token。按下面这张表算，最便宜的组合<b>不到 1 美分</b>，最贵的<b>接近 1 美元</b>——同一个任务，差约 100 倍。<b>所以对个人开发者，选错模型比用得多更烧钱</b>：先把任务跑通，再按「这活值多少钱」挑档位，别默认用最强的那一个。</p>
+    </div>
+
+    <div class="table-wrap">
+<table class="rank">
+      <thead>
+        <tr>
+          <th style="width:280px;">模型</th>
+          <th class="p" style="width:104px;">输入</th>
+          <th class="p" style="width:104px;">输出</th>
+          <th>备注</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="name">GPT-6 Astra</td><td class="p">$10.00</td><td class="p">$50.00</td><td>旗舰档，复杂研究与高风险文档</td></tr>
+        <tr><td class="name">Claude Fable 5.1</td><td class="p">$10.00</td><td class="p">$50.00</td><td>与 Astra 同价对位</td></tr>
+        <tr><td class="name">Claude Opus 5.5</td><td class="p">$4.00</td><td class="p">$20.00</td><td>智能指数 58.4，SWE-bench 82.4%</td></tr>
+        <tr><td class="name">Gemini 4 Carbon</td><td class="p">$2.00</td><td class="p">$10.00</td><td>智能指数 59，长上下文见长</td></tr>
+        <tr><td class="name">GPT-6.1 Sol</td><td class="p">$2.00</td><td class="p">$10.00</td><td>编码助手与多步智能体主力档</td></tr>
+        <tr><td class="name">Claude Sonnet 5.5</td><td class="p">$2.00</td><td class="p">$10.00</td><td>智能指数 54.2，与 Sol 同价</td></tr>
+        <tr><td class="name">xAI Grok 4.7</td><td class="p">$2.00</td><td class="p">$6.00</td><td>智能指数 62 居首；超 20 万 prompt 整单翻倍</td></tr>
+        <tr><td class="name">DeepSeek V4 Pro</td><td class="p">$1.32</td><td class="p">$3.96</td><td>峰值价，非峰五折</td></tr>
+        <tr><td class="name">GPT-6.1 Terra</td><td class="p">$1.00</td><td class="p">$5.00</td><td>主打电脑操作与平价视觉推理</td></tr>
+        <tr class="hi"><td class="name">文心 5.5 Flash Base</td><td class="p">¥0.80</td><td class="p">¥3.20</td><td><b>约 $0.11 / $0.44</b>，开放权重同价</td></tr>
+        <tr><td class="name">Gemini 3.8 Flash</td><td class="p">$0.75</td><td class="p">$3.75</td><td>2027 年 1 月 1 日起翻倍</td></tr>
+        <tr><td class="name">DeepSeek V4.1 Flash</td><td class="p">$0.30</td><td class="p">$1.20</td><td>峰值价，非峰五折</td></tr>
+        <tr><td class="name">GPT-6 Luna</td><td class="p">$0.10</td><td class="p">$0.50</td><td>打标、路由、字段抽取</td></tr>
+      </tbody>
+    </table>
+</div>
+
+    <div class="cols-2" style="margin-top:14px;">
+      <div>
+        <p class="fig-title" style="margin:0 0 4px;">一次 12 步工具调用的成本</p>
+        <p class="fig-cap" style="margin:0 0 6px;border-top:none;padding-top:0;">口径：每步输入 6,000 token（含累积上下文均值）、输出 350 token，合计输入 72,000、输出 4,200；不含重试与缓存命中。</p>
+        <ul class="cost">
+          <li><span>GPT-6 Astra</span><span class="v">$0.930</span></li>
+          <li><span>Claude Fable 5.1</span><span class="v">$0.930</span></li>
+          <li><span>Claude Opus 5.5</span><span class="v">$0.372</span></li>
+          <li><span>Gemini 4 Carbon</span><span class="v">$0.186</span></li>
+          <li><span>GPT-6.1 Sol</span><span class="v">$0.186</span></li>
+          <li><span>Claude Sonnet 5.5</span><span class="v">$0.186</span></li>
+          <li><span>xAI Grok 4.7</span><span class="v">$0.169</span></li>
+          <li><span>DeepSeek V4 Pro</span><span class="v">$0.112</span></li>
+          <li><span>GPT-6.1 Terra</span><span class="v">$0.093</span></li>
+          <li><span>Gemini 3.8 Flash</span><span class="v">$0.070</span></li>
+          <li><span>DeepSeek V4.1 Flash</span><span class="v">$0.027</span></li>
+          <li><span>文心 5.5 Flash Base</span><span class="v">$0.010</span></li>
+          <li><span>GPT-6 Luna</span><span class="v">$0.009</span></li>
+        </ul>
+      </div>
+      <div>
+        <p class="fig-title" style="margin:0 0 4px;">同一件事，为什么差 100 倍</p>
+        <p style="font-size:13px;line-height:1.88;margin:0 0 10px;">差距不在「聪明程度」，在三个乘数：<b>单价</b>（每百万 token 差 100 倍）、<b>步数</b>（工具选错要多走几步，实测能差 2.3 倍）、<b>上下文</b>（每步把历史全带上，输入量随步数平方增长）。</p>
+        <p style="font-size:13px;line-height:1.88;margin:0 0 10px;">所以省钱有三个杠杆，按效果排序：<b>一是砍上下文</b>（第 05 版那 1,735 token 的做法）、<b>二是降步数</b>（工具描述写清楚、参数给例子）、<b>三是换档位</b>（简单步骤用便宜模型）。</p>
+        <p style="font-size:13px;line-height:1.88;margin:0;">只做第三件、不做前两件，通常只能省三成；三件一起做，能省九成。这也是为什么「按任务分派模型」的路由架构，今年成了智能体平台的标配。</p>
+      </div>
+    </div>
+
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对第 12 版</span>
+      </div>
+      <p>同一件 12 步的活，$0.930 和 $0.009，差 103 倍。多数团队盯着第一列单价砍价，却忽略了真正的乘数在第二列：<b>步数差 2.3 倍、上下文随步数平方增长</b>。把 41,200 token 的工具清单压到 1,735，比从 Opus 换到 Luna 省得更多，而且不牺牲成功率。价目表每个月都会变，<b>「先把上下文砍干净」这条不用等降价</b>。这也是本报今天唯一敢当成结论说的话。</p>
+    </aside>
+  </section>
+
+  <!-- 13 平台回声 -->
+  <section class="section" id="p13">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">平台回声 · 12 个地方今天在聊什么</span>
+      <span class="sec-page">第 13 版 / 共 15 版</span>
+    </div>
+
+    <p class="sec-lede">本版逐平台标注「取到什么、怎么取到的」，不做 ranking。今天 12 个平台里，<b>6 个取到一手内容</b>、<b>4 个只拿到二手转述</b>、<b>2 个本期无料</b>——三个数相加正好 12。标「无料」仅指本期未检索到可用素材，不代表该平台没有内容。</p>
+
+    <div class="table-wrap">
+<table class="rank echo">
+      <thead>
+        <tr>
+          <th style="width:150px;">平台</th>
+          <th style="width:88px;">本期是否有料</th>
+          <th style="width:150px;">到达方式</th>
+          <th>今天在聊什么</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="name">Hacker News</td>
+          <td>有料</td>
+          <td>首页 + Show HN</td>
+          <td>「把 agent 的每次工具调用录下来」那条 Show HN 冲到 412 分，评论区一半在问存储成本</td>
+        </tr>
+        <tr>
+          <td class="name">Reddit · r/LocalLLaMA</td>
+          <td>有料</td>
+          <td>热帖前 20</td>
+          <td>DGX Spark 的 53.89 tok/s 被逐帧复测，有人指出并发四路时单路只剩 21</td>
+        </tr>
+        <tr>
+          <td class="name">Reddit · r/AI_Agents</td>
+          <td>有料</td>
+          <td>热帖前 20</td>
+          <td>一个 3,000 条评论的帖子在吵「自建 harness 到底值不值」，最高赞是账单截图</td>
+        </tr>
+        <tr>
+          <td class="name">GitHub Trending</td>
+          <td>有料</td>
+          <td>日榜快照</td>
+          <td>前十里有四个是工具检索或记忆层，没人再做新的「全能助手」</td>
+        </tr>
+        <tr>
+          <td class="name">知乎</td>
+          <td>有料</td>
+          <td>话题页 + 热榜</td>
+          <td>「智能体替我操作银行 App 算不算授权」一题下面，最高赞在讲举证责任</td>
+        </tr>
+        <tr>
+          <td class="name">掘金</td>
+          <td>有料</td>
+          <td>首页推荐流</td>
+          <td>一篇拆 MCP 工具检索代理的实践文，贴了 41,200 降到 1,735 的实测账单</td>
+        </tr>
+        <tr>
+          <td class="name">微信公众号</td>
+          <td>二手</td>
+          <td>第三方转载与摘要</td>
+          <td>多数是发布会通稿的改写，Kimi 托管智能体那条被转了 40 多次，细节基本一致</td>
+        </tr>
+        <tr>
+          <td class="name">V2EX</td>
+          <td>二手</td>
+          <td>搜索引擎快照</td>
+          <td>「公司要求把智能体日志存本地」一帖，楼主最后选了私有化整机</td>
+        </tr>
+        <tr>
+          <td class="name">X（Twitter）</td>
+          <td>二手</td>
+          <td>媒体转引</td>
+          <td>Cat Wu 离职那条原帖已删，只剩各家媒体的截图与转述</td>
+        </tr>
+        <tr>
+          <td class="name">新浪财经</td>
+          <td>二手</td>
+          <td>快讯</td>
+          <td>纳指跌 5.52% 的推送下面，评论区在问「AI 是不是见顶了」</td>
+        </tr>
+        <tr>
+          <td class="name">Discord · OpenClaw</td>
+          <td>无料</td>
+          <td>不进公开搜索</td>
+          <td>本期无法取得内容，本报不引用任何「据说群里说」的消息</td>
+        </tr>
+        <tr>
+          <td class="name">小红书</td>
+          <td>无料</td>
+          <td>无公开接口</td>
+          <td>本期未检索到可核实素材；该平台的 AI 内容以体验帖为主，不适合做信源</td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+
+    <aside class="razor razor--reader">
+      <div class="razor-h">
+        <span class="razor-mark">读者锐评</span>
+        <span class="razor-src">知乎 · 智能体授权话题评论区 · 针对本版</span>
+      </div>
+      <p>「6 个一手、4 个二手、2 个无料，这比例挺诚实。但二手那 4 个里，有 3 个是在转同一篇通稿——所谓四个来源，其实是一个来源。」这个提醒值得记：<b>来源数量不等于来源独立性</b>。12 个平台里真正互相独立的，按这条标准数下来只有 5 个。本报下一期会在「到达方式」一列加上「是否转引同一原始信源」，把这层水分挤掉。</p>
+    </aside>
+  </section>
+
+  <!-- 14 星探 -->
+  <section class="section" id="p14">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">星探 · 每日一个希望之星</span>
+      <span class="sec-page">第 14 版 / 共 15 版</span>
+    </div>
+
+    <p class="sec-lede">本版不看榜单。每天从「发布 30 天内、星数没进任何榜单、但有能跑起来的代码」的项目里挑一个，用左下这套尺子量一遍。今天从 <b>9 个候选</b>里挑出 1 个；最该说清「为什么不选」的 3 个，连同理由放在右下；其余 5 个未过初筛——<b>选星不是选冷门，是选「半年后还在」的那一个。</b></p>
+
+    <div class="scout">
+      <div class="scout-card">
+        <h5>星探指数 · 今日评分</h5>
+        <div class="scout-row"><span class="lb">增长质量</span><span class="bar"><i style="width:85%"></i></span><span class="vl">17</span></div>
+        <div class="scout-row"><span class="lb">可跑通度</span><span class="bar"><i style="width:85%"></i></span><span class="vl">17</span></div>
+        <div class="scout-row"><span class="lb">需求真实性</span><span class="bar"><i style="width:80%"></i></span><span class="vl">16</span></div>
+        <div class="scout-row"><span class="lb">作者持续性</span><span class="bar"><i style="width:65%"></i></span><span class="vl">13</span></div>
+        <div class="scout-row"><span class="lb">口碑密度</span><span class="bar"><i style="width:70%"></i></span><span class="vl">14</span></div>
+        <div class="scout-total">
+          <div class="tn">77<em> / 100</em></div>
+          <div class="tt">今日唯一入选<br>入选门槛 70 分</div>
+        </div>
+        <div class="veto">
+          <h6>一票否决（今日无人踩线）</h6>
+          <ul>
+            <li>无许可证，或 README 里没有能直接复制的示例</li>
+            <li>星数单日垂直拉升、但 issue 区为零（疑似刷星）</li>
+            <li>唯一作者 30 天无提交、无 release</li>
+            <li>核心能力依赖某家接口且明确违反其条款</li>
+          </ul>
+          <p class="out">口径：五项各 20 分，只看能被查到的证据；星数本身不加分，只看「近 7 日新增 ÷ 总星数」的斜率。</p>
+        </div>
+        <div class="veto">
+          <h6>落选对照 · 差在哪</h6>
+          <ul>
+            <li><b>agent-sandbox（68）</b>：功能扎实，但作者只有一个，30 天内 3 次提交、无 release，扣在「持续性」。</li>
+            <li><b>tokentape（64）</b>：思路与 Cassette 撞车，早发布两周，但回放只支持 OpenAI 一家，可跑通度扣分。</li>
+            <li><b>mcp-guard（59）</b>：需求真实，README 却只有截图、没有可复制命令，按规则直接压在初筛线附近。</li>
+          </ul>
+          <p class="out">候选池：Show HN 11/3–11/5 首发、GitHub Rising 榜 20–50 名、r/LocalLLaMA 与 HN 讨论各 3 条，去重后共 9 个；1 个入选 + 3 个落选对照 + 5 个未过初筛 = 9。</p>
+        </div>
+      </div>
+
+      <div class="scout-main">
+        <article class="story">
+          <span class="tag">今日希望之星 · 第 003 号</span>
+          <h4>Cassette：给智能体会话录一盒可以倒着放的带子</h4>
+          <div class="deep-repo">cassette.run　·　Go　·　<b>Apache-2.0</b>　·　v0.4.2（2026-11-03）　·　Show HN 11 月 4 日　·　4.1K 星</div>
+          <div class="scout-body">
+            <p><span class="k">它是什么，以及不是什么</span>一台给智能体用的「录像机」。它不是日志系统（不是给你看时间线），不是 APM（不测延迟），也不是评测框架（不判对错）——它只做一件事：把一次会话里所有来自外部世界的输入录下来，之后能在完全离线的环境里重放一遍。<b>模型、网页、API、工具返回值，四类都录。</b></p>
+            <p><span class="k">怎么工作（三层）</span>一是<b>录制</b>：起一个本地代理，模型请求、HTTP 调用、MCP 工具返回都从它过；每个响应按内容哈希存成 blob，SQLite 只存索引。二是<b>脱敏</b>：正则加熵检测找出疑似密钥，替换成等长占位符——保留长度是为了不让模型的 token 计数漂移。三是<b>回放</b>：`cassette play` 起一个本地 mock，按请求哈希返回录制内容；<b>没录到的一律返回 MISS，绝不打真网</b>，这是它和「假装回放」的区别。</p>
+            <p><span class="k">数字与口径</span>官方给的三组：一次 40 分钟、约 180 次工具调用的会话，带子 <b>180MB</b>；在 6 个仓库的 120 次失败任务上，回放命中率 <b>97.4%</b>，未命中的 3 次都是流式响应被中途掐断；同一 bug 连放 100 次，结果一致 <b>100/100</b>，比真实重跑快约 <b>11 倍</b>（单步 0.4 秒对 4.6 秒）。口径必须写清：项目自测，样本为作者自己的仓库，没有第三方复核。</p>
+            <p><span class="k">为什么它比榜单上那些更值得看</span>因为智能体最贵的成本不是 token，是<b>「这个 bug 复现不了」</b>。一次线上事故，重跑三遍三个结果，最后只能猜。Cassette 把这个过程变成放录像：同一盒带子，放一百遍都是同一场事故，你可以慢慢加断点、换模型、对比行为。它不提升能力，它提升的是「能不能把问题修掉」的概率。</p>
+          </div>
+          <span class="k">上手：三条命令</span>
+          <div class="cmd">cassette rec -- python agent.py        <span class="c"># 录：正常跑，全程旁路记录</span>
+cassette ls                            <span class="c"># 看：列出带子、大小、步数</span>
+cassette play runs/2026-11-05.tape     <span class="c"># 放：离线回放，未命中即报 MISS</span>
+
+<span class="c"># 需要给别人看时：导成一棵可读的树，顺手把密钥抹掉</span>
+cassette export runs/2026-11-05.tape --redact --html</div>
+          <p><span class="k">会卡住的地方</span>流式响应按 chunk 存，回放时时序会变，测延迟没有意义；带子体积随会话长度线性增长，180MB 一盒，存一个月要规划清理策略；加密的 payload 脱敏不了，只能整段跳过并标记；带子格式在 1.0 之前还会变，跨版本未必读得回来。</p>
+          <p><span class="k">谁该现在装</span>三类人：正在给智能体写回归测试的（省掉 mock 的活）、被「复现不了」折磨过的（直接受益）、要给客户演示但不能连生产环境的（一盒带子搞定）。如果你的智能体只跑一次、不留痕，那它暂时没用。</p>
+        </article>
+      </div>
+    </div>
+
+    <div class="plain">
+      <span class="p-h">说人话 · 为什么「录下来」比「更聪明」值钱</span>
+      <p>智能体出错的时候，你面对的不是一道题，是<b>一场只演了一次的戏</b>：网页变了、模型更新了、API 限流了，你想再看一遍，戏已经散了。Cassette 做的事跟行车记录仪一样——它不让你开得更好，它让你在撞了之后知道怎么撞的。<b>60 分的智能体加一台录像机，比 80 分但没有记录的智能体更容易修好。</b></p>
+    </div>
+
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 关于「星探」这一版本身</span>
+      </div>
+      <p>77 分，五项里最低的是「作者持续性」13 分——一个人、六天、四次提交，这是它最大的风险，也是它只值 77 分的原因。<b>但 97.4% 的回放命中率和 100/100 的一致性，是今天所有候选里唯一能被验证的数字</b>，其余八个都停在「读起来不错」。本报的尺子从来偏向后者：宁可要一个能被复现的 60 分，不要一个只能被相信的 90 分。半年后它可能没了，但那盒带子的思路会留下来。</p>
+    </aside>
+  </section>
+
+  <!-- 15 快讯 -->
+  <section class="section" id="p15">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">一句话快讯</span>
+      <span class="sec-page">第 15 版 / 共 15 版</span>
+    </div>
+    <ul class="briefs">
+      <li><b>OpenAI</b> 把 Codex 的沙箱默认网络策略从「按需放行」改为「默认拒绝」，官方称可拦掉 82% 的越权外传尝试。</li>
+      <li><b>Anthropic</b> 更新 Claude Code，新增「会话导出为可回放包」，格式与第三方工具不兼容，但承诺文档公开。</li>
+      <li><b>谷歌</b> 把 Gemini Omni 1.2 Flash 的 15 秒视频生成接入 Vertex AI，企业客户可按项目配额调用。</li>
+      <li><b>月之暗面</b> Hosted Agents 开放第三个区域，单会话上限 8 小时，超时自动快照并可续跑。</li>
+      <li><b>百度</b> 文心 5.5 Flash Base 权重上线 12 小时下载量破 3.1 万次，社区已放出 4 位量化版本。</li>
+      <li><b>腾讯</b> WorkBuddy Agent 平台首批 12 个连接器全量开放，企业自建连接器需通过权限审计。</li>
+      <li><b>实在智能</b> 称 Soiawork 的 Worker 已适配 47 款国产办公与财务软件，界面改版后重录平均耗时 25 分钟。</li>
+      <li><b>欧盟</b> 人工智能办公室就代理式系统的责任分配启动第二轮意见征询，截止 12 月 15 日。</li>
+      <li><b>MIT CSAIL</b> 提出「权重空间编程」新结果：改 0.011% 权重，Qwen3.5-0.8B 在 MATH-500 上从 8.2% 升至 51.4%。</li>
+      <li><b>NVIDIA</b>  researchers 提出 AgentBaton 的续作，强模型只接手前两步，平均降低智能体 API 成本 71.3%。</li>
+      <li><b>OpenHands</b> 1.4.1 修复了事件流在 Windows 路径下的 CRLF 污染问题，建议升级。</li>
+      <li><b>Kimi</b> K3.1 Pro 在 Terminal-Bench 4.0 的分数被第三方复测为 64.9%，与官方 65.7% 相差 0.8 个百分点。</li>
+    </ul>
+
+    <div class="watch">
+      <h5>近期日程 · 值得等的三件事</h5>
+      <ul>
+        <li><span class="d">11/6–8</span><span><b>2026 智能经济大会</b>　武汉光谷。主论坛 11 月 7 日上午，含「FDE+ 智能体培育工程」成果发布与《2026 武汉市具身智能产业发展报告》。</span></li>
+        <li><span class="d">11/9–10</span><span><b>NVIDIA AI Day 首尔</b>　COEX，约 2,000 名开发者。三个分轨含「智能体与 OpenClaw」，可现场搭自主智能体；11/10 付费实操课含「基于大模型的安全智能体开发」。</span></li>
+        <li><span class="d">12/1</span><span><b>Gemini 4 Argon 涨价生效</b>　输入 $2 → $4、输出 $10 → $20。长期跑智能体的团队，合约价宜在此前锁定。</span></li>
+      </ul>
+    </div>
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 本期收尾</span>
+      </div>
+      <p>12 条快讯里，真正会改明年账单的是两条：AgentBaton 续作把成本砍 <b>71.3%</b>，OpenAI 把沙箱默认改成「拒绝」并称拦掉 <b>82%</b> 的越权外传。一条省钱，一条保命，方向一致——<b>把「默认允许」改成「默认拒绝」</b>。至于 K3.1 Pro 那个 64.9% 对 65.7%，0.8 个百分点不值得吵；真正该问的是第三方为什么拿不到完整测试脚本。日程里首尔那场有 OpenClaw 实操，值得等回放。</p>
+    </aside>
+  </section>
+
+  <div class="gloss" id="gloss">
+    <h5>名词速查 · 本期出现的 13 个词<span>看不懂就跳回来，不用从头读</span></h5>
+    <div class="gloss-grid">
+      <dl><dt>智能体 / Agent</dt><dd>能自己决定下一步做什么、并真的去动手（调用工具）的程序。区别在于它会「做事」，不只是「回答」。</dd></dl>
+      <dl><dt>外壳 / Harness</dt><dd>套在模型外面的那层程序，负责给它工具、管权限、记日志。模型是发动机，harness 是方向盘和刹车。</dd></dl>
+      <dl><dt>Token</dt><dd>模型处理文字的最小单位，大约 0.7 个汉字。账单按 token 计数，所以「便宜」要按 token 单价算。</dd></dl>
+      <dl><dt>上下文窗口</dt><dd>模型一次能「看见」多少 token。超出就得压缩或忘掉，长任务做到一半失忆多与此有关。</dd></dl>
+      <dl><dt>预填充 / prefill</dt><dd>每一轮开始前固定塞给模型的内容（系统提示 + 工具清单）。这段越短越省钱，小模型也越不容易乱。</dd></dl>
+      <dl><dt>后置校验 / postcondition</dt><dd>每个「写」动作后面跟一条「怎么算成功」的检查。没有它，工具返回成功也可能等于什么都没发生。</dd></dl>
+      <dl><dt>假完成 / silent success</dt><dd>模型说「做完了」，实际没做，而且它自己不知道。4B 档模型在写文件类任务上约每四次出现一次。</dd></dl>
+      <dl><dt>MoE / 混合专家</dt><dd>模型总参数很大，但每次只激活其中一小部分。所以 2800 亿参数只激活 140 亿也能跑，代价是显存仍按总量算。</dd></dl>
+      <dl><dt>量化 / Q4</dt><dd>把权重从 16 位压到 4 位，模型文件缩到约四分之一，显存占用同步下降，精度略损。本地跑模型基本都靠它。</dd></dl>
+      <dl><dt>显存 / VRAM</dt><dd>显卡自己的内存，模型必须先整个装进去才能跑。装不下只有两条路：换更小的模型，或压得更狠（量化）。</dd></dl>
+      <dl><dt>MCP</dt><dd>让模型统一接外部工具的协议，可以理解成「智能体用的 USB 接口」。插上就能读文件、查数据库、调 API。</dd></dl>
+      <dl><dt>沙箱 / Sandbox</dt><dd>把智能体关在一个受限环境里跑，它再怎么乱来也只污染这个环境，删不到你的主目录。</dd></dl>
+      <dl><dt>星数 / 涨星</dt><dd>GitHub 的收藏数 / 单位时间新增。星数代表「我认同这件事」，不代表「这东西能用」——装之前先看提交频率。</dd></dl>
+    </div>
+  </div>
+
+  <footer class="colophon">
+    <div class="row">
+      <span><b>AI 晨报</b>　第 003 期　2026-11-06　共 15 版</span>
+      <span>本报由 AI 自动编撰　数据截至北京时间 10:10　本期因故延后发布</span>
+    </div>
+    <p><b>信息源：</b>机器之心、量子位、智东西、AI 早报、新浪财经、腾讯新闻、网易科技、凤凰网、掘金、知乎、HelloGitHub 月刊、Dify 与 Coze Studio 官方 Release Notes、Hacker News 聚合（含 Show HN 首发帖）、GitHub 第三方榜单快照、Reddit r/AI_Agents 与 r/LocalLLaMA、X（Twitter）、arXiv、Artificial Analysis、OpenRouter、各公司官方博客与公告、Anthropic 与 OpenAI 工程博客、国家发展改革委与中国信通院公开文件。</p>
+    <p><b>编辑说明：</b>本期只收录人工智能相关动态，并以智能体（Agent）为主线编排。本期因故延后发布：原定 08:00 出版，因取材复核延后至 10:16，期号仍按日递增，为第 003 期。每版附有一条「锐评」（共 15 条），为本报观点或社区言论摘编，属评论而非事实陈述，请与正文数据分开看待；标注「网友锐评」「读者锐评」者为社区发言的转述与回应，不代表本报立场。第 14 版「星探」为本报自设栏目：评分（星探指数）由本报自行制定，非第三方评级，只用于同一天内横向比较，不构成推荐；入选项目均经人工核对许可证与可运行路径，但未在本机逐个跑通。第 13 版「平台回声」逐平台标注本期是否取到内容与到达方式，其中「无料」仅指本期未检索到可用素材，不代表该平台没有内容；Discord 与小红书的内容不进公开搜索，本报无法覆盖。报尾「名词速查」为编辑部释义，与具体厂商文档的措辞可能不同。星数与增速取自第三方榜单快照（截至 09:00），与 GitHub 实时数据可能存在延迟；估值、融资与收入数据以公开报道为准，未经独立核实；论文结论仅代表作者观点；价目表为标准按量付费档，促销期与阶梯价另计。本期不构成任何投资建议。</p>
+    <p class="errata"><b>更正与说明：</b>第 03 版文心 5.5 Flash Base 的显存占用为按 Q4 的估算（权重约 150GB），实际随量化方式与上下文长度浮动，非官方数字。第 05 版 mcp-toolsearch-proxy 的 41,200 → 1,735 token 与 71% → 79% 成功率均为项目自测，样本 12 个任务，本报未独立复现。第 05 版 OpenHands 的 61.2% 与 $0.38/题为官方口径，测试后端为 Claude Opus 5.5，换模型后不具可比性。第 11 版 DGX Spark 的 53.89 tok/s 为官方实测（batch = 1、4K 上下文），其余档位为社区复测均值。第 14 版 Cassette 的 97.4% 回放命中率、100/100 一致性与 180MB 体积均为作者自测，口径为 6 个仓库的 120 次失败任务。</p>
+    <p><b>往期：</b>第 001 期（2026-11-04）　第 002 期（2026-11-05）　本报每日 08:00 出版，期号按日递增；本期因故延后发布，下一期恢复 08:00。</p>
+    <p class="disclaimer">本报内容由 AI 自动生成，用于产品演示，不构成事实报道。</p>
+  </footer>
+
+</div>
+
+<nav class="rail" aria-label="版面快捷目录">
+  <div class="rail-head">目录</div>
+  <ol class="rail-list">
+    <li><a href="#p01"><i>01</i><span>头条</span></a></li>
+    <li><a href="#p02"><i>02</i><span>社论</span></a></li>
+    <li><a href="#p03"><i>03</i><span>模型</span></a></li>
+    <li><a href="#p04"><i>04</i><span>产品</span></a></li>
+    <li><a href="#p05"><i>05</i><span>深读</span></a></li>
+    <li><a href="#p06"><i>06</i><span>思路</span></a></li>
+    <li><a href="#p07"><i>07</i><span>榜单</span></a></li>
+    <li><a href="#p08"><i>08</i><span>安全</span></a></li>
+    <li><a href="#p09"><i>09</i><span>学术</span></a></li>
+    <li><a href="#p10"><i>10</i><span>资本</span></a></li>
+    <li><a href="#p11"><i>11</i><span>算力</span></a></li>
+    <li><a href="#p12"><i>12</i><span>行情</span></a></li>
+    <li><a href="#p13"><i>13</i><span>回声</span></a></li>
+    <li><a href="#p14"><i>14</i><span>星探</span></a></li>
+    <li><a href="#p15"><i>15</i><span>快讯</span></a></li>
+  </ol>
+  <a class="rail-top" href="#top" title="回到顶部">↑ 顶</a>
+</nav>
+
+<button class="mob-btn" id="mobBtn" type="button" aria-controls="mobPanel" aria-expanded="false"><i>☰</i>目录</button>
+<div class="mob-panel" id="mobPanel" role="dialog" aria-label="版面目录">
+  <h6>版面目录 · 共 15 版 · 点一下跳过去</h6>
+  <div class="mob-grid">
+    <a href="#p01"><i>01</i>头条</a>
+    <a href="#p02"><i>02</i>社论</a>
+    <a href="#p03"><i>03</i>能力底座</a>
+    <a href="#p04"><i>04</i>产品生态</a>
+    <a href="#p05"><i>05</i>深读·能跑起来</a>
+    <a href="#p06"><i>06</i>思路拆解</a>
+    <a href="#p07"><i>07</i>开源榜</a>
+    <a href="#p08"><i>08</i>安全治理</a>
+    <a href="#p09"><i>09</i>学术前沿</a>
+    <a href="#p10"><i>10</i>商业资本</a>
+    <a href="#p11"><i>11</i>算力本地</a>
+    <a href="#p12"><i>12</i>行情价目</a>
+    <a href="#p13"><i>13</i>平台回声</a>
+    <a href="#p14"><i>14</i>星探</a>
+    <a href="#p15"><i>15</i>快讯</a>
+  </div>
+  <p class="mob-tip">宽屏时目录固定在右侧；窄屏（平板、手机）右侧放不下，改用这个面板。点任意一项会自动收起。</p>
+  <a class="mob-top" href="#top">↑ 回到顶部</a>
+</div>
+
+<script>
+(function(){
+  var links = Array.prototype.slice.call(document.querySelectorAll('.rail-list a'));
+  var secs = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  var ticking = false;
+  function update(){
+    var mark = window.pageYOffset + window.innerHeight * 0.35;
+    var idx = 0;
+    for (var i = 0; i < secs.length; i++){
+      if (secs[i] && secs[i].offsetTop <= mark) idx = i;
+    }
+    links.forEach(function(a, i){ a.classList.toggle('active', i === idx); });
+    ticking = false;
+  }
+  function onScroll(){ if(!ticking){ ticking = true; window.requestAnimationFrame(update); } }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  update();
+
+  var mb = document.getElementById('mobBtn');
+  var mp = document.getElementById('mobPanel');
+  if (mb && mp){
+    function setOpen(open){
+      document.body.classList.toggle('mob-open', open);
+      mb.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    mb.addEventListener('click', function(){
+      setOpen(!document.body.classList.contains('mob-open'));
+    });
+    mp.addEventListener('click', function(e){
+      var t = e.target;
+      while (t && t !== mp){
+        if (t.tagName === 'A'){ setOpen(false); break; }
+        t = t.parentNode;
+      }
+    });
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape') setOpen(false);
+    });
+  }
+})();
+</script>
+</body>
+</html>

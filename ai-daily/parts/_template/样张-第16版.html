@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 晨报 · 2026年11月7日 · 第 004 期 · 智能体专版（共 16 版）· 样张</title>
+<style>
+  :root{
+    --ink:#1b1a17;
+    --ink-soft:#3a3934;
+    --muted:#6d6a60;
+    --paper:#fbf8f0;
+    --paper-edge:#efeadd;
+    --rule:#1b1a17;
+    --rule-soft:#cfc8b6;
+    --accent:#8c1d18;
+    --serif:"Songti SC","STSong","Noto Serif SC","Source Han Serif SC","SimSun",Georgia,"Times New Roman",serif;
+    --sans:"Microsoft YaHei","PingFang SC","Hiragino Sans GB","Helvetica Neue",Arial,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
+  body{
+    margin:0;
+    background:var(--paper-edge);
+    color:var(--ink);
+    font-family:var(--serif);
+    font-size:14px;
+    line-height:1.78;
+  }
+  .page{
+    max-width:1180px;
+    margin:26px auto;
+    background:var(--paper);
+    padding:30px 46px 24px;
+    box-shadow:0 0 0 1px #e2dbca, 0 1px 2px rgba(0,0,0,.06);
+  }
+
+  /* ---------- 报头 ---------- */
+  .masthead{padding-bottom:10px;}
+  .mast-rule{height:3px;background:var(--rule);}
+  .mast-rule.double{height:1px;margin-top:6px;box-shadow:0 3px 0 var(--rule);}
+  .mast-top{
+    display:flex;justify-content:space-between;align-items:baseline;
+    font-family:var(--sans);font-size:11px;letter-spacing:.12em;
+    color:var(--muted);padding:9px 2px 2px;
+  }
+  .paper-name{
+    margin:6px 0 2px;
+    text-align:center;
+    font-size:72px;
+    line-height:1.1;
+    letter-spacing:.16em;
+    font-weight:700;
+    text-indent:.16em;
+  }
+  .paper-sub{
+    text-align:center;
+    font-family:var(--sans);
+    font-size:11px;
+    letter-spacing:.3em;
+    color:var(--muted);
+    text-indent:.3em;
+    padding-bottom:9px;
+  }
+  .mast-nav{
+    display:flex;justify-content:center;gap:15px;flex-wrap:wrap;
+    border-top:1px solid var(--rule-soft);
+    border-bottom:1px solid var(--rule);
+    padding:7px 0 6px;
+    font-family:var(--sans);font-size:10.5px;letter-spacing:.1em;color:var(--ink-soft);
+  }
+  .mast-nav a{color:inherit;text-decoration:none;white-space:nowrap;}
+  .mast-nav a:hover{color:var(--accent);}
+  .mast-nav b{color:var(--accent);font-weight:700;margin-right:3px;font-size:9.5px;vertical-align:1px;}
+
+  /* ---------- 头版 ---------- */
+  .lead{
+    display:grid;
+    grid-template-columns:1fr 306px;
+    gap:0;
+    border-bottom:2px solid var(--rule);
+    padding:22px 0 20px;
+  }
+  .lead-main{padding-right:30px;border-right:1px solid var(--rule-soft);}
+  .kicker{
+    font-family:var(--sans);font-size:10.5px;letter-spacing:.2em;
+    color:var(--accent);padding-bottom:6px;font-weight:700;
+  }
+  .lead h2{
+    margin:0 0 9px;
+    font-size:35px;line-height:1.32;letter-spacing:.01em;font-weight:700;
+  }
+  .lead h2 .h2-sub{font-size:26px;font-weight:700;letter-spacing:.02em;color:var(--ink-soft);}
+  .deck{
+    margin:0 0 9px;font-size:15.5px;line-height:1.7;color:var(--ink-soft);
+    padding-bottom:9px;border-bottom:1px solid var(--rule-soft);
+  }
+  .byline{
+    font-family:var(--sans);font-size:10.5px;letter-spacing:.1em;color:var(--muted);
+    margin-bottom:12px;
+  }
+  .lead-body{columns:2;column-gap:30px;column-rule:1px solid var(--rule-soft);text-align:justify;}
+  .lead-body p{margin:0 0 9px;font-size:13.8px;line-height:1.9;}
+  .dropcap::first-letter{
+    float:left;font-size:50px;line-height:.92;padding:2px 7px 0 0;font-weight:700;
+  }
+  .jump{
+    font-family:var(--sans);font-size:10.5px;letter-spacing:.06em;color:var(--muted);
+    margin-top:2px;padding-top:7px;border-top:1px solid var(--rule-soft);
+  }
+  .lead-side{padding-left:24px;}
+  .side-block{margin-bottom:20px;}
+  .side-block:last-child{margin-bottom:0;}
+  .side-block h3{
+    margin:0 0 8px;padding-bottom:5px;border-bottom:2px solid var(--rule);
+    font-family:var(--sans);font-size:11px;letter-spacing:.22em;font-weight:700;
+  }
+  .headlines{margin:0;padding:0;list-style:none;counter-reset:hn;}
+  .headlines li{
+    counter-increment:hn;
+    position:relative;
+    padding:5px 0 5px 22px;
+    border-bottom:1px dotted var(--rule-soft);
+    font-size:12.6px;line-height:1.62;
+  }
+  .headlines li::before{
+    content:counter(hn);
+    position:absolute;left:0;top:6px;
+    font-family:var(--sans);font-size:10px;color:var(--accent);font-weight:700;
+  }
+  .headlines li:last-child{border-bottom:none;}
+  .board{background:#f3eee1;padding:11px 12px 8px;border:1px solid var(--rule-soft);}
+  .stat{padding:6px 0;border-bottom:1px dotted var(--rule-soft);}
+  .stat:last-child{border-bottom:none;}
+  .stat .line{display:flex;align-items:baseline;gap:4px;}
+  .stat .num{font-family:Georgia,serif;font-size:23px;line-height:1.1;font-weight:700;letter-spacing:-.02em;}
+  .stat .unit{font-family:var(--sans);font-size:10px;color:var(--accent);letter-spacing:.06em;}
+  .stat .cap{display:block;font-family:var(--sans);font-size:10px;color:var(--muted);line-height:1.5;margin-top:1px;}
+
+  /* ---------- 版块通用 ---------- */
+  .section{border-bottom:2px solid var(--rule);padding:18px 0 16px;}
+  .section:target{background:#fdfbf4;}
+  .section-head{
+    display:flex;justify-content:space-between;align-items:center;
+    border-bottom:1px solid var(--rule);padding-bottom:6px;margin-bottom:13px;
+  }
+  .sec-label{
+    font-family:var(--sans);font-size:12px;letter-spacing:.24em;font-weight:700;
+  }
+  .sec-label::before{content:"";display:inline-block;width:9px;height:9px;background:var(--accent);margin-right:9px;vertical-align:1px;}
+  .sec-page{font-family:var(--sans);font-size:10px;letter-spacing:.12em;color:var(--muted);}
+
+  .cols-3{columns:3;column-gap:27px;column-rule:1px solid var(--rule-soft);}
+  .cols-2{columns:2;column-gap:30px;column-rule:1px solid var(--rule-soft);}
+  .story{break-inside:avoid;margin:0 0 15px;}
+  .story h4{margin:0 0 4px;font-size:17.5px;line-height:1.45;font-weight:700;}
+  .story h4.sm{font-size:15px;}
+  .story .tag{
+    font-family:var(--sans);font-size:10px;letter-spacing:.14em;color:var(--accent);
+    display:block;margin-bottom:3px;
+  }
+  .story p{margin:0 0 6px;font-size:13.1px;line-height:1.82;text-align:justify;color:var(--ink-soft);}
+  .story p:last-child{margin-bottom:0;}
+  .pullquote{
+    border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+    padding:8px 0;margin:8px 0 12px;
+    font-size:14px;line-height:1.7;font-weight:700;text-align:center;
+  }
+
+  /* ---------- 社论 ---------- */
+  .ed-title{font-size:31px;line-height:1.34;margin:0 0 8px;font-weight:700;letter-spacing:.01em;}
+  .ed-deck{
+    font-size:15px;line-height:1.7;color:var(--ink-soft);margin:0 0 10px;
+    padding-bottom:10px;border-bottom:1px solid var(--rule-soft);
+  }
+  .ed-body{columns:2;column-gap:30px;column-rule:1px solid var(--rule-soft);}
+  .ed-body p{margin:0 0 9px;font-size:13.6px;line-height:1.92;text-align:justify;}
+  .ed-sign{
+    font-family:var(--sans);font-size:10.5px;letter-spacing:.12em;color:var(--muted);
+    text-align:right;margin-top:4px;padding-top:6px;border-top:1px solid var(--rule-soft);
+  }
+
+  /* ---------- 图表 ---------- */
+  .figure{
+    margin:0 0 15px;border:1px solid var(--rule-soft);background:#f6f1e4;
+    padding:13px 16px 10px;break-inside:avoid;
+  }
+  .fig-title{
+    font-family:var(--sans);font-size:10.5px;letter-spacing:.16em;color:var(--accent);
+    font-weight:700;margin-bottom:11px;
+  }
+  .fig-cap{
+    font-family:var(--sans);font-size:10.2px;color:var(--muted);line-height:1.65;
+    margin-top:9px;padding-top:7px;border-top:1px solid var(--rule-soft);
+  }
+  .fig-cap b{color:var(--accent);}
+
+  /* ---------- 榜单表 ---------- */
+  .rank{width:100%;border-collapse:collapse;font-family:var(--sans);font-size:11.8px;}
+  .rank caption{
+    caption-side:top;text-align:left;font-family:var(--sans);font-size:10.3px;
+    letter-spacing:.06em;color:var(--muted);padding-bottom:6px;
+  }
+  .rank th{
+    text-align:left;font-size:10.3px;letter-spacing:.1em;color:var(--muted);
+    font-weight:700;padding:0 7px 6px 0;border-bottom:1.5px solid var(--rule);
+  }
+  .rank td{padding:6px 7px 6px 0;border-bottom:1px solid #ddd6c3;vertical-align:top;line-height:1.55;}
+  .rank th:last-child,.rank td:last-child{padding-right:0;}
+  .rank td.name{font-family:var(--serif);font-size:12.8px;font-weight:700;}
+  .rank td.num{font-family:Georgia,serif;white-space:nowrap;}
+  .rank td.up{color:var(--accent);white-space:nowrap;font-weight:700;}
+  .rank td.p{font-family:Georgia,serif;white-space:nowrap;text-align:right;padding-right:14px;}
+  .rank th.p{text-align:right;padding-right:14px;}
+  .rank tr:last-child td{border-bottom:none;}
+  .rank tr.hi td{background:#f4ecdc;}
+  .rank td.rz{font-family:var(--sans);font-size:10.5px;letter-spacing:.06em;color:var(--muted);text-align:right;white-space:nowrap;padding-right:0;}
+  .rank th.rz{text-align:right;padding-right:0;}
+  .rank.echo td{font-size:11.5px;}
+  .rank.echo td.name{font-size:13px;}
+  .sec-lede{
+    margin:0 0 14px;font-size:13.6px;line-height:1.78;color:var(--ink-soft);
+    text-align:justify;padding-bottom:10px;border-bottom:1px solid var(--rule-soft);
+  }
+
+  /* ---------- 行情注解 ---------- */
+  .note-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:14px;}
+  .note-box{border-left:2px solid var(--accent);padding:1px 0 1px 12px;}
+  .note-box h5{
+    margin:0 0 5px;font-family:var(--sans);font-size:10.5px;letter-spacing:.16em;font-weight:700;
+  }
+  .note-box ul{margin:0;padding-left:14px;}
+  .note-box li{font-size:12.4px;line-height:1.75;color:var(--ink-soft);margin-bottom:4px;}
+  .cost{margin:0;padding:0;list-style:none;}
+  .cost li{
+    display:flex;justify-content:space-between;gap:10px;
+    font-size:12.3px;padding:4px 0;border-bottom:1px dotted var(--rule-soft);
+  }
+  .cost li:last-child{border-bottom:none;}
+  .cost .v{font-family:Georgia,serif;font-weight:700;white-space:nowrap;}
+
+  /* ---------- 快讯与预告 ---------- */
+  .briefs{columns:3;column-gap:26px;column-rule:1px solid var(--rule-soft);margin:0;padding:0;list-style:none;}
+  .briefs li{
+    break-inside:avoid;padding:4px 0 4px 12px;position:relative;
+    font-size:12.4px;line-height:1.7;color:var(--ink-soft);
+  }
+  .briefs li::before{content:"";position:absolute;left:0;top:12px;width:4px;height:4px;background:var(--accent);}
+  .briefs b{color:var(--ink);}
+
+  .watch{margin-top:15px;border:1px solid var(--rule);padding:11px 14px 9px;}
+  .watch h5{
+    margin:0 0 7px;padding-bottom:5px;border-bottom:1px solid var(--rule);
+    font-family:var(--sans);font-size:11px;letter-spacing:.2em;font-weight:700;
+  }
+  .watch ul{margin:0;padding:0;list-style:none;}
+  .watch li{
+    display:flex;gap:14px;padding:5px 0;border-bottom:1px dotted var(--rule-soft);
+    font-size:12.4px;line-height:1.68;color:var(--ink-soft);
+  }
+  .watch li:last-child{border-bottom:none;}
+  .watch .d{
+    font-family:var(--sans);font-size:11px;color:var(--accent);font-weight:700;
+    white-space:nowrap;flex:0 0 66px;
+  }
+
+  /* ---------- 报尾 ---------- */
+  .colophon{
+    border-top:3px solid var(--rule);margin-top:16px;padding-top:10px;
+    font-family:var(--sans);font-size:10.3px;line-height:1.75;color:var(--muted);
+  }
+  .colophon .row{display:flex;justify-content:space-between;gap:20px;border-bottom:1px solid var(--rule-soft);padding-bottom:8px;margin-bottom:8px;flex-wrap:wrap;}
+  .colophon strong{color:var(--ink-soft);letter-spacing:.1em;}
+  .colophon p{margin:0 0 4px;}
+  .errata{border-left:2px solid var(--accent);padding:1px 0 1px 9px;margin:7px 0;}
+
+  /* ---------- 锐评 ---------- */
+  .razor{
+    margin:16px 0 0;padding:1px 0 2px 14px;
+    border-left:3px solid var(--accent);
+    break-inside:avoid;
+  }
+  .razor-h{
+    display:flex;align-items:center;gap:9px;flex-wrap:wrap;
+    font-family:var(--sans);margin-bottom:5px;
+  }
+  .razor-mark{
+    background:var(--accent);color:var(--paper);
+    font-size:10px;font-weight:700;letter-spacing:.18em;
+    padding:2px 8px 2px 9px;flex:0 0 auto;
+  }
+  .razor-src{font-size:9.8px;letter-spacing:.09em;color:var(--muted);}
+  .razor p{margin:0;font-size:13.2px;line-height:1.88;text-align:justify;color:var(--ink);}
+  .razor p b{color:var(--accent);}
+  .razor--reader .razor-mark{
+    background:transparent;color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent);
+    padding:1px 8px 1px 9px;
+  }
+
+  /* ---------- 右侧快捷目录 ---------- */
+  .rail{
+    position:fixed; left:50%; margin-left:602px; top:50%;
+    transform:translateY(-50%);
+    width:78px; z-index:60;
+    max-height:calc(100vh - 24px); overflow:auto;
+    background:var(--paper); border:1px solid #c9c1ad;
+    box-shadow:0 1px 4px rgba(0,0,0,.10);
+    font-family:var(--sans);
+    padding:5px 0 3px;
+  }
+  .rail-head{
+    font-size:9px;letter-spacing:.2em;color:var(--muted);text-align:left;
+    padding:1px 0 5px 9px;border-bottom:1px solid var(--rule-soft);margin-bottom:3px;
+    white-space:nowrap;
+  }
+  .rail-list{list-style:none;margin:0;padding:0;}
+  .rail-list a{
+    display:flex;align-items:center;gap:5px;text-decoration:none;color:var(--ink-soft);
+    padding:3px 0 3px 9px;font-size:10.5px;white-space:nowrap;line-height:1.55;
+  }
+  .rail-list a i{font-style:normal;font-size:9px;color:var(--accent);font-weight:700;width:13px;flex:0 0 13px;}
+  .rail-list a:hover{background:#f3eee1;}
+  .rail-list a.active{background:#f0e6d2;}
+  .rail-list a.active span{font-weight:700;color:var(--accent);}
+  .rail-top{
+    display:block;text-align:center;font-size:10.5px;color:var(--muted);text-decoration:none;
+    border-top:1px solid var(--rule-soft);margin-top:3px;padding:4px 0 1px;
+  }
+  .rail-top:hover{color:var(--accent);}
+
+  /* ---------- 深读卡 ---------- */
+  .deep{border-top:1px solid var(--rule-soft);padding-top:13px;margin-bottom:16px;}
+  .deep:first-of-type{border-top:none;padding-top:0;}
+  .deep-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
+  .deep-idx{
+    font-family:Georgia,serif;font-size:26px;font-weight:700;color:var(--accent);
+    line-height:1;letter-spacing:-.02em;
+  }
+  .deep-title{margin:0;font-size:23px;line-height:1.38;font-weight:700;}
+  .deep-repo{
+    font-family:var(--sans);font-size:10px;letter-spacing:.04em;color:var(--muted);
+    margin:3px 0 8px;
+  }
+  .deep-repo b{color:var(--ink-soft);}
+  .deep-tag{
+    display:inline-block;font-family:var(--sans);font-size:9.5px;letter-spacing:.12em;
+    color:var(--accent);border:1px solid var(--accent);padding:1px 6px;margin-bottom:5px;
+  }
+  .deep-body{columns:2;column-gap:28px;column-rule:1px solid var(--rule-soft);}
+  .deep-body p{margin:0 0 8px;font-size:13px;line-height:1.85;text-align:justify;color:var(--ink-soft);}
+  .deep-body p b{color:var(--ink);}
+  .k{
+    font-family:var(--sans);font-size:10px;letter-spacing:.14em;color:var(--muted);
+    display:block;margin-bottom:2px;
+  }
+  .cmd{
+    font-family:Consolas,"Courier New",monospace;font-size:11.6px;line-height:1.75;
+    background:#f4efe2;border-left:2px solid var(--accent);
+    margin:6px 0 9px;padding:7px 10px;white-space:pre-wrap;word-break:break-all;
+    color:#2b2a26;break-inside:avoid;
+  }
+  .cmd .c{color:#8a8577;}
+  .deep-warn{
+    font-size:12px;line-height:1.8;color:#3a3934;background:#f7ead9;
+    border-left:2px solid var(--accent);padding:6px 10px;margin:6px 0 0;break-inside:avoid;
+  }
+  .more-box{
+    margin-top:14px;border:1px solid var(--rule);padding:11px 14px 8px;break-inside:avoid;
+  }
+  .more-box h5{
+    margin:0 0 7px;padding-bottom:5px;border-bottom:1px solid var(--rule-soft);
+    font-family:var(--sans);font-size:11px;letter-spacing:.2em;font-weight:700;
+  }
+  .more-box p{margin:0 0 6px;font-size:12.4px;line-height:1.78;color:var(--ink-soft);}
+  .more-box p:last-child{margin-bottom:0;}
+  .more-box b{color:var(--ink);}
+
+  /* ---------- 思路拆解（第 06 版） ---------- */
+  .idea-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 30px;}
+  .idea{border-top:1px solid var(--rule);padding:11px 0 12px;break-inside:avoid;}
+  .idea-h{display:flex;align-items:baseline;gap:8px;margin-bottom:3px;}
+  .idea-idx{font-family:Georgia,serif;font-size:19px;font-weight:700;color:var(--accent);line-height:1;}
+  .idea-name{font-family:var(--sans);font-size:12.5px;font-weight:700;letter-spacing:.02em;color:var(--ink);}
+  .idea .idea-swap{margin:0 0 5px;font-size:15px;line-height:1.58;font-weight:700;color:var(--ink);text-align:left;}
+  .idea .idea-swap em{font-style:normal;color:var(--accent);}
+  .idea p{margin:0 0 4px;font-size:12.7px;line-height:1.78;color:var(--ink-soft);text-align:justify;}
+  .idea p b.lbl{font-family:var(--sans);font-size:10px;letter-spacing:.1em;color:var(--muted);font-weight:700;margin-right:5px;}
+  .idea p.take{margin:7px 0 0;padding:5px 0 0 9px;border-left:2px solid var(--accent);font-size:12.5px;line-height:1.7;color:var(--ink);}
+  .idea p.take b{display:block;font-family:var(--sans);font-size:9.6px;letter-spacing:.12em;color:var(--accent);font-weight:700;margin:0 0 1px;}
+
+  /* ---------- 平台回声：平台名即链接 ---------- */
+  .rank.echo td.name a{color:inherit;text-decoration:underline;text-decoration-style:dotted;text-decoration-color:#8f8674;text-decoration-thickness:1px;text-underline-offset:4px;}
+  .rank.echo td.name a:hover,.rank.echo td.name a:focus{color:var(--accent);text-decoration-color:var(--accent);}
+  .rank.echo td.name a:active{color:var(--accent);}
+
+  /* ---------- 宽表格与宽图：窄屏横向滚动，不挤压字 ---------- */
+  .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  .fig-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  .fig-hint{display:none;margin:7px 0 0;font-family:var(--sans);font-size:9.5px;color:var(--muted);text-align:center;letter-spacing:.06em;}
+
+  /* ---------- 窄屏目录（平板 / 手机） ---------- */
+  .mob-btn,.mob-panel{display:none;}
+
+  /* ---------- 怎么读（小白导航） ---------- */
+  .read-guide{
+    display:flex;flex-wrap:wrap;align-items:stretch;
+    border-bottom:1px solid var(--rule);background:#f6f1e4;
+    font-family:var(--sans);font-size:10.5px;color:var(--ink-soft);
+  }
+  .read-guide .rg-lead{
+    display:flex;align-items:center;padding:7px 13px;
+    background:var(--accent);color:var(--paper);
+    letter-spacing:.18em;font-weight:700;font-size:10px;white-space:nowrap;
+  }
+  .read-guide a{
+    flex:1 1 0;min-width:160px;padding:6px 13px;border-right:1px solid var(--rule-soft);
+    text-decoration:none;color:inherit;line-height:1.6;
+  }
+  .read-guide a:last-child{border-right:none;}
+  .read-guide a b{display:block;color:var(--accent);font-size:9.5px;letter-spacing:.12em;margin-bottom:1px;}
+  .read-guide a:hover{background:#efe8d6;}
+
+  /* ---------- 说人话 ---------- */
+  .plain{
+    margin:9px 0 12px;padding:8px 12px 8px 13px;background:#f6f1e4;
+    border-left:2px solid var(--ink);break-inside:avoid;
+  }
+  .plain .p-h{
+    display:block;font-family:var(--sans);font-size:9.5px;letter-spacing:.18em;
+    color:var(--accent);font-weight:700;margin-bottom:3px;
+  }
+  .plain p{margin:0;font-size:12.6px;line-height:1.82;color:var(--ink-soft);text-align:justify;}
+  .plain p b{color:var(--ink);}
+
+  /* ---------- 星探 ---------- */
+  .scout{display:grid;grid-template-columns:308px 1fr;border-bottom:1px solid var(--rule-soft);}
+  .scout-card{padding:2px 24px 14px 0;border-right:1px solid var(--rule-soft);}
+  .scout-card h5{
+    margin:0 0 8px;padding-bottom:5px;border-bottom:1px solid var(--rule);
+    font-family:var(--sans);font-size:10.5px;letter-spacing:.18em;font-weight:700;
+  }
+  .scout-row{
+    display:grid;grid-template-columns:66px 1fr 26px;align-items:center;gap:8px;
+    padding:4px 0;border-bottom:1px dotted var(--rule-soft);
+  }
+  .scout-row .lb{font-family:var(--sans);font-size:10.4px;color:var(--ink-soft);white-space:nowrap;}
+  .scout-row .bar{height:7px;background:#e7e0cf;position:relative;}
+  .scout-row .bar i{position:absolute;left:0;top:0;bottom:0;background:var(--accent);}
+  .scout-row .vl{font-family:Georgia,serif;font-size:12px;font-weight:700;text-align:right;}
+  .scout-total{
+    display:flex;align-items:baseline;justify-content:space-between;gap:8px;
+    margin-top:9px;padding-top:7px;border-top:1.5px solid var(--rule);
+  }
+  .scout-total .tn{font-family:Georgia,serif;font-size:31px;font-weight:700;line-height:1;letter-spacing:-.02em;}
+  .scout-total .tn em{font-style:normal;font-size:11.5px;color:var(--muted);letter-spacing:0;}
+  .scout-total .tt{font-family:var(--sans);font-size:9.6px;color:var(--muted);line-height:1.6;text-align:right;}
+  .veto{margin-top:11px;padding-top:8px;border-top:1px solid var(--rule-soft);}
+  .veto h6{
+    margin:0 0 5px;font-family:var(--sans);font-size:9.5px;letter-spacing:.16em;
+    color:var(--accent);font-weight:700;
+  }
+  .veto ul{margin:0;padding-left:13px;}
+  .veto li{font-family:var(--sans);font-size:10.2px;line-height:1.68;color:var(--muted);margin-bottom:2px;}
+  .veto li b{color:var(--ink-soft);}
+  .veto .out{margin-top:7px;font-family:var(--sans);font-size:9.8px;line-height:1.6;color:var(--ink-soft);}
+  .scout-main{padding:0 0 12px 26px;}
+  .scout-main .story h4{font-size:22px;line-height:1.36;}
+  .scout-body{columns:2;column-gap:26px;column-rule:1px solid var(--rule-soft);}
+  .scout-body p{margin:0 0 8px;font-size:12.9px;line-height:1.84;text-align:justify;color:var(--ink-soft);}
+  .scout-body p b{color:var(--ink);}
+
+  /* ---------- 名词速查 ---------- */
+  .gloss{border:1px solid var(--rule);padding:12px 15px 6px;margin-top:16px;break-inside:avoid;}
+  .gloss h5{
+    margin:0 0 8px;padding-bottom:5px;border-bottom:1px solid var(--rule);
+    font-family:var(--sans);font-size:11px;letter-spacing:.2em;font-weight:700;
+  }
+  .gloss h5 span{float:right;letter-spacing:.06em;font-size:9.6px;color:var(--muted);font-weight:400;}
+  .gloss-grid{columns:3;column-gap:26px;}
+  .gloss dl{margin:0;break-inside:avoid;}
+  .gloss dt{font-family:var(--sans);font-size:11.4px;font-weight:700;color:var(--accent);margin-top:6px;}
+  .gloss dd{margin:0 0 6px;font-size:12.1px;line-height:1.74;color:var(--ink-soft);}
+
+  @media (max-width:1389px){
+    .rail{display:none;}
+    .mob-btn{
+      display:flex;align-items:center;gap:7px;
+      position:fixed;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:90;
+      background:var(--paper);border:1px solid var(--rule);color:var(--ink);
+      font-family:var(--sans);font-size:12px;letter-spacing:.06em;
+      padding:9px 13px;box-shadow:0 2px 8px rgba(0,0,0,.18);cursor:pointer;
+      -webkit-tap-highlight-color:transparent;
+    }
+    .mob-btn i{font-style:normal;color:var(--accent);font-weight:700;font-size:14px;line-height:1;}
+    body.mob-open .mob-btn{background:var(--accent);border-color:var(--accent);color:#fbf8f0;}
+    body.mob-open .mob-btn i{color:#fbf8f0;}
+    .mob-panel{
+      display:none;position:fixed;left:0;right:0;bottom:0;z-index:89;
+      background:var(--paper);border-top:3px solid var(--rule);
+      max-height:78vh;overflow:auto;-webkit-overflow-scrolling:touch;
+      padding:14px 18px 20px;box-shadow:0 -8px 24px rgba(0,0,0,.22);
+    }
+    body.mob-open .mob-panel{display:block;}
+    .mob-panel h6{margin:0 0 8px;font-family:var(--sans);font-size:10px;letter-spacing:.2em;color:var(--muted);font-weight:400;}
+    .mob-panel .mob-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 18px;}
+    .mob-panel .mob-grid a{display:flex;align-items:baseline;gap:8px;text-decoration:none;color:var(--ink-soft);font-family:var(--sans);font-size:13px;padding:9px 0;border-bottom:1px solid var(--rule-soft);}
+    .mob-panel .mob-grid a i{font-style:normal;color:var(--accent);font-weight:700;font-size:10px;width:15px;flex:0 0 15px;}
+    .mob-panel .mob-grid a:active{background:#f3eee1;}
+    .mob-panel .mob-tip{margin:12px 0 0;font-family:var(--sans);font-size:10.5px;line-height:1.6;color:var(--muted);letter-spacing:.04em;}
+    .mob-panel .mob-top{
+      display:block;margin-top:10px;text-align:center;text-decoration:none;
+      font-family:var(--sans);font-size:12px;letter-spacing:.1em;color:var(--accent);
+      border:1px solid var(--rule-soft);padding:9px 0;
+    }
+    .mob-panel .mob-top:active{background:#f3eee1;}
+  }
+  @media (max-width:900px){
+    .page{padding:20px 18px 64px;}
+    .mast-nav{display:grid;grid-template-columns:repeat(5,1fr);justify-items:center;gap:5px 10px;}
+    .deep-body{columns:1;}
+    .deep-title{font-size:19px;}
+    .paper-name{font-size:42px;}
+    .lead{grid-template-columns:1fr;}
+    .lead-main{padding-right:0;border-right:none;}
+    .lead-side{padding-left:0;border-top:1px solid var(--rule-soft);padding-top:14px;}
+    .lead h2{font-size:27px;}
+    .lead-body,.cols-3,.cols-2,.briefs,.ed-body{columns:1;}
+    .note-grid{grid-template-columns:1fr;}
+    .ed-title{font-size:23px;}
+    .read-guide .rg-lead{flex:1 0 100%;justify-content:center;}
+    .read-guide a{flex:1 0 100%;border-right:none;border-bottom:1px solid var(--rule-soft);}
+    .scout{grid-template-columns:1fr;}
+    .scout-card{padding:0 0 12px;border-right:none;border-bottom:1px solid var(--rule-soft);}
+    .scout-main{padding:12px 0 0;}
+    .scout-body{columns:1;}
+    .gloss-grid{columns:1;}
+    .idea-grid{grid-template-columns:1fr;}
+    .idea .idea-swap{font-size:14.5px;}
+  }
+  @media (max-width:620px){
+    /* 报头：三块信息改为三行竖排，避免挤成一团 */
+    .mast-top{flex-direction:column;align-items:center;gap:1px;text-align:center;letter-spacing:.06em;line-height:1.7;}
+    .paper-sub{font-size:9.6px;letter-spacing:.14em;text-indent:.14em;}
+    .lead h2{font-size:23px;line-height:1.36;}
+    .lead h2 .h2-sub{font-size:19px;}
+    .ed-title{font-size:20px;}
+    .mast-nav{gap:4px 6px;font-size:10px;}
+    /* 宽表与宽图：保持可读字号，改为横向滑动 */
+    .rank{min-width:720px;}
+    .rank.echo{min-width:680px;}
+    .fig-scroll svg{min-width:780px;}
+    .fig-hint{display:block;}
+  }
+  @media print{
+    @page{margin:16mm 0;}
+    body{background:#fff;font-size:10.5pt;}
+    .page{box-shadow:none;margin:0;max-width:none;padding:0 12mm;}
+    .rail,.mob-btn,.mob-panel,.read-guide{display:none;}
+    .story,.figure,.deep,.idea,.razor,.plain,.note-box,.more-box,.watch,.gloss{break-inside:avoid;}
+    .section-head{break-after:avoid;}
+    .story h4,.deep-title,.ed-title,.lead h2{break-after:avoid;}
+    thead{display:table-header-group;}
+    a{color:inherit;text-decoration:none;}
+  }
+
+/* ---------- 第 16 版「本报提案」专用样式（由 assemble_issue.py 追加到 00-style.html 之后） ---------- */
+.props{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:2px 0 16px;}
+.prop{border:1px solid var(--rule-soft);background:#f8f4e9;padding:12px 14px 9px;break-inside:avoid;}
+.prop-h{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--sans);font-size:10px;letter-spacing:.16em;color:var(--muted);}
+.prop-role{color:var(--accent);font-weight:700;letter-spacing:.18em;}
+.prop-role::before{content:"";display:inline-block;width:7px;height:7px;background:var(--accent);margin-right:7px;vertical-align:1px;}
+.prop-id{font-family:ui-monospace,Consolas,"Courier New",monospace;letter-spacing:.06em;}
+.prop h4{margin:6px 0 5px;font-size:15.5px;line-height:1.45;font-weight:700;}
+.prop p{margin:0 0 8px;font-size:12.4px;line-height:1.8;text-align:justify;color:var(--ink-soft);}
+.prop p b{color:var(--ink);}
+.prop-meta{display:grid;grid-template-columns:auto 1fr;gap:2px 9px;margin:0 0 8px;font-size:11px;line-height:1.7;}
+.prop-meta dt{font-family:var(--sans);color:var(--muted);letter-spacing:.1em;white-space:nowrap;}
+.prop-meta dd{margin:0;color:var(--ink-soft);}
+.prop-st{font-family:var(--sans);font-size:10px;letter-spacing:.12em;color:var(--muted);border-top:1px dotted var(--rule-soft);padding-top:6px;}
+.prop-st b{color:var(--accent);letter-spacing:.06em;}
+
+.prop-ledger{width:100%;border-collapse:collapse;font-size:11.5px;min-width:520px;}
+.prop-ledger caption{caption-side:top;text-align:left;font-family:var(--sans);font-size:10.5px;letter-spacing:.1em;color:var(--muted);padding-bottom:6px;}
+.prop-ledger th,.prop-ledger td{border-bottom:1px solid var(--rule-soft);padding:5px 10px 5px 0;text-align:left;vertical-align:top;}
+.prop-ledger th{font-family:var(--sans);font-size:10px;letter-spacing:.14em;color:var(--muted);font-weight:400;border-bottom:1px solid var(--rule);}
+.prop-ledger td.id{font-family:ui-monospace,Consolas,"Courier New",monospace;white-space:nowrap;}
+.prop-ledger tr:last-child td{border-bottom:none;}
+.prop-ledger .st-wait{color:var(--muted);}
+.prop-ledger .st-ok{color:#1f6b3a;font-weight:700;}
+.prop-ledger .st-no{color:var(--accent);}
+.prop-rule{margin:0 0 12px;font-size:11.5px;line-height:1.8;color:var(--muted);border-left:3px solid var(--rule-soft);padding-left:11px;}
+.prop-rule b{color:var(--ink);}
+
+@media (max-width:720px){
+  .props{grid-template-columns:1fr;}
+}
+/* 16 项导航在 5 列下会剩 1 个孤儿，改 4 列正好 4×4 */
+@media (max-width:900px){
+  .mast-nav{grid-template-columns:repeat(4,1fr);}
+}
+@media print{
+  .props{grid-template-columns:1fr 1fr;}
+}
+</style>
+</head>
+<body>
+<div class="page" id="top">
+  <header class="masthead">
+    <div class="mast-rule"></div>
+    <div class="mast-top">
+      <span>2026 年 11 月 7 日　星期六　北京时间</span>
+      <span>每版附锐评 · 第 06 版为「思路」</span>
+      <span>第 004 期　智能体专版　共 16 版</span>
+    </div>
+    <h1 class="paper-name">AI 晨报</h1>
+    <div class="paper-sub">AI MORNING POST · 每日人工智能与智能体要闻</div>
+    <div class="mast-rule double"></div>
+    <nav class="mast-nav">
+      <a href="#p01"><b>01</b>头条</a>
+      <a href="#p02"><b>02</b>社论</a>
+      <a href="#p03"><b>03</b>能力底座</a>
+      <a href="#p04"><b>04</b>产品生态</a>
+      <a href="#p05"><b>05</b>深读</a>
+      <a href="#p06"><b>06</b>思路</a>
+      <a href="#p07"><b>07</b>开源榜</a>
+      <a href="#p08"><b>08</b>安全治理</a>
+      <a href="#p09"><b>09</b>学术</a>
+      <a href="#p10"><b>10</b>资本</a>
+      <a href="#p11"><b>11</b>算力本地</a>
+      <a href="#p12"><b>12</b>行情</a>
+      <a href="#p13"><b>13</b>平台回声</a>
+      <a href="#p14"><b>14</b>星探</a>
+      <a href="#p15"><b>15</b>快讯</a>
+      <a href="#p16"><b>16</b>提案</a>
+    </nav>
+    <div class="read-guide">
+      <span class="rg-lead">怎么读</span>
+      <a href="#p01"><b>只有 3 分钟</b>读头版头条 + 第 14 版「星探」，今天该知道的两件事就齐了</a>
+      <a href="#p05"><b>能给 10 分钟</b>加读第 05 版「深读」，两个今天就能装的东西</a>
+      <a href="#gloss"><b>术语看不懂</b>跳到报尾「名词速查」13 个词，全用大白话写的</a>
+      <a href="#p16"><b>想改这份报纸</b>第 16 版「本报提案」四视角提建议，点名采纳才动工</a>
+    </div>
+  </header>
+
+  <section class="section" id="p16">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">本报提案 · 这一期想怎么改</span>
+      <span class="sec-page">第 16 版 / 共 16 版</span>
+    </div>
+
+    <p class="sec-lede">本版每期由四个身份各提一条改动建议，编号 <b>P004-1…4</b>：<b>读者</b>说哪里读着费劲，<b>编辑</b>说哪里做起来费劲，<b>创刊人</b>说哪里该往前一步，<b>AI</b> 说哪里可以自动化。<b>默认不执行</b>——创刊人点名「采纳 P004-2」才进施工；没人提，下一期自动记「否决（沉默）」。</p>
+
+    <div class="props">
+      <article class="prop">
+        <div class="prop-h"><span class="prop-role">读者</span><span class="prop-id">P004-1</span></div>
+        <h4>头版加一块「三行摘要」，手机上首屏读完</h4>
+        <p>现在头版是 700 字长文，390px 宽的手机首屏只露标题和两行导语，<b>要滑三屏才知道今天发生了什么</b>。加三行、每行 30 字以内，放在头条下方。</p>
+        <dl class="prop-meta">
+          <dt>为什么</dt><dd>手机读者平均只读 2.4 版，头版留不住人，后面 15 版白写</dd>
+          <dt>成本</dt><dd>小 · 约 0.5 小时；每期多写 90 字</dd>
+        </dl>
+        <div class="prop-st">待定 · <b>沉默即否决</b></div>
+      </article>
+
+      <article class="prop">
+        <div class="prop-h"><span class="prop-role">编辑</span><span class="prop-id">P004-2</span></div>
+        <h4>名词第一次出现就给解释，别全堆到报尾</h4>
+        <p>术语现在集中在报尾「名词速查」，读到第 5 版卡住，要翻到底再翻回来——手机上是 <b>14 屏的距离</b>。改成首次出现加虚线下划线，点一下弹解释；报尾 13 词表保留做索引。</p>
+        <dl class="prop-meta">
+          <dt>为什么</dt><dd>每期至少 6 个新词，卡住的位置都在正文中段</dd>
+          <dt>成本</dt><dd>中 · 约 3 小时；每期多 15 分钟标注</dd>
+        </dl>
+        <div class="prop-st">待定 · <b>沉默即否决</b></div>
+      </article>
+
+      <article class="prop">
+        <div class="prop-h"><span class="prop-role">创刊人</span><span class="prop-id">P004-3</span></div>
+        <h4>能只分享一版，而不是整期</h4>
+        <p>整期发出去，对方往往只看头版。每一版给一个「分享这一版」，链接带锚点（<code>?d=2026-11-07#p05</code>），对方打开<b>直接落到那一版</b>。现有 <code>issueUrl()</code> 已经支持 <code>d</code> 参数，加 <code>#pNN</code> 就够。</p>
+        <dl class="prop-meta">
+          <dt>为什么</dt><dd>能指着某一版说「看这个」，才算真传播</dd>
+          <dt>成本</dt><dd>中 · 约 2 小时；16 个按钮会压版面，可能改成浮动按钮</dd>
+        </dl>
+        <div class="prop-st">待定 · <b>沉默即否决</b></div>
+      </article>
+
+      <article class="prop">
+        <div class="prop-h"><span class="prop-role">AI</span><span class="prop-id">P004-4</span></div>
+        <h4>每期产出一份 manifest.json，让「完整」可断言</h4>
+        <p>现在验证靠 curl 四处 + 肉眼，没有机器可读的凭证。每期写一份 <code>manifest.json</code>：期号、版数、字数、md5、生成时间。谁都能一条命令判断<b>这期是否完整</b>。</p>
+        <dl class="prop-meta">
+          <dt>为什么</dt><dd>「文件存在」不等于「内容对」，这条能把肉眼检查变成断言</dd>
+          <dt>成本</dt><dd>小 · 约 0.3 小时；在拼版脚本里加 10 行</dd>
+        </dl>
+        <div class="prop-st">待定 · <b>沉默即否决</b></div>
+      </article>
+    </div>
+
+    <p class="prop-rule"><b>怎么算采纳：</b>创刊人在当期明确说「采纳 P004-2」才算；说「先放着」算待定，最多挂三期；<b>没说就是否决，不再追问</b>。已采纳的写进 <code>提案台账.md</code>，在下一期的台账里标「已落地」。</p>
+
+    <div class="table-wrap">
+      <table class="prop-ledger">
+        <caption>提案台账 · 全量明细见 提案台账.md，本表只放最近 8 条</caption>
+        <thead>
+          <tr><th>编号</th><th>视角</th><th>一句话</th><th>状态</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="id">P004-1</td><td>读者</td><td>头版加三行摘要</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P004-2</td><td>编辑</td><td>名词首次出现给解释</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P004-3</td><td>创刊人</td><td>单版分享</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P004-4</td><td>AI</td><td>每期产出 manifest.json</td><td class="st-wait">待定</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版四条提案</span>
+      </div>
+      <p>四条里最不像提案的是 P004-4，因为它不改善阅读，只改善<b>「你敢不敢说这期是完整的」</b>。但恰恰是它最该先做：一份没人验过的报纸，改版改得再漂亮，也只是把不确定性藏得更深。<b>先让机器能判真假，再谈让读者读得舒服。</b></p>
+    </aside>
+  </section>
+<div class="gloss" id="gloss">
+    <h5>名词速查 · 本期出现的 13 个词<span>看不懂就跳回来，不用从头读</span></h5>
+    <div class="gloss-grid">
+      <dl><dt>任务计价 / task pricing</dt><dd>不按用掉多少 token 收钱，按「通过验收的任务」收钱。没通过就不收，或者只收基础费。</dd></dl>
+      <dl><dt>断言 / assertion</dt><dd>一条可以被程序判真假的检查，比如「文件存在且含这一行」。它是「成功」的可执行定义。</dd></dl>
+      <dl><dt>通过率</dt><dd>一次就通过验收的任务占比。它比分数更能预测你的账单和加班时长。</dd></dl>
+      <dl><dt>后置条件 / postcondition</dt><dd>一个动作做完之后必须成立的条件。写不出后置条件的动作，等于没有验收标准。</dd></dl>
+      <dl><dt>幂等 / idempotent</dt><dd>同一操作执行一次和执行十次，结果一样。重试安全的前提，就是它。</dd></dl>
+      <dl><dt>侧信道 / 观测点</dt><dd>用另一个只读接口去确认「事情真的发生了」。不靠当事人汇报，靠外部证据。</dd></dl>
+      <dl><dt>量化 / Q4 / Q2</dt><dd>把权重从 16 位压到 4 位或 2 位，文件缩到四分之一或八分之一，代价是精度。</dd></dl>
+      <dl><dt>MoE / 混合专家</dt><dd>总参数很大，但每次只激活其中一小部分。2.8 万亿参数的模型，一次推理只用约 1040 亿。</dd></dl>
+      <dl><dt>批处理 / batching</dt><dd>把多个请求攒在一起算，一次读权重服务多份请求。自己部署便不便宜，全看这个。</dd></dl>
+      <dl><dt>录制回放</dt><dd>把一次运行原样录下来（含工具返回值），之后不调模型、不调工具地重放，用来稳定复现失败。</dd></dl>
+      <dl><dt>有效成本</dt><dd>（token 费 + 重试费 + 人工收尾工时）÷ 通过的任务数。比单价更能决定一件事该不该做。</dd></dl>
+      <dl><dt>存证 / attestation</dt><dd>用密码学手段证明「这次运行确实发生过、输出确实来自这个模型」。审计时要的就是它。</dd></dl>
+      <dl><dt>熔断 / circuit breaker</dt><dd>同一任务连续失败到设定次数就停下来，不再重试，转人工。防的是无限循环烧钱。</dd></dl>
+    </div>
+  </div>  <footer class="colophon">
+    <div class="row">
+      <span><b>AI 晨报</b>　第 004 期　2026-11-07　共 16 版</span>
+      <span>本报由 AI 自动编撰　数据截至北京时间 10:00</span>
+    </div>
+    <p><b>信息源：</b>月之暗面模型卡、Anthropic 定价公告、Terminal-Bench 榜单快照、arXiv 预印本、本报访谈记录（三支团队，匿名）。</p>
+    <p><b>编辑说明：</b>本期以「智能体怎么被验收」为主线。凡标注「未独立复现」的数字取自公开页面，未做二次验证；评分为本报自设口径，照抄会失真。</p>
+    <p class="errata"><b>更正与说明：</b>本期无更正。</p>
+    <p><b>往期：</b>第 003 期（2026-11-06）　第 002 期（2026-11-05）　第 001 期（2026-11-04）　本报每日 08:00 出刊，节假日不休。</p>
+    <p class="disclaimer">本报内容由 AI 自动生成，用于产品演示，不构成事实报道。</p>
+  </footer>
+
+<nav class="rail" aria-label="版面快捷目录">
+  <div class="rail-head">目录</div>
+  <ol class="rail-list">
+    <li><a href="#p01"><i>01</i><span>头条</span></a></li>
+    <li><a href="#p02"><i>02</i><span>社论</span></a></li>
+    <li><a href="#p03"><i>03</i><span>模型</span></a></li>
+    <li><a href="#p04"><i>04</i><span>产品</span></a></li>
+    <li><a href="#p05"><i>05</i><span>深读</span></a></li>
+    <li><a href="#p06"><i>06</i><span>思路</span></a></li>
+    <li><a href="#p07"><i>07</i><span>榜单</span></a></li>
+    <li><a href="#p08"><i>08</i><span>安全</span></a></li>
+    <li><a href="#p09"><i>09</i><span>学术</span></a></li>
+    <li><a href="#p10"><i>10</i><span>资本</span></a></li>
+    <li><a href="#p11"><i>11</i><span>算力</span></a></li>
+    <li><a href="#p12"><i>12</i><span>行情</span></a></li>
+    <li><a href="#p13"><i>13</i><span>回声</span></a></li>
+    <li><a href="#p14"><i>14</i><span>星探</span></a></li>
+    <li><a href="#p15"><i>15</i><span>快讯</span></a></li>
+    <li><a href="#p16"><i>16</i><span>提案</span></a></li>
+  </ol>
+  <a class="rail-top" href="#top" title="回到顶部">↑ 顶</a>
+</nav>
+
+<button class="mob-btn" id="mobBtn" type="button" aria-controls="mobPanel" aria-expanded="false"><i>☰</i>目录</button>
+<div class="mob-panel" id="mobPanel" role="dialog" aria-label="版面目录">
+  <h6>版面目录 · 共 16 版 · 点一下跳过去</h6>
+  <div class="mob-grid">
+    <a href="#p01"><i>01</i>头条</a>
+    <a href="#p02"><i>02</i>社论</a>
+    <a href="#p03"><i>03</i>能力底座</a>
+    <a href="#p04"><i>04</i>产品生态</a>
+    <a href="#p05"><i>05</i>深读·能跑起来</a>
+    <a href="#p06"><i>06</i>思路拆解</a>
+    <a href="#p07"><i>07</i>开源榜</a>
+    <a href="#p08"><i>08</i>安全治理</a>
+    <a href="#p09"><i>09</i>学术前沿</a>
+    <a href="#p10"><i>10</i>商业资本</a>
+    <a href="#p11"><i>11</i>算力本地</a>
+    <a href="#p12"><i>12</i>行情价目</a>
+    <a href="#p13"><i>13</i>平台回声</a>
+    <a href="#p14"><i>14</i>星探</a>
+    <a href="#p15"><i>15</i>快讯</a>
+    <a href="#p16"><i>16</i>本报提案</a>
+  </div>
+  <p class="mob-tip">宽屏时目录固定在右侧；窄屏（平板、手机）右侧放不下，改用这个面板。点任意一项会自动收起。</p>
+  <a class="mob-top" href="#top">↑ 回到顶部</a>
+</div>
+
+<script>
+(function(){
+  var links = Array.prototype.slice.call(document.querySelectorAll('.rail-list a'));
+  var secs = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  var ticking = false;
+  function update(){
+    var mark = window.pageYOffset + window.innerHeight * 0.35;
+    var idx = 0;
+    for (var i = 0; i < secs.length; i++){
+      if (secs[i] && secs[i].offsetTop <= mark) idx = i;
+    }
+    links.forEach(function(a, i){ a.classList.toggle('active', i === idx); });
+    ticking = false;
+  }
+  function onScroll(){ if(!ticking){ ticking = true; window.requestAnimationFrame(update); } }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  update();
+
+  // 窄屏目录面板
+  var mb = document.getElementById('mobBtn');
+  var mp = document.getElementById('mobPanel');
+  if (mb && mp){
+    function setOpen(open){
+      document.body.classList.toggle('mob-open', open);
+      mb.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    mb.addEventListener('click', function(){
+      setOpen(!document.body.classList.contains('mob-open'));
+    });
+    mp.addEventListener('click', function(e){
+      var t = e.target;
+      while (t && t !== mp){
+        if (t.tagName === 'A'){ setOpen(false); break; }
+        t = t.parentNode;
+      }
+    });
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape') setOpen(false);
+    });
+  }
+})();
+</script>
+
+</div>
+</body>
+</html>

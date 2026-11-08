@@ -1,0 +1,55 @@
+<section class="lead" id="p01">
+    <article class="lead-main">
+      <div class="kicker">头版头条 · 计价方式</div>
+      <h2>Opus 5.5 降到 $1.85<br><span class="h2-sub">闭源旗舰第一次按「干成的任务」收钱</span></h2>
+      <p class="deck">验收清单没全绿的运行不计费，最多重试两次；单任务封顶 $0.90。开放权重落地 20 小时后，定价的锚从 token 换成了「这段活到底算不算干完」。</p>
+      <div class="digest">
+        <div class="digest-h"><span>三行摘要 · 九十秒读完今天</span><em>P004-1 首期</em></div>
+        <ol>
+          <li><i>01</i><span><b>Opus 5.5 降价 38%</b>，改为按「干成的任务」收钱。</span></li>
+          <li><i>02</i><span><b>Kimi K3.1 Pro</b> 权重落地，8 卡单流 41 token/s。</span></li>
+          <li><i>03</i><span><b>欧盟</b>要求智能体留运行回执，12 月 5 日截止。</span></li>
+        </ol>
+      </div>
+      <div class="byline">本报编辑部　综合报道　2026-11-06</div>
+      <div class="lead-body">
+        <p class="dropcap">降价公告是北京时间六日凌晨一点发的，措辞很克制，只有三段。第一段说 Opus 5.5 的输入从每百万 token 3 美元降到 1.85 美元，输出从 15 美元降到 9.30 美元，降幅 38%。第二段才是真正的变化：新增「任务封顶」，一次提交（一个 task）最多计 0.90 美元，超出的 token 不再计费。第三段最短——<b>验收清单没全绿的运行，不计费。</b></p>
+        <p>所谓<span class="term" tabindex="0">验收清单<i class="tip">调用方提交任务时一起给的一组断言：文件存在、退出码为零、接口返回 200。全绿才计费。</i></span>，是调用方在提交任务时一起给的一组断言：文件存在、命令退出码为零、接口返回 200、金额误差小于 0.01 元。Anthropic 不定义什么叫成功，只负责跑；跑完把每条断言的真实结果附在响应里，全绿才计费。默认由客户自己的断言判定，想省事的可以加 0.02 美元走 FlashProve 存证——就是昨天开源的那个「证明这段输出确实出自指定模型」的项目，今天多了一个用途：证明这次运行确实发生过，且确实是通过的。</p>
+        <p>这套规则有一个必须说清的边界：<b>不计费的是「没通过」，不是「没做事」。</b>一个任务重试两次仍未全绿，第三次起收 0.15 美元基础费；也就是说，客户可以免费用两次，但没人能靠「永远不通过」把调用做成免费算力。Anthropic 在 FAQ 里写得很直白：我们承担失败的成本，但不承担你写错断言的成本。</p>
+        <p>同一天，另外两家的选择被拿来对照。OpenAI 没有跟，只把 Batch 折扣从 50% 提到 60%，价格表一个数字没动。Google 确认 12 月 1 日的涨价计划不变，Gemini 4 Argon 维持每百万 4 美元 / 20 美元——本报昨天写「工作马档的价差消失」，那句话今天失效了：Opus 5.5 降价后，同样的活它比 Argon 便宜一半。国内方面，DeepSeek 明确表示不跟进按任务计费，理由只有一句：「任务的边界由客户定义，我们不替客户定义成功。」</p>
+        <p>把三家的动作并排放，能看出分歧不在价格，在<b>谁承担「判定」这件事</b>。按 token 计费，模型只要出字就有收入，判定风险全在客户；按任务计费，模型要为「没干成」让利，判定风险回到自己身上——但判定标准仍握在客户手里。这不是让利，这是一次风险重新分配：<b>你把验收写成什么样，直接决定你付多少钱。</b></p>
+      </div>
+      <p class="jump">相关报道见第 03 版《能力底座》、第 05 版《两个把「算不算成」做成工具的项目》、第 08 版《骗过验收》、第 12 版《价目表与有效成本》</p>
+      <aside class="razor">
+        <div class="razor-h">
+          <span class="razor-mark">锐评</span>
+          <span class="razor-src">本报评论员 · 针对本版头条</span>
+        </div>
+        <p>「按结果付费」听起来像把风险揽过去了，其实是把两件更贵的成本推给了你：<b>定义成功的成本，和证明成功的成本。</b>断言写松了，账单便宜但活是废的；写紧了，两次重试就烧完，第三次开始你既付钱又没结果。真正的赢家不是拿到折扣的人，是那批早就把「怎么算成功」写成可执行检查的人——他们今天什么都不用改，账单自己降了 38%。</p>
+      </aside>
+    </article>
+
+    <aside class="lead-side">
+      <div class="side-block">
+        <h3>今日要闻</h3>
+        <ol class="headlines">
+          <li><b>Anthropic</b> Opus 5.5 降价 38%，引入「任务封顶 + 失败不计费」</li>
+          <li><b>社区</b>实测 Kimi K3.1 Pro：Q4 量化后可用上下文缩到 26 万，8 卡 41 token/s</li>
+          <li><b>OpenAI</b> 不跟按任务计费，只把 Batch 折扣提到 60%</li>
+          <li><b>Google</b> 确认 12/1 涨价不变，Argon 维持 $4 / $20</li>
+          <li><b>Cursor</b> 3.5 支持把验收脚本绑进 agent 运行，失败自动回滚</li>
+          <li><b>某电商</b>被曝 37 次「成功」里 11 次没有副作用，详见第 08 版</li>
+          <li><b>欧盟</b>AI 法案执行细则草案：自动化决策须可复现，2027 年 8 月生效</li>
+          <li><b>Assert Labs</b> 融资 2.4 亿美元，专做智能体验收与存证</li>
+        </ol>
+      </div>
+      <div class="side-block">
+        <h3>智能体数字</h3>
+        <div class="stat"><div class="line"><span class="num">38</span><span class="unit">%</span></div><span class="cap">Opus 5.5 的 token 单价降幅，$3 / $15 → $1.85 / $9.30</span></div>
+        <div class="stat"><div class="line"><span class="num">0.90</span><span class="unit">美元</span></div><span class="cap">单任务封顶价，超出部分的 token 不再计费</span></div>
+        <div class="stat"><div class="line"><span class="num">41</span><span class="unit">token/s</span></div><span class="cap">K3.1 Pro 在 8×H100 上 Q4 量化的实测出字速度</span></div>
+        <div class="stat"><div class="line"><span class="num">26</span><span class="unit">万</span></div><span class="cap">Q4 之后还能用的上下文，原标称 100 万</span></div>
+        <div class="stat"><div class="line"><span class="num">11</span><span class="unit">/ 37</span></div><span class="cap">那家电商「成功」的运行里，实际没有任何副作用的次数</span></div>
+      </div>
+    </aside>
+  </section>

@@ -1,0 +1,51 @@
+# 浏览器 / 调试残留（历次截图调试产生的 Edge 配置，单个可到 488M）
+.edge-*/
+ai-daily/.edge-*/
+
+# 过程产物：试排中间件、截图、诊断副本、APK 构建件
+# 注意：ai-daily/parts/ 是成品的源码（片段可重拼），要入库，不忽略。
+# 以前这里写过 `ai-daily/parts/*.html`，只匹配顶层、实际一个文件也没管到，已删。
+ai-daily/_process/
+ai-daily/shots/
+ai-daily/build-*/
+ai-daily/apk/.build/
+ai-daily/*.idsig
+# 拼版中间件：assemble_issue.py 的输出目录，随时可由 parts/<MMDD>/ 重拼
+ai-daily/parts/*/dist/
+
+# 运行态
+ai-daily/tools/.boot-state/
+ai-daily/tools/boot_check.log
+ai-daily/status.json
+ai-daily/status.json.tmp
+# demo 的中间产物；demo/AGENTS.md 明写「可再生，别提交」
+learn-agent/demo/stages/
+learn-agent/demo/status.json
+
+# WorkBuddy 工作区状态：记忆、应用清单、任务态。
+# 这些是「本机怎么用这个项目」的记录，不是项目本身，公开仓库里不该出现。
+.workbuddy/
+.wbapp_*.genie
+
+# 本机私有值：APK 签名口令等。既不入库，也不进导出。
+ai-daily/.local/
+
+# 二进制交付物：APK 内嵌入口地址（classes.dex + assets/site/config.js 各一份），
+# 二维码就是把入口地址画成方块。二者都不可能脱敏后仍然有用，一律不入库。
+*.apk
+ai-daily/AI晨报-*.png
+
+# Python 缓存
+__pycache__/
+*.pyc
+
+# 插件临时产物
+output/
+
+# 系统
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# 预热稿 / 未发布底稿，不进交付
+ai-daily/_drafts/
