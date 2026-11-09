@@ -1,0 +1,25 @@
+{
+  "asOf": "2026-11-09",
+  "policy": "只做事实性引用，未转载全文",
+  "sources": [
+    { "id": "S01", "outlet": "OpenAI", "item": "Images 2.6 发布说明：Flare / Sunburst 两个 API 模型、GIF、SVG 与 complexity 参数", "kind": "官方发布", "usage": "事实性引用，未转载全文" },
+    { "id": "S02", "outlet": "第三方技术媒体", "item": "按 OpenAI 计算器反算 2.6 与 2.5 的单张输出 token 用量", "kind": "媒体报道", "usage": "事实性引用，未转载全文", "url": "https://dev.to/toolpilotpro/chatgpt-images-26-gifs-svg-export-and-a-hidden-price-rise-1g6m" },
+    { "id": "S03", "outlet": "OpenAI Developers", "item": "Images 2.6 API 规格：GIF 帧数与时长范围、SVG 仅单图且不支持编辑端点", "kind": "官方发布", "usage": "事实性引用，未转载全文", "url": "https://www.depthgrid.in/2026/11/openai-gpt-image-2-6-flare-sunburst-api-pricing-gif-svg.html" },
+    { "id": "S04", "outlet": "Anthropic", "item": "Claude Code 2.1.319 更新日志：MCP 任务后台化、denyInsteadOfPrompting、退出码修正", "kind": "官方发布", "usage": "事实性引用，未转载全文", "url": "https://clauding.de/en/posts/claude-code-2-1-319" },
+    { "id": "S05", "outlet": "Google", "item": "ADK Python 2.14.0 发行说明：A2A 转稳定、MultiRunConfig、RunSkillScriptTool 收紧", "kind": "官方发布", "usage": "事实性引用，未转载全文", "url": "https://joho-todai.com/en/google-adk-2-14-0-a2a-integration-teams" },
+    { "id": "S06", "outlet": "技术评论站", "item": "对 ADK「30 节点 200 轮快 23%」缺少基准与硬件的核对", "kind": "媒体报道", "usage": "事实性引用，未转载全文", "url": "https://alfw.ai/article/google-adk-214-stable-23-percent-no-baseline" },
+    { "id": "S07", "outlet": "Anthropic（提交至 IETF 的个人草案）", "item": "robots.txt 中的 __usage_ai-training 训练偏好标记", "kind": "预印本", "usage": "事实性引用，未转载全文" },
+    { "id": "S08", "outlet": "TechRadar", "item": "四家厂商承诺遵守单一 robots.txt 训练退出标记及各自时间表", "kind": "媒体报道", "usage": "事实性引用，未转载全文", "url": "https://www.techradar.com/pro/google-and-microsoft-among-those-signing-up-to-openais-plan-for-a-new-website-crawling-standard-including-opting-out-of-internet-scraping" },
+    { "id": "S09", "outlet": "OpenAI", "item": "GPT-6.1 Terra 定价与 GPT-6 Astra 网络安全变体的准入说明", "kind": "官方发布", "usage": "事实性引用，未转载全文" },
+    { "id": "S10", "outlet": "Microsoft", "item": "Mage-VL-Cowork 4B 模型卡（Apache-2.0，OSWorld-Verified 自报成绩）", "kind": "官方发布", "usage": "事实性引用，未转载全文" },
+    { "id": "S11", "outlet": "Ricursive Intelligence", "item": "Ripple-65B Preview 权重与许可证说明", "kind": "官方发布", "usage": "事实性引用，未转载全文" },
+    { "id": "S12", "outlet": "模型发布方", "item": "753B 科学模型（自 GLM-5.3 后训练）的 MIT 权重与门控说明", "kind": "官方发布", "usage": "事实性引用，未转载全文" },
+    { "id": "S13", "outlet": "研究团队（预印本）", "item": "用 GPT-6 Astra 直接编辑开放权重，仅改动约 0.016% 参数", "kind": "预印本", "usage": "事实性引用，未转载全文" },
+    { "id": "S14", "outlet": "机器之心", "item": "昇腾原生强化学习训练系统入选 NeurIPS 2026 与端到端加速数据", "kind": "媒体报道", "usage": "事实性引用，未转载全文" },
+    { "id": "S15", "outlet": "并购相关报道", "item": "Meta 收购多 Agent 编排工具 Conductor 及服务关停时间", "kind": "媒体报道", "usage": "事实性引用，未转载全文" },
+    { "id": "S16", "outlet": "GitHub", "item": "Copilot 进入 Xcode 与 JetBrains Air、@GitHub 机器人正式可用", "kind": "官方发布", "usage": "事实性引用，未转载全文", "url": "https://javarubberduck.com/ai/news-2026-11-08-dev-tools" },
+    { "id": "S17", "outlet": "OpenAI", "item": "Codex CLI 0.167.0 更新说明", "kind": "官方发布", "usage": "事实性引用，未转载全文" },
+    { "id": "S18", "outlet": "教育政策报道", "item": "Google 计划自明年初对 K-12 默认关闭 AI 工具、需学校主动选择加入", "kind": "媒体报道", "usage": "事实性引用，未转载全文" },
+    { "id": "S19", "outlet": "模型发布追踪站", "item": "本周模型发布清单与版本、许可、定价对照", "kind": "公开榜单", "usage": "事实性引用，未转载全文", "url": "https://www.llm-releases.com/changelog" }
+  ]
+}

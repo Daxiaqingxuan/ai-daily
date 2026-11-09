@@ -1,0 +1,36 @@
+<section class="section" id="p07">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">开源清单 · 四份权重，四种许可</span>
+      <span class="sec-page">第 07 版 / 共 16 版</span>
+    </div>
+    <p class="sec-lede">这一周放出来的四份权重，规模从 4B 到 753B，许可从 Apache 2.0 到 MIT 再到一个自造的名字。<b>许可比参数更能说明「放出来想让你干什么」。</b></p>
+
+    <p><b>Ripple-65B Preview：编码方向，Apache 2.0，权重直接下。</b>来自 Ricursive Intelligence，团队出自 Google，主打开放编码基准上的领先与「低成本托管入口」<span class="src-tag">公开报道</span>。Apache 2.0 意味着商用、改、再分发都不需要额外授权——<b>这是四份里对使用者最宽松的一份</b>。它同时提供托管入口，说明这家公司赌的不是卖权重，是卖「比你自己搭更省事」。</p>
+    <p><b>753B 科学模型：MIT 许可，但权重门控。</b>从 GLM-5.3 后训练，面向化学、材料与生命科学，支持 <b>1M</b> 上下文，提供 BF16 与 NVFP4、MXFP4 两种 4 位量化版本<span class="src-tag">厂商口径</span>。许可是 MIT——和 Apache 2.0 一样宽松；但权重是<span class="term" tabindex="0">门控权重<i class="tip">下载前要登记或申请。许可再宽松，拿不到文件也白搭；门控通常用来把「谁在用」记下来。</i></span>，需要申请才给。这种情况下，「MIT 许可」的实际含义是：<b>拿到之后你可以随便用，但能不能拿到不由许可决定。</b></p>
+    <p><b>Mage-VL-Cowork 4B：微软放的操作模型，Apache 2.0。</b>4B 参数，把图形界面的点击与命令行操作放进同一个策略里——遇到按钮就点，遇到需要跑命令的场景就切到 shell，不需要外挂两个模型<span class="src-tag">厂商口径</span>。官方自报在 OSWorld-Verified 上 <b>66.0%</b>。这个数字是实验室口径，本报未复现，也没有在同一测试集上的第三方对比。<b>4B 能跑在消费级显卡上，这是它真正的卖点</b>——把「让模型自己操作电脑」从云端拉回本地。</p>
+    <p><b>74B-A9B 两比特版：约 24 GB，本地代理方向。</b>由 Super VL 派生的本地<span class="term" tabindex="0">MoE<i class="tip">混合专家。把模型拆成很多「专家」，每个 token 只叫醒其中几个；能力按总量算，成本按叫醒的数量算。</i></span> 模型，权重压到 2 bit 后约 24 GB，许可为 OpenMDW-1.1<span class="src-tag">厂商口径</span>。<b>24 GB 这个数字值得停一下</b>：它刚好落在单张消费级显卡的容量线上，意味着「本地跑一个接近中型的代理模型」第一次不需要多卡。代价是 2 bit 量化的能力损失，公开材料没有给出与全精度版本的对照。</p>
+
+    <div class="table-wrap">
+      <table>
+        <caption>四份权重的放法（参数与许可以发布材料为准）</caption>
+        <thead><tr><th>模型</th><th>规模</th><th>许可</th><th>拿得到吗</th></tr></thead>
+        <tbody>
+          <tr><td>Ripple-65B Preview</td><td>65B</td><td>Apache 2.0</td><td>可直接下载</td></tr>
+          <tr><td>科学模型</td><td>753B</td><td>MIT</td><td>门控，需申请</td></tr>
+          <tr><td>Mage-VL-Cowork</td><td>4B</td><td>Apache 2.0</td><td>可直接下载</td></tr>
+          <tr><td>本地代理模型</td><td>74B / 激活 9B</td><td>OpenMDW-1.1</td><td>可直接下载，约 24 GB</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p><b>四份放法，四种算盘。</b>Apache 2.0 加托管入口，是「权重给你，省事卖我」；MIT 加门控，是「法律上不设限，名单上要留名」；4B 全开放，是「先占住本地操作这个位置」；2 bit 压到单卡容量，是「把门槛从机房降到桌面」。<b>开源这个词已经装不下这些差别了。</b>真正该问的不是「开不开源」，是「哪一段给了你、哪一段留在对方手里」。</p>
+    <p>本报的判断是：<b>这一轮开源的竞争点，已经从「参数量」移到「能不能在你要的地方跑起来」。</b>753B 再大，跑不动就只能调 API；4B 再小，能塞进笔记本就有完全不同的用法。对做产品的人，许可与体积比分数重要——<b>分数决定上限，许可和体积决定你能不能开始。</b></p>
+
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版四份权重</span>
+      </div>
+      <p>「MIT 许可」这四个字现在有两种用法：一种是真的把东西交出去，一种是让法务看起来没问题、再在下载页加一道申请。<b>判断方法只有一个——去点一下下载按钮，看它给不给你文件。</b>给，就是开源；不给，就是「开放得很有诚意」。</p>
+    </aside>
+  </section>

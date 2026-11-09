@@ -1,0 +1,23 @@
+{
+  "asOf": "2026-11-09",
+  "facts": [
+    { "id": "F01", "claim": "Images 2.6 单张 1024×1024 低质量图的输出 token", "value": "823", "page": "p01", "source": "第三方按官方计算器反算", "asOf": "2026-11-04", "strength": "media", "reproduced": false },
+    { "id": "F02", "claim": "Images 2.5 同规格单张图的输出 token", "value": "196", "page": "p01", "source": "第三方按官方计算器反算", "asOf": "2026-11-04", "strength": "media", "reproduced": false },
+    { "id": "F03", "claim": "低质量档输出 token 相对上一代的涨幅", "value": "4.2 倍", "page": "p01", "source": "按 823 与 196 折算", "asOf": "2026-11-04", "strength": "media", "reproduced": false },
+    { "id": "F04", "claim": "图像输出每百万 token 的费率（与 2.5 相同）", "value": "30 美元", "page": "p01", "source": "OpenAI 定价页", "asOf": "2026-11-04", "strength": "vendor", "reproduced": false },
+    { "id": "F05", "claim": "官方称每周生成的图片总量", "value": "40 亿张", "page": "p01", "source": "OpenAI 发布材料", "asOf": "2026-11-04", "strength": "vendor", "reproduced": false },
+    { "id": "F06", "claim": "Flare 在低质量档的最快出图时间", "value": "6 秒", "page": "p01", "source": "OpenAI 发布材料（最优情况）", "asOf": "2026-11-04", "strength": "vendor", "reproduced": false },
+    { "id": "F07", "claim": "每天一万张低质量草稿、按差额折算的月度新增成本", "value": "5,600 美元", "page": "p01", "source": "本报按 627 token 差额与 30 美元/百万推算", "asOf": "2026-11-09", "strength": "estimate", "reproduced": false },
+    { "id": "F08", "claim": "GPT-6.1 Terra 每百万输入 token 价格", "value": "1 美元", "page": "p03", "source": "OpenAI 定价说明", "asOf": "2026-11-08", "strength": "vendor", "reproduced": false },
+    { "id": "F09", "claim": "GPT-6 Astra 网络安全变体在 ExploitGym 的得分", "value": "48.5%", "page": "p03", "source": "模型发布清单与官方说明", "asOf": "2026-11-08", "strength": "vendor", "reproduced": false },
+    { "id": "F10", "claim": "上一代网络安全模型在 ExploitGym 的得分", "value": "32.1%", "page": "p03", "source": "模型发布清单", "asOf": "2026-11-08", "strength": "vendor", "reproduced": false },
+    { "id": "F11", "claim": "网络安全变体每百万输入 token 的定价", "value": "20 美元", "page": "p03", "source": "模型发布清单", "asOf": "2026-11-08", "strength": "vendor", "reproduced": false },
+    { "id": "F12", "claim": "以 MIT 许可放出的科学模型规模", "value": "753B", "page": "p03", "source": "模型卡与许可页", "asOf": "2026-11-08", "strength": "vendor", "reproduced": false },
+    { "id": "F13", "claim": "ADK 2.14.0 从实验状态转为稳定的组件数", "value": "42", "page": "p04", "source": "Google 发行说明（26 个模块 + 16 项工具与集成）", "asOf": "2026-11-07", "strength": "vendor", "reproduced": false },
+    { "id": "F14", "claim": "微软开始遵守共享训练标记的日期", "value": "2027 年 2 月 1 日", "page": "p05", "source": "厂商声明与媒体报道", "asOf": "2026-11-07", "strength": "media", "reproduced": false },
+    { "id": "F15", "claim": "robots.txt 训练标记草案的失效日期", "value": "2027 年 5 月 3 日", "page": "p05", "source": "IETF 追踪系统与媒体报道", "asOf": "2026-11-07", "strength": "media", "reproduced": false },
+    { "id": "F16", "claim": "Mage-VL-Cowork 4B 在 OSWorld-Verified 的自报成绩", "value": "66.0%", "page": "p07", "source": "微软模型卡（实验室自报）", "asOf": "2026-11-08", "strength": "vendor", "reproduced": false },
+    { "id": "F17", "claim": "两比特量化后本地代理模型的体积", "value": "24 GB", "page": "p07", "source": "模型卡与发布说明", "asOf": "2026-11-08", "strength": "vendor", "reproduced": false },
+    { "id": "F18", "claim": "权重空间编辑中被动到的参数占比", "value": "0.016%", "page": "p09", "source": "相关报道与预印本", "asOf": "2026-11-08", "strength": "preprint", "reproduced": false }
+  ]
+}

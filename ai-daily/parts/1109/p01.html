@@ -1,0 +1,56 @@
+<section class="lead" id="p01">
+    <article class="lead-main">
+      <div class="kicker">头版头条 · 没写进发布说明的那一行</div>
+      <h2>图片模型的价目表没变，账单涨了四倍<br><span class="h2-sub">低质量图每张从 196 个输出 token 涨到 823 个，费率表一个字没改</span></h2>
+      <p class="deck">OpenAI 4 日发布 Images 2.6，把一个模型拆成快的 Flare 与稳的 Sunburst。官方口径是「生成快 50%、价格与上一代相同」<span class="src-tag">厂商口径</span>。第三方按 OpenAI 自己的计算器反算，同样一张 1024×1024 的低质量图，输出 token 从 196 涨到 823<span class="src-tag">公开报道</span><span class="src-tag low">本报未复现</span>。</p>
+      <div class="digest">
+        <div class="digest-h"><span>三行摘要 · 九十秒读完这一期</span><em>006 期</em></div>
+        <ol>
+          <li><i>01</i><span><b>单价没变是真的</b>：每百万输出 token 仍是 30 美元，与 2.5 完全相同。</span></li>
+          <li><i>02</i><span><b>账单变了也是真的</b>：低质量图用量涨到 4.2 倍，中质量 3.3 倍，高质量以上不变。</span></li>
+          <li><i>03</i><span><b>这一周还有三条同款</b>：框架转正伴随破坏性变更、编码代理修好「假成功」、四家签的 robots.txt 只管未来。</span></li>
+        </ol>
+      </div>
+      <div class="byline">本报编辑部　综合报道　2026-11-09</div>
+      <div class="lead-body">
+        <p class="dropcap">11 月 4 日，OpenAI 上线 Images 2.6。开发者拿到的是两个模型而不是一个：<b>Flare</b> 追速度，官方说低质量图最快 6 秒出；<b>Sunburst</b> 追细节与多轮编辑的一致性。两个模型共用一套新控件——GIF 输出、SVG 导出、标记式局部编辑、以及一个叫 complexity 的复杂度旋钮。费率表印出来是这样的：文本输入每百万 5 美元、图像输入 8 美元、图像输出 30 美元<span class="src-tag">厂商口径</span>。和 2.5 一模一样。</p>
+        <p>然后有人去翻它的计算器。<b>同样的 1024×1024、同样选 low 质量，2.5 用 196 个<span class="term" tabindex="0">输出 token<i class="tip">生成一张图按输出 token 计费，不是按张。单价乘以用量才是你付的钱，所以「单价没变」和「更贵了」可以同时成立。</i></span>，2.6 用 823 个</b><span class="src-tag">公开报道</span>。按 30 美元/百万换算，单张从约 0.006 美元变成约 0.025 美元，<b>4.2 倍</b>。中质量那一档从约 0.013 涨到约 0.043，3.3 倍。高质量及以上没动，还是约 0.053。</p>
+        <p>这不是一个「涨没涨价」能回答的问题。<b>价目表的单位是 token，账单的单位是图。</b>当模型在低质量档吐出的 token 变成四倍，费率表可以一字不改，而付钱的人多掏四倍。官方说「价格与 2.5 相同」，这句话在 token 这个单位上完全成立；官方没说「单张成本」，因为单张成本不是它定价的单位。</p>
+        <p>把量级摆出来就知道这条为什么值得上头版。官方说现在每周生成约 <b>40 亿张</b>图，比九月的 30 亿又涨了一截<span class="src-tag">厂商口径</span>。假设有一个团队每天跑 1 万张低质量草稿，按上面的差额算，一个月多出约 <b>5,600 美元</b><span class="src-tag low">本报自设</span>——这还只是「草稿」，成本本来该最便宜的那一档。<b>越是靠廉价草稿撑迭代速度的团队，越会被这一刀切中。</b></p>
+        <p>同一份发布里还有两处需要留意。<b>SVG 导出要计两次费</b>：先出一张参考图，再由一个写作模型把参考图写成矢量文件，两步都算钱，官方没有给固定的单张 SVG 价格<span class="src-tag">公开报道</span>。GIF 只支持生成端点，2 到 64 帧、每帧 20 到 2000 毫秒；<b>编辑端点不能返回 GIF</b>。这些限制都写在文档里，只是不在标题里。</p>
+        <p>本报的判断是：<b>这一轮发布的信息重心，已经从「能力多强」移到「计费怎么算、兼容会不会坏」。</b>同一天另外三条也是这个形状——Google 的 ADK 把四十多个组件转正，同时收紧了一条能触发 shell 的调用；Claude Code 修好了一个「动作被拒也返回成功」的退出码；四家厂商签的那行 robots.txt 只管未来的抓取，不管已经抓走的内容。四条新闻，四个藏在附带条款里的重点。<b>能力曲线这一周是平的，条款曲线是陡的。</b></p>
+      </div>
+      <p class="jump">相关报道见第 02 版《省略的那一句》、第 06 版《五问一份发布说明》、第 04 版《三个升级，三处会静默坏掉的地方》、第 05 版《一行 robots.txt，管不到昨天》</p>
+      <aside class="razor">
+        <div class="razor-h">
+          <span class="razor-mark">锐评</span>
+          <span class="razor-src">本报评论员 · 针对本版头条</span>
+        </div>
+        <p>这件事最值得记的不是「OpenAI 涨价」，是<b>「涨价」和「没涨价」可以同时为真，只要双方选的单位不同</b>。以后看到任何「价格不变」，先问一句：不变的是哪个单位？是每 token、每张、每千次调用，还是每个成功任务？<b>单位选得巧，任何涨价都能说成降价。</b></p>
+      </aside>
+    </article>
+
+    <aside class="lead-side">
+      <div class="side-block">
+        <h3>本期要闻</h3>
+        <ol class="headlines">
+          <li><b>计价</b>Images 2.6 费率不变，低质量图输出 token 涨到 4.2 倍，单张约 0.025 美元</li>
+          <li><b>限制</b>SVG 要出两次图、计两次费；GIF 只走生成端点，编辑端点不支持</li>
+          <li><b>框架</b>ADK 2.14 转正 42 个组件，同时把脚本执行从自由 shell 改成校验过的路径</li>
+          <li><b>代理</b>Claude Code 2.1.319：MCP 任务转后台，新增「拒绝而不等待」权限项</li>
+          <li><b>修正</b>编码代理此前在动作被拒时仍返回成功，脚本照着 0 判断，等于把失败当完成</li>
+          <li><b>治理</b>四家承诺遵守一行 robots.txt 训练标记；Anthropic 已开始，微软 2027 年 2 月</li>
+          <li><b>开源</b>Ripple-65B 以 Apache 2.0 放出；753B 科学模型用 MIT 许可；微软放 4B 操作模型</li>
+          <li><b>价格</b>GPT-6.1 Terra 降到每百万 1 美元输入、5 美元输出，约为上一代对半</li>
+        </ol>
+      </div>
+      <div class="side-block">
+        <h3>本期五个数</h3>
+        <div class="stat"><div class="line"><span class="num">4.2</span><span class="unit">倍</span></div><span class="cap">低质量图输出 token 相对 2.5 的涨幅，按官方计算器反算<span class="src-tag">公开报道</span></span></div>
+        <div class="stat"><div class="line"><span class="num">823</span><span class="unit">个</span></div><span class="cap">单张 1024×1024 低质量图的输出 token，2.5 为 196 个</span></div>
+        <div class="stat"><div class="line"><span class="num">30</span><span class="unit">美元</span></div><span class="cap">每百万输出 token 的费率，与 2.5 完全相同</span></div>
+        <div class="stat"><div class="line"><span class="num">40</span><span class="unit">亿张</span></div><span class="cap">官方称每周生成的图片量，九月为 30 亿<span class="src-tag">厂商口径</span></span></div>
+        <div class="stat"><div class="line"><span class="num">6</span><span class="unit">秒</span></div><span class="cap">Flare 在低质量档的出图时间，官方口径的最优情况，无第三方基准</span></div>
+      </div>
+    </aside>
+  </section>

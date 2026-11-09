@@ -1,0 +1,103 @@
+<section class="section" id="p16">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">本报提案 · 这一期想怎么改</span>
+      <span class="sec-page">第 16 版 / 共 16 版</span>
+    </div>
+
+    <p class="sec-lede">本版每期由四个身份各提一条改动建议，编号 <b>P007-1…4</b>：<b>读者</b>说哪里读着费劲，<b>编辑</b>说哪里做起来费劲，<b>创刊人</b>说哪里该往前一步，<b>AI</b> 说哪里可以自动化。<b>默认不执行</b>——创刊人点名「采纳 P007-2」才进施工；没人提，下一期自动记「否决（沉默）」。</p>
+
+    <div class="props">
+      <article class="prop">
+        <div class="prop-h"><span class="prop-role">读者</span><span class="prop-id">P007-1</span></div>
+        <h4>把反算过程写出来</h4>
+        <p>头版说「单张约 0.025 美元」，我在正文里找不到这个数是怎么来的。823 个 token 乘 30 美元再除以一百万，我能自己算，但报纸没写这一步。<b>建议在事实卡里给一条可复算的算式字段</b>，让每个「本报自算」的数字都能被读者拿计算器验一遍。</p>
+        <dl class="prop-meta">
+          <dt>为什么</dt><dd>本期有 3 处「本报自设」的推算（单张成本、月度差额、迁移天数），全靠读者信我们的算式</dd>
+          <dt>成本</dt><dd>小 · 半天 · <code>00-facts.json</code> 加可选 <code>formula</code> 字段 + 卡片渲染</dd>
+        </dl>
+        <div class="prop-st">待定 · <b>沉默即否决</b></div>
+      </article>
+
+      <article class="prop">
+        <div class="prop-h"><span class="prop-role">编辑</span><span class="prop-id">P007-2</span></div>
+        <h4>把「标题说的 / 真正要紧的」做成固定表</h4>
+        <p>第 04 版那张两列表是本期最好用的一块，但它是临时加的，下期不一定有。<b>建议把它固化成工具类版面的标准版式</b>，并且强制要求「真正要紧的那一行」必须填一条兼容性变更——填不出来就说明这版没读到关键处。</p>
+        <dl class="prop-meta">
+          <dt>为什么</dt><dd>本期三条发布的关键都在兼容性上；靠编辑记性去写，下一期就会漏</dd>
+          <dt>成本</dt><dd>中 · 半天到一天 · 改模板 + 在拼版时检查该类版面无此表则告警</dd>
+        </dl>
+        <div class="prop-st">待定 · <b>沉默即否决</b></div>
+      </article>
+
+      <article class="prop">
+        <div class="prop-h"><span class="prop-role">创刊人</span><span class="prop-id">P007-3</span></div>
+        <h4>本报自己的系数也要给出处</h4>
+        <p>第 11 版写「权重占满显存时要乘一点三到一点五」，这个系数是本报的经验值，没有推算过程，也没有引用。<b>我们要求厂商给基线，自己却给了一个没有基线的系数</b>，这是本期最该改的一处。建议：所有「本报自设」的系数必须写明假设与算法，写不出就删掉。</p>
+        <dl class="prop-meta">
+          <dt>为什么</dt><dd>主线是「没写进发布说明的那一行」；如果本报自己的推断也不写，这条主线就站不住</dd>
+          <dt>成本</dt><dd>小 · 两小时 · 先改本期第 11 版的表述，再把这条写进写作规范</dd>
+        </dl>
+        <div class="prop-st">待定 · <b>沉默即否决</b></div>
+      </article>
+
+      <article class="prop">
+        <div class="prop-h"><span class="prop-role">AI</span><span class="prop-id">P007-4</span></div>
+        <h4>给每条数字标「核到了哪一档」</h4>
+        <p>事实卡现在只有来源名与强度，没有「本报核到哪一步」。<b>建议加一个三态字段：官方自述 / 第三方可查 / 本报自算</b>，并在报头显示分布，例如「本期 18 条数字，其中 5 条为本报自算」。这和 P006-4 的「到期复核」是两件事：那条管什么时候重看，这条管现在能信到什么程度。</p>
+        <dl class="prop-meta">
+          <dt>为什么</dt><dd>本期的事实卡里，能拿计算器独立验的只有 token 那一类；不标出来，读者无法区分</dd>
+          <dt>成本</dt><dd>小 · 半天 · <code>00-facts.json</code> 加字段 + 报头一行统计 + <code>A13</code> 一条校验</dd>
+        </dl>
+        <div class="prop-st">待定 · <b>沉默即否决</b></div>
+      </article>
+    </div>
+
+    <p class="prop-rule"><b>怎么算采纳：</b>创刊人在当期明确说「采纳 P007-2」才算；说「先放着」算待定，最多挂三期；<b>没说就是否决，不再追问</b>。已采纳的写进 <code>提案台账.md</code>，在下一期的台账里标「已落地」。</p>
+
+    <div class="table-wrap">
+      <table class="prop-ledger">
+        <caption>提案台账 · 全量明细见 <code>提案台账.md</code>，本表只放最近 8 条</caption>
+        <thead>
+          <tr><th>编号</th><th>视角</th><th>一句话</th><th>状态</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="id">P006-1</td><td>读者</td><td>信源表给可点的原文入口</td><td class="st-ok">已落地</td></tr>
+          <tr><td class="id">P006-2</td><td>编辑</td><td>信源表与论据标记交叉校验</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P006-3</td><td>创刊人</td><td>每月一版「本周被否」</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P006-4</td><td>AI</td><td>事实卡加「到期复核」字段</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P007-1</td><td>读者</td><td>把反算过程写进事实卡</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P007-2</td><td>编辑</td><td>「标题说的 / 真正要紧的」固定成表</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P007-3</td><td>创刊人</td><td>本报系数也要给出处</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P007-4</td><td>AI</td><td>每条数字标「核到哪一档」</td><td class="st-wait">待定</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版四条提案</span>
+      </div>
+      <p>P007-3 是这一期唯一一条<b>把刀口对着自己</b>的提案。前三期我们一直在要求厂商给基线、给出处、给范围，自己的版面上却留了一个「一点三到一点五」。<b>一份报纸的可信度，不看它批评谁，看它敢不敢用同一把尺量自己。</b></p>
+    </aside>
+  </section>
+
+  <div class="gloss" id="gloss">
+    <h5>名词速查 · 本期出现的 14 个词<span>正文里带虚线的词点一下就地解释；这张表留作索引</span></h5>
+    <div class="gloss-grid">
+      <dl><dt>输出 token</dt><dd>生成一张图按输出 token 计费，不是按张。单价乘以用量才是你付的钱，所以「单价没变」和「更贵了」可以同时成立。</dd></dl>
+      <dl><dt>计算机操作 / computer use</dt><dd>模型看屏幕、点按钮、敲命令行来完成任务。它让「自动办事」成立，也让权限边界变得重要。</dd></dl>
+      <dl><dt>MCP / Model Context Protocol</dt><dd>让模型调用外部工具与数据源的接口标准。服务器可能把一个调用标记为「任务」，跑很久才返回。</dd></dl>
+      <dl><dt>A2A / Agent2Agent</dt><dd>让一个智能体把任务交给另一个智能体并取回结果的协议；和 MCP 的分工是「连工具」与「连同行」。</dd></dl>
+      <dl><dt>agent card</dt><dd>智能体的公开名片：叫什么、能接哪些任务、怎么找到它。别的智能体靠它决定要不要把活派过来。</dd></dl>
+      <dl><dt>ACP / Agent Client Protocol</dt><dd>编辑器与编码代理之间的接口约定。它让同一个代理能接进不同编辑器，像 LSP 让语言工具接进不同 IDE。</dd></dl>
+      <dl><dt>破坏性变更 / breaking change</dt><dd>升级后旧代码不再按原样工作。通常不是 bug，是有意改了接口或语义。</dd></dl>
+      <dl><dt>robots.txt</dt><dd>网站根目录下的抓取约定文件。它是君子协定，不是技术屏障：遵守与否取决于对方愿不愿意读。</dd></dl>
+      <dl><dt>门控权重 / gated weights</dt><dd>下载前要登记或申请。许可再宽松，拿不到文件也白搭；门控通常用来把「谁在用」记下来。</dd></dl>
+      <dl><dt>MoE / 混合专家</dt><dd>把模型拆成很多「专家」，每个 token 只叫醒其中几个；能力按总量算，成本按叫醒的数量算。</dd></dl>
+      <dl><dt>提示注入 / prompt injection</dt><dd>把指令藏在文档、网页或工具返回值里，让模型当成自己的任务执行。它不需要攻破系统，只需要说服模型。</dd></dl>
+      <dl><dt>沙箱 / sandbox</dt><dd>限制程序能碰什么的环境。它决定「即使模型被骗了，最坏能坏到哪」，也是比模型对齐更可靠的边界。</dd></dl>
+      <dl><dt>权重 / weights</dt><dd>训练出来的参数文件。改权重就是改模型本身，和改提示词、加检索是两回事。</dd></dl>
+      <dl><dt>蒸馏</dt><dd>把大模型的能力搬到小模型上：用大模型的输出当训练目标。搬得好省算力，搬不好会把偏差一起继承。</dd></dl>
+    </div>
+  </div>

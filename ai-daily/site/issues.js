@@ -1,7 +1,22 @@
 /* 由 tools/build_index.py 自动生成，请勿手工编辑 */
 window.AI_DAILY_ISSUES = {
-  "generatedAt": "2026-11-08 11:25",
+  "generatedAt": "2026-11-09 10:02",
   "issues": [
+    {
+      "date": "2026-11-09",
+      "dateCn": "2026年11月9日",
+      "dateShort": "11月9日",
+      "weekday": "星期一",
+      "issue": "006",
+      "isSpecial": false,
+      "issueLabel": "第 006 期",
+      "pages": 16,
+      "headline": "图片模型的价目表没变，账单涨了四倍 · 低质量图每张从 196 个输出 token 涨到 823 个，费率表一个字没改",
+      "deck": "OpenAI 4 日发布 Images 2.6，把一个模型拆成快的 Flare 与稳的 Sunburst。官方口径是「生成快 50%、价格与上一代相同」厂商口径。第三方按 OpenAI 自己的计算器反算，同样一张 1024×1024 的低质量图，输出 token 从 196 涨到 823公开报道本报未复现。",
+      "kicker": "头版头条 · 没写进发布说明的那一行来源 · 官方",
+      "file": "AI晨报-2026-11-09.html",
+      "size": 139478
+    },
     {
       "date": "2026-11-08",
       "dateCn": "2026年11月8日",

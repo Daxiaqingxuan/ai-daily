@@ -1,0 +1,21 @@
+<section class="section" id="p12">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">工具链 · 编辑器正在变成代理的插座</span>
+      <span class="sec-page">第 12 版 / 共 16 版</span>
+    </div>
+    <p class="sec-lede">这一周 GitHub 做了两件方向相反的事：把 Copilot 塞进别人的编辑器，也把别人的代理放进自己的编辑器。<b>两边都在做同一件事——把「用哪个代理」变成可插拔的选择。</b></p>
+
+    <p><b>往外出：Copilot 进了 Xcode 与 JetBrains Air。</b>11 月 4 日，Copilot 进入 Xcode 内置的编码助手，公开预览，起点是 Xcode 27.3 beta、系统要求 macOS Tahoe 26.6 及以上，在设置里的 Intelligence 一栏配置，<b>所有 Copilot 订阅计划都能用</b><span class="src-tag">厂商口径</span>。它和原有的 Copilot for Xcode 扩展并存，不是替换。前一天，Copilot 通过一个叫 <span class="term" tabindex="0">ACP<i class="tip">Agent Client Protocol。编辑器与编码代理之间的接口约定。它让同一个代理能接进不同编辑器，像 LSP 让语言工具接进不同 IDE。</i></span> 的接口成为 JetBrains Air 里的代理，支持本地任务，也支持在 Air Teams 里跑云端任务（新虚拟机上的容器）；<b>计费走用户自己的 Copilot 订阅，不消耗 JetBrains 的 AI 额度</b>。</p>
+    <p><b>往里进：@GitHub 机器人正式可用。</b>11 月 6 日，Slack 与 Microsoft Teams 里的 @GitHub 从预览转正式。在对话里直接让它查缺陷、建 issue、改代码、开 PR，<b>它把整个 thread 当成上下文</b>——一段团队讨论可以直接变成一次被记录的改动，不用切工具。正式版加了三样：Teams 里的 Canvas 支持（在对话里审方案和代码）、从消息内容自动识别仓库、以及给创建的 issue 与 PR 加署名（「由某人通过 Slack/Teams 对话创建」）。最后这一条对审计很实用：<b>代理写的 PR 能追回到是哪个人、在哪段对话里要求的。</b></p>
+    <p><b>为什么这两件事要放在一起看。</b>它们说明「代理」已经从产品变成了接口。这一周同一批更新里，VS Code 1.145 加了对话视图模式、远程浏览器预览、本地自动化的 cron 表达式；命令行也统一了设置面板。<b>这些都不是能力，是装配方式。</b>过去你选一个 AI 编程工具，等于选一个全家桶；现在编辑器是插座，代理是插头，ACP 是插孔的规格。</p>
+    <p><b>对开发者的实际影响，是「切换成本」在下降。</b>插座标准化之后，换代理不再意味着换编辑器、重配环境、重学快捷键——配置还在，插头换一个就行。这一周 JetBrains Air 允许管理者用治理策略禁用 Copilot，但<b>不能在 Air 里给 Copilot 设花费上限</b><span class="src-tag">厂商口径</span>：能管「用不用」，管不了「花多少」。<b>这类「权限有了、额度没有」的半截治理，会是接下来一年最常见的麻烦。</b></p>
+    <p>本报的判断是：<b>代理的标准接口一旦稳定，竞争就会从「谁的编辑器好用」移到「谁的代理在同一个插座上更省」。</b>这对用户是好消息——你终于可以拿同一批任务去横向比价；对厂商是坏消息——<b>原来靠编辑器黏性锁住的用户，现在拔一下插头就走了。</b></p>
+
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版两个方向</span>
+      </div>
+      <p>「所有 Copilot 计划都能用」这句话，翻译过来是：<b>微软愿意把代理放进苹果和 JetBrains 的编辑器，因为收钱的地方在订阅，不在编辑器。</b>当一个能力变成可插拔的，卖插座的人就不再重要了——<b>重要的是谁在卖电。</b></p>
+    </aside>
+  </section>

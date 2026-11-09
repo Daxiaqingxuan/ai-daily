@@ -1,0 +1,34 @@
+<section class="section" id="p04">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">产品生态 · 三个升级，三处会静默坏掉的地方</span>
+      <span class="sec-page">第 04 版 / 共 16 版</span>
+    </div>
+    <p class="sec-lede">这一周开发者工具的更新密度很高：一个编码代理、一个智能体框架、一个命令行工具，各发一版。三份更新日志的标题都很轻，<b>但每一份里都有一行会让现有代码改变行为的东西。</b></p>
+
+    <div class="table-wrap">
+      <table>
+        <caption>三份更新日志：标题说的与真正要紧的</caption>
+        <thead><tr><th>工具</th><th>标题里写的</th><th>真正会改变行为的那一行</th></tr></thead>
+        <tbody>
+          <tr><td>Claude Code 2.1.319</td><td>MCP 任务转后台</td><td>退出码：动作被拒绝时以前返回 0，现在返回 1</td></tr>
+          <tr><td>ADK 2.14.0</td><td>A2A 协议转稳定</td><td>脚本执行从自由 shell 命令改成校验过的路径与参数</td></tr>
+          <tr><td>Codex CLI 0.167.0</td><td>代理指挥中心</td><td>切换后端不再丢草稿，代理任务改成显式列表</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p><b>Claude Code：把「假成功」修掉了。</b>2.1.319 最显眼的两项是<span class="term" tabindex="0">MCP<i class="tip">Model Context Protocol。让模型调用外部工具与数据源的接口标准。服务器可能把一个调用标记为「任务」，跑很久才返回。</i></span> 任务转后台——服务器把一次工具调用当任务跑时，客户端立刻把它放到后台，完成后再把结果告诉模型；以及一个新权限项 <code>permissions.denyInsteadOfPrompting</code>，把「需要人工批准」的调用直接拒掉而不是挂在提示上，让无人值守的回合继续往下走。<span class="src-tag">厂商口径</span></p>
+    <p>真正值钱的是第三条，几乎没人转发：<b>此前在自动模式下，如果安全校验不可用，<code>claude -p</code> 的动作即使被拒绝，进程也退出 0</b><span class="src-tag">厂商口径</span>。脚本只看退出码，就会把「什么都没干」当成「干完了」。这一版把这种情况改成退出 1。<b>这是一个把静默失败变成显式失败的修复</b>——它不增加任何能力，但它让「今晚的批处理到底跑没跑」这个问题第一次有正确答案。同一版还修了一个工作树创建时触发的沙箱逃逸与一处 Bash 权限检查绕过。</p>
+    <p><b>ADK：转正的代价是一次收紧。</b>2.14.0 把 <b>42</b> 个组件从实验状态转正（26 个模块 + 16 项工具与集成能力），<span class="term" tabindex="0">A2A<i class="tip">Agent2Agent。让一个智能体把任务交给另一个智能体并取回结果的协议；和 MCP 的分工是「连工具」与「连同行」。</i></span> 集成、执行环境与评估栈一起进稳定状态，新增 <code>adk generate_agent_card</code> 生成 <span class="term" tabindex="0">agent card<i class="tip">智能体的公开名片：叫什么、能接哪些任务、怎么找到它。别的智能体靠它决定要不要把活派过来。</i></span>。<span class="src-tag">厂商口径</span></p>
+    <p>同一次转正里有一条<span class="term" tabindex="0">破坏性变更<i class="tip">breaking change。升级后旧代码不再按原样工作。通常不是 bug，是有意改了接口或语义。</i></span>：<code>RunSkillScriptTool</code> 过去接受一个自由形式的 shell 命令，现在只接受校验过的脚本路径与参数（只支持 .py、.sh、.bash），仍然传 <code>command</code> 的调用会返回 <code>INVALID_ARGUMENTS</code>。官方说明的理由是<b>堵住一条「提示注入可以触发任意 shell 命令」的路径</b>。此外 Enum 类型的工具参数现在以枚举成员而不是字符串传入，会话创建接口也收紧了多余参数。<b>「stable」在这里的意思是「以后不再随便改」，不是「升级不会有感觉」。</b></p>
+    <p><b>Codex CLI：把「跑到哪了」做成一个列表。</b>0.167.0 引入 <code>codex agents --no-daemon</code>，打开一个代理任务列表，列出正在跑的和已经结束的，未读结果单独标记；终端会话选择器里可以切换后端而不丢正在写的草稿；本地图片附件在输入时能预览。<b>这些都不是能力，是把「同时开五个代理」从混乱变成可管理。</b><span class="src-tag">厂商口径</span></p>
+    <p>本报的判断是：<b>这一周三个工具动的是同一根神经——无人值守时的可观测性。</b>MCP 任务后台化是为了不让慢调用堵住回合，拒绝而不等待是为了不让提示卡住整晚，退出码修正、代理列表、会话不丢草稿，全都在回答同一个问题：<b>没人在旁边看的时候，它到底做完了没有。</b>能力提升会带来新的用法，可观测性提升才决定这套用法能不能被信任。</p>
+
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版三份日志</span>
+      </div>
+      <p>如果只能从这一版带走一句，就带这个：<b>你的 CI 里那个「成功」，可能一直是假的。</b>去查一下脚本是不是只看了退出码、代理是不是只看了最后一段输出。<b>所有「静默失败」的修复，都值得一次全量重跑</b>——因为你不知道过去那些绿，是哪一种绿。</p>
+    </aside>
+  </section>
