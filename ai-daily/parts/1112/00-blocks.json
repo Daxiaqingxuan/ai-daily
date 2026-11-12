@@ -1,0 +1,22 @@
+{
+  "legend": "版级来源说明这一版的信息主要来自哪里；执笔一律是 AI，报尾有内容声明。逐句出处见正文的论据标记，逐条归属见报尾信源表。",
+  "maxAiPages": 4,
+  "pages": {
+    "p01": { "origin": "official", "note": "Google A2UI 1.0 官方博客与协议文档" },
+    "p02": { "origin": "ai", "note": "社论，本报观点，无外部信源" },
+    "p03": { "origin": "official", "note": "A2UI 渲染器与智能体 SDK 官方文档" },
+    "p04": { "origin": "thirdparty", "note": "多家媒体对办公与商业智能体发布的报道" },
+    "p05": { "origin": "official", "note": "OpenRouter Agent SDK 的四层防护说明" },
+    "p06": { "origin": "ai", "note": "方法论，本报自设的接口变更五问" },
+    "p07": { "origin": "official", "note": "六个开源项目的仓库与许可说明" },
+    "p08": { "origin": "thirdparty", "note": "法规生效、Git 漏洞与安全事件报道" },
+    "p09": { "origin": "thirdparty", "note": "形式化验证与物理世界模型的研究报道" },
+    "p10": { "origin": "thirdparty", "note": "IPO 条款、减值与数据中心项目的财经报道" },
+    "p11": { "origin": "official", "note": "Tether BotPsy 与 AWS 本地模拟器的官方材料" },
+    "p12": { "origin": "thirdparty", "note": "LangChain 版本、Bedrock 定价与 Gemini 新 API 的报道" },
+    "p13": { "origin": "official", "note": "Atlassian、Alation 与产线试点披露的运行数据" },
+    "p14": { "origin": "thirdparty", "note": "开源项目趋势榜与仓库数据" },
+    "p15": { "origin": "thirdparty", "note": "多家媒体报道聚合" },
+    "p16": { "origin": "ai", "note": "编辑部提案，本期自设" }
+  }
+}

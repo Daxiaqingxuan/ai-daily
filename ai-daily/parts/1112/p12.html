@@ -1,0 +1,34 @@
+<section class="section" id="p12">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">工具链 · 谁来付兼容性这笔账</span>
+      <span class="sec-page">第 12 版 / 共 16 版</span>
+    </div>
+    <p class="sec-lede">本期最不像新闻、却最可能让团队加班的一条：<b>LangChain 全系新版把最低运行版本抬到了 Python 3.11</b>。没有新模型、没有新能力，只有一批 CI 流水线要跟着改<span class="src-tag">公开报道</span>。</p>
+
+    <p><b>先把改动写准。</b>0.1.0 版 langchain-typesafe、1.5.0 版 langchain、1.8.0 版 langchain-core 的最低版本统一上调至 <b>Python 3.11</b>；3.10 用户仍可留在 1.4.x 旧系列<span class="src-tag">公开报道</span>。这意味着升级不是「换个依赖号」这么简单：运行环境、镜像、CI 矩阵、以及那些只在 3.10 上验证过的插件，都得重新过一遍。<b>留在旧系列是免费的选择，但免费期有限</b>——安全补丁与新功能迟早只往新线走。</p>
+    <p><b>同一批更新里，也有在替你省手续的。</b>AWS 上线 Bedrock AgentCore 独立网页搜索 API，面向自定义智能体与数据流水线，一次签名调用就拿到排序后的网页结果，不必自己搭网关，定价为每 1000 次查询 <b>7 美元</b><span class="src-tag">公开报道</span>。Google 的 Gemini Decisions API 支持多模态输入并返回校准后概率，标价为每百万输入 token 0.1 美元；实验性产品 Tabletop 可以把上传素材自动生成多人实时协作空间，目前是白名单邀约<span class="src-tag">公开报道</span>。<b>这三个都是「接口定价」</b>：它们让联网、决策、协作第一次有了可以写进预算表的单位。</p>
+
+    <div class="table-wrap">
+      <table>
+        <caption>四条工具链更新：改动落在谁身上</caption>
+        <thead><tr><th>更新</th><th>改了什么</th><th>谁要动手</th><th>有截止日吗</th></tr></thead>
+        <tbody>
+          <tr><td>LangChain 新版</td><td>最低 Python 3.11</td><td>运行环境 / CI / 插件维护者</td><td>无，可留 1.4.x</td></tr>
+          <tr><td>Bedrock 搜索 API</td><td>联网能力按次计价</td><td>接入方预算模型</td><td>已上线</td></tr>
+          <tr><td>Gemini Decisions API</td><td>校准概率输出</td><td>决策链路的设计者</td><td>已发布</td></tr>
+          <tr><td>Tabletop</td><td>多人协作空间</td><td>白名单内试用者</td><td>邀约制</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p><b>把兼容性当成本看，而不是当琐事看。</b>一份发布说明里，「新增了某某 API」和「不再支持某某版本」通常挨着写，但对读者是完全不同的两类事：前者是机会，后者是任务。<b>本报建议每次升级前先把后者单独抄出来，配一个负责人和一个窗口</b>；否则它会在某个周末以「流水线全红」的形式出现。</p>
+    <p><b>还有一层是版本漂移。</b>第 03 版说过 A2UI 的 1.0 / 0.9.1 / alpha 三档并存；工具链这边同理，1.4.x 与 1.5.0 会长期同时在跑。<b>「我们升级了 LangChain」这句话在混合环境里几乎没有信息量</b>，得说清是哪个包、哪个版本、跑在哪个解释器上。第 06 版第二问就是为这种场景准备的。</p>
+
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版工具链</span>
+      </div>
+      <p>新 API 是请柬，最低版本是账单。<b>发布说明把两者写在同一段里，读者却得把它们分到两个待办列表。</b></p>
+    </aside>
+  </section>

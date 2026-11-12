@@ -1,7 +1,37 @@
 /* 由 tools/build_index.py 自动生成，请勿手工编辑 */
 window.AI_DAILY_ISSUES = {
-  "generatedAt": "2026-11-09 10:02",
+  "generatedAt": "2026-11-12 11:18",
   "issues": [
+    {
+      "date": "2026-11-12",
+      "dateCn": "2026年11月12日",
+      "dateShort": "11月12日",
+      "weekday": "星期四",
+      "issue": "008",
+      "isSpecial": false,
+      "issueLabel": "第 008 期",
+      "pages": 16,
+      "headline": "模型没变，接口变了 · 今天这批更新，一条都没动模型",
+      "deck": "Google 把 A2UI 1.0厂商口径 推成首个稳定版：智能体不再只回文字，而是回一个可点的界面。同一天，SDK 给死循环装闸、云服务搬进本机。",
+      "kicker": "头版头条 · 模型没变，接口变了来源 · 官方",
+      "file": "AI晨报-2026-11-12.html",
+      "size": 135273
+    },
+    {
+      "date": "2026-11-11",
+      "dateCn": "2026年11月11日",
+      "dateShort": "11月11日",
+      "weekday": "星期三",
+      "issue": "007",
+      "isSpecial": false,
+      "issueLabel": "第 007 期",
+      "pages": 16,
+      "headline": "一千个智能体，一个停止键 · 千余个同伴，与一个 35 秒的停止键",
+      "deck": "Anthropic 称 Fable 5.2 能同时协调超过 1,000 个 AI 代理厂商口径；OpenAI 的 Control Room 撤销任务 ID 后 35 秒内叫停内部研究模型公开报道。两件事只隔一天，方向相反。",
+      "kicker": "头版头条 · 放开与叫停来源 · 官方",
+      "file": "AI晨报-2026-11-11.html",
+      "size": 134536
+    },
     {
       "date": "2026-11-09",
       "dateCn": "2026年11月9日",

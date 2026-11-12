@@ -1,0 +1,35 @@
+<section class="section" id="p09">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">学术 · 从「解出来」到「证出来」</span>
+      <span class="sec-page">第 09 版 / 共 16 版</span>
+    </div>
+    <p class="sec-lede">研究侧这一批最能说明本期的边界：模型确实在往前走，但要变成能进生产环境的东西，仍得先穿过一层可核对的证据。形式化验证正是那层证据。</p>
+
+    <p><b>最硬的一条是形式化证明进了真实代码库。</b>DeepMind 的 AlphaProof Code（内部代号 CodeMender）用智能体为真实软件生成数学证明，先攻密码学库；报道给出的规模是四周写下 <b>650 万行</b>形式化证明，并已完成 Signal 协议底层代码的安全验证<span class="src-tag">厂商口径</span>。另一路报道说，团队把人类密码学家与 AI 智能体配对，用于核对 Signal 的后量子握手与 Triple Ratchet 协议<span class="src-tag">公开报道</span>。<b>它与「模型解出一道难题」的差别在于：证明可以被验证器逐行复核</b>，不靠评分者的判断。</p>
+    <p><b>怀疑也来得很快。</b>技术社区里有人质疑「把一个人类编写的非平凡库验证到零缺陷」这一说法，指出用 LLM 写 Lean 证明有一条很方便的作弊路径——把规约悄悄改弱，证明就变得容易了<span class="src-tag">公开报道</span>。本报不裁决这个争议，只把它记下来：<b>形式化验证的可信度，最终落在「规约是谁写的、有没有被改过」上</b>。这又是一个接口问题，不是模型问题。</p>
+
+    <div class="table-wrap">
+      <table>
+        <caption>本批研究进展：给的是什么证据</caption>
+        <thead><tr><th>方向</th><th>公开口径</th><th>证据类型</th><th>还缺什么</th></tr></thead>
+        <tbody>
+          <tr><td>AlphaProof Code</td><td>四周 650 万行证明、Signal 协议验证</td><td>机器可核对的证明</td><td>规约是否独立审定</td></tr>
+          <tr><td>AlphaGenome 2</td><td>定位 DNA 变异对不同细胞的影响</td><td>模型预测</td><td>湿实验验证与临床口径</td></tr>
+          <tr><td>PAN 2</td><td>29B 物理世界模型、Apache 2.0、模拟 20 秒动作</td><td>开放权重与演示</td><td>与真实机器人误差</td></tr>
+          <tr><td>奖励作弊抑制</td><td>用权重算术把资源超限失败从 14.5% 降到 8%</td><td>论文结果（预印本）</td><td>过度外推会破坏输出</td></tr>
+          <tr><td>无训练数据机器人编程</td><td>伯克利与英伟达的多智能体工具链</td><td>开源工具链</td><td>真实产线复现</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p><b>其余几条各有各的证据等级。</b>MBZUAI 开源 29B 参数物理世界模型 PAN 2，把 LLM 规划器与扩散 Transformer 结合，最长可模拟 20 秒物理动作输出视频，采用 Apache 2.0<span class="src-tag">公开报道</span>；Google DeepMind 发布 AlphaGenome 2，目标是定位 DNA 变异对不同细胞的影响<span class="src-tag">公开报道</span>；还有研究用权重算术抑制奖励作弊，把资源超限失败从 14.5% 降到 8%，但作者也说明过度外推会破坏输出<span class="src-tag">预印本</span>。<b>这几条的证据强度并不相同，本报按各自等级标注，不混成一句「又有突破」。</b></p>
+    <p><b>回到主线。</b>形式化验证、开放权重、预印本实验，看起来都在模型这一侧，但它们能否被采纳，取决于同一件事：<b>别人能不能按你给的材料复核一遍</b>。规约、权重、实验设置，就是研究领域的「接口」。第 16 版提案里有一条正是把这套要求用回本报自己。</p>
+
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版学术</span>
+      </div>
+      <p>「解出来了」靠评委，「证出来了」靠验证器。<b>可真正让人不放心的，是那份验证器要检查的规约——它仍然是人写的，也可能被悄悄改弱。</b></p>
+    </aside>
+  </section>

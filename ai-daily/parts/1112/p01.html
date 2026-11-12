@@ -1,0 +1,56 @@
+<section class="lead" id="p01">
+    <article class="lead-main">
+      <div class="kicker">头版头条 · 模型没变，接口变了</div>
+      <h2>模型没变，接口变了<br><span class="h2-sub">今天这批更新，一条都没动模型</span></h2>
+      <p class="deck">Google 把 <b>A2UI 1.0</b><span class="src-tag">厂商口径</span> 推成首个稳定版：智能体不再只回文字，而是回一个可点的界面。同一天，SDK 给死循环装闸、云服务搬进本机。</p>
+      <div class="digest">
+        <div class="digest-h"><span>三行摘要 · 九十秒读完这一期</span><em>008 期</em></div>
+        <ol>
+          <li><i>01</i><span><b>输出换了形状</b>：A2UI 1.0 让智能体回界面，敏感数值不进模型。</span></li>
+          <li><i>02</i><span><b>护栏进了 SDK</b>：OpenRouter 四道闸，第三次重复调用就被拦下。</span></li>
+          <li><i>03</i><span><b>账单落在接口</b>：438 个 API 搬到本地、Python 3.10 被掐、联网按次计价。</span></li>
+        </ol>
+      </div>
+      <div class="byline">本报编辑部　综合报道　2026-11-12</div>
+      <div class="lead-body">
+        <p class="dropcap">11 月 11 到 12 日这两天，发布列表长得吓人，但把模型那一栏遮住，剩下的东西反而更有信息量。Google 把 <span class="term" tabindex="0">生成式 UI<i class="tip">让智能体不只回一段文字，而是描述一张界面该有什么；由应用用自己的组件把它画出来。</i></span> 协议推到 <b>A2UI 1.0</b>，官方称这是首个稳定版<span class="src-tag">厂商口径</span>；OpenRouter 在 Agent SDK 里加了四道防死循环的闸；AWS 把两百多款云服务的 <b>438</b> 个 API 模型搬进了本机模拟器；LangChain 全系把最低版本抬到 Python 3.11。<b>没有一条是「模型变强了」。</b></p>
+        <p>本报把这层东西叫「接口」。它不负责聪明，只负责三件很具体的事：<b>答案以什么形状交到人手上、失控的时候被谁兜住、升级的成本由谁付</b>。过去两年大家盯的是参数、榜单和价格，因为那是模型的事；这一批更新说明，决定能不能真的用起来的，开始是接口的事。</p>
+        <p>A2UI 的设计里藏着一句很不客气的话：官方博客把今天的人机交互比作计算机还待在终端时代——能力够用，但几乎全靠文字<span class="src-tag">公开报道</span>。它的解法不是让模型把文字写得更漂亮，而是让模型只描述「该显示什么」，由 <span class="term" tabindex="0">渲染器<i class="tip">把界面描述变成真正可点的控件的那层程序。网页用 React、Angular、Lit，移动端用 Flutter、SwiftUI 与 Jetpack Compose。</i></span> 拿应用自己的 <span class="term" tabindex="0">原生组件<i class="tip">应用自己写好的按钮、表单、图表，不是模型吐出来的一段 HTML。样式与交互由应用负责，模型只给内容。</i></span> 画出来。数据与子组件在服务端绑定，<b>敏感数值不进入模型</b><span class="src-tag">厂商口径</span>。一次回答从「一句话」变成「一张可以当场确认的表单」，这是形状的变化，不是分数的变化。</p>
+        <p>但同一份材料里也有一个不该被「1.0」盖过去的事实：企业要在 Gemini Enterprise 注册自己的 A2UI 智能体，文档写的仍是 <b>0.9.1</b><span class="src-tag">公开报道</span>；Android 的 Jetpack Compose 渲染器还标着 alpha<span class="src-tag">厂商口径</span>。本报把这叫 <span class="term" tabindex="0">协议版本漂移<i class="tip">同一协议在博客、企业控制台、各平台渲染器上停在的版本号不一致。稳定版说的是协议，不等于每条落地路径都升级完了。</i></span>：<b>「1.0 是现行版」和「你现在能全线用上 1.0」是两句话</b>。第 03 版把六个渲染器的成熟度列成表，第 12 版再算升级要付的代价。</p>
+        <p>另一侧的更新方向更朴素：给会自己跑的东西装闸。OpenRouter 说智能体最常见的失控不是「做坏事」，而是<b>反复调用一个失败的工具</b>——每一轮都把整段对话重发一遍，越跑越贵，放一夜可能烧掉几千美元<span class="src-tag">公开报道</span>。它加的四道闸里，没有一道在改模型，全在改调用层。第 05 版拆这四道闸，第 06 版给一份「接口变更五问」。</p>
+        <p>所以本期不写「谁又刷新了榜单」。今天真正该记下来的是：<b>当模型够用之后，竞争从「它会不会」移到「它怎么把结果交出来、出错了谁兜、换版本谁付钱」</b>。这三件事都不在权重里，却全在你每天要维护的代码里。</p>
+      </div>
+      <p class="jump">相关报道见第 03 版《一个协议，六个渲染器》、第 05 版《四道闸拦住的不是恶意》、第 06 版《接口变更五问》、第 12 版《谁来付兼容性这笔账》</p>
+      <aside class="razor">
+        <div class="razor-h">
+          <span class="razor-mark">锐评</span>
+          <span class="razor-src">本报评论员 · 针对本版头条</span>
+        </div>
+        <p>模型变强是新闻，模型没变而用法变了，通常只是发布说明里的一行。<b>今天这行字比榜单更该读</b>：它决定你要改多少代码，而不是要惊叹多久。</p>
+      </aside>
+    </article>
+
+    <aside class="lead-side">
+      <div class="side-block">
+        <h3>本期要闻</h3>
+        <ol class="headlines">
+          <li><b>界面</b>Google A2UI 1.0 上线，智能体用原生界面作答，Apache 2.0 开源</li>
+          <li><b>护栏</b>OpenRouter Agent SDK 加四道闸，第三次重复调用即被拦</li>
+          <li><b>本地</b>AWS 本地模拟器覆盖 200 多款云服务、438 个 API 模型</li>
+          <li><b>兼容</b>LangChain 全系新版最低 Python 3.11，3.10 留在 1.4.x</li>
+          <li><b>计价</b>Bedrock AgentCore 网页搜索 API：每 1000 次查询 7 美元</li>
+          <li><b>端侧</b>Tether BotPsy-0.8B 开放权重，BFCL v4 得分 44.0%</li>
+          <li><b>法规</b>纽约 RAISE Act 生效，关键事件 72 小时内报告</li>
+          <li><b>资本</b>Anthropic 更新 S-1，估值 1.4 万亿美元，代码 ANT</li>
+        </ol>
+      </div>
+      <div class="side-block">
+        <h3>本期五个数</h3>
+        <div class="stat"><div class="line"><span class="num">1.0</span><span class="unit">版</span></div><span class="cap">A2UI 首个稳定版；企业注册侧仍支持 0.9.1<span class="src-tag">公开报道</span></span></div>
+        <div class="stat"><div class="line"><span class="num">438</span><span class="unit">个</span></div><span class="cap">AWS 本地模拟器覆盖的 API 模型数<span class="src-tag">厂商口径</span></span></div>
+        <div class="stat"><div class="line"><span class="num">44.0</span><span class="unit">%</span></div><span class="cap">BotPsy-0.8B 在 BFCL v4 上的厂商自述得分<span class="src-tag">厂商口径</span></span></div>
+        <div class="stat"><div class="line"><span class="num">72</span><span class="unit">小时</span></div><span class="cap">纽约 RAISE Act 关键事件报告时限<span class="src-tag">公开报道</span></span></div>
+        <div class="stat"><div class="line"><span class="num">1.4</span><span class="unit">万亿美元</span></div><span class="cap">Anthropic 更新后 S-1 对应的估值，媒体口径</span></div>
+      </div>
+    </aside>
+  </section>

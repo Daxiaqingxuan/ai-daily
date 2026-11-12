@@ -1,0 +1,103 @@
+<section class="section" id="p16">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">本报提案 · 这一期想怎么改</span>
+      <span class="sec-page">第 16 版 / 共 16 版</span>
+    </div>
+
+    <p class="sec-lede">本版每期由四个身份各提一条改动建议，编号 <b>P009-1…4</b>：<b>读者</b>说哪里读着费劲，<b>编辑</b>说哪里做起来费劲，<b>创刊人</b>说哪里该往前一步，<b>AI</b> 说哪里可以自动化。<b>默认不执行</b>——创刊人点名「采纳 P009-2」才进施工；没人提，挂满三期自动记「否决（沉默）」。</p>
+
+    <div class="props">
+      <article class="prop">
+        <div class="prop-h"><span class="prop-role">读者</span><span class="prop-id">P009-1</span></div>
+        <h4>版本号后面，跟一句「这是哪条路径的」</h4>
+        <p>本期第 03 版列了张表：博客写 1.0、企业注册写 0.9.1、Android 渲染器还是 alpha。<b>建议正文里凡出现版本号，紧跟一个路径名</b>——协议 / SDK / 渲染器 / 企业控制台 / 运行环境，五选一。读者不必记住版本矩阵，看一眼就知道这句话说的是自己用的那一层还是别人的。</p>
+        <dl class="prop-meta">
+          <dt>为什么</dt><dd>本期头版专门花一段解释「1.0 不等于全线 1.0」，说明光靠上下文已经分不清</dd>
+          <dt>成本</dt><dd>小 · 两小时 · 写作规范加一条，拼版时检查版本号附近是否有路径词</dd>
+        </dl>
+        <div class="prop-st">待定 · <b>沉默即否决</b></div>
+      </article>
+
+      <article class="prop">
+        <div class="prop-h"><span class="prop-role">编辑</span><span class="prop-id">P009-2</span></div>
+        <h4>把「接口变更五问」固化成核查表</h4>
+        <p>第 06 版那张五问表是临时补的：变哪一层、我的路径版本、拦错怎么办、谁改代码、默认值有没有变。<b>建议做成工具类版面的固定表</b>，凡写协议 / SDK / 运行环境 / 默认开关的版面必填五格，填不出就写「未写明」，不许略过。这样下一期换个主线也不会漏。</p>
+        <dl class="prop-meta">
+          <dt>为什么</dt><dd>本周最容易被误读成「已全面可用」的，恰恰是这五格里的空白</dd>
+          <dt>成本</dt><dd>中 · 半天 · 版面模板加一张五格表 + 拼版时按版级来源检查</dd>
+        </dl>
+        <div class="prop-st">待定 · <b>沉默即否决</b></div>
+      </article>
+
+      <article class="prop">
+        <div class="prop-h"><span class="prop-role">创刊人</span><span class="prop-id">P009-3</span></div>
+        <h4>本报遇到口径打架，要标「未对齐」而不是挑一个</h4>
+        <p>第 15 版记了两条：Claude Meetings 有的材料写「即将到来」、有的写「已能现场听会」；A2UI 企业注册侧的协议版本也和博客不一致。本报这次按「部分可用」「未对齐」记，但这是临场决定。<b>建议把它写成硬规则：同一事实出现两种公开口径时，正文标「口径未对齐」并同时列出两处，不许替发布方选一个更顺的说法</b>。</p>
+        <dl class="prop-meta">
+          <dt>为什么</dt><dd>本期主线批评的正是「用一句好听的话盖住附带条款」，本报不能只对别人严格</dd>
+          <dt>成本</dt><dd>小 · 半天 · 信源表加一个标记位，事实卡允许两值并列</dd>
+        </dl>
+        <div class="prop-st">待定 · <b>沉默即否决</b></div>
+      </article>
+
+      <article class="prop">
+        <div class="prop-h"><span class="prop-role">AI</span><span class="prop-id">P009-4</span></div>
+        <h4>拼版时自动生成一页「版本矩阵」</h4>
+        <p>本期写 A2UI、LangChain、各渲染器各处的版本，全靠人工从材料里抄进表格。<b>建议让事实卡支持一个可选的版本字段，拼版时自动汇总成一张「组件 / 版本 / 状态 / 出处」矩阵</b>，附在报尾，公开面也可单独渲染。它不做判断，只把散在十六版里的版本号收在一起。</p>
+        <dl class="prop-meta">
+          <dt>为什么</dt><dd>版本漂移只有摆成一张表才看得出来；分散在正文里，读者只能信标题那句「已发布」</dd>
+          <dt>成本</dt><dd>中 · 一天 · 事实卡扩展字段 + 生成 <code>version-matrix.json</code> + 自检加一条对账</dd>
+        </dl>
+        <div class="prop-st">待定 · <b>沉默即否决</b></div>
+      </article>
+    </div>
+
+    <p class="prop-rule"><b>怎么算采纳：</b>创刊人在当期明确说「采纳 P009-2」才算；说「先放着」算待定，最多挂三期；<b>没说就是否决，不再追问</b>。已采纳的写进 <code>提案台账.md</code>，在下一期的台账里标「已落地」。</p>
+
+    <div class="table-wrap">
+      <table class="prop-ledger">
+        <caption>提案台账 · 全量明细见 <code>提案台账.md</code>，本表只放最近 8 条</caption>
+        <thead>
+          <tr><th>编号</th><th>视角</th><th>一句话</th><th>状态</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="id">P008-1</td><td>读者</td><td>给「开放」标清楚是哪一档</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P008-2</td><td>编辑</td><td>自主运行版面必答「怎么停」三问</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P008-3</td><td>创刊人</td><td>发布闸门改成不可绕过</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P008-4</td><td>AI</td><td>自动收一页「本期未答问题」</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P009-1</td><td>读者</td><td>版本号后面跟一句是哪条路径</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P009-2</td><td>编辑</td><td>接口变更五问固化成核查表</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P009-3</td><td>创刊人</td><td>口径打架要标「未对齐」</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P009-4</td><td>AI</td><td>自动生成一页版本矩阵</td><td class="st-wait">待定</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版四条提案</span>
+      </div>
+      <p>P009-3 是又一次把刀口对着自己。我们这期批评「用一句好听的话盖住附带条款」，转头就遇到两份材料打架——<b>那一刻最省事的做法是挑一个写得顺的，最该做的却是把两个都留着。</b></p>
+    </aside>
+  </section>
+
+  <div class="gloss" id="gloss">
+    <h5>名词速查 · 本期出现的 14 个词<span>正文里带虚线的词点一下就地解释；这张表留作索引</span></h5>
+    <div class="gloss-grid">
+      <dl><dt>生成式 UI / A2UI</dt><dd>智能体不只回文字，而是描述一张界面该有什么；由应用用自己的组件画出来。A2UI 是 Google 创建的开放协议。</dd></dl>
+      <dl><dt>渲染器</dt><dd>把界面描述变成真正可点控件的那层程序。网页用 React、Angular、Lit，移动端用 Flutter、SwiftUI 与 Jetpack Compose。</dd></dl>
+      <dl><dt>原生组件</dt><dd>应用自己写好的按钮、表单与图表，不是模型吐出的一段 HTML。样式与交互由应用负责，模型只给内容。</dd></dl>
+      <dl><dt>双向函数调用</dt><dd>界面上的控件可以反过来向智能体发起一次调用，例如选择器当场核查余位，而不必等人在文字里回复。</dd></dl>
+      <dl><dt>协议版本漂移</dt><dd>同一协议在博客、企业控制台、各平台渲染器上停在的版本号不一致。稳定版说的是协议，不等于每条路径都升完了。</dd></dl>
+      <dl><dt>死循环 / doom loop</dt><dd>模型不断重复同一组工具调用且没有退出条件。不需要恶意，只需要一个一直失败的工具和一个没有上限的循环。</dd></dl>
+      <dl><dt>步数与成本上限</dt><dd>给一次任务钉死「最多走几步、最多花多少钱」的两道闸。可靠是因为粗暴，代价是可能误伤快完成的任务。</dd></dl>
+      <dl><dt>本地模拟器</dt><dd>在本机复刻云服务接口的程序，让测试不必连真云。按服务给出保真度评分，说明「像不像」可以量化。</dd></dl>
+      <dl><dt>保真度</dt><dd>模拟器与真实服务行为一致的程度。按服务分别评分，意味着某些接口可放心本地测，另一些仍要上真云核。</dd></dl>
+      <dl><dt>端侧智能体</dt><dd>跑在手机或电脑本地的小模型，把请求转成工具调用而不上传个人数据。能力通常限于编排，不是通用对话。</dd></dl>
+      <dl><dt>工具调用 / tool call</dt><dd>模型不直接执行动作，而是输出「该调哪个工具、带什么参数」。执行与权限始终由应用掌握。</dd></dl>
+      <dl><dt>MCP 应用</dt><dd>跑在支持 MCP 的助手内部的小型界面。网页与 Flutter 渲染器都能在里面工作，同一条信息流可跨宿主显示。</dd></dl>
+      <dl><dt>兼容性账单</dt><dd>一次依赖或运行环境升级要改的东西：镜像、CI 矩阵、只旧版本验证过的插件。它是任务，不是机会。</dd></dl>
+      <dl><dt>形式化验证</dt><dd>用机器可逐步检查的严格语言写出证明，能被验证器逐行复核。可信度最终落在规约是谁写的、有没有被改弱。</dd></dl>
+    </div>
+  </div>

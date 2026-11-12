@@ -1,0 +1,34 @@
+<section class="section" id="p07">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">开源清单 · 四份权重，四种「能拿走」的程度</span>
+      <span class="sec-page">第 07 版 / 共 16 版</span>
+    </div>
+    <p class="sec-lede">本周真正把文件放出来的有四条，但「开源」在这四条里不是同一个意思：<b>许可、门控、可自托管、后续代码是否开放，是四件独立的事</b>。下表逐条拆开<span class="src-tag">厂商口径</span>。</p>
+
+    <p><b>美团 LongCat-2.5</b>：以 MIT 协议开源，总参数 <b>1.6 万亿</b>、每 token 激活约 <b>480 亿</b>，支持 100 万上下文，原生多模态把视觉信号转成离散 token 与文本共用主干<span class="src-tag">厂商口径</span>。推理用 W4A4 量化，并针对显存与带宽受限的国产算力芯片做了适配：单卡不足 80GB 时跨超节点分片，官方称长序列 SFT 单卡吞吐较 DDP 基线提升 86%。<b>这是四份里许可最干净的一份</b>——MIT 允许商用推理部署与二次训练，不需要额外授权。托管价 0.3 / 1.2 美元每百万 token，也可用 SGLang 自托管。</p>
+    <p><b>MiniMax H3-Image</b>：当天发布并开源权重，可直接生成 <b>4096×4096</b> 图像，官方称 10 到 20 秒出图、最多支持 16 张参考图，发布首周 16MP 及以上请求五折<span class="src-tag">厂商口径</span>。三个月前它刚开源视频模型 H3。要注意「开源权重」与「开源训练代码、数据」不是一回事，本报按发布材料只记前者。</p>
+    <p><b>NVIDIA GR00T 2</b>：20 亿参数的视觉-语言-动作模型，基于 Cosmos-Predict2.5，训练含 10 万小时第一视角视频。官方称在目标机器人未见的 50 项任务上，给一次示范平均成功率 71%、给五次示范提升到 95%，其中 40 项零样本完成；同步放出 Isaac Lab 3.0<span class="src-tag">厂商口径</span>。<b>但代码计划 12 月才开放</b>——现在能读到方法，能拿到的文件有限。这是「已宣布开源」与「已可下载」之间的典型时差。</p>
+    <p><b>开源智能体编排层</b>：Dexto、AgentSphere、Agent Relay、Dodaios v4.2.3 在两天内集中放出，共同点是本地优先、自带会话与工具编排、支持 MCP 或多种编码代理<span class="src-tag">公开报道</span>。Dodaios 用 Apache 2.0，把「多个编码代理并行跑」做进桌面界面，并对高风险动作要求用户批准。这一层不提供模型能力，提供的是<b>把停止键握在自己手里的位置</b>——本周主线里，它属于买方能自己补上的那一格。</p>
+    <p>把四条并排看，有一条很实用：<b>越是把权重放出来的，越不需要你信任发布方的停止机制，因为机器在你手里；越是只给 API 的，可停止性就越依赖对方写不写、写得细不细。</b>「开源」在本周不只是价格与自由的问题，它同时是控制权归属的问题。</p>
+
+    <div class="table-wrap">
+      <table>
+        <caption>四份开放的四个维度</caption>
+        <thead><tr><th>项目</th><th>许可</th><th>可自托管</th><th>文件状态</th><th>控制权在谁手里</th></tr></thead>
+        <tbody>
+          <tr><td>LongCat-2.5</td><td>MIT</td><td>可，SGLang</td><td>权重已放出</td><td>使用方</td></tr>
+          <tr><td>H3-Image</td><td>权重开源，口径未细列</td><td>可</td><td>权重已放出</td><td>使用方</td></tr>
+          <tr><td>GR00T 2</td><td>方法已公开</td><td>待代码</td><td>12 月计划开放</td><td>暂在发布方</td></tr>
+          <tr><td>编排层四项目</td><td>多为 Apache / 开源</td><td>本地优先</td><td>仓库可用</td><td>使用方</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版开源清单</span>
+      </div>
+      <p>「代码 12 月开放」不是坏消息，但也不是「已开源」。<b>把宣布日期当交付日期，是读开源公告最常犯的错</b>。能下载的那天，才轮到谈控制权。</p>
+    </aside>
+  </section>

@@ -1,0 +1,36 @@
+<section class="section" id="p03">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">能力底座 · 一个协议，六个渲染器</span>
+      <span class="sec-page">第 03 版 / 共 16 版</span>
+    </div>
+    <p class="sec-lede">A2UI 1.0 的核心不是「更好看的回答」，而是把责任切开：智能体只负责描述内容与意图，应用负责画、负责交互、负责数据绑定。协议以 <b>Apache 2.0</b> 许可开源<span class="src-tag">厂商口径</span>，由 Google 创建、CopilotKit 与社区参与贡献。</p>
+
+    <p><b>1.0 新增了什么。</b>最要紧的是 <b>双向函数调用</b><span class="src-tag">厂商口径</span>：界面上的控件可以反过来向智能体发起一次调用，例如航班或预约选择器当场核查余位，而不是把「请确认」写进文字里等人回复。另外补了无障碍支持与附加元数据的扩展。官方列出的智能体 SDK 从 Python 扩到 TypeScript 与 Dart，官方称可用于生成技能、翻译消息与纠错<span class="src-tag">厂商口径</span>。</p>
+    <p><b>渲染器是另一半，成熟度并不齐。</b>网页端有 React、Angular、Lit；Flutter 覆盖移动端、网页与桌面；iOS 用 SwiftUI；Android 用 Jetpack Compose，而官方明确说 Compose 渲染器仍是 alpha、1.0 支持「即将到来」<span class="src-tag">厂商口径</span>。网页与 Flutter 渲染器也能跑在 MCP 应用内，所以同一条信息流可以出现在支持 MCP 应用的助手里，例如 Claude 与 Gemini。</p>
+
+    <div class="table-wrap">
+      <table>
+        <caption>同一份 A2UI 消息，六条落地路径的成熟度</caption>
+        <thead><tr><th>路径</th><th>技术栈</th><th>官方状态</th><th>能跑在哪</th></tr></thead>
+        <tbody>
+          <tr><td>Web</td><td>React / Angular / Lit</td><td>1.0 可用</td><td>网页应用、MCP 应用</td></tr>
+          <tr><td>跨端</td><td>Flutter</td><td>1.0 可用</td><td>移动 / Web / 桌面、MCP 应用</td></tr>
+          <tr><td>iOS</td><td>SwiftUI</td><td>1.0 可用</td><td>原生 iOS 应用</td></tr>
+          <tr><td>Android</td><td>Jetpack Compose</td><td>alpha</td><td>原生 Android，1.0 待发布</td></tr>
+          <tr><td>企业注册</td><td>Gemini Enterprise</td><td>0.9.1</td><td>企业自有智能体</td></tr>
+          <tr><td>国内跨端</td><td>字节 Lynx 渲染器</td><td>已发布</td><td>Lynx GenUI Playground</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p><b>安全设计值得单独说。</b>智能体不产出可直接执行的界面代码，只描述「要显示什么」；每个应用用自己的组件绘制，数据与子组件在服务端完成绑定，<b>敏感数值不进入模型</b><span class="src-tag">厂商口径</span>。这同时解决了两件事：样式不会被模型带偏，以及财务数字不必经过上下文窗口。代价是应用方得自己实现渲染器——开源 SDK 把这件事的成本降下来了，但没降到零。</p>
+    <p><b>本报保留一个问号。</b>官方博客写「1.0 已是现行版本」，企业控制台仍写 0.9.1，Android 渲染器还是 alpha<span class="src-tag">公开报道</span>。这三句话同时为真，说明「协议稳定」与「全平台稳定」不是一回事。读者若按 1.0 去排期，最好先确认自己走的是哪条路径；第 12 版把这类成本列得更细。</p>
+
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版能力底座</span>
+      </div>
+      <p>一份协议最诚实的成熟度，不在首页的版本号里，在它六条落地路径各自的版本号里。<b>把它们列成一张表，比写「已全面可用」有用得多。</b></p>
+    </aside>
+  </section>

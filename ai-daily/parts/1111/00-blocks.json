@@ -1,0 +1,22 @@
+{
+  "legend": "版级来源说明这一版的信息主要来自哪里；执笔一律是 AI，报尾有内容声明。逐句出处见正文的论据标记，逐条归属见报尾信源表。",
+  "maxAiPages": 4,
+  "pages": {
+    "p01": { "origin": "official", "note": "Anthropic 与 OpenAI 的发布材料，含可停止性说明" },
+    "p02": { "origin": "ai", "note": "社论，本报观点，无外部信源" },
+    "p03": { "origin": "official", "note": "Google Gemini 4 Carbon 发布与定价说明" },
+    "p04": { "origin": "thirdparty", "note": "四家产品发布的多家媒体报道" },
+    "p05": { "origin": "official", "note": "六国联合声明与签约方公告" },
+    "p06": { "origin": "ai", "note": "方法论，本报自设的五问清单" },
+    "p07": { "origin": "official", "note": "四份模型卡、许可页与发布说明" },
+    "p08": { "origin": "thirdparty", "note": "安全公告与技术媒体报道" },
+    "p09": { "origin": "thirdparty", "note": "科研范式讲话与厂商能力自述" },
+    "p10": { "origin": "thirdparty", "note": "IPO 条款与电力采购的财经报道" },
+    "p11": { "origin": "official", "note": "Google TPU 发布与开源推理适配说明" },
+    "p12": { "origin": "thirdparty", "note": "收购、工具链与产品整合报道" },
+    "p13": { "origin": "official", "note": "北京发布会披露的阶段性运行数据" },
+    "p14": { "origin": "thirdparty", "note": "开源项目仓库与趋势榜" },
+    "p15": { "origin": "thirdparty", "note": "多家媒体报道聚合" },
+    "p16": { "origin": "ai", "note": "编辑部提案，本期自设" }
+  }
+}

@@ -1,0 +1,21 @@
+<section class="section" id="p13">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">落地 · 界面交出去之后，谁在用它</span>
+      <span class="sec-page">第 13 版 / 共 16 版</span>
+    </div>
+    <p class="sec-lede">协议、SDK、产线，三者今天都给出了具体场景。本报把「已经跑起来的」和「还在试点里的」分开写，避免一句「已落地」把成熟度抹平。</p>
+
+    <p><b>办公流：智能体在工作项里提问。</b>据官方博客，Atlassian 正把 A2UI 引入 Jira：团队可以把工作项指派给 AI 智能体，智能体需要补充细节或决策时，<b>不写一段长回复，而是在工作项内推一张交互卡片</b>，团队直接在 Jira 里作答<span class="src-tag">厂商口径</span>。Alation 用 A2UI 构建指标卡与图表信息流，每张图表可展开看背后的 SQL 查询；用户向 Claude 询问盈利产品信息流时，这条信息流可以在对话里渲染，也能在 Alation 内以近乎一致的布局查看<span class="src-tag">厂商口径</span>。<b>这就是 <span class="term" tabindex="0">MCP 应用<i class="tip">跑在支持 MCP 的助手内部的小型界面。网页与 Flutter 渲染器都能在 MCP 应用里工作，所以同一条信息流可以跨宿主显示。</i></span> 的意义</b>：同一份内容不必为 Claude 和自家应用各写一遍。</p>
+    <p><b>国内跨端：渲染器先于协议成熟。</b>字节跳动在 2026 年 6 月就为跨端框架 Lynx 发布了 A2UI 渲染器，其 Lynx GenUI Playground 能把 A2UI 消息原生渲染成「京都两日游规划」这类界面<span class="src-tag">公开报道</span>。<b>有意思的是时间差</b>：渲染器比协议 1.0 早了近半年，说明落地需求一直跑在标准前面；也说明第 03 版那张版本矩阵不是吹毛求疵，而是真实存在的状态。</p>
+    <p><b>产线：数字漂亮，条件要读全。</b>Google DeepMind 的 Gemini Robotics 2.5 与 Apptronik 合作，在匈牙利与德国的奔驰产线试运行，人形机器人 Apollo 2 分拣金属零件的报告成功率为 <b>96%</b><span class="src-tag">厂商口径</span>；该模型在 200 多项任务上做过测试，并同步开源安全基准 ASIMOV-jailbreak<span class="src-tag">公开报道</span>。英伟达 GR00T 2 从约 40 万小时人类操作视频学习机械臂动作，但任务成功率依任务不同在 10% 到 80% 之间大幅波动<span class="src-tag">公开报道</span>。<b>把 96% 和 10%–80% 并排放，才看得出「试运行」与「可推广」之间的距离。</b></p>
+    <p><b>还有一类落地是「默认被打开」。</b>微软把英国 Copilot 租户默认开放给 Claude 模型访问，管理员复核期限为 12 月 9 日<span class="src-tag">公开报道</span>；Gmail 的 Gemini 功能全量铺开至所有 Workspace 成年用户，Pixel 用户可在 Android Auto 中调用 Gemini Intelligence<span class="src-tag">公开报道</span>。这些无需部署、无需投票，<b>但它们才是这两天覆盖范围最大的一次「落地」</b>。</p>
+    <p><b>本版的读法。</b>「落地」至少有三种：写进别人产品的工作流、在真实产线上试运行、以及被默认开关推向所有用户。<b>三者的验证强度依次递减，反而是最后一种影响的人最多。</b>本报仍按 Evidence 分档写，不把它们合并成一句「大规模应用」。</p>
+
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版落地</span>
+      </div>
+      <p>产线上 96% 的成功率要写清是哪一种零件、哪一种光照；默认开关影响几百万人，却常常连一段说明都没有。<b>越不需要努力就生效的落地，越该被追问。</b></p>
+    </aside>
+  </section>

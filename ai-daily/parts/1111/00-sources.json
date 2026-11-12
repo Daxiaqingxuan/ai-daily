@@ -1,0 +1,29 @@
+{
+  "asOf": "2026-11-11",
+  "policy": "只做事实性引用，未转载全文",
+  "sources": [
+    { "id": "S01", "outlet": "Anthropic", "item": "Claude Fable 5.2 与 Mythos 5.2 发布：同底层、不同护栏，Fable 面向全部付费用户，Mythos 走验证计划", "kind": "官方发布", "usage": "事实性引用，未转载全文", "url": "https://www.163.com/dy/article/LBCD4HLI0519C6T9.html" },
+    { "id": "S02", "outlet": "Anthropic", "item": "官方称 Fable 5.2 可同时协调超过 1,000 个 AI 代理；千余子智能体 8 天搭出可启动的操作系统原型", "kind": "官方发布", "usage": "事实性引用，未转载全文", "url": "https://devpress.csdn.net/aibjcy/6af2911040858c2d88199878.html" },
+    { "id": "S03", "outlet": "OpenAI", "item": "Control Room：撤销任务 ID 后 35 秒内叫停内部研究模型，失败即拒绝，覆盖强化学习、评测与智能体采样", "kind": "官方发布", "usage": "事实性引用，未转载全文", "url": "https://www.toutiao.com/a7706696167589839410" },
+    { "id": "S04", "outlet": "Google", "item": "Gemini 4 Carbon 向开发者、企业与消费者全面开放，含 /swarm 多智能体预览", "kind": "官方发布", "usage": "事实性引用，未转载全文", "url": "http://mp.weixin.qq.com/s?__biz=MzI2OTYzMDY5MQ==&mid=2247486903&idx=1&sn=39eaf2f3074ada48b9ab7083cb9518ca" },
+    { "id": "S05", "outlet": "Google", "item": "Gemini 4 Carbon 定价与评测口径：三项真实工作流评测、智能体诚实度 92%、促销价 2/10 美元于 11 月 30 日后回到 4/20", "kind": "官方发布", "usage": "事实性引用，未转载全文", "url": "https://www.toutiao.com/a7706696167589839410" },
+    { "id": "S06", "outlet": "加拿大总理办公室等六国", "item": "11 月 9 日巴黎 AI 安全联合宣言：可比评估、披露能力与局限、支持独立评估、保留停止模型运行的机制", "kind": "官方发布", "usage": "事实性引用，未转载全文" },
+    { "id": "S07", "outlet": "美团 LongCat 团队", "item": "LongCat-2.5 以 MIT 协议开源：1.6 万亿总参数、每 token 激活约 480 亿、100 万上下文、W4A4 量化与国产芯片适配", "kind": "官方发布", "usage": "事实性引用，未转载全文", "url": "https://new.qq.com/rain/a/20261111A03BYG00" },
+    { "id": "S08", "outlet": "MiniMax", "item": "开源 H3-Image 权重：10 至 20 秒生成 4096×4096 图像，最多 16 张参考图，发布首周 16MP 及以上请求五折", "kind": "官方发布", "usage": "事实性引用，未转载全文", "url": "http://mp.weixin.qq.com/s?__biz=MzI2OTYzMDY5MQ==&mid=2247486903&idx=1&sn=39eaf2f3074ada48b9ab7083cb9518ca" },
+    { "id": "S09", "outlet": "NVIDIA", "item": "GR00T 2 视觉-语言-动作模型：20 亿参数、10 万小时第一视角视频训练，50 项任务一次示范 71%、五次示范 95%，代码计划 12 月开放", "kind": "官方发布", "usage": "事实性引用，未转载全文", "url": "https://devpress.csdn.net/aibjcy/6af2911040858c2d88199878.html" },
+    { "id": "S10", "outlet": "Meta", "item": "Muse Ember 轻量模型：100 万 token 上下文、最高输出 51.2 万 token，输入 0.10 美元 / 输出 0.50 美元每百万", "kind": "官方发布", "usage": "事实性引用，未转载全文", "url": "https://www.163.com/dy/article/LBC7ODB30514R9OJ.html" },
+    { "id": "S11", "outlet": "火山引擎", "item": "豆包编程模型 Doubao-Seed-Code 全量开放 API，称综合使用成本较业界平均低 62.7%", "kind": "官方发布", "usage": "事实性引用，未转载全文", "url": "http://mp.weixin.qq.com/s?__biz=MzI2OTYzMDY5MQ==&mid=2247486903&idx=1&sn=39eaf2f3074ada48b9ab7083cb9518ca" },
+    { "id": "S12", "outlet": "字节跳动 Seed", "item": "Seedream 5.5：连续百轮编辑保持非编辑区域像素稳定、原生 RGBA 分层输出，2K 方图编辑单张约 0.28 元", "kind": "官方发布", "usage": "事实性引用，未转载全文", "url": "https://devpress.csdn.net/aibjcy/6af2911040858c2d88199878.html" },
+    { "id": "S13", "outlet": "阿里", "item": "千问办公 2.0 上线 Team Agent，数字员工进钉钉群，自动任务关机后仍可云端运行", "kind": "官方发布", "usage": "事实性引用，未转载全文", "url": "https://devpress.csdn.net/aibjcy/6af2911040858c2d88199878.html" },
+    { "id": "S14", "outlet": "中科大脑 / 中关村论坛", "item": "北京发布 4 款城市智能体：数企通走访备参 1 小时变 1 分钟、智愈覆盖 200 余家医疗机构、灵熙填报耗时降 80%", "kind": "官方发布", "usage": "事实性引用，未转载全文", "url": "https://news.qq.com/rain/a/20261110A0DTFZ00" },
+    { "id": "S15", "outlet": "阿布扎比政府 / OpenAI", "item": "「机器可读政府」把法规转成 AI 可处理格式，每个结果对应具体条款并留审计记录，高风险决定不交 AI 自主处理", "kind": "官方发布", "usage": "事实性引用，未转载全文", "url": "https://devpress.csdn.net/aibjcy/6af2911040858c2d88199878.html" },
+    { "id": "S16", "outlet": "Google", "item": "11 月 9 日发布 TPU 8tx 与 8i Max，一年内集齐四款 TPU 系统，TPU 客户近 100 家", "kind": "官方发布", "usage": "事实性引用，未转载全文", "url": "https://devpress.csdn.net/aibjcy/6af2911040858c2d88199878.html" },
+    { "id": "S17", "outlet": "Anthropic / 财经媒体", "item": "IPO 初步条款：约 8.67 亿股、募资至多 693 亿美元、估值约 1.4 万亿美元，三季度收入近 170 亿美元且由盈转亏", "kind": "媒体报道", "usage": "事实性引用，未转载全文", "url": "http://mp.weixin.qq.com/s?__biz=MzI2OTYzMDY5MQ==&mid=2247486903&idx=1&sn=39eaf2f3074ada48b9ab7083cb9518ca" },
+    { "id": "S18", "outlet": "Air IT Group / PCR Research", "item": "504 位英国决策者调查：83% 无法证明部分 AI 支出的回报，47% 称算上核对与搭建后流程反而更慢，41% 称工具先于业务问题上马", "kind": "媒体报道", "usage": "事实性引用，未转载全文", "url": "https://www.preciseimpact.ai/briefing/ai-news-digest-2026-11-10" },
+    { "id": "S19", "outlet": "Vercel", "item": "安全审查上线不到一周：智能体发现 57,897 个漏洞、6,029 个严重或高危、自动修复 14,665 个", "kind": "官方发布", "usage": "事实性引用，未转载全文", "url": "https://www.toutiao.com/a7706696167589839410" },
+    { "id": "S20", "outlet": "Cognition", "item": "把 Mythos 5.2 接入 Devin 托管安全扫描，称提供超 1 亿美元额度，内部基准自测 73.5 未经第三方复核", "kind": "媒体报道", "usage": "事实性引用，未转载全文", "url": "https://www.toutiao.com/a7706696167589839410" },
+    { "id": "S21", "outlet": "OpenAI", "item": "收购 Python 工具链公司 Astral（uv / Ruff / ty），并曝出整合 ChatGPT、Codex 与 Atlas 的桌面「超级应用」计划", "kind": "媒体报道", "usage": "事实性引用，未转载全文", "url": "https://devpress.csdn.net/aibjcy/6af2911040858c2d88199878.html" },
+    { "id": "S22", "outlet": "上海人工智能实验室", "item": "周伯文谈 AI 与科学从 for 到 in 再到 and；10 月初数学家团队与大模型协同证明悬置 30 余年的三维 Ghys 猜想", "kind": "媒体报道", "usage": "事实性引用，未转载全文", "url": "http://mp.weixin.qq.com/s?__biz=MzI2OTYzMDY5MQ==&mid=2247486903&idx=1&sn=39eaf2f3074ada48b9ab7083cb9518ca" },
+    { "id": "S23", "outlet": "开源社区趋势榜", "item": "Dexto、AgentSphere、Agent Relay、Dodaios v4.2.3 四个开源智能体编排项目集中发布", "kind": "公开榜单", "usage": "事实性引用，未转载全文", "url": "https://www.aionradar.com/weekly/model-releases" }
+  ]
+}

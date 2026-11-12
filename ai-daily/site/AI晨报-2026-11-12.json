@@ -1,0 +1,58 @@
+{
+  "issue": "008",
+  "date": "2026-11-12",
+  "kind": "daily",
+  "file": "AI晨报-2026-11-12.html",
+  "title": "AI 晨报 · 2026年11月12日 · 第 008 期 · 模型没变，接口变了（共 16 版）",
+  "pages": 16,
+  "bytes": 135273,
+  "sha256": "91bdd8626056ea6cdb1754d90a812c681bc86e9d454ce76a4a9c659ecdd3b6b8",
+  "chars": 23436,
+  "terms": 9,
+  "glossary": 14,
+  "facts": {
+    "count": 18,
+    "reproduced": 0,
+    "byStrength": {
+      "media": 9,
+      "vendor": 9
+    },
+    "asOf": "2026-11-12",
+    "ids": [
+      "F01",
+      "F02",
+      "F03",
+      "F04",
+      "F05",
+      "F06",
+      "F07",
+      "F08",
+      "F09",
+      "F10",
+      "F11",
+      "F12",
+      "F13",
+      "F14",
+      "F15",
+      "F16",
+      "F17",
+      "F18"
+    ]
+  },
+  "missing_terms": [],
+  "generatedAt": "2026-11-12 11:17",
+  "checks": {
+    "pages_eq_nav": true,
+    "nav_matches_sections": true,
+    "sections_continuous": true,
+    "issue_in_title": true,
+    "pages_in_title": true,
+    "pages_all_match": true,
+    "digest_three": true,
+    "glossary_count_matches": true,
+    "terms_in_glossary": true,
+    "facts_card_valid": true
+  },
+  "ok": true,
+  "path": "AI晨报-2026-11-12.html"
+}

@@ -1,0 +1,1604 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 晨报 · 2026年11月12日 · 第 008 期 · 模型没变，接口变了（共 16 版）</title>
+<style>
+  :root{
+    --ink:#1b1a17;
+    --ink-soft:#3a3934;
+    --muted:#6d6a60;
+    --paper:#fbf8f0;
+    --paper-edge:#efeadd;
+    --rule:#1b1a17;
+    --rule-soft:#cfc8b6;
+    --accent:#8c1d18;
+    --serif:"Songti SC","STSong","Noto Serif SC","Source Han Serif SC","SimSun",Georgia,"Times New Roman",serif;
+    --sans:"Microsoft YaHei","PingFang SC","Hiragino Sans GB","Helvetica Neue",Arial,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
+  body{
+    margin:0;
+    background:var(--paper-edge);
+    color:var(--ink);
+    font-family:var(--serif);
+    font-size:14px;
+    line-height:1.78;
+  }
+  .page{
+    max-width:1180px;
+    margin:26px auto;
+    background:var(--paper);
+    padding:30px 46px 24px;
+    box-shadow:0 0 0 1px #e2dbca, 0 1px 2px rgba(0,0,0,.06);
+  }
+
+  /* ---------- 报头 ---------- */
+  .masthead{padding-bottom:10px;}
+  .mast-rule{height:3px;background:var(--rule);}
+  .mast-rule.double{height:1px;margin-top:6px;box-shadow:0 3px 0 var(--rule);}
+  .mast-top{
+    display:flex;justify-content:space-between;align-items:baseline;
+    font-family:var(--sans);font-size:11px;letter-spacing:.12em;
+    color:var(--muted);padding:9px 2px 2px;
+  }
+  .paper-name{
+    margin:6px 0 2px;
+    text-align:center;
+    font-size:72px;
+    line-height:1.1;
+    letter-spacing:.16em;
+    font-weight:700;
+    text-indent:.16em;
+  }
+  .paper-sub{
+    text-align:center;
+    font-family:var(--sans);
+    font-size:11px;
+    letter-spacing:.3em;
+    color:var(--muted);
+    text-indent:.3em;
+    padding-bottom:9px;
+  }
+  .mast-nav{
+    display:flex;justify-content:center;gap:15px;flex-wrap:wrap;
+    border-top:1px solid var(--rule-soft);
+    border-bottom:1px solid var(--rule);
+    padding:7px 0 6px;
+    font-family:var(--sans);font-size:10.5px;letter-spacing:.1em;color:var(--ink-soft);
+  }
+  .mast-nav a{color:inherit;text-decoration:none;white-space:nowrap;}
+  .mast-nav a:hover{color:var(--accent);}
+  .mast-nav b{color:var(--accent);font-weight:700;margin-right:3px;font-size:9.5px;vertical-align:1px;}
+
+  /* ---------- 头版 ---------- */
+  .lead{
+    display:grid;
+    grid-template-columns:1fr 306px;
+    gap:0;
+    border-bottom:2px solid var(--rule);
+    padding:22px 0 20px;
+  }
+  .lead-main{padding-right:30px;border-right:1px solid var(--rule-soft);}
+  .kicker{
+    font-family:var(--sans);font-size:10.5px;letter-spacing:.2em;
+    color:var(--accent);padding-bottom:6px;font-weight:700;
+  }
+  .lead h2{
+    margin:0 0 9px;
+    font-size:35px;line-height:1.32;letter-spacing:.01em;font-weight:700;
+  }
+  .lead h2 .h2-sub{font-size:26px;font-weight:700;letter-spacing:.02em;color:var(--ink-soft);}
+  .deck{
+    margin:0 0 9px;font-size:15.5px;line-height:1.7;color:var(--ink-soft);
+    padding-bottom:9px;border-bottom:1px solid var(--rule-soft);
+  }
+  .byline{
+    font-family:var(--sans);font-size:10.5px;letter-spacing:.1em;color:var(--muted);
+    margin-bottom:12px;
+  }
+  .lead-body{columns:2;column-gap:30px;column-rule:1px solid var(--rule-soft);text-align:justify;}
+  .lead-body p{margin:0 0 9px;font-size:13.8px;line-height:1.9;}
+  .dropcap::first-letter{
+    float:left;font-size:50px;line-height:.92;padding:2px 7px 0 0;font-weight:700;
+  }
+  .jump{
+    font-family:var(--sans);font-size:10.5px;letter-spacing:.06em;color:var(--muted);
+    margin-top:2px;padding-top:7px;border-top:1px solid var(--rule-soft);
+  }
+  .lead-side{padding-left:24px;}
+  .side-block{margin-bottom:20px;}
+  .side-block:last-child{margin-bottom:0;}
+  .side-block h3{
+    margin:0 0 8px;padding-bottom:5px;border-bottom:2px solid var(--rule);
+    font-family:var(--sans);font-size:11px;letter-spacing:.22em;font-weight:700;
+  }
+  .headlines{margin:0;padding:0;list-style:none;counter-reset:hn;}
+  .headlines li{
+    counter-increment:hn;
+    position:relative;
+    padding:5px 0 5px 22px;
+    border-bottom:1px dotted var(--rule-soft);
+    font-size:12.6px;line-height:1.62;
+  }
+  .headlines li::before{
+    content:counter(hn);
+    position:absolute;left:0;top:6px;
+    font-family:var(--sans);font-size:10px;color:var(--accent);font-weight:700;
+  }
+  .headlines li:last-child{border-bottom:none;}
+  .board{background:#f3eee1;padding:11px 12px 8px;border:1px solid var(--rule-soft);}
+  .stat{padding:6px 0;border-bottom:1px dotted var(--rule-soft);}
+  .stat:last-child{border-bottom:none;}
+  .stat .line{display:flex;align-items:baseline;gap:4px;}
+  .stat .num{font-family:Georgia,serif;font-size:23px;line-height:1.1;font-weight:700;letter-spacing:-.02em;}
+  .stat .unit{font-family:var(--sans);font-size:10px;color:var(--accent);letter-spacing:.06em;}
+  .stat .cap{display:block;font-family:var(--sans);font-size:10px;color:var(--muted);line-height:1.5;margin-top:1px;}
+
+  /* ---------- 版块通用 ---------- */
+  .section{border-bottom:2px solid var(--rule);padding:18px 0 16px;}
+  .section:target{background:#fdfbf4;}
+  .section-head{
+    display:flex;justify-content:space-between;align-items:center;
+    border-bottom:1px solid var(--rule);padding-bottom:6px;margin-bottom:13px;
+  }
+  .sec-label{
+    font-family:var(--sans);font-size:12px;letter-spacing:.24em;font-weight:700;
+  }
+  .sec-label::before{content:"";display:inline-block;width:9px;height:9px;background:var(--accent);margin-right:9px;vertical-align:1px;}
+  .sec-page{font-family:var(--sans);font-size:10px;letter-spacing:.12em;color:var(--muted);}
+
+  .cols-3{columns:3;column-gap:27px;column-rule:1px solid var(--rule-soft);}
+  .cols-2{columns:2;column-gap:30px;column-rule:1px solid var(--rule-soft);}
+  .story{break-inside:avoid;margin:0 0 15px;}
+  .story h4{margin:0 0 4px;font-size:17.5px;line-height:1.45;font-weight:700;}
+  .story h4.sm{font-size:15px;}
+  .story .tag{
+    font-family:var(--sans);font-size:10px;letter-spacing:.14em;color:var(--accent);
+    display:block;margin-bottom:3px;
+  }
+  .story p{margin:0 0 6px;font-size:13.1px;line-height:1.82;text-align:justify;color:var(--ink-soft);}
+  .story p:last-child{margin-bottom:0;}
+  .pullquote{
+    border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+    padding:8px 0;margin:8px 0 12px;
+    font-size:14px;line-height:1.7;font-weight:700;text-align:center;
+  }
+
+  /* ---------- 社论 ---------- */
+  .ed-title{font-size:31px;line-height:1.34;margin:0 0 8px;font-weight:700;letter-spacing:.01em;}
+  .ed-deck{
+    font-size:15px;line-height:1.7;color:var(--ink-soft);margin:0 0 10px;
+    padding-bottom:10px;border-bottom:1px solid var(--rule-soft);
+  }
+  .ed-body{columns:2;column-gap:30px;column-rule:1px solid var(--rule-soft);}
+  .ed-body p{margin:0 0 9px;font-size:13.6px;line-height:1.92;text-align:justify;}
+  .ed-sign{
+    font-family:var(--sans);font-size:10.5px;letter-spacing:.12em;color:var(--muted);
+    text-align:right;margin-top:4px;padding-top:6px;border-top:1px solid var(--rule-soft);
+  }
+
+  /* ---------- 图表 ---------- */
+  .figure{
+    margin:0 0 15px;border:1px solid var(--rule-soft);background:#f6f1e4;
+    padding:13px 16px 10px;break-inside:avoid;
+  }
+  .fig-title{
+    font-family:var(--sans);font-size:10.5px;letter-spacing:.16em;color:var(--accent);
+    font-weight:700;margin-bottom:11px;
+  }
+  .fig-cap{
+    font-family:var(--sans);font-size:10.2px;color:var(--muted);line-height:1.65;
+    margin-top:9px;padding-top:7px;border-top:1px solid var(--rule-soft);
+  }
+  .fig-cap b{color:var(--accent);}
+
+  /* ---------- 榜单表 ---------- */
+  .rank{width:100%;border-collapse:collapse;font-family:var(--sans);font-size:11.8px;}
+  .rank caption{
+    caption-side:top;text-align:left;font-family:var(--sans);font-size:10.3px;
+    letter-spacing:.06em;color:var(--muted);padding-bottom:6px;
+  }
+  .rank th{
+    text-align:left;font-size:10.3px;letter-spacing:.1em;color:var(--muted);
+    font-weight:700;padding:0 7px 6px 0;border-bottom:1.5px solid var(--rule);
+  }
+  .rank td{padding:6px 7px 6px 0;border-bottom:1px solid #ddd6c3;vertical-align:top;line-height:1.55;}
+  .rank th:last-child,.rank td:last-child{padding-right:0;}
+  .rank td.name{font-family:var(--serif);font-size:12.8px;font-weight:700;}
+  .rank td.num{font-family:Georgia,serif;white-space:nowrap;}
+  .rank td.up{color:var(--accent);white-space:nowrap;font-weight:700;}
+  .rank td.p{font-family:Georgia,serif;white-space:nowrap;text-align:right;padding-right:14px;}
+  .rank th.p{text-align:right;padding-right:14px;}
+  .rank tr:last-child td{border-bottom:none;}
+  .rank tr.hi td{background:#f4ecdc;}
+  .rank td.rz{font-family:var(--sans);font-size:10.5px;letter-spacing:.06em;color:var(--muted);text-align:right;white-space:nowrap;padding-right:0;}
+  .rank th.rz{text-align:right;padding-right:0;}
+  .rank.echo td{font-size:11.5px;}
+  .rank.echo td.name{font-size:13px;}
+  .sec-lede{
+    margin:0 0 14px;font-size:13.6px;line-height:1.78;color:var(--ink-soft);
+    text-align:justify;padding-bottom:10px;border-bottom:1px solid var(--rule-soft);
+  }
+
+  /* ---------- 行情注解 ---------- */
+  .note-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:14px;}
+  .note-box{border-left:2px solid var(--accent);padding:1px 0 1px 12px;}
+  .note-box h5{
+    margin:0 0 5px;font-family:var(--sans);font-size:10.5px;letter-spacing:.16em;font-weight:700;
+  }
+  .note-box ul{margin:0;padding-left:14px;}
+  .note-box li{font-size:12.4px;line-height:1.75;color:var(--ink-soft);margin-bottom:4px;}
+  .cost{margin:0;padding:0;list-style:none;}
+  .cost li{
+    display:flex;justify-content:space-between;gap:10px;
+    font-size:12.3px;padding:4px 0;border-bottom:1px dotted var(--rule-soft);
+  }
+  .cost li:last-child{border-bottom:none;}
+  .cost .v{font-family:Georgia,serif;font-weight:700;white-space:nowrap;}
+
+  /* ---------- 快讯与预告 ---------- */
+  .briefs{columns:3;column-gap:26px;column-rule:1px solid var(--rule-soft);margin:0;padding:0;list-style:none;}
+  .briefs li{
+    break-inside:avoid;padding:4px 0 4px 12px;position:relative;
+    font-size:12.4px;line-height:1.7;color:var(--ink-soft);
+  }
+  .briefs li::before{content:"";position:absolute;left:0;top:12px;width:4px;height:4px;background:var(--accent);}
+  .briefs b{color:var(--ink);}
+
+  .watch{margin-top:15px;border:1px solid var(--rule);padding:11px 14px 9px;}
+  .watch h5{
+    margin:0 0 7px;padding-bottom:5px;border-bottom:1px solid var(--rule);
+    font-family:var(--sans);font-size:11px;letter-spacing:.2em;font-weight:700;
+  }
+  .watch ul{margin:0;padding:0;list-style:none;}
+  .watch li{
+    display:flex;gap:14px;padding:5px 0;border-bottom:1px dotted var(--rule-soft);
+    font-size:12.4px;line-height:1.68;color:var(--ink-soft);
+  }
+  .watch li:last-child{border-bottom:none;}
+  .watch .d{
+    font-family:var(--sans);font-size:11px;color:var(--accent);font-weight:700;
+    white-space:nowrap;flex:0 0 66px;
+  }
+
+  /* ---------- 报尾 ---------- */
+  .colophon{
+    border-top:3px solid var(--rule);margin-top:16px;padding-top:10px;
+    font-family:var(--sans);font-size:10.3px;line-height:1.75;color:var(--muted);
+  }
+  .colophon .row{display:flex;justify-content:space-between;gap:20px;border-bottom:1px solid var(--rule-soft);padding-bottom:8px;margin-bottom:8px;flex-wrap:wrap;}
+  .colophon strong{color:var(--ink-soft);letter-spacing:.1em;}
+  .colophon p{margin:0 0 4px;}
+  .errata{border-left:2px solid var(--accent);padding:1px 0 1px 9px;margin:7px 0;}
+
+  /* ---------- 锐评 ---------- */
+  .razor{
+    margin:16px 0 0;padding:1px 0 2px 14px;
+    border-left:3px solid var(--accent);
+    break-inside:avoid;
+  }
+  .razor-h{
+    display:flex;align-items:center;gap:9px;flex-wrap:wrap;
+    font-family:var(--sans);margin-bottom:5px;
+  }
+  .razor-mark{
+    background:var(--accent);color:var(--paper);
+    font-size:10px;font-weight:700;letter-spacing:.18em;
+    padding:2px 8px 2px 9px;flex:0 0 auto;
+  }
+  .razor-src{font-size:9.8px;letter-spacing:.09em;color:var(--muted);}
+  .razor p{margin:0;font-size:13.2px;line-height:1.88;text-align:justify;color:var(--ink);}
+  .razor p b{color:var(--accent);}
+  .razor--reader .razor-mark{
+    background:transparent;color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent);
+    padding:1px 8px 1px 9px;
+  }
+
+  /* ---------- 右侧快捷目录 ---------- */
+  .rail{
+    position:fixed; left:50%; margin-left:602px; top:50%;
+    transform:translateY(-50%);
+    width:78px; z-index:60;
+    max-height:calc(100vh - 24px); overflow:auto;
+    background:var(--paper); border:1px solid #c9c1ad;
+    box-shadow:0 1px 4px rgba(0,0,0,.10);
+    font-family:var(--sans);
+    padding:5px 0 3px;
+  }
+  .rail-head{
+    font-size:9px;letter-spacing:.2em;color:var(--muted);text-align:left;
+    padding:1px 0 5px 9px;border-bottom:1px solid var(--rule-soft);margin-bottom:3px;
+    white-space:nowrap;
+  }
+  .rail-list{list-style:none;margin:0;padding:0;}
+  .rail-list a{
+    display:flex;align-items:center;gap:5px;text-decoration:none;color:var(--ink-soft);
+    padding:3px 0 3px 9px;font-size:10.5px;white-space:nowrap;line-height:1.55;
+  }
+  .rail-list a i{font-style:normal;font-size:9px;color:var(--accent);font-weight:700;width:13px;flex:0 0 13px;}
+  .rail-list a:hover{background:#f3eee1;}
+  .rail-list a.active{background:#f0e6d2;}
+  .rail-list a.active span{font-weight:700;color:var(--accent);}
+  .rail-top{
+    display:block;text-align:center;font-size:10.5px;color:var(--muted);text-decoration:none;
+    border-top:1px solid var(--rule-soft);margin-top:3px;padding:4px 0 1px;
+  }
+  .rail-top:hover{color:var(--accent);}
+
+  /* ---------- 深读卡 ---------- */
+  .deep{border-top:1px solid var(--rule-soft);padding-top:13px;margin-bottom:16px;}
+  .deep:first-of-type{border-top:none;padding-top:0;}
+  .deep-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
+  .deep-idx{
+    font-family:Georgia,serif;font-size:26px;font-weight:700;color:var(--accent);
+    line-height:1;letter-spacing:-.02em;
+  }
+  .deep-title{margin:0;font-size:23px;line-height:1.38;font-weight:700;}
+  .deep-repo{
+    font-family:var(--sans);font-size:10px;letter-spacing:.04em;color:var(--muted);
+    margin:3px 0 8px;
+  }
+  .deep-repo b{color:var(--ink-soft);}
+  .deep-tag{
+    display:inline-block;font-family:var(--sans);font-size:9.5px;letter-spacing:.12em;
+    color:var(--accent);border:1px solid var(--accent);padding:1px 6px;margin-bottom:5px;
+  }
+  .deep-body{columns:2;column-gap:28px;column-rule:1px solid var(--rule-soft);}
+  .deep-body p{margin:0 0 8px;font-size:13px;line-height:1.85;text-align:justify;color:var(--ink-soft);}
+  .deep-body p b{color:var(--ink);}
+  .k{
+    font-family:var(--sans);font-size:10px;letter-spacing:.14em;color:var(--muted);
+    display:block;margin-bottom:2px;
+  }
+  .cmd{
+    font-family:Consolas,"Courier New",monospace;font-size:11.6px;line-height:1.75;
+    background:#f4efe2;border-left:2px solid var(--accent);
+    margin:6px 0 9px;padding:7px 10px;white-space:pre-wrap;word-break:break-all;
+    color:#2b2a26;break-inside:avoid;
+  }
+  .cmd .c{color:#8a8577;}
+  .deep-warn{
+    font-size:12px;line-height:1.8;color:#3a3934;background:#f7ead9;
+    border-left:2px solid var(--accent);padding:6px 10px;margin:6px 0 0;break-inside:avoid;
+  }
+  .more-box{
+    margin-top:14px;border:1px solid var(--rule);padding:11px 14px 8px;break-inside:avoid;
+  }
+  .more-box h5{
+    margin:0 0 7px;padding-bottom:5px;border-bottom:1px solid var(--rule-soft);
+    font-family:var(--sans);font-size:11px;letter-spacing:.2em;font-weight:700;
+  }
+  .more-box p{margin:0 0 6px;font-size:12.4px;line-height:1.78;color:var(--ink-soft);}
+  .more-box p:last-child{margin-bottom:0;}
+  .more-box b{color:var(--ink);}
+
+  /* ---------- 思路拆解（第 06 版） ---------- */
+  .idea-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 30px;}
+  .idea{border-top:1px solid var(--rule);padding:11px 0 12px;break-inside:avoid;}
+  .idea-h{display:flex;align-items:baseline;gap:8px;margin-bottom:3px;}
+  .idea-idx{font-family:Georgia,serif;font-size:19px;font-weight:700;color:var(--accent);line-height:1;}
+  .idea-name{font-family:var(--sans);font-size:12.5px;font-weight:700;letter-spacing:.02em;color:var(--ink);}
+  .idea .idea-swap{margin:0 0 5px;font-size:15px;line-height:1.58;font-weight:700;color:var(--ink);text-align:left;}
+  .idea .idea-swap em{font-style:normal;color:var(--accent);}
+  .idea p{margin:0 0 4px;font-size:12.7px;line-height:1.78;color:var(--ink-soft);text-align:justify;}
+  .idea p b.lbl{font-family:var(--sans);font-size:10px;letter-spacing:.1em;color:var(--muted);font-weight:700;margin-right:5px;}
+  .idea p.take{margin:7px 0 0;padding:5px 0 0 9px;border-left:2px solid var(--accent);font-size:12.5px;line-height:1.7;color:var(--ink);}
+  .idea p.take b{display:block;font-family:var(--sans);font-size:9.6px;letter-spacing:.12em;color:var(--accent);font-weight:700;margin:0 0 1px;}
+
+  /* ---------- 平台回声：平台名即链接 ---------- */
+  .rank.echo td.name a{color:inherit;text-decoration:underline;text-decoration-style:dotted;text-decoration-color:#8f8674;text-decoration-thickness:1px;text-underline-offset:4px;}
+  .rank.echo td.name a:hover,.rank.echo td.name a:focus{color:var(--accent);text-decoration-color:var(--accent);}
+  .rank.echo td.name a:active{color:var(--accent);}
+
+  /* ---------- 宽表格与宽图：窄屏横向滚动，不挤压字 ---------- */
+  .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  .fig-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  .fig-hint{display:none;margin:7px 0 0;font-family:var(--sans);font-size:9.5px;color:var(--muted);text-align:center;letter-spacing:.06em;}
+
+  /* ---------- 窄屏目录（平板 / 手机） ---------- */
+  .mob-btn,.mob-panel{display:none;}
+
+  /* ---------- 怎么读（小白导航） ---------- */
+  .read-guide{
+    display:flex;flex-wrap:wrap;align-items:stretch;
+    border-bottom:1px solid var(--rule);background:#f6f1e4;
+    font-family:var(--sans);font-size:10.5px;color:var(--ink-soft);
+  }
+  .read-guide .rg-lead{
+    display:flex;align-items:center;padding:7px 13px;
+    background:var(--accent);color:var(--paper);
+    letter-spacing:.18em;font-weight:700;font-size:10px;white-space:nowrap;
+  }
+  .read-guide a{
+    flex:1 1 0;min-width:160px;padding:6px 13px;border-right:1px solid var(--rule-soft);
+    text-decoration:none;color:inherit;line-height:1.6;
+  }
+  .read-guide a:last-child{border-right:none;}
+  .read-guide a b{display:block;color:var(--accent);font-size:9.5px;letter-spacing:.12em;margin-bottom:1px;}
+  .read-guide a:hover{background:#efe8d6;}
+
+  /* ---------- 说人话 ---------- */
+  .plain{
+    margin:9px 0 12px;padding:8px 12px 8px 13px;background:#f6f1e4;
+    border-left:2px solid var(--ink);break-inside:avoid;
+  }
+  .plain .p-h{
+    display:block;font-family:var(--sans);font-size:9.5px;letter-spacing:.18em;
+    color:var(--accent);font-weight:700;margin-bottom:3px;
+  }
+  .plain p{margin:0;font-size:12.6px;line-height:1.82;color:var(--ink-soft);text-align:justify;}
+  .plain p b{color:var(--ink);}
+
+  /* ---------- 星探 ---------- */
+  .scout{display:grid;grid-template-columns:308px 1fr;border-bottom:1px solid var(--rule-soft);}
+  .scout-card{padding:2px 24px 14px 0;border-right:1px solid var(--rule-soft);}
+  .scout-card h5{
+    margin:0 0 8px;padding-bottom:5px;border-bottom:1px solid var(--rule);
+    font-family:var(--sans);font-size:10.5px;letter-spacing:.18em;font-weight:700;
+  }
+  .scout-row{
+    display:grid;grid-template-columns:66px 1fr 26px;align-items:center;gap:8px;
+    padding:4px 0;border-bottom:1px dotted var(--rule-soft);
+  }
+  .scout-row .lb{font-family:var(--sans);font-size:10.4px;color:var(--ink-soft);white-space:nowrap;}
+  .scout-row .bar{height:7px;background:#e7e0cf;position:relative;}
+  .scout-row .bar i{position:absolute;left:0;top:0;bottom:0;background:var(--accent);}
+  .scout-row .vl{font-family:Georgia,serif;font-size:12px;font-weight:700;text-align:right;}
+  .scout-total{
+    display:flex;align-items:baseline;justify-content:space-between;gap:8px;
+    margin-top:9px;padding-top:7px;border-top:1.5px solid var(--rule);
+  }
+  .scout-total .tn{font-family:Georgia,serif;font-size:31px;font-weight:700;line-height:1;letter-spacing:-.02em;}
+  .scout-total .tn em{font-style:normal;font-size:11.5px;color:var(--muted);letter-spacing:0;}
+  .scout-total .tt{font-family:var(--sans);font-size:9.6px;color:var(--muted);line-height:1.6;text-align:right;}
+  .veto{margin-top:11px;padding-top:8px;border-top:1px solid var(--rule-soft);}
+  .veto h6{
+    margin:0 0 5px;font-family:var(--sans);font-size:9.5px;letter-spacing:.16em;
+    color:var(--accent);font-weight:700;
+  }
+  .veto ul{margin:0;padding-left:13px;}
+  .veto li{font-family:var(--sans);font-size:10.2px;line-height:1.68;color:var(--muted);margin-bottom:2px;}
+  .veto li b{color:var(--ink-soft);}
+  .veto .out{margin-top:7px;font-family:var(--sans);font-size:9.8px;line-height:1.6;color:var(--ink-soft);}
+  .scout-main{padding:0 0 12px 26px;}
+  .scout-main .story h4{font-size:22px;line-height:1.36;}
+  .scout-body{columns:2;column-gap:26px;column-rule:1px solid var(--rule-soft);}
+  .scout-body p{margin:0 0 8px;font-size:12.9px;line-height:1.84;text-align:justify;color:var(--ink-soft);}
+  .scout-body p b{color:var(--ink);}
+
+  /* ---------- 名词速查 ---------- */
+  .gloss{border:1px solid var(--rule);padding:12px 15px 6px;margin-top:16px;break-inside:avoid;}
+  .gloss h5{
+    margin:0 0 8px;padding-bottom:5px;border-bottom:1px solid var(--rule);
+    font-family:var(--sans);font-size:11px;letter-spacing:.2em;font-weight:700;
+  }
+  .gloss h5 span{float:right;letter-spacing:.06em;font-size:9.6px;color:var(--muted);font-weight:400;}
+  .gloss-grid{columns:3;column-gap:26px;}
+  .gloss dl{margin:0;break-inside:avoid;}
+  .gloss dt{font-family:var(--sans);font-size:11.4px;font-weight:700;color:var(--accent);margin-top:6px;}
+  .gloss dd{margin:0 0 6px;font-size:12.1px;line-height:1.74;color:var(--ink-soft);}
+
+  @media (max-width:1389px){
+    .rail{display:none;}
+    .mob-btn{
+      display:flex;align-items:center;gap:7px;
+      position:fixed;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:90;
+      background:var(--paper);border:1px solid var(--rule);color:var(--ink);
+      font-family:var(--sans);font-size:12px;letter-spacing:.06em;
+      padding:9px 13px;box-shadow:0 2px 8px rgba(0,0,0,.18);cursor:pointer;
+      -webkit-tap-highlight-color:transparent;
+    }
+    .mob-btn i{font-style:normal;color:var(--accent);font-weight:700;font-size:14px;line-height:1;}
+    body.mob-open .mob-btn{background:var(--accent);border-color:var(--accent);color:#fbf8f0;}
+    body.mob-open .mob-btn i{color:#fbf8f0;}
+    .mob-panel{
+      display:none;position:fixed;left:0;right:0;bottom:0;z-index:89;
+      background:var(--paper);border-top:3px solid var(--rule);
+      max-height:78vh;overflow:auto;-webkit-overflow-scrolling:touch;
+      padding:14px 18px 20px;box-shadow:0 -8px 24px rgba(0,0,0,.22);
+    }
+    body.mob-open .mob-panel{display:block;}
+    .mob-panel h6{margin:0 0 8px;font-family:var(--sans);font-size:10px;letter-spacing:.2em;color:var(--muted);font-weight:400;}
+    .mob-panel .mob-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 18px;}
+    .mob-panel .mob-grid a{display:flex;align-items:baseline;gap:8px;text-decoration:none;color:var(--ink-soft);font-family:var(--sans);font-size:13px;padding:9px 0;border-bottom:1px solid var(--rule-soft);}
+    .mob-panel .mob-grid a i{font-style:normal;color:var(--accent);font-weight:700;font-size:10px;width:15px;flex:0 0 15px;}
+    .mob-panel .mob-grid a:active{background:#f3eee1;}
+    .mob-panel .mob-tip{margin:12px 0 0;font-family:var(--sans);font-size:10.5px;line-height:1.6;color:var(--muted);letter-spacing:.04em;}
+    .mob-panel .mob-top{
+      display:block;margin-top:10px;text-align:center;text-decoration:none;
+      font-family:var(--sans);font-size:12px;letter-spacing:.1em;color:var(--accent);
+      border:1px solid var(--rule-soft);padding:9px 0;
+    }
+    .mob-panel .mob-top:active{background:#f3eee1;}
+  }
+  @media (max-width:900px){
+    .page{padding:20px 18px 64px;}
+    .mast-nav{display:grid;grid-template-columns:repeat(5,1fr);justify-items:center;gap:5px 10px;}
+    .deep-body{columns:1;}
+    .deep-title{font-size:19px;}
+    .paper-name{font-size:42px;}
+    .lead{grid-template-columns:1fr;}
+    .lead-main{padding-right:0;border-right:none;}
+    .lead-side{padding-left:0;border-top:1px solid var(--rule-soft);padding-top:14px;}
+    .lead h2{font-size:27px;}
+    .lead-body,.cols-3,.cols-2,.briefs,.ed-body{columns:1;}
+    .note-grid{grid-template-columns:1fr;}
+    .ed-title{font-size:23px;}
+    .read-guide .rg-lead{flex:1 0 100%;justify-content:center;}
+    .read-guide a{flex:1 0 100%;border-right:none;border-bottom:1px solid var(--rule-soft);}
+    .scout{grid-template-columns:1fr;}
+    .scout-card{padding:0 0 12px;border-right:none;border-bottom:1px solid var(--rule-soft);}
+    .scout-main{padding:12px 0 0;}
+    .scout-body{columns:1;}
+    .gloss-grid{columns:1;}
+    .idea-grid{grid-template-columns:1fr;}
+    .idea .idea-swap{font-size:14.5px;}
+  }
+  @media (max-width:620px){
+    /* 报头：三块信息改为三行竖排，避免挤成一团 */
+    .mast-top{flex-direction:column;align-items:center;gap:1px;text-align:center;letter-spacing:.06em;line-height:1.7;}
+    .paper-sub{font-size:9.6px;letter-spacing:.14em;text-indent:.14em;}
+    .lead h2{font-size:23px;line-height:1.36;}
+    .lead h2 .h2-sub{font-size:19px;}
+    .ed-title{font-size:20px;}
+    .mast-nav{gap:4px 6px;font-size:10px;}
+    /* 宽表与宽图：保持可读字号，改为横向滑动 */
+    .rank{min-width:720px;}
+    .rank.echo{min-width:680px;}
+    .fig-scroll svg{min-width:780px;}
+    .fig-hint{display:block;}
+  }
+  @media print{
+    @page{margin:16mm 0;}
+    body{background:#fff;font-size:10.5pt;}
+    .page{box-shadow:none;margin:0;max-width:none;padding:0 12mm;}
+    .rail,.mob-btn,.mob-panel,.read-guide{display:none;}
+    .story,.figure,.deep,.idea,.razor,.plain,.note-box,.more-box,.watch,.gloss{break-inside:avoid;}
+    .section-head{break-after:avoid;}
+    .story h4,.deep-title,.ed-title,.lead h2{break-after:avoid;}
+    thead{display:table-header-group;}
+    a{color:inherit;text-decoration:none;}
+  }
+
+/* ---------- 特刊追加样式：第 16 版决议 + 头版三行摘要 + 术语注解 ---------- */
+
+/* 第 16 版：提案 / 决议卡 */
+.props{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:2px 0 16px;}
+.prop{border:1px solid var(--rule-soft);background:#f8f4e9;padding:12px 14px 9px;break-inside:avoid;
+      display:flex;flex-direction:column;}
+.prop-h{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--sans);font-size:10px;letter-spacing:.16em;color:var(--muted);}
+.prop-role{color:var(--accent);font-weight:700;letter-spacing:.18em;}
+.prop-role::before{content:"";display:inline-block;width:7px;height:7px;background:var(--accent);margin-right:7px;vertical-align:1px;}
+.prop-id{font-family:ui-monospace,Consolas,"Courier New",monospace;letter-spacing:.06em;}
+.prop h4{margin:6px 0 5px;font-size:15.5px;line-height:1.45;font-weight:700;}
+.prop p{margin:0 0 8px;font-size:12.4px;line-height:1.8;text-align:justify;color:var(--ink-soft);}
+.prop p b{color:var(--ink);}
+.prop code{font-family:ui-monospace,Consolas,"Courier New",monospace;font-size:11.2px;background:#efe9da;padding:0 3px;}
+.prop-meta{display:grid;grid-template-columns:auto 1fr;gap:2px 9px;margin:0 0 8px;font-size:11px;line-height:1.7;}
+.prop-meta dt{font-family:var(--sans);color:var(--muted);letter-spacing:.1em;white-space:nowrap;}
+.prop-meta dd{margin:0;color:var(--ink-soft);}
+.prop-st{font-family:var(--sans);font-size:10px;letter-spacing:.12em;color:var(--muted);border-top:1px dotted var(--rule-soft);padding-top:6px;margin-top:auto;}
+.prop-st b{letter-spacing:.06em;}
+.prop-st.ok b{color:#1f6b3a;}
+.prop-st.no b{color:var(--accent);}
+
+/* 第 16 版：决议表 */
+.prop-ledger{width:100%;border-collapse:collapse;font-size:11.5px;min-width:520px;}
+.prop-ledger caption{caption-side:top;text-align:left;font-family:var(--sans);font-size:10.5px;letter-spacing:.1em;color:var(--muted);padding-bottom:6px;}
+.prop-ledger th,.prop-ledger td{border-bottom:1px solid var(--rule-soft);padding:5px 10px 5px 0;text-align:left;vertical-align:top;}
+.prop-ledger th{font-family:var(--sans);font-size:10px;letter-spacing:.14em;color:var(--muted);font-weight:400;border-bottom:1px solid var(--rule);}
+.prop-ledger td.id{font-family:ui-monospace,Consolas,"Courier New",monospace;white-space:nowrap;}
+.prop-ledger tr:last-child td{border-bottom:none;}
+.prop-ledger .st-ok{color:#1f6b3a;font-weight:700;}
+.prop-ledger .st-no{color:var(--accent);}
+.prop-rule{margin:0 0 12px;font-size:11.5px;line-height:1.8;color:var(--muted);border-left:3px solid var(--rule-soft);padding-left:11px;}
+.prop-rule b{color:var(--ink);}
+
+/* 头版三行摘要（P004-1） */
+.digest{border-top:2px solid var(--rule);border-bottom:1px solid var(--rule-soft);margin:11px 0 6px;padding:8px 0 9px;}
+.digest-h{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--sans);font-size:9.5px;letter-spacing:.22em;color:var(--muted);margin-bottom:7px;}
+.digest-h em{font-style:normal;letter-spacing:.06em;color:var(--accent);}
+.digest ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:0 18px;}
+.digest li{display:flex;gap:8px;font-size:12.2px;line-height:1.72;color:var(--ink-soft);}
+.digest li+li{border-left:1px solid var(--rule-soft);padding-left:18px;}
+.digest li i{font-style:normal;font-family:var(--sans);font-size:10px;letter-spacing:.1em;color:var(--accent);padding-top:3px;}
+.digest li b{color:var(--ink);}
+
+/* 术语注解（P004-2）：虚线词，悬停 / 聚焦 / 点一下展开 */
+.term{position:relative;border-bottom:1px dashed var(--accent);cursor:help;color:inherit;}
+.term .tip{
+  position:fixed;left:0;top:0;z-index:40;
+  width:max-content;max-width:min(268px,74vw);
+  background:#241f16;color:#f7f2e4;
+  font-family:var(--sans);font-size:11.5px;font-style:normal;letter-spacing:0;line-height:1.7;
+  text-align:left;padding:8px 10px;border-radius:2px;
+  box-shadow:0 4px 14px rgba(0,0,0,.22);
+  opacity:0;visibility:hidden;pointer-events:none;transition:opacity .12s ease;
+}
+.term .tip::after{
+  content:"";position:absolute;top:100%;left:14px;
+  border:5px solid transparent;border-top-color:#241f16;
+}
+.term:hover .tip,.term:focus .tip,.term.on .tip{opacity:1;visibility:visible;}
+.term:focus{outline:none;}
+.term:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+
+@media (max-width:900px){
+  .props{grid-template-columns:1fr;}
+}
+/* 论据标记（P005-2）：一句话说清这个数字是谁说的、本报核没核过。
+   六档词表固定在 assemble_issue.SRC_LABELS，页面里不许自造说法。 */
+.src-tag{display:inline-block;font-family:var(--sans);font-size:9.3px;line-height:1.55;
+         letter-spacing:.06em;color:var(--muted);background:#f1ece0;
+         border:1px solid var(--rule-soft);padding:0 4px;margin:0 2px;
+         vertical-align:1px;white-space:nowrap;}
+.src-tag.low{color:var(--accent);border-color:#d8bbae;background:#fbf1ea;}
+.src-legend{display:flex;flex-wrap:wrap;gap:3px 12px;align-items:baseline;
+            border-top:1px dotted var(--rule-soft);margin:0 0 9px;padding-top:7px;
+            font-size:10.4px;line-height:1.95;color:var(--muted);}
+.src-legend b{font-family:var(--sans);letter-spacing:.12em;color:var(--ink-soft);font-weight:400;}
+.src-legend i{font-style:normal;flex:1 1 260px;}
+
+@media (max-width:720px){
+  /* 16 项导航：5 列会剩 1 个孤儿，改 4 列正好 4×4 */
+  .mast-nav{grid-template-columns:repeat(4,1fr);}
+  .digest ol{grid-template-columns:1fr;gap:0;}
+  .digest li+li{border-left:none;padding-left:0;border-top:1px dotted var(--rule-soft);margin-top:6px;padding-top:6px;}
+  .digest li{font-size:12.6px;}
+  /* 速查在手机上被压成 88px 窄条：显式给满宽 + 单列 */
+  .gloss-grid{columns:1;width:100%;column-gap:0;}
+  .gloss h5 span{float:none;display:block;margin-top:3px;line-height:1.6;}
+  /* 手机放不下五列：藏掉「落在哪」，四列才读得清（位置在下面卡片里都写了） */
+  .prop-ledger{min-width:0;font-size:11px;}
+  .prop-ledger th:nth-child(5),.prop-ledger td:nth-child(5){display:none;}
+  .prop-ledger th,.prop-ledger td{padding-right:8px;}
+  .prop-ledger td.id{font-size:10.5px;}
+  /* 手机首屏必须露出三行摘要：报头压到 400px 以内，读报指南只留「只有 3 分钟」 */
+  .mast-top{justify-content:center;gap:1px 12px;font-size:10px;letter-spacing:.06em;}
+  .mast-top span:nth-child(2){display:none;}
+  .paper-name{font-size:34px;}
+  .paper-sub{font-size:9.5px;letter-spacing:.08em;}
+  .read-guide a:nth-of-type(n+2){display:none;}
+  .read-guide{padding:7px 0 8px;}
+  /* 论据标记在 390px 上别把行撑开 */
+  .src-tag{font-size:8.8px;letter-spacing:0;margin:0 1px;}
+  .src-legend{font-size:10px;gap:2px 8px;}
+}
+@media print{
+  .props{grid-template-columns:1fr 1fr;}
+  .term .tip{display:none;}
+}
+
+/* 标签与它的解释必须同进同退，不能在中间折行（390px 上会拆成两半） */
+.src-legend .src-item{display:inline-flex;align-items:baseline;gap:4px;white-space:nowrap;}
+
+/* 板块来源（P006）：每版版头一个小标，说明这一版的信息主要来自哪里。
+   四档词表固定在 assemble_issue.ORG_LABELS；标的是「信息来自哪」，不是「谁执笔」。 */
+.sec-right{display:inline-flex;align-items:center;gap:9px;}
+.src-org{display:inline-block;font-family:var(--sans);font-size:9.5px;line-height:1.7;
+         letter-spacing:.08em;padding:0 6px;border:1px solid var(--rule-soft);
+         background:#f1ece0;color:var(--ink-soft);white-space:nowrap;}
+.src-org-official{background:#eaf1f8;border-color:#c4d6e8;color:#22506f;}
+.src-org-thirdparty{background:#f1ece0;border-color:var(--rule-soft);color:var(--muted);}
+.src-org-measured{background:#eaf3e6;border-color:#c6dcc0;color:#2c5c2a;}
+/* AI 生成用醒目的暖底：读者一眼能数出这期有多少版没有外部信源 */
+.src-org-ai{background:#fbf0e4;border-color:#d9b58f;color:#8a4a1c;}
+
+/* 报尾信源表：一条一行，带归属方与被引内容 */
+.sources{border-top:1px dotted var(--rule-soft);margin:0 0 9px;padding-top:7px;}
+.sources-h{display:flex;flex-wrap:wrap;gap:2px 10px;align-items:baseline;margin-bottom:4px;}
+.sources-h b{font-family:var(--sans);font-size:10.4px;letter-spacing:.12em;
+             font-weight:400;color:var(--ink-soft);}
+.sources-h i{font-style:normal;flex:1 1 320px;font-size:10.4px;line-height:1.8;color:var(--muted);}
+.sources ul{list-style:none;margin:0;padding:0;
+            columns:2;column-gap:22px;font-size:10.4px;line-height:1.85;}
+/* 每条用普通行内排版，不用 flex：flex + margin-left:auto 会把类型标签推到列右边界，
+   长条目（The Register 那条）只剩 40px，标签被拆成「官方发 / 布」竖着排。 */
+.sources li{break-inside:avoid;color:var(--ink-soft);padding-left:0;}
+.sources .src-out{color:var(--ink);font-weight:700;white-space:nowrap;margin-right:5px;}
+.sources .src-what{color:var(--ink-soft);}
+.sources .src-kind{font-family:var(--sans);font-size:9px;letter-spacing:.06em;
+                   color:var(--muted);border:1px solid var(--rule-soft);
+                   padding:0 3px;white-space:nowrap;margin-left:5px;
+                   display:inline-block;vertical-align:1px;}
+.sources-note{margin:5px 0 0;font-size:10px;line-height:1.8;color:var(--muted);}
+
+@media (max-width:720px){
+  .sec-right{gap:6px;}
+  .src-org{font-size:8.6px;letter-spacing:0;padding:0 5px;}
+  .sources ul{columns:1;}
+}
+@media print{
+  .sources ul{columns:2;}
+}
+
+/* ---------- 窄屏目录按钮：别压住正文 ----------
+   原来是 78×36 的常驻药丸，固定在右下角，手机首屏正好盖住三行摘要的末行。
+   现在改成 42×42 圆点、静止时略透明；向下滚动时收起，向上滚或回到顶部再出来。
+   写在这里而不是 00-style.html：那份逐期复制、没有模板源，而本文件模板里也有一份。 */
+@media (max-width:1389px){
+  .mob-btn{
+    width:42px;height:42px;padding:0;gap:0;justify-content:center;
+    font-size:0;border-radius:50%;opacity:.72;
+    transition:opacity .18s ease,transform .22s ease,background-color .18s ease;
+  }
+  .mob-btn i{font-size:16px;line-height:1;}
+  .mob-btn:hover,.mob-btn:active{opacity:1;}
+  .mob-btn:focus-visible{opacity:1;outline:2px solid var(--accent);outline-offset:2px;}
+  /* 收起：让开正文。mob-open 的规则放在后面，打开面板时一定可见。 */
+  body.mob-btn-tuck .mob-btn{opacity:0;transform:translateY(150%);pointer-events:none;}
+  body.mob-open .mob-btn{opacity:1;transform:none;pointer-events:auto;}
+  @media (prefers-reduced-motion:reduce){
+    .mob-btn{transition:none;}
+  }
+}
+</style>
+</head>
+<body>
+<div class="page" id="top">
+  <header class="masthead" data-thread="模型没变，接口变了">
+    <div class="mast-rule"></div>
+    <div class="mast-top">
+      <span>2026 年 11 月 12 日　星期四　北京时间 08:00</span>
+      <span>每版附锐评 · 第 16 版结算本期提案</span>
+      <span>第 008 期　模型没变，接口变了　共 16 版</span>
+    </div>
+    <h1 class="paper-name">AI 晨报</h1>
+    <div class="paper-sub">AI MORNING POST · 每日人工智能与智能体要闻 · 模型没变，接口变了</div>
+    <div class="mast-rule double"></div>
+    <nav class="mast-nav">
+      <a href="#p01"><b>01</b>头条</a>
+      <a href="#p02"><b>02</b>社论</a>
+      <a href="#p03"><b>03</b>能力底座</a>
+      <a href="#p04"><b>04</b>产品生态</a>
+      <a href="#p05"><b>05</b>深读</a>
+      <a href="#p06"><b>06</b>思路</a>
+      <a href="#p07"><b>07</b>开源清单</a>
+      <a href="#p08"><b>08</b>安全治理</a>
+      <a href="#p09"><b>09</b>学术</a>
+      <a href="#p10"><b>10</b>资本</a>
+      <a href="#p11"><b>11</b>算力本地</a>
+      <a href="#p12"><b>12</b>工具链</a>
+      <a href="#p13"><b>13</b>落地</a>
+      <a href="#p14"><b>14</b>星探</a>
+      <a href="#p15"><b>15</b>快讯</a>
+      <a href="#p16"><b>16</b>提案</a>
+    </nav>
+    <div class="read-guide">
+      <span class="rg-lead">怎么读</span>
+      <a href="#p01"><b>只有 3 分钟</b>头版「三行摘要」看清为什么今天这批更新都没有动模型</a>
+      <a href="#p05"><b>想看护栏</b>第 05 版拆 OpenRouter 的死循环四道闸：哪一道先拦、拦错了怎么办</a>
+      <a href="#gloss"><b>术语看不懂</b>正文带虚线的词点一下就地解释；报尾 14 词表留作索引</a>
+      <a href="#p16"><b>想改这份报纸</b>第 16 版四视角提建议，点名采纳才动工</a>
+    </div>
+  </header>
+<section class="lead" id="p01">
+    <article class="lead-main">
+      <div class="kicker">头版头条 · 模型没变，接口变了<span class="src-org src-org-official" title="Google A2UI 1.0 官方博客与协议文档">来源 · 官方</span></div>
+      <h2>模型没变，接口变了<br><span class="h2-sub">今天这批更新，一条都没动模型</span></h2>
+      <p class="deck">Google 把 <b>A2UI 1.0</b><span class="src-tag">厂商口径</span> 推成首个稳定版：智能体不再只回文字，而是回一个可点的界面。同一天，SDK 给死循环装闸、云服务搬进本机。</p>
+      <div class="digest">
+        <div class="digest-h"><span>三行摘要 · 九十秒读完这一期</span><em>008 期</em></div>
+        <ol>
+          <li><i>01</i><span><b>输出换了形状</b>：A2UI 1.0 让智能体回界面，敏感数值不进模型。</span></li>
+          <li><i>02</i><span><b>护栏进了 SDK</b>：OpenRouter 四道闸，第三次重复调用就被拦下。</span></li>
+          <li><i>03</i><span><b>账单落在接口</b>：438 个 API 搬到本地、Python 3.10 被掐、联网按次计价。</span></li>
+        </ol>
+      </div>
+      <div class="byline">本报编辑部　综合报道　2026-11-12</div>
+      <div class="lead-body">
+        <p class="dropcap">11 月 11 到 12 日这两天，发布列表长得吓人，但把模型那一栏遮住，剩下的东西反而更有信息量。Google 把 <span class="term" tabindex="0">生成式 UI<i class="tip">让智能体不只回一段文字，而是描述一张界面该有什么；由应用用自己的组件把它画出来。</i></span> 协议推到 <b>A2UI 1.0</b>，官方称这是首个稳定版<span class="src-tag">厂商口径</span>；OpenRouter 在 Agent SDK 里加了四道防死循环的闸；AWS 把两百多款云服务的 <b>438</b> 个 API 模型搬进了本机模拟器；LangChain 全系把最低版本抬到 Python 3.11。<b>没有一条是「模型变强了」。</b></p>
+        <p>本报把这层东西叫「接口」。它不负责聪明，只负责三件很具体的事：<b>答案以什么形状交到人手上、失控的时候被谁兜住、升级的成本由谁付</b>。过去两年大家盯的是参数、榜单和价格，因为那是模型的事；这一批更新说明，决定能不能真的用起来的，开始是接口的事。</p>
+        <p>A2UI 的设计里藏着一句很不客气的话：官方博客把今天的人机交互比作计算机还待在终端时代——能力够用，但几乎全靠文字<span class="src-tag">公开报道</span>。它的解法不是让模型把文字写得更漂亮，而是让模型只描述「该显示什么」，由 <span class="term" tabindex="0">渲染器<i class="tip">把界面描述变成真正可点的控件的那层程序。网页用 React、Angular、Lit，移动端用 Flutter、SwiftUI 与 Jetpack Compose。</i></span> 拿应用自己的 <span class="term" tabindex="0">原生组件<i class="tip">应用自己写好的按钮、表单、图表，不是模型吐出来的一段 HTML。样式与交互由应用负责，模型只给内容。</i></span> 画出来。数据与子组件在服务端绑定，<b>敏感数值不进入模型</b><span class="src-tag">厂商口径</span>。一次回答从「一句话」变成「一张可以当场确认的表单」，这是形状的变化，不是分数的变化。</p>
+        <p>但同一份材料里也有一个不该被「1.0」盖过去的事实：企业要在 Gemini Enterprise 注册自己的 A2UI 智能体，文档写的仍是 <b>0.9.1</b><span class="src-tag">公开报道</span>；Android 的 Jetpack Compose 渲染器还标着 alpha<span class="src-tag">厂商口径</span>。本报把这叫 <span class="term" tabindex="0">协议版本漂移<i class="tip">同一协议在博客、企业控制台、各平台渲染器上停在的版本号不一致。稳定版说的是协议，不等于每条落地路径都升级完了。</i></span>：<b>「1.0 是现行版」和「你现在能全线用上 1.0」是两句话</b>。第 03 版把六个渲染器的成熟度列成表，第 12 版再算升级要付的代价。</p>
+        <p>另一侧的更新方向更朴素：给会自己跑的东西装闸。OpenRouter 说智能体最常见的失控不是「做坏事」，而是<b>反复调用一个失败的工具</b>——每一轮都把整段对话重发一遍，越跑越贵，放一夜可能烧掉几千美元<span class="src-tag">公开报道</span>。它加的四道闸里，没有一道在改模型，全在改调用层。第 05 版拆这四道闸，第 06 版给一份「接口变更五问」。</p>
+        <p>所以本期不写「谁又刷新了榜单」。今天真正该记下来的是：<b>当模型够用之后，竞争从「它会不会」移到「它怎么把结果交出来、出错了谁兜、换版本谁付钱」</b>。这三件事都不在权重里，却全在你每天要维护的代码里。</p>
+      </div>
+      <p class="jump">相关报道见第 03 版《一个协议，六个渲染器》、第 05 版《四道闸拦住的不是恶意》、第 06 版《接口变更五问》、第 12 版《谁来付兼容性这笔账》</p>
+      <aside class="razor">
+        <div class="razor-h">
+          <span class="razor-mark">锐评</span>
+          <span class="razor-src">本报评论员 · 针对本版头条</span>
+        </div>
+        <p>模型变强是新闻，模型没变而用法变了，通常只是发布说明里的一行。<b>今天这行字比榜单更该读</b>：它决定你要改多少代码，而不是要惊叹多久。</p>
+      </aside>
+    </article>
+
+    <aside class="lead-side">
+      <div class="side-block">
+        <h3>本期要闻</h3>
+        <ol class="headlines">
+          <li><b>界面</b>Google A2UI 1.0 上线，智能体用原生界面作答，Apache 2.0 开源</li>
+          <li><b>护栏</b>OpenRouter Agent SDK 加四道闸，第三次重复调用即被拦</li>
+          <li><b>本地</b>AWS 本地模拟器覆盖 200 多款云服务、438 个 API 模型</li>
+          <li><b>兼容</b>LangChain 全系新版最低 Python 3.11，3.10 留在 1.4.x</li>
+          <li><b>计价</b>Bedrock AgentCore 网页搜索 API：每 1000 次查询 7 美元</li>
+          <li><b>端侧</b>Tether BotPsy-0.8B 开放权重，BFCL v4 得分 44.0%</li>
+          <li><b>法规</b>纽约 RAISE Act 生效，关键事件 72 小时内报告</li>
+          <li><b>资本</b>Anthropic 更新 S-1，估值 1.4 万亿美元，代码 ANT</li>
+        </ol>
+      </div>
+      <div class="side-block">
+        <h3>本期五个数</h3>
+        <div class="stat"><div class="line"><span class="num">1.0</span><span class="unit">版</span></div><span class="cap">A2UI 首个稳定版；企业注册侧仍支持 0.9.1<span class="src-tag">公开报道</span></span></div>
+        <div class="stat"><div class="line"><span class="num">438</span><span class="unit">个</span></div><span class="cap">AWS 本地模拟器覆盖的 API 模型数<span class="src-tag">厂商口径</span></span></div>
+        <div class="stat"><div class="line"><span class="num">44.0</span><span class="unit">%</span></div><span class="cap">BotPsy-0.8B 在 BFCL v4 上的厂商自述得分<span class="src-tag">厂商口径</span></span></div>
+        <div class="stat"><div class="line"><span class="num">72</span><span class="unit">小时</span></div><span class="cap">纽约 RAISE Act 关键事件报告时限<span class="src-tag">公开报道</span></span></div>
+        <div class="stat"><div class="line"><span class="num">1.4</span><span class="unit">万亿美元</span></div><span class="cap">Anthropic 更新后 S-1 对应的估值，媒体口径</span></div>
+      </div>
+    </aside>
+  </section>
+
+<section class="section" id="p02">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">社论 · 中间那一层，终于被看见了</span>
+      <span class="sec-right"><span class="src-org src-org-ai" title="社论，本报观点，无外部信源">来源 · AI 生成</span><span class="sec-page">第 02 版 / 共 16 版</span></span>
+    </div>
+    <p class="sec-lede">本报一直有个不太受欢迎的判断：一个系统好不好用，多半不取决于它最聪明的那一刻，而取决于它笨、它卡住、它要跟别的系统打招呼的那些时刻。这两天所有值得写的更新，都发生在这些时刻里。</p>
+
+    <p><b>第一层是输出。</b>文字是一种非常便宜的界面：模型随便说，人自己猜。它便宜到让人忘了代价——要确认一个日期、一个金额、一个选项，读者得把整段话再读一遍，再从里面挑出能点的东西。生成式 UI 把这一步搬回应用：模型只描述要显示什么，按钮和表单由应用画。<b>这不是体验优化，是把「确认」这件事从自然语言里赎回来。</b>它同时带来一个副作用：模型不再接触那些敏感数值，责任边界跟着清楚了。</p>
+    <p><b>第二层是护栏。</b>一个会自己调用工具的循环，最危险的时候不是它想做坏事，而是它太执着：工具失败、参数没变、再来一次。每重试一轮就把整段对话重发一遍，成本逐轮抬高，而循环本身没有任何「停」的信号。四道闸——检测、重复规则、步数上限、成本上限——听上去毫无想象力，但它们安装在正确的位置：<b>不是教模型别犯傻，是让系统不可能无限犯傻</b>。前者靠权重，后者靠代码，可靠性差着一个数量级。</p>
+    <p><b>第三层是成本与兼容。</b>把 438 个 API 搬进本机，省的不是钱，是「为了测一个分支去开一个云账号」这道手续；把最低版本从 3.10 抬到 3.11，动的不是能力，是几万条 CI 流水线；把联网搜索标成每千次查询 7 美元，改变的不是搜索质量，是智能体能不能被放进有预算的产品里。<b>这三条都是账，不是技术突破，但它们决定技术会不会被真的用上。</b></p>
+    <p>把这三层放在一起，本期的主线才成立：<b>模型没变，接口变了</b>。这不是说模型不重要，而是说当能力越过某个门槛之后，边际收益开始从「再强一点」转向「更稳地交出去」。过去我们评价一份发布，问的是它多了几个百分点；现在更该问三句：<b>答案长什么样、出错谁兜底、升级谁付钱</b>。</p>
+    <p>本报也要给这句话划个边界。接口层热闹，不代表底层停滞；今天同时有形式化验证、物理世界模型、端侧小模型在推进（见第 09、11 版）。但那些进展要变成生产环境里的东西，仍然要先穿过这层接口。<b>一个再强的模型，如果只能用一段含糊的文字把结果丢回来，读者照样得自己猜。</b>所以本期不把「接口」写成配角，它就是这两天的主角。</p>
+
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版社论</span>
+      </div>
+      <p>行业最爱发布「会做什么」，最不爱发布「做错了会怎样、换版本要改哪里」。<b>这两天难得的不是能力，是有人肯把后面两句写进发布说明。</b></p>
+    </aside>
+  </section>
+
+<section class="section" id="p03">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">能力底座 · 一个协议，六个渲染器</span>
+      <span class="sec-right"><span class="src-org src-org-official" title="A2UI 渲染器与智能体 SDK 官方文档">来源 · 官方</span><span class="sec-page">第 03 版 / 共 16 版</span></span>
+    </div>
+    <p class="sec-lede">A2UI 1.0 的核心不是「更好看的回答」，而是把责任切开：智能体只负责描述内容与意图，应用负责画、负责交互、负责数据绑定。协议以 <b>Apache 2.0</b> 许可开源<span class="src-tag">厂商口径</span>，由 Google 创建、CopilotKit 与社区参与贡献。</p>
+
+    <p><b>1.0 新增了什么。</b>最要紧的是 <b>双向函数调用</b><span class="src-tag">厂商口径</span>：界面上的控件可以反过来向智能体发起一次调用，例如航班或预约选择器当场核查余位，而不是把「请确认」写进文字里等人回复。另外补了无障碍支持与附加元数据的扩展。官方列出的智能体 SDK 从 Python 扩到 TypeScript 与 Dart，官方称可用于生成技能、翻译消息与纠错<span class="src-tag">厂商口径</span>。</p>
+    <p><b>渲染器是另一半，成熟度并不齐。</b>网页端有 React、Angular、Lit；Flutter 覆盖移动端、网页与桌面；iOS 用 SwiftUI；Android 用 Jetpack Compose，而官方明确说 Compose 渲染器仍是 alpha、1.0 支持「即将到来」<span class="src-tag">厂商口径</span>。网页与 Flutter 渲染器也能跑在 MCP 应用内，所以同一条信息流可以出现在支持 MCP 应用的助手里，例如 Claude 与 Gemini。</p>
+
+    <div class="table-wrap">
+      <table>
+        <caption>同一份 A2UI 消息，六条落地路径的成熟度</caption>
+        <thead><tr><th>路径</th><th>技术栈</th><th>官方状态</th><th>能跑在哪</th></tr></thead>
+        <tbody>
+          <tr><td>Web</td><td>React / Angular / Lit</td><td>1.0 可用</td><td>网页应用、MCP 应用</td></tr>
+          <tr><td>跨端</td><td>Flutter</td><td>1.0 可用</td><td>移动 / Web / 桌面、MCP 应用</td></tr>
+          <tr><td>iOS</td><td>SwiftUI</td><td>1.0 可用</td><td>原生 iOS 应用</td></tr>
+          <tr><td>Android</td><td>Jetpack Compose</td><td>alpha</td><td>原生 Android，1.0 待发布</td></tr>
+          <tr><td>企业注册</td><td>Gemini Enterprise</td><td>0.9.1</td><td>企业自有智能体</td></tr>
+          <tr><td>国内跨端</td><td>字节 Lynx 渲染器</td><td>已发布</td><td>Lynx GenUI Playground</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p><b>安全设计值得单独说。</b>智能体不产出可直接执行的界面代码，只描述「要显示什么」；每个应用用自己的组件绘制，数据与子组件在服务端完成绑定，<b>敏感数值不进入模型</b><span class="src-tag">厂商口径</span>。这同时解决了两件事：样式不会被模型带偏，以及财务数字不必经过上下文窗口。代价是应用方得自己实现渲染器——开源 SDK 把这件事的成本降下来了，但没降到零。</p>
+    <p><b>本报保留一个问号。</b>官方博客写「1.0 已是现行版本」，企业控制台仍写 0.9.1，Android 渲染器还是 alpha<span class="src-tag">公开报道</span>。这三句话同时为真，说明「协议稳定」与「全平台稳定」不是一回事。读者若按 1.0 去排期，最好先确认自己走的是哪条路径；第 12 版把这类成本列得更细。</p>
+
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版能力底座</span>
+      </div>
+      <p>一份协议最诚实的成熟度，不在首页的版本号里，在它六条落地路径各自的版本号里。<b>把它们列成一张表，比写「已全面可用」有用得多。</b></p>
+    </aside>
+  </section>
+
+<section class="section" id="p04">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">产品生态 · 办公与商业，都在抢那个入口</span>
+      <span class="sec-right"><span class="src-org src-org-thirdparty" title="多家媒体对办公与商业智能体发布的报道">来源 · 第三方信息网</span><span class="sec-page">第 04 版 / 共 16 版</span></span>
+    </div>
+    <p class="sec-lede">同一批公司这两天把智能体往两个方向塞：一头是团队内部的文档、表格与会议，一头是对外的品牌与购物。<b>两边抢的是同一个东西——用户在哪个界面里做决定。</b><span class="src-tag">公开报道</span></p>
+
+    <p><b>Anthropic 把 Claude 塞进协作物件。</b>新增 Sheets、Whiteboards、Data 三类产物，团队可以不切应用就让 Claude 建表格、整理想法、做数据看板；交互式连接器把 Adobe、Atlassian 等伙伴应用嵌进 Claude，Salesforce、NetSuite、Workday 的插件（测试版）自带销售、财务与人力技能<span class="src-tag">公开报道</span>。Claude Meetings 被描述为「即将到来」：进会议做记录、把讨论写成计划并更新文档。另一家媒体则报道它已能现场听会、在白板上画时间线、实时拉取工作应用数据<span class="src-tag">公开报道</span>。<b>两处口径不一致，本报按「部分可用、仍在限制中」记。</b></p>
+    <p><b>OpenAI 把品牌塞进 ChatGPT。</b>Businesses in ChatGPT 允许企业认领资料、更新营业信息、提交带价格与库存的商品源、查看客户互动；符合条件的美国电商与在线服务商还可以上线 <b>Business Agents</b>，在对话里回答问题、帮用户逛商品<span class="src-tag">公开报道</span>。该功能目前是 beta。这不是加一个聊天入口，而是把「搜索—比较—下单」的界面搬进对话。<b>谁定义那个界面，谁就离交易更近。</b></p>
+    <p><b>Google 与 Meta 在补外围。</b>Gemini Intelligence 扩到更多设备类别；Meta 的 Muse 助手上了 Apple Watch 与 Wear OS，可用语音通话、短信或听写唤起；Reddit 用 AI 把上万件商品的好恶汇总成产品评论<span class="src-tag">公开报道</span>。这些都不改模型，改的是「在哪儿能碰到它」。</p>
+    <p><b>把这一版和第 03 版并排放，会看出一条分岔。</b>A2UI 的路线是让智能体把界面交给应用画，应用保留样式与数据的控制权；办公与商业产品的路线是让智能体直接住进自家界面，用户不再离开。<b>前者是协议，后者是阵地</b>。两条路都承认同一件事：纯文字回答已经不够用了，但它俩对「谁拥有界面」给出了相反答案。这个分歧比任何一次跑分都更值得盯。</p>
+    <p>还有一处容易被忽略的默认值：微软把英国 Copilot 租户默认开放给 Claude 模型访问，管理员要在 12 月 9 日前复核设置，而数据处理在美国<span class="src-tag">公开报道</span>。<b>「默认开」属于接口层的决定，不是模型层的</b>；它把合规判断从「要不要接」改成了「有没有在截止日前关掉」。第 08 版接着讲这一层。</p>
+
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版产品生态</span>
+      </div>
+      <p>「我们支持某某模型」是能力问题，「默认就替你打开」是权力问题。<b>后一句通常藏在设置页里，而它才是真正会改流程的那一行。</b></p>
+    </aside>
+  </section>
+
+<section class="section" id="p05">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">深读 · 四道闸拦住的不是恶意</span>
+      <span class="sec-right"><span class="src-org src-org-official" title="OpenRouter Agent SDK 的四层防护说明">来源 · 官方</span><span class="sec-page">第 05 版 / 共 16 版</span></span>
+    </div>
+    <p class="sec-lede">OpenRouter 在 11 月 12 日给 Agent SDK 加了一组防护，针对的是智能体最平常、也最烧钱的一种失败：<b>反复调用一个失败的工具</b>。模型并没有变坏，只是没有任何东西告诉它「可以停了」<span class="src-tag">厂商口径</span>。</p>
+
+    <p><b>先把这个失败讲清楚。</b>工具报错、参数没改、模型再试一次——这是重试逻辑最自然的写法，问题在于每一轮都会把整段对话连同历史一起重发，于是下一轮比上一轮更贵。循环里没有退出条件，也没有预算概念；放着跑一夜，账单可能是四位数的美元<span class="src-tag">公开报道</span>。本报把它叫 <span class="term" tabindex="0">死循环<i class="tip">模型不断重复同一组工具调用且没有退出条件。它不需要任何恶意，只需要一个一直失败的工具和一个没有上限的循环。</i></span>：它不需要模型有任何恶意，只需要一个一直失败的工具和一个不会自己停的循环。</p>
+
+    <div class="table-wrap">
+      <table>
+        <caption>OpenRouter Agent SDK 的四道闸，各自拦的是什么</caption>
+        <thead><tr><th>闸</th><th>拦的对象</th><th>属于哪一层</th><th>没写清楚的部分</th></tr></thead>
+        <tbody>
+          <tr><td>死循环检测</td><td>整体是否在原地打转</td><td>调用序列</td><td>判定阈值与误报率未公布</td></tr>
+          <tr><td>重复调用规则</td><td>同一工具、同一参数反复出现</td><td>单次调用</td><td>参数略有变化是否算重复</td></tr>
+          <tr><td>步数上限</td><td>一次任务最多走几步</td><td>任务级</td><td>上限默认值与可调范围未公布</td></tr>
+          <tr><td>成本上限</td><td>一次任务最多花多少钱</td><td>任务级</td><td>按什么币种、含不含重试计费</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p><b>官方给出的测试结果很短：</b>在 <b>6 个模型</b>上测过，开启防护后模型在<b>第三次</b>重复调用被正确拦下，避免了意外的高额 API 支出<span class="src-tag">厂商口径</span>。本报没有独立复现这组数字，也不把它读成「所有循环都能拦住」——它说明的是这一组测试里的一种特定重复。官方同时说明，技术细节与推广计划尚未公布<span class="src-tag">公开报道</span>。<b>四道闸的清单是公开的，闸的高度目前不是。</b></p>
+    <p><b>为什么这条值得放深读。</b>过去一年，智能体出事的叙事都围着「越权」「越界」转，于是防护也多写在权限那一侧。但真实生产环境里最先烧掉预算的，往往是这种既不越权、也不恶意、只是停不下来的循环。<b>把「停」做进 SDK，意味着责任从「让模型更聪明」转到「让调用层有边界」</b>。这与第 03 版把界面交给应用画，是同一种思路：不指望权重解决问题，用代码把上限钉死。</p>
+    <p><b>还有一个容易被跳过的点：拦错了怎么办。</b>四道闸里任何一道误判，都会把一个本来快完成的任务砍断。步数上限和成本上限尤其如此——它们可靠，正是因为它们粗暴。发布材料目前没有说明被拦截后是返回可恢复状态、还是直接终止，也没有说明误报如何观测<span class="src-tag">公开报道</span>。<b>一道会误伤的闸，需要配套一条「怎么申诉」的路径；否则团队第一反应会是把它关掉。</b>本报把这一条记进第 15 版的观察清单，等后续文档补上。</p>
+
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版深读</span>
+      </div>
+      <p>最贵的智能体事故，通常没有惊心动魄的情节，只有一个谁也没写退出条件的 for 循环。<b>把上限写进 SDK，比再训练一次模型便宜得多，也可靠得多。</b></p>
+    </aside>
+  </section>
+
+<section class="section" id="p06">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">思路拆解 · 接口变更五问</span>
+      <span class="sec-right"><span class="src-org src-org-ai" title="方法论，本报自设的接口变更五问">来源 · AI 生成</span><span class="sec-page">第 06 版 / 共 16 版</span></span>
+    </div>
+    <p class="sec-lede">本期写到的更新几乎都不是「模型变强」，而是「模型怎么把结果交出来」。这类发布最容易在标题里被读成「已全面可用」，也最容易在升级时把账留给你。本报把它做成五个可以照着问的问题，<b>不需要专业知识，只需要在排期之前问一遍</b>。本版是本报自设的方法，不代表任何厂商口径。</p>
+
+    <p><b>第一问：变的是哪一层？</b>是模型、协议、SDK、渲染器，还是默认值？A2UI 1.0 变的是协议，Android 渲染器没跟着变；LangChain 变的是运行环境要求，模型能力一点没动；微软把英国租户默认开放给 Claude，变的既不是模型也不是协议，只是一个开关的初始值。<b>先定位层级，才知道该通知谁。</b></p>
+    <p><b>第二问：我走的这条路径，版本号是多少？</b>「1.0 是现行版」和「你用的那条路径支持 1.0」不是一回事。企业注册处仍写着 0.9.1，Compose 渲染器还是 alpha。<b>把博客里的版本号抄进排期表，是这类升级最常见的翻车方式</b>；正确的做法是把自己实际依赖的组件逐个列出来，各记一个版本。</p>
+    <p><b>第三问：出错时，谁兜底、拦错了怎么办？</b>四道闸解决的是「停不下来」，但它们也会带来「被误停」。问清三件事：拦截后返回什么状态、能否从断点继续、有没有误报的观测口径。<b>只写「我们加了保护」而不写「保护误伤时怎么恢复」，等于把问题从账单挪到了可用性。</b></p>
+    <p><b>第四问：升级要改谁的代码，谁付这笔钱？</b>把最低版本抬到 Python 3.11，成本落在每一条 CI 流水线上；把界面改成原生组件，成本落在应用前端；把云 API 搬进本地模拟器，反而是在替你省手续。<b>同一份发布说明里，有的改动替你省钱，有的改动给你派活</b>——把它们分开列，才知道该高兴还是该排期。</p>
+    <p><b>第五问：默认值有没有被悄悄改掉？</b>「默认开」是最容易被漏掉的一种接口变更：没有新 API、没有新文档，但数据流向变了。英国 Copilot 租户那个 12 月 9 日的复核期限，就属于这一类。<b>发布说明不写它，设置页里写着它</b>；每期至少翻一次自己租户的默认开关。</p>
+
+    <div class="table-wrap">
+      <table>
+        <caption>用五问过一遍本期的五条更新</caption>
+        <thead><tr><th>问题</th><th>A2UI 1.0</th><th>OpenRouter 四闸</th><th>aws-emulator</th><th>LangChain 新版</th><th>Copilot 默认值</th></tr></thead>
+        <tbody>
+          <tr><td>变哪一层</td><td>协议 + SDK</td><td>调用层</td><td>测试环境</td><td>运行环境</td><td>配置默认值</td></tr>
+          <tr><td>我的路径版本</td><td>需逐个核对</td><td>SDK 版本</td><td>按服务看保真度</td><td>3.11 起</td><td>租户设置</td></tr>
+          <tr><td>拦错怎么办</td><td>不适用</td><td>未写明</td><td>保真度有评分</td><td>可留 1.4.x</td><td>可手动关闭</td></tr>
+          <tr><td>谁改代码</td><td>应用前端</td><td>接入 SDK 方</td><td>测试脚本</td><td>全部 CI</td><td>管理员</td></tr>
+          <tr><td>默认值变化</td><td>无</td><td>防护需开启</td><td>遥测默认开</td><td>无</td><td>默认允许</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p><b>问完给一个三档反应。</b>第一档「可以直接排期」：变的层级清楚、自己依赖的组件版本对得上、失败路径有说明。第二档「先小范围试」：协议或 SDK 稳定，但自己那条路径还在 alpha，或者误伤恢复没写。第三档「只记不动」：只有版本号和态度，没有版本矩阵、没有失败路径。<b>本期大部分更新落在第二档</b>——不是因为东西不好，而是因为「全平台可用」这句话还没被写成可核对的表。</p>
+    <p><b>最后说这套方法自己的边界。</b>五问能识别措辞上的含糊，识别不出方向上的错误；一份五问全答得很好的协议，也可能把一件本来不该交给智能体的事做得更顺手。<b>它只是第一道闸，后面仍需要一次小规模真实自测。</b></p>
+
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版五问</span>
+      </div>
+      <p>第二问最烦人，也最值钱。<b>「已发布 1.0」是一句话，「我这条路径是 1.0」是另一句话</b>；把两句混成一句，升级当天就会有人加班。</p>
+    </aside>
+  </section>
+
+<section class="section" id="p07">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">开源清单 · 六个项目，四种「省事」</span>
+      <span class="sec-right"><span class="src-org src-org-official" title="六个开源项目的仓库与许可说明">来源 · 官方</span><span class="sec-page">第 07 版 / 共 16 版</span></span>
+    </div>
+    <p class="sec-lede">11 月 11 日的开源榜单几乎被「围绕智能体的工具」占满。它们不训练模型，只替你把模型外面那圈麻烦事做掉：看懂别人的程序、把它关进笼子、教它怎么教人、以及不用云账号就能测代码。本版按「省的是什么事」归类，不按热度排。</p>
+
+    <p><b>省掉「看不懂」。</b>morluto/rea 让编码智能体在没有源码的情况下逆向一个应用：通过 Hopper 或 Ghidra 看原生二进制，也能看 JavaScript / Electron 应用、.NET 程序集和网站，最后连证据与结论的边界一起给出，分析在本机跑<span class="src-tag">公开报道</span>。storytold/craft-anything 走得更远，用净室方式观察可见行为再让智能体重建，早期 alpha，314 个工具同时可作 CLI 与 MCP 用。<b>这两件东西改变的不是模型能力，是它能被指派去读什么。</b></p>
+    <p><b>省掉「管不住」。</b>Lee-xeo/Claude-Cage 把 Claude Code 与 Claude Desktop 放进隔离虚拟机，网络走代理、时区与语言跟随出口节点，只共享你选中的项目目录，还能在配对手机上继续或批准会话<span class="src-tag">公开报道</span>。和第 05 版的四道闸一样，这是把边界写在环境里，而不是指望模型自觉。</p>
+    <p><b>省掉「不会教」。</b>两份技能包值得放在一起看：Jane Street 的 agent_skills 只带一个 socratic-tutor 技能，先做诊断、画 0 到 5 级的技能图、一次只问一个问题、安排间隔复习；GoogleChrome/modern-web-guidance 由 Chrome、Edge、Firefox 与 MDN 团队共同维护，给编码智能体喂现代 Web 平台的策展指南，还能扫代码库里的旧写法<span class="src-tag">公开报道</span>。<b>「技能」这一层正在变成可分发的东西</b>，而它恰好也不改一个权重。</p>
+    <p><b>省掉「测不了」。</b>aws/aws-emulator 是 Rust 写的本地 AWS API 模拟器：起一个实例，把 AWS CLI 或 SDK 指过去，无需账号就能对着模拟资源调试；每个版本按服务公布保真度评分，覆盖 200 多款云服务、<b>438</b> 个 API 模型<span class="src-tag">厂商口径</span>。它默认开启用量遥测，这一点在把它接进内网之前值得先看一眼。meta/astryx 则把内部用了八年的设计系统开源：150 多个 React 19 组件、七套主题，安装就是普通 CSS 加带类型的组件，<b>刻意做成智能体和人用起来一样顺</b><span class="src-tag">公开报道</span>。</p>
+
+    <div class="table-wrap">
+      <table>
+        <caption>六个项目：省掉的事、许可与保留意见</caption>
+        <thead><tr><th>项目</th><th>省掉的事</th><th>形态</th><th>本报保留意见</th></tr></thead>
+        <tbody>
+          <tr><td>rea</td><td>读懂没有源码的程序</td><td>TypeScript 工具集</td><td>逆向结论的适用范围要看证据栏</td></tr>
+          <tr><td>Claude-Cage</td><td>隔离运行与配额管理</td><td>Go 桌面工作台</td><td>虚拟机不等于权限最小化</td></tr>
+          <tr><td>agent_skills</td><td>把教学法交给智能体</td><td>SKILL.md 技能包</td><td>目前只有一个技能</td></tr>
+          <tr><td>modern-web-guidance</td><td>让智能体别写旧 Web 代码</td><td>浏览器厂商策展指南</td><td>指南覆盖范围之外的框架不管</td></tr>
+          <tr><td>aws-emulator</td><td>不开云账号就能测</td><td>Rust 本地服务</td><td>保真度按服务不一，遥测默认开</td></tr>
+          <tr><td>astryx</td><td>界面组件不必现搭</td><td>React 组件库（beta）</td><td>beta 期 API 仍可能变</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p><b>把这六件摆在一起看，本期主线就更清楚了。</b>它们不比参数、不刷榜，全部在处理「模型之外」：输入怎么拿到、运行怎么圈住、知识怎么喂、代码怎么测、界面怎么画。<b>一个生态成熟的标志，往往不是又多了个大模型，而是这类不起眼的工具开始成批出现。</b></p>
+
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版开源清单</span>
+      </div>
+      <p>最值钱的开源项目常常一点也不炫：它只是把一件你每周都要做、又没人愿意写进发布说明的脏活做掉了。<b>本周这六个，全属于这一类。</b></p>
+    </aside>
+  </section>
+
+<section class="section" id="p08">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">安全治理 · 生效的是时限，不是态度</span>
+      <span class="sec-right"><span class="src-org src-org-thirdparty" title="法规生效、Git 漏洞与安全事件报道">来源 · 第三方信息网</span><span class="sec-page">第 08 版 / 共 16 版</span></span>
+    </div>
+    <p class="sec-lede">本周治理侧最实的一条不是宣言，是一个带数字的法律义务：纽约 RAISE Act 已生效，前沿开发商要在规定时限内登记、公开安全框架、报告关键事件。<b>有截止日的承诺，才第一次可以被核对。</b><span class="src-tag">公开报道</span></p>
+
+    <p><b>义务写成了四件可查的事。</b>营收 5 亿美元以上的前沿开发商须在 1 月 1 日前登记、发布安全框架、关键事件 <b>72 小时</b>内报告，并出具透明度报告；重复违规最高可罚 300 万美元。州里同时拿出 5,500 万美元在 SUNY Binghamton 设 AI 安全研究中心<span class="src-tag">公开报道</span>。报道把它与加州、伊利诺伊放在一起看，认为州层面正在填补联邦空档。<b>本报不评价这条法律好坏，只指出它的形态：它有主体、有时限、有罚则，因此下一期可以回来核。</b></p>
+    <p><b>工具链那一侧是另一种紧迫。</b>Git 一次修了六个漏洞，波及递归克隆、引用处理、合并、二进制补丁与导入；任何自建 Git 服务或 CI 流水线的团队都该尽快打补丁<span class="src-tag">公开报道</span>。另有远程访问服务商 N-able 在研究者公布大量未修复漏洞后，建议自托管客户先把服务器下线<span class="src-tag">公开报道</span>。<b>这两条都不是模型安全问题，但都长在智能体真正要跑的基础设施上。</b>第 07 版那些本地工具越方便，这一层的补丁就越不能拖。</p>
+    <p><b>默认值也算治理。</b>微软把英国 Copilot 租户默认开放给 Claude 模型访问，管理员要在 12 月 9 日前复核，而数据处理发生在美国<span class="src-tag">公开报道</span>。它不需要任何新 API，也不需要用户点同意，却改变了数据流向。<b>把「默认开」当成配置项而不是治理决定，是企业里最常见的一次漏判。</b>本报第 06 版把它单列成第五问，原因就在这里。</p>
+    <p><b>把三条并起来，会看出一个共同点：这一周治理的着力点全在接口。</b>登记与报告管的是「厂商怎么对监管交材料」，漏洞补丁管的是「代码怎么进仓库」，默认开关管的是「数据怎么出厂」。<b>没有一条要求模型变乖</b>。这与第 05 版把上限写进 SDK 是同一思路：与其指望系统自己不出错，不如在它必经的地方放一道能核的手续。</p>
+    <p><b>本报也记下缺口。</b>72 小时报告的「关键事件」如何界定、300 万美元罚则的触发口径、以及登记名单何时公开，目前材料里都没有写清<span class="src-tag">公开报道</span>。这些会进第 15 版的观察清单。<b>一个有时限的义务，如果边界没定义，执行时仍会回到解释权手里。</b></p>
+
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版安全治理</span>
+      </div>
+      <p>「我们会认真对待安全」没有截止日，「72 小时内报告」有。<b>治理从态度变成工程，标志就是出现了可以写进日历的数字。</b></p>
+    </aside>
+  </section>
+
+<section class="section" id="p09">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">学术 · 从「解出来」到「证出来」</span>
+      <span class="sec-right"><span class="src-org src-org-thirdparty" title="形式化验证与物理世界模型的研究报道">来源 · 第三方信息网</span><span class="sec-page">第 09 版 / 共 16 版</span></span>
+    </div>
+    <p class="sec-lede">研究侧这一批最能说明本期的边界：模型确实在往前走，但要变成能进生产环境的东西，仍得先穿过一层可核对的证据。形式化验证正是那层证据。</p>
+
+    <p><b>最硬的一条是形式化证明进了真实代码库。</b>DeepMind 的 AlphaProof Code（内部代号 CodeMender）用智能体为真实软件生成数学证明，先攻密码学库；报道给出的规模是四周写下 <b>650 万行</b>形式化证明，并已完成 Signal 协议底层代码的安全验证<span class="src-tag">厂商口径</span>。另一路报道说，团队把人类密码学家与 AI 智能体配对，用于核对 Signal 的后量子握手与 Triple Ratchet 协议<span class="src-tag">公开报道</span>。<b>它与「模型解出一道难题」的差别在于：证明可以被验证器逐行复核</b>，不靠评分者的判断。</p>
+    <p><b>怀疑也来得很快。</b>技术社区里有人质疑「把一个人类编写的非平凡库验证到零缺陷」这一说法，指出用 LLM 写 Lean 证明有一条很方便的作弊路径——把规约悄悄改弱，证明就变得容易了<span class="src-tag">公开报道</span>。本报不裁决这个争议，只把它记下来：<b>形式化验证的可信度，最终落在「规约是谁写的、有没有被改过」上</b>。这又是一个接口问题，不是模型问题。</p>
+
+    <div class="table-wrap">
+      <table>
+        <caption>本批研究进展：给的是什么证据</caption>
+        <thead><tr><th>方向</th><th>公开口径</th><th>证据类型</th><th>还缺什么</th></tr></thead>
+        <tbody>
+          <tr><td>AlphaProof Code</td><td>四周 650 万行证明、Signal 协议验证</td><td>机器可核对的证明</td><td>规约是否独立审定</td></tr>
+          <tr><td>AlphaGenome 2</td><td>定位 DNA 变异对不同细胞的影响</td><td>模型预测</td><td>湿实验验证与临床口径</td></tr>
+          <tr><td>PAN 2</td><td>29B 物理世界模型、Apache 2.0、模拟 20 秒动作</td><td>开放权重与演示</td><td>与真实机器人误差</td></tr>
+          <tr><td>奖励作弊抑制</td><td>用权重算术把资源超限失败从 14.5% 降到 8%</td><td>论文结果（预印本）</td><td>过度外推会破坏输出</td></tr>
+          <tr><td>无训练数据机器人编程</td><td>伯克利与英伟达的多智能体工具链</td><td>开源工具链</td><td>真实产线复现</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p><b>其余几条各有各的证据等级。</b>MBZUAI 开源 29B 参数物理世界模型 PAN 2，把 LLM 规划器与扩散 Transformer 结合，最长可模拟 20 秒物理动作输出视频，采用 Apache 2.0<span class="src-tag">公开报道</span>；Google DeepMind 发布 AlphaGenome 2，目标是定位 DNA 变异对不同细胞的影响<span class="src-tag">公开报道</span>；还有研究用权重算术抑制奖励作弊，把资源超限失败从 14.5% 降到 8%，但作者也说明过度外推会破坏输出<span class="src-tag">预印本</span>。<b>这几条的证据强度并不相同，本报按各自等级标注，不混成一句「又有突破」。</b></p>
+    <p><b>回到主线。</b>形式化验证、开放权重、预印本实验，看起来都在模型这一侧，但它们能否被采纳，取决于同一件事：<b>别人能不能按你给的材料复核一遍</b>。规约、权重、实验设置，就是研究领域的「接口」。第 16 版提案里有一条正是把这套要求用回本报自己。</p>
+
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版学术</span>
+      </div>
+      <p>「解出来了」靠评委，「证出来了」靠验证器。<b>可真正让人不放心的，是那份验证器要检查的规约——它仍然是人写的，也可能被悄悄改弱。</b></p>
+    </aside>
+  </section>
+
+<section class="section" id="p10">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">资本 · 估值往上，工地往下</span>
+      <span class="sec-right"><span class="src-org src-org-thirdparty" title="IPO 条款、减值与数据中心项目的财经报道">来源 · 第三方信息网</span><span class="sec-page">第 10 版 / 共 16 版</span></span>
+    </div>
+    <p class="sec-lede">这两天资本侧有两条方向相反的消息：一级市场把估值继续往上抬，实体基建那头却在把预期往下修。<b>把它们分开读，比凑成一句「AI 泡沫」有用。</b><span class="src-tag">公开报道</span></p>
+
+    <p><b>估值这一侧，数字已经具体到条款。</b>Anthropic 更新 S-1，定价区间 70 至 78 美元，预计 11 月 19 日前后以代码 ANT 在纳斯达克交易，对应估值 <b>1.4 万亿美元</b><span class="src-tag">公开报道</span>；报道提到年化收入运行率截至 10 月约 810 亿美元，七位创始人各出售 3,378,378 股、合计套现约 17.5 亿美元，同时凭超级投票权 Class F 保留 51.1% 投票控制。Google 与英伟达各以私募方式投入 100 亿美元——<b>值得注意的是，Google 当天刚发布直接竞品</b><span class="src-tag">公开报道</span>。另有媒体把低于传闻 2 万亿的定价归因于安全争议、中期选举结果与英伟达方面的事件。</p>
+    <p><b>工地这一侧，写的是减值与延期。</b>软银在美国 AI 数据中心投资上已产生 <b>70 亿美元</b>减值；CoreWeave 计划发行至少 40 亿美元高等级债券用于算力扩张<span class="src-tag">公开报道</span>。同一份汇总还指出，大量已官宣的数据中心项目实际上永远不会落地，原因不是技术，而是地方居民反对、审批延期与电力挤兑<span class="src-tag">公开报道</span>。<b>这是本期最「接口」的一条财经新闻</b>：卡住算力的不是芯片，是并网、许可和听证会这些外部手续。</p>
+
+    <div class="table-wrap">
+      <table>
+        <caption>同一周，两种口径的账</caption>
+        <thead><tr><th>条目</th><th>数字</th><th>属于哪本账</th><th>可核对的时间点</th></tr></thead>
+        <tbody>
+          <tr><td>Anthropic IPO 估值</td><td>1.4 万亿美元</td><td>预期 / 条款</td><td>11 月 19 日前后定价</td></tr>
+          <tr><td>年化收入运行率</td><td>810 亿美元</td><td>截至 10 月的口径</td><td>后续财报</td></tr>
+          <tr><td>软银减值</td><td>70 亿美元</td><td>已发生</td><td>已计入</td></tr>
+          <tr><td>CoreWeave 债券</td><td>至少 40 亿美元</td><td>计划</td><td>发行完成</td></tr>
+          <tr><td>数据中心项目</td><td>大量无法落地</td><td>审批 / 电力约束</td><td>各项目听证与并网进度</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p><b>别的交易也在补同一张图。</b>Oura 以 6.25 亿美元收购 AI 医疗问诊初创公司 Counsel Health，把穿戴数据接到问诊链路；PuppyGraph 完成 1,000 万美元融资，做的是让智能体快速查询企业结构化表格数据<span class="src-tag">公开报道</span>。两笔都不是模型交易，买的是「数据怎么进智能体」。<b>连资本都在往接口层挪。</b></p>
+    <p><b>本报的读法：</b>估值是对未来现金流的说法，减值是已经发生的账面事实，审批与电力是既不属于前者也不属于后者的物理约束。<b>把三者混成一句情绪判断，就会漏掉唯一能马上核的部分——那些有日期、有金额、有听证会的条目。</b>第 15 版把 11 月 19 日的定价放进观察清单。</p>
+
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版资本</span>
+      </div>
+      <p>估值可以一天涨千亿，变电站不能。<b>这周最诚实的资本新闻，反而是那句「很多项目根本不会落地」。</b></p>
+    </aside>
+  </section>
+
+<section class="section" id="p11">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">算力本地 · 把活从云上搬回来</span>
+      <span class="sec-right"><span class="src-org src-org-official" title="Tether BotPsy 与 AWS 本地模拟器的官方材料">来源 · 官方</span><span class="sec-page">第 11 版 / 共 16 版</span></span>
+    </div>
+    <p class="sec-lede">这一版三件事看着不相干，其实都在做同一个动作：<b>把原本必须发到云上的那一步，挪回本机</b>。理由各不相同——隐私、成本、或者只是不想为了测试去开账号。</p>
+
+    <p><b>端侧：小模型专门练「把请求变成动作」。</b>Tether AI Research 发布 QVAC BotPsy-0.8B，基于 Qwen3.5-0.8B 架构，用四阶段后训练（监督微调、多教师同策略蒸馏、两阶段可验证奖励强化学习）做成开放权重模型，Apache 2.0，提供 safetensors 与 GGUF<span class="src-tag">厂商口径</span>。官方给的 BFCL v4 为 <b>44.0%</b>（基座 23.4%、Qwen3.5-2B 为 37.7%），ACEBench 58.7%、τ-bench 51.5%、ToolSandbox 64.6%；六个工具调用基准里赢下五个，唯一输在 Claw-Eval<span class="src-tag">厂商口径</span>。发布不含训练数据与代码，消费级助手应用没有时间表<span class="src-tag">公开报道</span>。<b>这套设计的重点不是「小模型打败大模型」，而是个人数据不必离开设备</b>——邮件、日历、联系人只在本地被转成 <span class="term" tabindex="0">工具调用<i class="tip">模型不直接执行动作，而是输出「该调哪个工具、带什么参数」。执行与权限始终由应用掌握。</i></span>。</p>
+    <p><b>成本：把不该用大模型的活换掉。</b>Amazon 把工单分类从 Sonnet 4.6 换成微调过的 Gemma 4 2B「Strands Decider」，称在准确率相当的前提下成本降了 <b>98%</b><span class="src-tag">公开报道</span>。技术社区的反应不是称赞优化，而是追问「一开始为什么要用 Sonnet 做这件事」。<b>本报认为这个追问比 98% 更有价值</b>：它问的是接口选型的默认值，不是模型选得好不好。</p>
+    <p><b>测试：把云搬进笔记本。</b>aws-emulator 覆盖 438 个 API 模型，按服务公布保真度，Rust 测试可为每个用例起一个隔离实例；开发者不需要 AWS 账号就能调试云侧应用<span class="src-tag">厂商口径</span>。它默认开启用量遥测<span class="src-tag">公开报道</span>。另有 AWS 报道称发布了一个完全由自主智能体编写测试的本地模拟器，覆盖 200 多款云服务——<b>两条口径指向同一方向，本报不把它们当成两个独立产品</b>。</p>
+
+    <div class="table-wrap">
+      <table>
+        <caption>三种「搬回本地」，各自省下的是什么</caption>
+        <thead><tr><th>做法</th><th>搬回来的东西</th><th>省下</th><th>代价</th></tr></thead>
+        <tbody>
+          <tr><td>BotPsy-0.8B</td><td>个人数据与工具调用</td><td>数据出境</td><td>能力限于工具编排，不含训练数据</td></tr>
+          <tr><td>Gemma 4 2B 工单分类</td><td>高频简单分类</td><td>约 98% 成本（厂商口径）</td><td>需要自有微调与评测</td></tr>
+          <tr><td>aws-emulator</td><td>云服务接口测试</td><td>开账号与联调手续</td><td>保真度因服务而异，遥测默认开</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p><b>需要提醒一处读法。</b>44.0% 这类分数是厂商在自家选定基准上的自述，本报未独立复现；98% 是成本降幅、不是准确率提升。<b>把两类数字并排读成「小模型已经够用了」，会漏掉它们各自的分母。</b>本期第 16 版有一条提案，正是要求本报自己的折算也写清假设与算法。</p>
+
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版算力本地</span>
+      </div>
+      <p>「本地」不是一种信仰，是一笔具体的账：哪些数据不许出门、哪些调用不值得花钱、哪些测试根本不需要真云。<b>把这三格填出来，比喊口号管用。</b></p>
+    </aside>
+  </section>
+
+<section class="section" id="p12">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">工具链 · 谁来付兼容性这笔账</span>
+      <span class="sec-right"><span class="src-org src-org-thirdparty" title="LangChain 版本、Bedrock 定价与 Gemini 新 API 的报道">来源 · 第三方信息网</span><span class="sec-page">第 12 版 / 共 16 版</span></span>
+    </div>
+    <p class="sec-lede">本期最不像新闻、却最可能让团队加班的一条：<b>LangChain 全系新版把最低运行版本抬到了 Python 3.11</b>。没有新模型、没有新能力，只有一批 CI 流水线要跟着改<span class="src-tag">公开报道</span>。</p>
+
+    <p><b>先把改动写准。</b>0.1.0 版 langchain-typesafe、1.5.0 版 langchain、1.8.0 版 langchain-core 的最低版本统一上调至 <b>Python 3.11</b>；3.10 用户仍可留在 1.4.x 旧系列<span class="src-tag">公开报道</span>。这意味着升级不是「换个依赖号」这么简单：运行环境、镜像、CI 矩阵、以及那些只在 3.10 上验证过的插件，都得重新过一遍。<b>留在旧系列是免费的选择，但免费期有限</b>——安全补丁与新功能迟早只往新线走。</p>
+    <p><b>同一批更新里，也有在替你省手续的。</b>AWS 上线 Bedrock AgentCore 独立网页搜索 API，面向自定义智能体与数据流水线，一次签名调用就拿到排序后的网页结果，不必自己搭网关，定价为每 1000 次查询 <b>7 美元</b><span class="src-tag">公开报道</span>。Google 的 Gemini Decisions API 支持多模态输入并返回校准后概率，标价为每百万输入 token 0.1 美元；实验性产品 Tabletop 可以把上传素材自动生成多人实时协作空间，目前是白名单邀约<span class="src-tag">公开报道</span>。<b>这三个都是「接口定价」</b>：它们让联网、决策、协作第一次有了可以写进预算表的单位。</p>
+
+    <div class="table-wrap">
+      <table>
+        <caption>四条工具链更新：改动落在谁身上</caption>
+        <thead><tr><th>更新</th><th>改了什么</th><th>谁要动手</th><th>有截止日吗</th></tr></thead>
+        <tbody>
+          <tr><td>LangChain 新版</td><td>最低 Python 3.11</td><td>运行环境 / CI / 插件维护者</td><td>无，可留 1.4.x</td></tr>
+          <tr><td>Bedrock 搜索 API</td><td>联网能力按次计价</td><td>接入方预算模型</td><td>已上线</td></tr>
+          <tr><td>Gemini Decisions API</td><td>校准概率输出</td><td>决策链路的设计者</td><td>已发布</td></tr>
+          <tr><td>Tabletop</td><td>多人协作空间</td><td>白名单内试用者</td><td>邀约制</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p><b>把兼容性当成本看，而不是当琐事看。</b>一份发布说明里，「新增了某某 API」和「不再支持某某版本」通常挨着写，但对读者是完全不同的两类事：前者是机会，后者是任务。<b>本报建议每次升级前先把后者单独抄出来，配一个负责人和一个窗口</b>；否则它会在某个周末以「流水线全红」的形式出现。</p>
+    <p><b>还有一层是版本漂移。</b>第 03 版说过 A2UI 的 1.0 / 0.9.1 / alpha 三档并存；工具链这边同理，1.4.x 与 1.5.0 会长期同时在跑。<b>「我们升级了 LangChain」这句话在混合环境里几乎没有信息量</b>，得说清是哪个包、哪个版本、跑在哪个解释器上。第 06 版第二问就是为这种场景准备的。</p>
+
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版工具链</span>
+      </div>
+      <p>新 API 是请柬，最低版本是账单。<b>发布说明把两者写在同一段里，读者却得把它们分到两个待办列表。</b></p>
+    </aside>
+  </section>
+
+<section class="section" id="p13">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">落地 · 界面交出去之后，谁在用它</span>
+      <span class="sec-right"><span class="src-org src-org-official" title="Atlassian、Alation 与产线试点披露的运行数据">来源 · 官方</span><span class="sec-page">第 13 版 / 共 16 版</span></span>
+    </div>
+    <p class="sec-lede">协议、SDK、产线，三者今天都给出了具体场景。本报把「已经跑起来的」和「还在试点里的」分开写，避免一句「已落地」把成熟度抹平。</p>
+
+    <p><b>办公流：智能体在工作项里提问。</b>据官方博客，Atlassian 正把 A2UI 引入 Jira：团队可以把工作项指派给 AI 智能体，智能体需要补充细节或决策时，<b>不写一段长回复，而是在工作项内推一张交互卡片</b>，团队直接在 Jira 里作答<span class="src-tag">厂商口径</span>。Alation 用 A2UI 构建指标卡与图表信息流，每张图表可展开看背后的 SQL 查询；用户向 Claude 询问盈利产品信息流时，这条信息流可以在对话里渲染，也能在 Alation 内以近乎一致的布局查看<span class="src-tag">厂商口径</span>。<b>这就是 <span class="term" tabindex="0">MCP 应用<i class="tip">跑在支持 MCP 的助手内部的小型界面。网页与 Flutter 渲染器都能在 MCP 应用里工作，所以同一条信息流可以跨宿主显示。</i></span> 的意义</b>：同一份内容不必为 Claude 和自家应用各写一遍。</p>
+    <p><b>国内跨端：渲染器先于协议成熟。</b>字节跳动在 2026 年 6 月就为跨端框架 Lynx 发布了 A2UI 渲染器，其 Lynx GenUI Playground 能把 A2UI 消息原生渲染成「京都两日游规划」这类界面<span class="src-tag">公开报道</span>。<b>有意思的是时间差</b>：渲染器比协议 1.0 早了近半年，说明落地需求一直跑在标准前面；也说明第 03 版那张版本矩阵不是吹毛求疵，而是真实存在的状态。</p>
+    <p><b>产线：数字漂亮，条件要读全。</b>Google DeepMind 的 Gemini Robotics 2.5 与 Apptronik 合作，在匈牙利与德国的奔驰产线试运行，人形机器人 Apollo 2 分拣金属零件的报告成功率为 <b>96%</b><span class="src-tag">厂商口径</span>；该模型在 200 多项任务上做过测试，并同步开源安全基准 ASIMOV-jailbreak<span class="src-tag">公开报道</span>。英伟达 GR00T 2 从约 40 万小时人类操作视频学习机械臂动作，但任务成功率依任务不同在 10% 到 80% 之间大幅波动<span class="src-tag">公开报道</span>。<b>把 96% 和 10%–80% 并排放，才看得出「试运行」与「可推广」之间的距离。</b></p>
+    <p><b>还有一类落地是「默认被打开」。</b>微软把英国 Copilot 租户默认开放给 Claude 模型访问，管理员复核期限为 12 月 9 日<span class="src-tag">公开报道</span>；Gmail 的 Gemini 功能全量铺开至所有 Workspace 成年用户，Pixel 用户可在 Android Auto 中调用 Gemini Intelligence<span class="src-tag">公开报道</span>。这些无需部署、无需投票，<b>但它们才是这两天覆盖范围最大的一次「落地」</b>。</p>
+    <p><b>本版的读法。</b>「落地」至少有三种：写进别人产品的工作流、在真实产线上试运行、以及被默认开关推向所有用户。<b>三者的验证强度依次递减，反而是最后一种影响的人最多。</b>本报仍按 Evidence 分档写，不把它们合并成一句「大规模应用」。</p>
+
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版落地</span>
+      </div>
+      <p>产线上 96% 的成功率要写清是哪一种零件、哪一种光照；默认开关影响几百万人，却常常连一段说明都没有。<b>越不需要努力就生效的落地，越该被追问。</b></p>
+    </aside>
+  </section>
+
+<section class="section" id="p14">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">星探 · 一天涨一千星，涨的是哪一类项目</span>
+      <span class="sec-right"><span class="src-org src-org-thirdparty" title="开源项目趋势榜与仓库数据">来源 · 第三方信息网</span><span class="sec-page">第 14 版 / 共 16 版</span></span>
+    </div>
+    <p class="sec-lede">11 月 11 日整日的 star 增速榜里，前八名有六个是「给智能体用的工具」，不是模型。<b>榜单是热度，不是质量证明，但热度分布能说明开发者眼下卡在哪。</b><span class="src-tag">公开报道</span></p>
+
+    <div class="table-wrap">
+      <table>
+        <caption>趋势榜前列：当日新增 star 与它解决的那件事</caption>
+        <thead><tr><th>项目</th><th>当日 +star</th><th>解决什么</th><th>成熟度提示</th></tr></thead>
+        <tbody>
+          <tr><td>morluto/rea</td><td>1,631</td><td>无源码也能让智能体逆向应用</td><td>结论附证据与边界</td></tr>
+          <tr><td>Lee-xeo/Claude-Cage</td><td>1,413</td><td>把 Claude 关进隔离工作台</td><td>配额视图按账号</td></tr>
+          <tr><td>janestreet/agent_skills</td><td>1,313</td><td>把教学法做成可分发技能</td><td>目前只有一个技能</td></tr>
+          <tr><td>modern-web-guidance</td><td>1,300</td><td>浏览器厂商给智能体策展指南</td><td>只覆盖现代 Web 平台</td></tr>
+          <tr><td>storytold/craft-anything</td><td>1,122</td><td>观察应用后让智能体重建</td><td>早期 alpha</td></tr>
+          <tr><td>meta/astryx</td><td>1,069</td><td>开源 150+ 组件的设计系统</td><td>beta</td></tr>
+          <tr><td>aws/aws-emulator</td><td>1,039</td><td>本地跑 AWS API 做测试</td><td>按服务公布保真度</td></tr>
+          <tr><td>pingdotgg/t3code</td><td>773</td><td>一个界面管本机所有编码智能体</td><td>开源控制面</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p><b>把 <span class="term" tabindex="0">本地模拟器<i class="tip">在本机复刻云服务接口的程序，让测试不必连真云。它按服务给出保真度评分，说明「像不像」是可以量化的。</i></span> 单拿出来说。</b>它排第七，却是这一批里最像基础设施的一个：每个版本按服务公布 <span class="term" tabindex="0">保真度<i class="tip">模拟器与真实服务行为一致的程度。按服务分别评分，意味着某些接口可以放心本地测，另一些仍必须上真云核。</i></span> 评分，等于承认「我不是完全像」。这种把局限量化出来的写法，本报愿意多给一格信任<span class="src-tag">公开报道</span>。</p>
+    <p><b>三把筛子。</b>本报看趋势榜只问三句：<b>它省掉的是谁的一道工序？它把自己的边界写在哪？一周后还有没有第二次提交？</b>第一条决定有没有真实需求，第二条决定能不能放心接，第三条决定是不是一阵风。今天这八个项目里，前两问大多答得上来，第三问现在没人能答——<b>所以本版只记热度，不写「值得投产」</b>。</p>
+    <p><b>顺带说一句取样口径。</b>榜单选的是 11 月 11 日 UTC 整日窗口，读数来自 GitHub 官方 stargazers/history 接口，项目简介与评注是编辑加的<span class="src-tag">公开报道</span>。star 会被发布节奏、社媒转发和榜单本身放大，<b>它不是下载量、不是生产使用量，更不是正确性证明</b>。第 15 版把「一周后回看第二次提交」写进观察清单。</p>
+
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版星探</span>
+      </div>
+      <p>一天涨一千星说明有人被戳中了，不说明它明天还在。<b>把「边界写在哪」看得比「涨了多少」重，通常能少踩一半的坑。</b></p>
+    </aside>
+  </section>
+
+<section class="section" id="p15">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">一句话快讯 · 与接下来盯什么</span>
+      <span class="sec-right"><span class="src-org src-org-thirdparty" title="多家媒体报道聚合">来源 · 第三方信息网</span><span class="sec-page">第 15 版 / 共 16 版</span></span>
+    </div>
+    <p class="sec-lede">前十条是这两天已经发生的，后面是<b>有明确日期或明确可验证条件</b>的观察清单。本报不写「预计」「有望」。<span class="src-tag">公开报道</span></p>
+
+    <ul class="briefs">
+      <li><b>界面</b>：Google 发布 A2UI 1.0 首个稳定版，智能体描述内容、应用画原生界面，协议以 Apache 2.0 开源。</li>
+      <li><b>版本</b>：官方博客写 1.0 为现行版，Gemini Enterprise 注册侧仍支持 0.9.1，Jetpack Compose 渲染器仍为 alpha。</li>
+      <li><b>护栏</b>：OpenRouter Agent SDK 加四道闸，在 6 个模型上测试，第三次重复调用被拦下；技术细节未公布。</li>
+      <li><b>本地</b>：aws-emulator 覆盖 200 多款云服务、438 个 API 模型，按服务公布保真度，用量遥测默认开。</li>
+      <li><b>兼容</b>：LangChain 全系新版最低 Python 3.11，3.10 用户可继续留在 1.4.x。</li>
+      <li><b>计价</b>：Bedrock AgentCore 网页搜索 API 每 1000 次查询 7 美元；Gemini Decisions API 每百万输入 token 0.1 美元。</li>
+      <li><b>端侧</b>：Tether BotPsy-0.8B 以 Apache 2.0 开放权重，BFCL v4 厂商自述 44.0%，不含训练数据与代码。</li>
+      <li><b>治理</b>：纽约 RAISE Act 生效，关键事件 72 小时内报告，重复违规最高罚 300 万美元。</li>
+      <li><b>安全</b>：Git 修复六个涉及递归克隆、合并与补丁的漏洞；N-able 建议部分自托管客户先下线。</li>
+      <li><b>资本</b>：Anthropic 更新 S-1，估值 1.4 万亿美元、代码 ANT；软银美国数据中心投资减值 70 亿美元。</li>
+    </ul>
+
+    <p><b>接下来盯什么（有条件的观察清单）</b></p>
+    <ul class="briefs">
+      <li><b>Anthropic 定价</b>：条件是「11 月 19 日前后」。盯最终定价是否落在 70–78 美元区间内，而不是盯传闻里的估值上沿。</li>
+      <li><b>Copilot 默认开关</b>：条件是「12 月 9 日」。盯英国租户的管理员复核期限过后，默认值有没有从「允许」改成「需选择」。</li>
+      <li><b>RAISE Act 登记名单</b>：条件是「1 月 1 日前登记」。盯名单是否公开，以及「关键事件」的界定文件有没有先出台——没有界定，72 小时就无从核起。</li>
+      <li><b>Jetpack Compose 渲染器</b>：条件是「官方称 1.0 支持即将到来」。盯它何时脱离 alpha；这是 A2UI 六条路径里唯一还停在 alpha 的一条。</li>
+      <li><b>四道闸的技术细节</b>：条件是「官方公布阈值与误伤恢复方式」。在此之前，第 05 版表格里那四格「未写明」就一直不擦。</li>
+      <li><b>趋势榜的第二次提交</b>：条件是「一周后回看 11 月 11 日前八名」。盯是否还有实质提交，而不是再看一次 star 数。</li>
+    </ul>
+
+    <p><b>本报自己也有两条没答上的。</b>一是 A2UI 企业级注册何时从 0.9.1 升到 1.0，二是 Claude Meetings 究竟「已上线」还是「即将到来」——两份材料口径不一致，本报按「部分可用」记，等官方页面统一。<b>承认口径没对齐，比替它挑一个更顺的说法要紧。</b></p>
+
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版快讯与观察清单</span>
+      </div>
+      <p>六条观察里，四条等的是一个日期，两条等的是一份把边界写清的文档。<b>这不需要预测，只需要记下来，到时候回头看一眼。</b></p>
+    </aside>
+  </section>
+
+<section class="section" id="p16">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">本报提案 · 这一期想怎么改</span>
+      <span class="sec-right"><span class="src-org src-org-ai" title="编辑部提案，本期自设">来源 · AI 生成</span><span class="sec-page">第 16 版 / 共 16 版</span></span>
+    </div>
+
+    <p class="sec-lede">本版每期由四个身份各提一条改动建议，编号 <b>P009-1…4</b>：<b>读者</b>说哪里读着费劲，<b>编辑</b>说哪里做起来费劲，<b>创刊人</b>说哪里该往前一步，<b>AI</b> 说哪里可以自动化。<b>默认不执行</b>——创刊人点名「采纳 P009-2」才进施工；没人提，挂满三期自动记「否决（沉默）」。</p>
+
+    <div class="props">
+      <article class="prop">
+        <div class="prop-h"><span class="prop-role">读者</span><span class="prop-id">P009-1</span></div>
+        <h4>版本号后面，跟一句「这是哪条路径的」</h4>
+        <p>本期第 03 版列了张表：博客写 1.0、企业注册写 0.9.1、Android 渲染器还是 alpha。<b>建议正文里凡出现版本号，紧跟一个路径名</b>——协议 / SDK / 渲染器 / 企业控制台 / 运行环境，五选一。读者不必记住版本矩阵，看一眼就知道这句话说的是自己用的那一层还是别人的。</p>
+        <dl class="prop-meta">
+          <dt>为什么</dt><dd>本期头版专门花一段解释「1.0 不等于全线 1.0」，说明光靠上下文已经分不清</dd>
+          <dt>成本</dt><dd>小 · 两小时 · 写作规范加一条，拼版时检查版本号附近是否有路径词</dd>
+        </dl>
+        <div class="prop-st">待定 · <b>沉默即否决</b></div>
+      </article>
+
+      <article class="prop">
+        <div class="prop-h"><span class="prop-role">编辑</span><span class="prop-id">P009-2</span></div>
+        <h4>把「接口变更五问」固化成核查表</h4>
+        <p>第 06 版那张五问表是临时补的：变哪一层、我的路径版本、拦错怎么办、谁改代码、默认值有没有变。<b>建议做成工具类版面的固定表</b>，凡写协议 / SDK / 运行环境 / 默认开关的版面必填五格，填不出就写「未写明」，不许略过。这样下一期换个主线也不会漏。</p>
+        <dl class="prop-meta">
+          <dt>为什么</dt><dd>本周最容易被误读成「已全面可用」的，恰恰是这五格里的空白</dd>
+          <dt>成本</dt><dd>中 · 半天 · 版面模板加一张五格表 + 拼版时按版级来源检查</dd>
+        </dl>
+        <div class="prop-st">待定 · <b>沉默即否决</b></div>
+      </article>
+
+      <article class="prop">
+        <div class="prop-h"><span class="prop-role">创刊人</span><span class="prop-id">P009-3</span></div>
+        <h4>本报遇到口径打架，要标「未对齐」而不是挑一个</h4>
+        <p>第 15 版记了两条：Claude Meetings 有的材料写「即将到来」、有的写「已能现场听会」；A2UI 企业注册侧的协议版本也和博客不一致。本报这次按「部分可用」「未对齐」记，但这是临场决定。<b>建议把它写成硬规则：同一事实出现两种公开口径时，正文标「口径未对齐」并同时列出两处，不许替发布方选一个更顺的说法</b>。</p>
+        <dl class="prop-meta">
+          <dt>为什么</dt><dd>本期主线批评的正是「用一句好听的话盖住附带条款」，本报不能只对别人严格</dd>
+          <dt>成本</dt><dd>小 · 半天 · 信源表加一个标记位，事实卡允许两值并列</dd>
+        </dl>
+        <div class="prop-st">待定 · <b>沉默即否决</b></div>
+      </article>
+
+      <article class="prop">
+        <div class="prop-h"><span class="prop-role">AI</span><span class="prop-id">P009-4</span></div>
+        <h4>拼版时自动生成一页「版本矩阵」</h4>
+        <p>本期写 A2UI、LangChain、各渲染器各处的版本，全靠人工从材料里抄进表格。<b>建议让事实卡支持一个可选的版本字段，拼版时自动汇总成一张「组件 / 版本 / 状态 / 出处」矩阵</b>，附在报尾，公开面也可单独渲染。它不做判断，只把散在十六版里的版本号收在一起。</p>
+        <dl class="prop-meta">
+          <dt>为什么</dt><dd>版本漂移只有摆成一张表才看得出来；分散在正文里，读者只能信标题那句「已发布」</dd>
+          <dt>成本</dt><dd>中 · 一天 · 事实卡扩展字段 + 生成 <code>version-matrix.json</code> + 自检加一条对账</dd>
+        </dl>
+        <div class="prop-st">待定 · <b>沉默即否决</b></div>
+      </article>
+    </div>
+
+    <p class="prop-rule"><b>怎么算采纳：</b>创刊人在当期明确说「采纳 P009-2」才算；说「先放着」算待定，最多挂三期；<b>没说就是否决，不再追问</b>。已采纳的写进 <code>提案台账.md</code>，在下一期的台账里标「已落地」。</p>
+
+    <div class="table-wrap">
+      <table class="prop-ledger">
+        <caption>提案台账 · 全量明细见 <code>提案台账.md</code>，本表只放最近 8 条</caption>
+        <thead>
+          <tr><th>编号</th><th>视角</th><th>一句话</th><th>状态</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="id">P008-1</td><td>读者</td><td>给「开放」标清楚是哪一档</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P008-2</td><td>编辑</td><td>自主运行版面必答「怎么停」三问</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P008-3</td><td>创刊人</td><td>发布闸门改成不可绕过</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P008-4</td><td>AI</td><td>自动收一页「本期未答问题」</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P009-1</td><td>读者</td><td>版本号后面跟一句是哪条路径</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P009-2</td><td>编辑</td><td>接口变更五问固化成核查表</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P009-3</td><td>创刊人</td><td>口径打架要标「未对齐」</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P009-4</td><td>AI</td><td>自动生成一页版本矩阵</td><td class="st-wait">待定</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版四条提案</span>
+      </div>
+      <p>P009-3 是又一次把刀口对着自己。我们这期批评「用一句好听的话盖住附带条款」，转头就遇到两份材料打架——<b>那一刻最省事的做法是挑一个写得顺的，最该做的却是把两个都留着。</b></p>
+    </aside>
+  </section>
+
+  <div class="gloss" id="gloss">
+    <h5>名词速查 · 本期出现的 14 个词<span>正文里带虚线的词点一下就地解释；这张表留作索引</span></h5>
+    <div class="gloss-grid">
+      <dl><dt>生成式 UI / A2UI</dt><dd>智能体不只回文字，而是描述一张界面该有什么；由应用用自己的组件画出来。A2UI 是 Google 创建的开放协议。</dd></dl>
+      <dl><dt>渲染器</dt><dd>把界面描述变成真正可点控件的那层程序。网页用 React、Angular、Lit，移动端用 Flutter、SwiftUI 与 Jetpack Compose。</dd></dl>
+      <dl><dt>原生组件</dt><dd>应用自己写好的按钮、表单与图表，不是模型吐出的一段 HTML。样式与交互由应用负责，模型只给内容。</dd></dl>
+      <dl><dt>双向函数调用</dt><dd>界面上的控件可以反过来向智能体发起一次调用，例如选择器当场核查余位，而不必等人在文字里回复。</dd></dl>
+      <dl><dt>协议版本漂移</dt><dd>同一协议在博客、企业控制台、各平台渲染器上停在的版本号不一致。稳定版说的是协议，不等于每条路径都升完了。</dd></dl>
+      <dl><dt>死循环 / doom loop</dt><dd>模型不断重复同一组工具调用且没有退出条件。不需要恶意，只需要一个一直失败的工具和一个没有上限的循环。</dd></dl>
+      <dl><dt>步数与成本上限</dt><dd>给一次任务钉死「最多走几步、最多花多少钱」的两道闸。可靠是因为粗暴，代价是可能误伤快完成的任务。</dd></dl>
+      <dl><dt>本地模拟器</dt><dd>在本机复刻云服务接口的程序，让测试不必连真云。按服务给出保真度评分，说明「像不像」可以量化。</dd></dl>
+      <dl><dt>保真度</dt><dd>模拟器与真实服务行为一致的程度。按服务分别评分，意味着某些接口可放心本地测，另一些仍要上真云核。</dd></dl>
+      <dl><dt>端侧智能体</dt><dd>跑在手机或电脑本地的小模型，把请求转成工具调用而不上传个人数据。能力通常限于编排，不是通用对话。</dd></dl>
+      <dl><dt>工具调用 / tool call</dt><dd>模型不直接执行动作，而是输出「该调哪个工具、带什么参数」。执行与权限始终由应用掌握。</dd></dl>
+      <dl><dt>MCP 应用</dt><dd>跑在支持 MCP 的助手内部的小型界面。网页与 Flutter 渲染器都能在里面工作，同一条信息流可跨宿主显示。</dd></dl>
+      <dl><dt>兼容性账单</dt><dd>一次依赖或运行环境升级要改的东西：镜像、CI 矩阵、只旧版本验证过的插件。它是任务，不是机会。</dd></dl>
+      <dl><dt>形式化验证</dt><dd>用机器可逐步检查的严格语言写出证明，能被验证器逐行复核。可信度最终落在规约是谁写的、有没有被改弱。</dd></dl>
+    </div>
+  </div>
+
+  <footer class="colophon">
+    <div class="row">
+      <span><b>AI 晨报</b>　第 008 期　2026-11-12　共 16 版</span>
+      <span>本报由 AI 自动编撰　内容截至 11 月 12 日　<b>本期主线：模型没变，接口变了</b></span>
+    </div>
+    <div class="sources" data-slot="sources">
+      <div class="sources-h"><b>信息源与归属</b><i>逐条登记「谁给的、给了什么、哪一类、怎么用的」。url 只为能确认对应到这一条的单一页面填写；汇总栏目、频道首页、搜索页一律留空，不用猜出来的地址凑数。</i></div>
+      <ul>
+        <li class="src-li"><span class="src-out">Google</span><span class="src-what">A2UI 1.0 官方博客：首个稳定版，智能体描述要显示什么、应用用自己的原生组件绘制</span><span class="src-kind">官方发布</span></li>
+        <li class="src-li"><span class="src-out">凤凰网科技 / 和讯</span><span class="src-what">A2UI 1.0 报道：双向函数调用、无障碍支持、Apache 2.0、Jetpack Compose 渲染器仍为 alpha</span><span class="src-kind">媒体报道</span></li>
+        <li class="src-li"><span class="src-out">IT之家 / 网易</span><span class="src-what">A2UI 1.0 上线：网页、Android、iOS 渲染器 SDK 与 Python、TypeScript、Dart 智能体 SDK</span><span class="src-kind">媒体报道</span></li>
+        <li class="src-li"><span class="src-out">Google Cloud</span><span class="src-what">Gemini Enterprise 注册自有 A2UI 智能体，文档显示当前支持协议 0.9.1</span><span class="src-kind">官方发布</span></li>
+        <li class="src-li"><span class="src-out">TLDR AI</span><span class="src-what">2026-11-11 日报：Gemini 4 Carbon、Claude Sheets / Whiteboards、Businesses in ChatGPT、/swarm</span><span class="src-kind">媒体报道</span></li>
+        <li class="src-li"><span class="src-out">Bright Coast AI</span><span class="src-what">2026-11-11 情报简报：Git 六个漏洞、Claude 进入英国 Copilot 租户、Google 两款 TPU、N-able 下线</span><span class="src-kind">媒体报道</span></li>
+        <li class="src-li"><span class="src-out">ai0.news</span><span class="src-what">2026-11-11 摘要：Anthropic IPO 估值 1.4 万亿美元、纽约 RAISE Act 生效、Amazon 换小模型省 98%</span><span class="src-kind">媒体报道</span></li>
+        <li class="src-li"><span class="src-out">微信公众号 · AI Agent 观察</span><span class="src-what">2026-11-12 汇总：Bedrock AgentCore 网页搜索 API、AWS 本地模拟器、LangChain 停 Python 3.10、Gemini Decisions API</span><span class="src-kind">媒体报道</span></li>
+        <li class="src-li"><span class="src-out">OpenRouter / 海爱AI</span><span class="src-what">Agent SDK 四层死循环防护：死循环检测、重复调用规则、步数上限、成本上限；六个模型上测试</span><span class="src-kind">官方发布</span></li>
+        <li class="src-li"><span class="src-out">GhTrends</span><span class="src-what">2026-11-12 趋势榜：rea、Claude-Cage、agent_skills、modern-web-guidance、aws-emulator 的当日 star 增速</span><span class="src-kind">公开榜单</span></li>
+        <li class="src-li"><span class="src-out">Tether AI Research</span><span class="src-what">QVAC BotPsy-0.8B 发布：BFCL v4 44.0%、ACEBench 58.7%，Apache 2.0 开放权重</span><span class="src-kind">官方发布</span></li>
+        <li class="src-li"><span class="src-out">Silicon Report</span><span class="src-what">BotPsy 报道：基于 Qwen3.5-0.8B，不含训练数据与代码，暂未给出消费级应用时间表</span><span class="src-kind">媒体报道</span></li>
+        <li class="src-li"><span class="src-out">CSDN · AI 日报</span><span class="src-what">2026-11-11 日报：Gemini Robotics 2.5 奔驰产线 96%、LongCat-2.5、GR00T 2 成功率区间</span><span class="src-kind">媒体报道</span></li>
+        <li class="src-li"><span class="src-out">CSDN · 每日极客日报</span><span class="src-what">2026-11-11：Qwen3.8-27B 开源、千问办公 2.0 Team Agent、LingBot-Touch 触觉模型</span><span class="src-kind">媒体报道</span></li>
+        <li class="src-li"><span class="src-out">CSDN · AtomGit AI 社区</span><span class="src-what">2026-11-11 日报：AlphaProof Code 四周 650 万行形式化证明、AlphaGenome 相关进展与多家模型发布</span><span class="src-kind">媒体报道</span></li>
+        <li class="src-li"><span class="src-out">CSDN · 行业日报</span><span class="src-what">2026-11-11：平头哥赴港、英伟达把 OpenShell 捐给 CNCF、Fable 5.2 自由职业任务完成率 41.3%</span><span class="src-kind">媒体报道</span></li>
+        <li class="src-li"><span class="src-out">今日AI早报</span><span class="src-what">2026-11-11：谷歌 MKA 基准、OpenAI 收购 Odessia、AMD 霄龙嵌入式 9006 系列</span><span class="src-kind">媒体报道</span></li>
+        <li class="src-li"><span class="src-out">aws/aws-emulator</span><span class="src-what">本地 AWS API 模拟器：覆盖 200 多款云服务、438 个 API 模型，Rust 实现，按服务公布保真度</span><span class="src-kind">官方发布</span></li>
+        <li class="src-li"><span class="src-out">LangChain</span><span class="src-what">全系新版最低运行版本上调至 Python 3.11；1.4.x 继续留给 3.10 用户</span><span class="src-kind">官方发布</span></li>
+        <li class="src-li"><span class="src-out">纽约州 / TechCrunch</span><span class="src-what">RAISE Act 生效：5 亿美元以上营收的前沿开发商须登记、发布安全框架、72 小时内报告关键事件</span><span class="src-kind">媒体报道</span></li>
+        <li class="src-li"><span class="src-out">Atlassian / Alation</span><span class="src-what">A2UI 落地案例：Jira 工作项内交互卡提问、AIOS 指标卡可展示背后 SQL 查询</span><span class="src-kind">官方发布</span></li>
+        <li class="src-li"><span class="src-out">DeepMind / 研究报道</span><span class="src-what">AlphaProof Code 与 Signal 协议握手的形式化验证；AlphaGenome 2、PAN 2 物理世界模型</span><span class="src-kind">预印本</span></li>
+        <li class="src-li"><span class="src-out">TechCrunch / The Verge</span><span class="src-what">Anthropic 更新 S-1：70–78 美元区间、代码 ANT、预计 11 月 19 日交易、七位创始人各套现约 2.5 亿美元</span><span class="src-kind">媒体报道</span></li>
+        <li class="src-li"><span class="src-out">财经媒体聚合</span><span class="src-what">软银美国 AI 数据中心投资减值 70 亿美元、CoreWeave 拟发至少 40 亿美元债券、数据中心项目受电力与审批阻碍</span><span class="src-kind">媒体报道</span></li>
+      </ul>
+      <p class="sources-note">以上名称与商标归各权利人；本报只引用事实，不使用其原文表述，也不代表其立场。</p>
+    </div>
+<p><b>编辑说明：</b>本期为 11 月 12 日晨报，内容截至 11 月 12 日；主线是「模型没变，接口变了」——这一批更新动的都不是模型，而是答案的形状、失控的护栏与升级的账单。所有参数、倍数、价格与调查比例均为厂商或媒体口径，正文已逐处标注；<b>A2UI 1.0、438 个 API 模型、44.0%、96%、1.4 万亿美元估值等数字，本报均未独立复现</b>。第 06 版的五问清单、第 14 版的三把筛子与第 16 版的四条提案为本报自设方法，非第三方评级；本期没有本报自行折算的系数。</p>
+<p class="errata"><b>说明：</b>007 期（2026-11-11）已发布，本期不改动它；11 月 10 日未出刊，期号仍连续。第 16 版提案编号为 P009-1…4；P006-2…4 已挂满三期，本期按「沉默即否决」结算，P007 与 P008 系列共八条仍在待定。本期的「来源 · X」版级标、事实卡与信源归属表沿用前几期口径，改一处要三处同改。</p>
+    <div class="src-legend">
+      <b>论据标记</b>
+      <i>正文里的小标说明这个数字是谁说的、本报核过没有：</i>
+      <span class="src-item"><span class="src-tag">厂商口径</span>厂商或发布材料自述</span>
+      <span class="src-item"><span class="src-tag low">本报未复现</span>本报没有独立重跑</span>
+      <span class="src-item"><span class="src-tag">预印本</span>未经同行评审</span>
+      <span class="src-item"><span class="src-tag">公开报道</span>媒体报道，未核一手文件</span>
+      <span class="src-item"><span class="src-tag">本报实测</span>本报自己跑出来的</span>
+      <span class="src-item"><span class="src-tag low">本报自设</span>本报的评分或推算</span>
+    </div>
+    <div class="src-legend">
+      <b>板块来源</b>
+      <i>每版版头的标说明这一版的信息主要来自哪里——不是谁执笔（全部版面都由 AI 执笔）：</i>
+      <span class="src-item"><span class="src-org src-org-official">来源 · 官方</span>发布方原文、公告、文档</span>
+      <span class="src-item"><span class="src-org src-org-thirdparty">来源 · 第三方信息网</span>媒体、榜单、预印本</span>
+      <span class="src-item"><span class="src-org src-org-measured">来源 · 本报实测</span>本报自己跑出来的</span>
+      <span class="src-item"><span class="src-org src-org-ai">来源 · AI 生成</span>无外部信源的观点与提案</span>
+      <span class="src-item">本期 AI 生成 3 版，上限 4 版</span>
+    </div>
+    <p><b>往期：</b>第 001 期（2026-11-04）　第 002 期（2026-11-05）　第 003 期与特刊（2026-11-06）　第 004 期（2026-11-07）　第 005 期（2026-11-08）　第 006 期（2026-11-09）　第 007 期（2026-11-11）　本报每日 08:00 出刊，节假日不休。</p>
+    <p class="disclaimer">本报内容由 AI 自动生成，用于产品演示，不构成事实报道。</p>
+  </footer>
+
+<nav class="rail" aria-label="版面快捷目录">
+  <div class="rail-head">目录</div>
+  <ol class="rail-list">
+    <li><a href="#p01"><i>01</i><span>头条</span></a></li>
+    <li><a href="#p02"><i>02</i><span>社论</span></a></li>
+    <li><a href="#p03"><i>03</i><span>模型</span></a></li>
+    <li><a href="#p04"><i>04</i><span>产品</span></a></li>
+    <li><a href="#p05"><i>05</i><span>深读</span></a></li>
+    <li><a href="#p06"><i>06</i><span>思路</span></a></li>
+    <li><a href="#p07"><i>07</i><span>开源</span></a></li>
+    <li><a href="#p08"><i>08</i><span>安全</span></a></li>
+    <li><a href="#p09"><i>09</i><span>学术</span></a></li>
+    <li><a href="#p10"><i>10</i><span>资本</span></a></li>
+    <li><a href="#p11"><i>11</i><span>算力</span></a></li>
+    <li><a href="#p12"><i>12</i><span>工具链</span></a></li>
+    <li><a href="#p13"><i>13</i><span>落地</span></a></li>
+    <li><a href="#p14"><i>14</i><span>星探</span></a></li>
+    <li><a href="#p15"><i>15</i><span>快讯</span></a></li>
+    <li><a href="#p16"><i>16</i><span>提案</span></a></li>
+  </ol>
+  <a class="rail-top" href="#top" title="回到顶部">↑ 顶</a>
+</nav>
+
+<button class="mob-btn" id="mobBtn" type="button" aria-label="版面目录" aria-controls="mobPanel" aria-expanded="false"><i>☰</i>目录</button>
+<div class="mob-panel" id="mobPanel" role="dialog" aria-label="版面目录">
+  <h6>版面目录 · 共 16 版 · 点一下跳过去</h6>
+  <div class="mob-grid">
+    <a href="#p01"><i>01</i>头条</a>
+    <a href="#p02"><i>02</i>社论</a>
+    <a href="#p03"><i>03</i>能力底座</a>
+    <a href="#p04"><i>04</i>产品生态</a>
+    <a href="#p05"><i>05</i>深读</a>
+    <a href="#p06"><i>06</i>思路拆解</a>
+    <a href="#p07"><i>07</i>开源清单</a>
+    <a href="#p08"><i>08</i>安全治理</a>
+    <a href="#p09"><i>09</i>学术前沿</a>
+    <a href="#p10"><i>10</i>商业资本</a>
+    <a href="#p11"><i>11</i>算力本地</a>
+    <a href="#p12"><i>12</i>工具链</a>
+    <a href="#p13"><i>13</i>落地案例</a>
+    <a href="#p14"><i>14</i>星探</a>
+    <a href="#p15"><i>15</i>快讯</a>
+    <a href="#p16"><i>16</i>提案</a>
+  </div>
+  <p class="mob-tip">宽屏时目录固定在右侧；窄屏（平板、手机）右侧放不下，改用这个面板。点任意一项会自动收起。</p>
+  <a class="mob-top" href="#top">↑ 回到顶部</a>
+</div>
+
+<script>
+(function(){
+  var links = Array.prototype.slice.call(document.querySelectorAll('.rail-list a'));
+  var secs = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  var ticking = false;
+  function update(){
+    var mark = window.pageYOffset + window.innerHeight * 0.35;
+    var idx = 0;
+    for (var i = 0; i < secs.length; i++){
+      if (secs[i] && secs[i].offsetTop <= mark) idx = i;
+    }
+    links.forEach(function(a, i){ a.classList.toggle('active', i === idx); });
+    ticking = false;
+  }
+  function onScroll(){ if(!ticking){ ticking = true; window.requestAnimationFrame(update); } }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  update();
+
+  // 窄屏目录面板
+  var mb = document.getElementById('mobBtn');
+  var mp = document.getElementById('mobPanel');
+  if (mb && mp){
+    // 阅读时让开正文：向下滚收起，向上滚或回到顶部再出来。
+    // 按钮是 fixed 的，不收起就一定会在某个滚动位置压住某行字。
+    var lastY = window.pageYOffset, tucked = false, queued = false;
+    function tuckOnScroll(){
+      var y = window.pageYOffset, d = y - lastY;
+      lastY = y; queued = false;
+      if (document.body.classList.contains('mob-open')) return;
+      if (tucked && (d < -8 || y < 80)){
+        tucked = false; document.body.classList.remove('mob-btn-tuck');
+      } else if (!tucked && d > 8 && y > 200){
+        tucked = true; document.body.classList.add('mob-btn-tuck');
+      }
+    }
+    window.addEventListener('scroll', function(){
+      if (!queued){ queued = true; window.requestAnimationFrame(tuckOnScroll); }
+    }, { passive: true });
+
+    function setOpen(open){
+      document.body.classList.toggle('mob-open', open);
+      mb.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (open){
+        tucked = false; document.body.classList.remove('mob-btn-tuck');
+      }
+    }
+    mb.addEventListener('click', function(){
+      setOpen(!document.body.classList.contains('mob-open'));
+    });
+    mp.addEventListener('click', function(e){
+      var t = e.target;
+      while (t && t !== mp){
+        if (t.tagName === 'A'){ setOpen(false); break; }
+        t = t.parentNode;
+      }
+    });
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape') setOpen(false);
+    });
+  }
+
+  // 术语注解（P004-2）：桌面悬停、键盘聚焦、触摸点击都能展开；再点一次或点别处收起。
+  // 气泡会按视口右边界往回缩，避免在窄屏上撑出横向滚动。
+  var terms = Array.prototype.slice.call(document.querySelectorAll('.term'));
+  function place(el){
+    var tip = el.querySelector('.tip');
+    if (!tip) return;
+    var r = el.getBoundingClientRect();
+    var w = tip.offsetWidth || 0, h = tip.offsetHeight || 0;
+    var left = Math.max(10, Math.min(r.left, window.innerWidth - w - 10));
+    var top = r.top - h - 9;
+    if (top < 6) top = r.bottom + 9;
+    tip.style.left = left + 'px';
+    tip.style.top = top + 'px';
+  }
+  terms.forEach(function(el){
+    el.setAttribute('tabindex', '0');
+    el.setAttribute('role', 'button');
+    el.addEventListener('mouseenter', function(){ place(el); });
+    el.addEventListener('focus', function(){ place(el); });
+    el.addEventListener('click', function(e){
+      e.preventDefault();
+      var on = el.classList.contains('on');
+      terms.forEach(function(o){ o.classList.remove('on'); });
+      if (!on){ el.classList.add('on'); place(el); }
+    });
+  });
+  window.addEventListener('resize', function(){
+    terms.forEach(function(o){ if (o.classList.contains('on')) place(o); });
+  });
+  document.addEventListener('click', function(e){
+    if (!e.target.closest || !e.target.closest('.term')){
+      terms.forEach(function(o){ o.classList.remove('on'); });
+    }
+  });
+})();
+</script>
+<script type="application/json" id="ai-daily-facts">{"asOf":"2026-11-12","facts":[{"asOf":"2026-11-11","claim":"Google 生成式 UI 开放协议 A2UI 的首个稳定版号","id":"F01","page":"p01","reproduced":false,"source":"Google 官方博客","strength":"vendor","value":"A2UI 1.0"},{"asOf":"2026-11-12","claim":"Gemini Enterprise 注册自有 A2UI 智能体时仍支持的协议版本","id":"F02","page":"p01","reproduced":false,"source":"Google Cloud 文档的媒体转述","strength":"media","value":"0.9.1"},{"asOf":"2026-11-11","claim":"A2UI 协议采用的开源许可","id":"F03","page":"p03","reproduced":false,"source":"A2UI 官网与官方博客","strength":"vendor","value":"Apache 2.0"},{"asOf":"2026-11-11","claim":"A2UI 1.0 新增的调用能力","id":"F04","page":"p03","reproduced":false,"source":"Google 官方博客","strength":"vendor","value":"双向函数调用"},{"asOf":"2026-11-11","claim":"OpenAI 在 ChatGPT 内推出的品牌对话智能体名称","id":"F05","page":"p04","reproduced":false,"source":"TLDR AI 与多家媒体报道","strength":"media","value":"Business Agents"},{"asOf":"2026-11-12","claim":"OpenRouter 测试中重复调用被拦下的轮次","id":"F06","page":"p05","reproduced":false,"source":"OpenRouter Agent SDK 说明","strength":"vendor","value":"第三次"},{"asOf":"2026-11-12","claim":"OpenRouter 四层防护所测的当前模型数量","id":"F07","page":"p05","reproduced":false,"source":"OpenRouter Agent SDK 说明","strength":"vendor","value":"6 个模型"},{"asOf":"2026-11-12","claim":"AWS 本地模拟器覆盖的 API 模型数量","id":"F08","page":"p07","reproduced":false,"source":"aws-emulator 仓库说明","strength":"vendor","value":"438"},{"asOf":"2026-11-11","claim":"纽约 RAISE Act 要求关键事件的报告时限","id":"F09","page":"p08","reproduced":false,"source":"TechCrunch 等媒体报道","strength":"media","value":"72 小时"},{"asOf":"2026-11-11","claim":"DeepMind 形式化证明智能体四周写下的证明行数","id":"F10","page":"p09","reproduced":false,"source":"厂商与媒体转述的发布口径","strength":"vendor","value":"650 万行"},{"asOf":"2026-11-11","claim":"Anthropic 更新后的 S-1 对应的 IPO 估值","id":"F11","page":"p10","reproduced":false,"source":"TechCrunch 等财经报道","strength":"media","value":"1.4 万亿美元"},{"asOf":"2026-11-12","claim":"软银在美国 AI 数据中心投资上已产生的减值","id":"F12","page":"p10","reproduced":false,"source":"财经媒体报道","strength":"media","value":"70 亿美元"},{"asOf":"2026-11-11","claim":"BotPsy-0.8B 在 BFCL v4 上的得分","id":"F13","page":"p11","reproduced":false,"source":"Tether 官方发布","strength":"vendor","value":"44.0%"},{"asOf":"2026-11-11","claim":"Amazon 把工单分类换成小模型后声称的成本降幅","id":"F14","page":"p11","reproduced":false,"source":"Strands 博客与媒体报道","strength":"media","value":"98%"},{"asOf":"2026-11-12","claim":"Bedrock AgentCore 网页搜索 API 每千次查询的价格","id":"F15","page":"p12","reproduced":false,"source":"AWS 发布的媒体转述","strength":"media","value":"7 美元"},{"asOf":"2026-11-12","claim":"LangChain 全系新版上调后的最低 Python 版本","id":"F16","page":"p12","reproduced":false,"source":"版本说明与媒体报道","strength":"media","value":"Python 3.11"},{"asOf":"2026-11-11","claim":"Apollo 2 在奔驰产线分拣金属零件的报告成功率","id":"F17","page":"p13","reproduced":false,"source":"Google DeepMind 发布口径","strength":"vendor","value":"96%"},{"asOf":"2026-11-11","claim":"rea 在 11 月 11 日趋势榜记录的当日新增 star","id":"F18","page":"p14","reproduced":false,"source":"GitHub 趋势榜","strength":"media","value":"1,631"}]}</script></div>
+</body>
+</html>

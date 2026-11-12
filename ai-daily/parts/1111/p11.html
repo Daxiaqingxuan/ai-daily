@@ -1,0 +1,32 @@
+<section class="section" id="p11">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">算力本地 · 一年四款 TPU，与一张能自己算的账</span>
+      <span class="sec-page">第 11 版 / 共 16 版</span>
+    </div>
+    <p class="sec-lede">Google 11 月 9 日补上第八代 TPU 的两款新系统，一年内首次集齐 <b>4 款</b>；同一周，美团把万亿模型往国产芯片上适配，开源社区把本地推理压到单张消费卡。<b>两条线都在回答同一个问题：能力放开之后，跑在哪里、谁控制得住</b><span class="src-tag">厂商口径</span>。</p>
+
+    <p><b>TPU 8tx</b> 面向机密推理与小模型训练，在硬件层隔离敏感数据与模型权重，官方称延迟较 8t 最多降一半，瞄准政府、金融、医疗等强监管行业；<b>TPU 8i Max</b> 双芯合封，算力、SRAM 与 HBM 带宽翻倍，面向超长上下文与多智能体负载<span class="src-tag">厂商口径</span>。加上 4 月的 8t、8i，Google 一年推出四款 TPU 系统，并配套开源 TorchTPU、TPU Sync 等工具，官方称 TPU 客户已近 100 家。两款新芯片的分工很清楚：<b>一款把「别看数据」做成硬件边界，一款把「跑得动一千个代理」做成带宽</b>——正好对应本周放开与叫停的两端。</p>
+    <p>另一头是本地。LongCat-2.5 用 W4A4 量化，并针对显存与带宽受限的国产算力芯片做适配：单卡不足 80GB 时跨超节点分片，官方称长序列 SFT 单卡吞吐较 DDP 基线提升 86%<span class="src-tag">厂商口径</span>。开源社区同期给出更易复现的一档：Qwen3.8 27B 的本地推理在单张 RTX 3090 / 4090 / 5090 上跑通，支持断点续跑的 OpenAI 兼容接口<span class="src-tag">公开报道</span>。<b>把模型放在自己机器上，可停止性就不再是一份公告，而是电源开关</b>——这是本周最朴素、也最不需要信任的一层。</p>
+    <p>这里插一条本报自己算的数，顺带把算式写出来。LongCat-2.5 总参数 1.6 万亿、每 token 激活约 480 亿，两者相除得 <b>3%</b>：<b>480 亿 ÷ 1.6 万亿 = 0.03</b><span class="src-tag low">本报自设</span>。也就是说，能力按总量算，单次前向只叫醒约三十分之一的参数。<b>这个 3% 不是厂商给的指标，是本报按公开参数折算的口径</b>，它只说明稀疏程度，不说明速度、显存或成本——把三者混为一谈，是读 <span class="term" tabindex="0">MoE<i class="tip">混合专家：把模型拆成很多「专家」，每个 token 只叫醒其中几个。能力按总量算，单次计算按叫醒的数量算。</i></span> 参数时最常见的错。</p>
+    <p>把三件事并排：<b>云端在把隔离做进硬件，开源在把权重交到使用者手里，本地在把门槛压到一张消费卡</b>。它们不是竞争关系，而是本周「放开」的三种不同落点。选哪一种，其实是在选「停止键装在谁手上」——<b>装在硬件里的可信但要信任供应商，装在自家机器上的不体面但按得着。</b></p>
+
+    <div class="table-wrap">
+      <table>
+        <caption>三种算力落点，三种控制权</caption>
+        <thead><tr><th>落点</th><th>本周例子</th><th>隔离靠什么</th><th>停止键在谁手里</th></tr></thead>
+        <tbody>
+          <tr><td>云上机密硬件</td><td>TPU 8tx</td><td>硬件层隔离数据与权重</td><td>云厂商</td></tr>
+          <tr><td>自托管开源权重</td><td>LongCat-2.5 / SGLang</td><td>自己的集群与网络边界</td><td>使用方</td></tr>
+          <tr><td>单卡本地推理</td><td>Qwen3.8 27B</td><td>物理断网即可</td><td>使用方</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版算力本地</span>
+      </div>
+      <p>把 480 亿除以 1.6 万亿只要两秒钟，但本报还是把算式印出来了。<b>能被读者拿计算器复算的数字，才配叫「本报自设」；写不出算式的系数，只是换了个说法的猜测。</b></p>
+    </aside>
+  </section>

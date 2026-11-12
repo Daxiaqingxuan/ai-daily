@@ -1,0 +1,33 @@
+<section class="section" id="p11">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">算力本地 · 把活从云上搬回来</span>
+      <span class="sec-page">第 11 版 / 共 16 版</span>
+    </div>
+    <p class="sec-lede">这一版三件事看着不相干，其实都在做同一个动作：<b>把原本必须发到云上的那一步，挪回本机</b>。理由各不相同——隐私、成本、或者只是不想为了测试去开账号。</p>
+
+    <p><b>端侧：小模型专门练「把请求变成动作」。</b>Tether AI Research 发布 QVAC BotPsy-0.8B，基于 Qwen3.5-0.8B 架构，用四阶段后训练（监督微调、多教师同策略蒸馏、两阶段可验证奖励强化学习）做成开放权重模型，Apache 2.0，提供 safetensors 与 GGUF<span class="src-tag">厂商口径</span>。官方给的 BFCL v4 为 <b>44.0%</b>（基座 23.4%、Qwen3.5-2B 为 37.7%），ACEBench 58.7%、τ-bench 51.5%、ToolSandbox 64.6%；六个工具调用基准里赢下五个，唯一输在 Claw-Eval<span class="src-tag">厂商口径</span>。发布不含训练数据与代码，消费级助手应用没有时间表<span class="src-tag">公开报道</span>。<b>这套设计的重点不是「小模型打败大模型」，而是个人数据不必离开设备</b>——邮件、日历、联系人只在本地被转成 <span class="term" tabindex="0">工具调用<i class="tip">模型不直接执行动作，而是输出「该调哪个工具、带什么参数」。执行与权限始终由应用掌握。</i></span>。</p>
+    <p><b>成本：把不该用大模型的活换掉。</b>Amazon 把工单分类从 Sonnet 4.6 换成微调过的 Gemma 4 2B「Strands Decider」，称在准确率相当的前提下成本降了 <b>98%</b><span class="src-tag">公开报道</span>。技术社区的反应不是称赞优化，而是追问「一开始为什么要用 Sonnet 做这件事」。<b>本报认为这个追问比 98% 更有价值</b>：它问的是接口选型的默认值，不是模型选得好不好。</p>
+    <p><b>测试：把云搬进笔记本。</b>aws-emulator 覆盖 438 个 API 模型，按服务公布保真度，Rust 测试可为每个用例起一个隔离实例；开发者不需要 AWS 账号就能调试云侧应用<span class="src-tag">厂商口径</span>。它默认开启用量遥测<span class="src-tag">公开报道</span>。另有 AWS 报道称发布了一个完全由自主智能体编写测试的本地模拟器，覆盖 200 多款云服务——<b>两条口径指向同一方向，本报不把它们当成两个独立产品</b>。</p>
+
+    <div class="table-wrap">
+      <table>
+        <caption>三种「搬回本地」，各自省下的是什么</caption>
+        <thead><tr><th>做法</th><th>搬回来的东西</th><th>省下</th><th>代价</th></tr></thead>
+        <tbody>
+          <tr><td>BotPsy-0.8B</td><td>个人数据与工具调用</td><td>数据出境</td><td>能力限于工具编排，不含训练数据</td></tr>
+          <tr><td>Gemma 4 2B 工单分类</td><td>高频简单分类</td><td>约 98% 成本（厂商口径）</td><td>需要自有微调与评测</td></tr>
+          <tr><td>aws-emulator</td><td>云服务接口测试</td><td>开账号与联调手续</td><td>保真度因服务而异，遥测默认开</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p><b>需要提醒一处读法。</b>44.0% 这类分数是厂商在自家选定基准上的自述，本报未独立复现；98% 是成本降幅、不是准确率提升。<b>把两类数字并排读成「小模型已经够用了」，会漏掉它们各自的分母。</b>本期第 16 版有一条提案，正是要求本报自己的折算也写清假设与算法。</p>
+
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版算力本地</span>
+      </div>
+      <p>「本地」不是一种信仰，是一笔具体的账：哪些数据不许出门、哪些调用不值得花钱、哪些测试根本不需要真云。<b>把这三格填出来，比喊口号管用。</b></p>
+    </aside>
+  </section>

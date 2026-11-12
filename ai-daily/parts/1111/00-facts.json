@@ -1,0 +1,23 @@
+{
+  "asOf": "2026-11-11",
+  "facts": [
+    { "id": "F01", "claim": "Fable 5.2 官方称可同时协调的 AI 代理数量", "value": "1,000", "page": "p01", "source": "Anthropic 发布口径", "asOf": "2026-11-10", "strength": "vendor", "reproduced": false },
+    { "id": "F02", "claim": "Control Room 撤销任务 ID 后叫停内部研究模型的延迟", "value": "35 秒", "page": "p01", "source": "OpenAI Control Room 说明的媒体报道", "asOf": "2026-11-11", "strength": "media", "reproduced": false },
+    { "id": "F03", "claim": "官方称千余子智能体搭出可启动操作系统原型所用时间", "value": "8 天", "page": "p01", "source": "Anthropic 发布口径", "asOf": "2026-11-10", "strength": "vendor", "reproduced": false },
+    { "id": "F04", "claim": "Gemini 4 Carbon 官方口径的智能体诚实度", "value": "92%", "page": "p03", "source": "Google 发布材料", "asOf": "2026-11-11", "strength": "vendor", "reproduced": false },
+    { "id": "F05", "claim": "上代 Argon 的智能体诚实度", "value": "70%", "page": "p03", "source": "Google 发布材料", "asOf": "2026-11-11", "strength": "vendor", "reproduced": false },
+    { "id": "F06", "claim": "官方称 Gemini 4 Carbon 完成任务的成本比次优外部模型低", "value": "2 倍", "page": "p03", "source": "Google 发布材料", "asOf": "2026-11-11", "strength": "vendor", "reproduced": false },
+    { "id": "F07", "claim": "11 月 9 日签署巴黎 AI 安全联合宣言的国家数", "value": "6 国", "page": "p05", "source": "联合宣言与媒体报道", "asOf": "2026-11-09", "strength": "media", "reproduced": false },
+    { "id": "F08", "claim": "同批签署宣言的 AI 开发商数量", "value": "5 家", "page": "p05", "source": "联合宣言与媒体报道", "asOf": "2026-11-09", "strength": "media", "reproduced": false },
+    { "id": "F09", "claim": "LongCat-2.5 总参数量", "value": "1.6 万亿", "page": "p07", "source": "美团开源模型卡", "asOf": "2026-11-09", "strength": "vendor", "reproduced": false },
+    { "id": "F10", "claim": "LongCat-2.5 每个 token 激活的参数量", "value": "480 亿", "page": "p07", "source": "美团开源模型卡", "asOf": "2026-11-09", "strength": "vendor", "reproduced": false },
+    { "id": "F11", "claim": "H3-Image 可直接生成的图像分辨率", "value": "4096×4096", "page": "p07", "source": "MiniMax 发布材料", "asOf": "2026-11-11", "strength": "vendor", "reproduced": false },
+    { "id": "F12", "claim": "Vercel 安全审查上线不到一周智能体发现的漏洞数", "value": "57,897", "page": "p08", "source": "Vercel 公布口径", "asOf": "2026-11-11", "strength": "vendor", "reproduced": false },
+    { "id": "F13", "claim": "同一批漏洞中被自动修复的数量", "value": "14,665", "page": "p08", "source": "Vercel 公布口径", "asOf": "2026-11-11", "strength": "vendor", "reproduced": false },
+    { "id": "F14", "claim": "Anthropic IPO 初步条款对应的目标估值", "value": "1.4 万亿美元", "page": "p10", "source": "路演条款的财经报道", "asOf": "2026-11-11", "strength": "media", "reproduced": false },
+    { "id": "F15", "claim": "英国 504 位决策者调查中无法证明部分 AI 支出回报的比例", "value": "83%", "page": "p10", "source": "Air IT Group 委托 PCR Research 的调查", "asOf": "2026-11-10", "strength": "media", "reproduced": false },
+    { "id": "F16", "claim": "北京 4 款城市智能体中「数企通」生成一份走访备参所需时间", "value": "1 分钟", "page": "p13", "source": "中关村论坛发布会披露的阶段性数据", "asOf": "2026-11-10", "strength": "vendor", "reproduced": false },
+    { "id": "F17", "claim": "「灵熙」街区智能体使相关填报耗时下降的幅度", "value": "80%", "page": "p13", "source": "中关村论坛发布会披露的阶段性数据", "asOf": "2026-11-10", "strength": "vendor", "reproduced": false },
+    { "id": "F18", "claim": "按 1.6 万亿总参数与 480 亿激活参数折算的激活比例", "value": "3%", "page": "p11", "source": "本报按公开参数折算：480 亿 ÷ 1.6 万亿", "asOf": "2026-11-11", "strength": "estimate", "reproduced": false }
+  ]
+}

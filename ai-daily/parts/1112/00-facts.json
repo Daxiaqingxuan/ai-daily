@@ -1,0 +1,23 @@
+{
+  "asOf": "2026-11-12",
+  "facts": [
+    { "id": "F01", "claim": "Google 生成式 UI 开放协议 A2UI 的首个稳定版号", "value": "A2UI 1.0", "page": "p01", "source": "Google 官方博客", "asOf": "2026-11-11", "strength": "vendor", "reproduced": false },
+    { "id": "F02", "claim": "Gemini Enterprise 注册自有 A2UI 智能体时仍支持的协议版本", "value": "0.9.1", "page": "p01", "source": "Google Cloud 文档的媒体转述", "asOf": "2026-11-12", "strength": "media", "reproduced": false },
+    { "id": "F03", "claim": "A2UI 协议采用的开源许可", "value": "Apache 2.0", "page": "p03", "source": "A2UI 官网与官方博客", "asOf": "2026-11-11", "strength": "vendor", "reproduced": false },
+    { "id": "F04", "claim": "A2UI 1.0 新增的调用能力", "value": "双向函数调用", "page": "p03", "source": "Google 官方博客", "asOf": "2026-11-11", "strength": "vendor", "reproduced": false },
+    { "id": "F05", "claim": "OpenAI 在 ChatGPT 内推出的品牌对话智能体名称", "value": "Business Agents", "page": "p04", "source": "TLDR AI 与多家媒体报道", "asOf": "2026-11-11", "strength": "media", "reproduced": false },
+    { "id": "F06", "claim": "OpenRouter 测试中重复调用被拦下的轮次", "value": "第三次", "page": "p05", "source": "OpenRouter Agent SDK 说明", "asOf": "2026-11-12", "strength": "vendor", "reproduced": false },
+    { "id": "F07", "claim": "OpenRouter 四层防护所测的当前模型数量", "value": "6 个模型", "page": "p05", "source": "OpenRouter Agent SDK 说明", "asOf": "2026-11-12", "strength": "vendor", "reproduced": false },
+    { "id": "F08", "claim": "AWS 本地模拟器覆盖的 API 模型数量", "value": "438", "page": "p07", "source": "aws-emulator 仓库说明", "asOf": "2026-11-12", "strength": "vendor", "reproduced": false },
+    { "id": "F09", "claim": "纽约 RAISE Act 要求关键事件的报告时限", "value": "72 小时", "page": "p08", "source": "TechCrunch 等媒体报道", "asOf": "2026-11-11", "strength": "media", "reproduced": false },
+    { "id": "F10", "claim": "DeepMind 形式化证明智能体四周写下的证明行数", "value": "650 万行", "page": "p09", "source": "厂商与媒体转述的发布口径", "asOf": "2026-11-11", "strength": "vendor", "reproduced": false },
+    { "id": "F11", "claim": "Anthropic 更新后的 S-1 对应的 IPO 估值", "value": "1.4 万亿美元", "page": "p10", "source": "TechCrunch 等财经报道", "asOf": "2026-11-11", "strength": "media", "reproduced": false },
+    { "id": "F12", "claim": "软银在美国 AI 数据中心投资上已产生的减值", "value": "70 亿美元", "page": "p10", "source": "财经媒体报道", "asOf": "2026-11-12", "strength": "media", "reproduced": false },
+    { "id": "F13", "claim": "BotPsy-0.8B 在 BFCL v4 上的得分", "value": "44.0%", "page": "p11", "source": "Tether 官方发布", "asOf": "2026-11-11", "strength": "vendor", "reproduced": false },
+    { "id": "F14", "claim": "Amazon 把工单分类换成小模型后声称的成本降幅", "value": "98%", "page": "p11", "source": "Strands 博客与媒体报道", "asOf": "2026-11-11", "strength": "media", "reproduced": false },
+    { "id": "F15", "claim": "Bedrock AgentCore 网页搜索 API 每千次查询的价格", "value": "7 美元", "page": "p12", "source": "AWS 发布的媒体转述", "asOf": "2026-11-12", "strength": "media", "reproduced": false },
+    { "id": "F16", "claim": "LangChain 全系新版上调后的最低 Python 版本", "value": "Python 3.11", "page": "p12", "source": "版本说明与媒体报道", "asOf": "2026-11-12", "strength": "media", "reproduced": false },
+    { "id": "F17", "claim": "Apollo 2 在奔驰产线分拣金属零件的报告成功率", "value": "96%", "page": "p13", "source": "Google DeepMind 发布口径", "asOf": "2026-11-11", "strength": "vendor", "reproduced": false },
+    { "id": "F18", "claim": "rea 在 11 月 11 日趋势榜记录的当日新增 star", "value": "1,631", "page": "p14", "source": "GitHub 趋势榜", "asOf": "2026-11-11", "strength": "media", "reproduced": false }
+  ]
+}

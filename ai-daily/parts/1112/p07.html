@@ -1,0 +1,37 @@
+<section class="section" id="p07">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">开源清单 · 六个项目，四种「省事」</span>
+      <span class="sec-page">第 07 版 / 共 16 版</span>
+    </div>
+    <p class="sec-lede">11 月 11 日的开源榜单几乎被「围绕智能体的工具」占满。它们不训练模型，只替你把模型外面那圈麻烦事做掉：看懂别人的程序、把它关进笼子、教它怎么教人、以及不用云账号就能测代码。本版按「省的是什么事」归类，不按热度排。</p>
+
+    <p><b>省掉「看不懂」。</b>morluto/rea 让编码智能体在没有源码的情况下逆向一个应用：通过 Hopper 或 Ghidra 看原生二进制，也能看 JavaScript / Electron 应用、.NET 程序集和网站，最后连证据与结论的边界一起给出，分析在本机跑<span class="src-tag">公开报道</span>。storytold/craft-anything 走得更远，用净室方式观察可见行为再让智能体重建，早期 alpha，314 个工具同时可作 CLI 与 MCP 用。<b>这两件东西改变的不是模型能力，是它能被指派去读什么。</b></p>
+    <p><b>省掉「管不住」。</b>Lee-xeo/Claude-Cage 把 Claude Code 与 Claude Desktop 放进隔离虚拟机，网络走代理、时区与语言跟随出口节点，只共享你选中的项目目录，还能在配对手机上继续或批准会话<span class="src-tag">公开报道</span>。和第 05 版的四道闸一样，这是把边界写在环境里，而不是指望模型自觉。</p>
+    <p><b>省掉「不会教」。</b>两份技能包值得放在一起看：Jane Street 的 agent_skills 只带一个 socratic-tutor 技能，先做诊断、画 0 到 5 级的技能图、一次只问一个问题、安排间隔复习；GoogleChrome/modern-web-guidance 由 Chrome、Edge、Firefox 与 MDN 团队共同维护，给编码智能体喂现代 Web 平台的策展指南，还能扫代码库里的旧写法<span class="src-tag">公开报道</span>。<b>「技能」这一层正在变成可分发的东西</b>，而它恰好也不改一个权重。</p>
+    <p><b>省掉「测不了」。</b>aws/aws-emulator 是 Rust 写的本地 AWS API 模拟器：起一个实例，把 AWS CLI 或 SDK 指过去，无需账号就能对着模拟资源调试；每个版本按服务公布保真度评分，覆盖 200 多款云服务、<b>438</b> 个 API 模型<span class="src-tag">厂商口径</span>。它默认开启用量遥测，这一点在把它接进内网之前值得先看一眼。meta/astryx 则把内部用了八年的设计系统开源：150 多个 React 19 组件、七套主题，安装就是普通 CSS 加带类型的组件，<b>刻意做成智能体和人用起来一样顺</b><span class="src-tag">公开报道</span>。</p>
+
+    <div class="table-wrap">
+      <table>
+        <caption>六个项目：省掉的事、许可与保留意见</caption>
+        <thead><tr><th>项目</th><th>省掉的事</th><th>形态</th><th>本报保留意见</th></tr></thead>
+        <tbody>
+          <tr><td>rea</td><td>读懂没有源码的程序</td><td>TypeScript 工具集</td><td>逆向结论的适用范围要看证据栏</td></tr>
+          <tr><td>Claude-Cage</td><td>隔离运行与配额管理</td><td>Go 桌面工作台</td><td>虚拟机不等于权限最小化</td></tr>
+          <tr><td>agent_skills</td><td>把教学法交给智能体</td><td>SKILL.md 技能包</td><td>目前只有一个技能</td></tr>
+          <tr><td>modern-web-guidance</td><td>让智能体别写旧 Web 代码</td><td>浏览器厂商策展指南</td><td>指南覆盖范围之外的框架不管</td></tr>
+          <tr><td>aws-emulator</td><td>不开云账号就能测</td><td>Rust 本地服务</td><td>保真度按服务不一，遥测默认开</td></tr>
+          <tr><td>astryx</td><td>界面组件不必现搭</td><td>React 组件库（beta）</td><td>beta 期 API 仍可能变</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p><b>把这六件摆在一起看，本期主线就更清楚了。</b>它们不比参数、不刷榜，全部在处理「模型之外」：输入怎么拿到、运行怎么圈住、知识怎么喂、代码怎么测、界面怎么画。<b>一个生态成熟的标志，往往不是又多了个大模型，而是这类不起眼的工具开始成批出现。</b></p>
+
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版开源清单</span>
+      </div>
+      <p>最值钱的开源项目常常一点也不炫：它只是把一件你每周都要做、又没人愿意写进发布说明的脏活做掉了。<b>本周这六个，全属于这一类。</b></p>
+    </aside>
+  </section>

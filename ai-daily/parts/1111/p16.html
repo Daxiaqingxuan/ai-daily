@@ -1,0 +1,103 @@
+<section class="section" id="p16">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">本报提案 · 这一期想怎么改</span>
+      <span class="sec-page">第 16 版 / 共 16 版</span>
+    </div>
+
+    <p class="sec-lede">本版每期由四个身份各提一条改动建议，编号 <b>P008-1…4</b>：<b>读者</b>说哪里读着费劲，<b>编辑</b>说哪里做起来费劲，<b>创刊人</b>说哪里该往前一步，<b>AI</b> 说哪里可以自动化。<b>默认不执行</b>——创刊人点名「采纳 P008-2」才进施工；没人提，下一期自动记「否决（沉默）」。</p>
+
+    <div class="props">
+      <article class="prop">
+        <div class="prop-h"><span class="prop-role">读者</span><span class="prop-id">P008-1</span></div>
+        <h4>给「开放」标清楚是哪一档</h4>
+        <p>这一期我数了数，「开放」出现了十几次，含义却不一样：MiniMax 是权重能下载、Gemini 是能调用、Mythos 反而是准入更严、火山引擎是价格更低。<b>建议正文里每次出现「开放 / 放开」，跟一个四选一的小标：权重 / 可用 / 准入 / 价格</b>。读者不用记四种定义，看标就知道这一句在说什么。</p>
+        <dl class="prop-meta">
+          <dt>为什么</dt><dd>本期头版专门花一段解释四种含义，说明光靠上下文已经分不清了</dd>
+          <dt>成本</dt><dd>小 · 两小时 · 写作规范加一条 + 拼版时检查「开放」附近是否有档位标注</dd>
+        </dl>
+        <div class="prop-st">待定 · <b>沉默即否决</b></div>
+      </article>
+
+      <article class="prop">
+        <div class="prop-h"><span class="prop-role">编辑</span><span class="prop-id">P008-2</span></div>
+        <h4>凡写自主运行，必答「怎么停」三问</h4>
+        <p>本期写到一千个代理、常驻群聊、关机后仍可运行的自动任务，第 06 版那张五问表是临时补的。<b>建议把它固化成硬性核查项：任何出现「自主 / 常驻 / 并行 / 后台」的版面，必须填「谁有权停、多久生效、失败时默认怎样」三格</b>；填不出就写「未见公开停止机制」，不许略过。</p>
+        <dl class="prop-meta">
+          <dt>为什么</dt><dd>靠编辑记性去问，下一期换个主线就会漏；而这三格正是本周最该留下的东西</dd>
+          <dt>成本</dt><dd>中 · 半天 · <code>assemble_issue.py</code> 加一条断言 + 版面模板加一张三格表</dd>
+        </dl>
+        <div class="prop-st">待定 · <b>沉默即否决</b></div>
+      </article>
+
+      <article class="prop">
+        <div class="prop-h"><span class="prop-role">创刊人</span><span class="prop-id">P008-3</span></div>
+        <h4>给本报自己装一个不能绕过的停止键</h4>
+        <p>我们这期花整版讲「谁有权停、多久生效」，本报的出报链路却还是两步：先看 <code>status.py --gate</code> 的结果，再手动发起发布。<b>建议把闸门与发布串成一条命令，闸门 FAIL 时连发布入口都拿不到</b>，中间不留「我看过了，应该没事」这个人工判断位。这正好是用本期主线量自己。</p>
+        <dl class="prop-meta">
+          <dt>为什么</dt><dd>红线写了「断言未过不许发」，但执行上靠人守；人守的闸门不算闸门</dd>
+          <dt>成本</dt><dd>中 · 一天 · 发布脚本包一层 gate 前置 + 变异测试补一条「跳过 gate 仍可发布」反例</dd>
+        </dl>
+        <div class="prop-st">待定 · <b>沉默即否决</b></div>
+      </article>
+
+      <article class="prop">
+        <div class="prop-h"><span class="prop-role">AI</span><span class="prop-id">P008-4</span></div>
+        <h4>自动收一页「本期未答问题」</h4>
+        <p>本期正文里散着不少「未写明 / 未公布 / 未见 / 未经复核」：停止机制的时限、57,897 的误报率、成本 2 倍所用的是哪一档价。<b>建议拼版时把这些句子自动抽成一页缺口清单</b>，附在观察清单后面，并在下一期自动回带「上期未答」栏。它不改数据、不做判断，只把我们自己说过的「不知道」收在一起。</p>
+        <dl class="prop-meta">
+          <dt>为什么</dt><dd>这些缺口现在靠读者自己记，下一期也无人回头核；收拢之后才知道哪几条一直没等到答案</dd>
+          <dt>成本</dt><dd>小 · 半天 · 正则抽句 + 生成 <code>open-questions.json</code>，公开面可选渲染</dd>
+        </dl>
+        <div class="prop-st">待定 · <b>沉默即否决</b></div>
+      </article>
+    </div>
+
+    <p class="prop-rule"><b>怎么算采纳：</b>创刊人在当期明确说「采纳 P008-2」才算；说「先放着」算待定，最多挂三期；<b>没说就是否决，不再追问</b>。已采纳的写进 <code>提案台账.md</code>，在下一期的台账里标「已落地」。</p>
+
+    <div class="table-wrap">
+      <table class="prop-ledger">
+        <caption>提案台账 · 全量明细见 <code>提案台账.md</code>，本表只放最近 8 条</caption>
+        <thead>
+          <tr><th>编号</th><th>视角</th><th>一句话</th><th>状态</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="id">P007-1</td><td>读者</td><td>把反算过程写进事实卡</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P007-2</td><td>编辑</td><td>「标题说的 / 真正要紧的」固定成表</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P007-3</td><td>创刊人</td><td>本报系数也要给出处</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P007-4</td><td>AI</td><td>每条数字标「核到哪一档」</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P008-1</td><td>读者</td><td>给「开放」标清楚是哪一档</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P008-2</td><td>编辑</td><td>自主运行版面必答「怎么停」三问</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P008-3</td><td>创刊人</td><td>发布闸门改成不可绕过</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P008-4</td><td>AI</td><td>自动收一页「本期未答问题」</td><td class="st-wait">待定</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版四条提案</span>
+      </div>
+      <p>P008-3 是这一期把刀口对着自己的那一条。我们刚写完「人守的停止键不算停止键」，转头就得承认出报闸门还靠人守。<b>一份报纸最该先执行自己写的那句话，哪怕那句话是自己刚想出来的。</b></p>
+    </aside>
+  </section>
+
+  <div class="gloss" id="gloss">
+    <h5>名词速查 · 本期出现的 14 个词<span>正文里带虚线的词点一下就地解释；这张表留作索引</span></h5>
+    <div class="gloss-grid">
+      <dl><dt>开放权重 / open weights</dt><dd>模型参数文件可以下载到本地跑，不只是调 API。它把「能不能停」从厂商承诺变成自己机器的电源开关。</dd></dl>
+      <dl><dt>门控 / gated</dt><dd>下载或使用前要登记、申请或审核。许可再宽松，拿不到文件也白搭；本周 Mythos 5.2 就是这种。</dd></dl>
+      <dl><dt>可停止性</dt><dd>系统跑起来之后能不能被中断。合格的说明要写清谁有权停、多久生效、覆盖哪些产品线。</dd></dl>
+      <dl><dt>失败即拒绝 / fail-closed</dt><dd>控制系统自己离线或被篡改时，默认不放行而不是继续跑。它决定事故的上限。</dd></dl>
+      <dl><dt>缓存层</dt><dd>为提速而保存副本的一层。Control Room 的 35 秒延迟就来自这里：撤销指令要先追上已缓存的任务。</dd></dl>
+      <dl><dt>单位任务成本</dt><dd>把一件事干完要花多少钱，而不是每百万 token 多少钱。本周多家发布改用这个分母。</dd></dl>
+      <dl><dt>智能体诚实度</dt><dd>厂商自述指标，通常指遇阻或信息不足时是否如实报告、而非编造完成。本周口径与测试集未公开。</dd></dl>
+      <dl><dt>MoE / 混合专家</dt><dd>把模型拆成很多「专家」，每个 token 只叫醒其中几个；能力按总量算，单次计算按叫醒的数量算。</dd></dl>
+      <dl><dt>W4A4 量化</dt><dd>权重与激活都用 4 位表示，压显存与带宽。代价是精度，收益是能在更受限的芯片上跑。</dd></dl>
+      <dl><dt>多智能体 /swarm</dt><dd>一条指令拉起分工不同的多个代理协同完成一件事。规模上去了，派活与停止都要有明确边界。</dd></dl>
+      <dl><dt>常驻智能体</dt><dd>不需要你打开窗口就已在场，按订阅事件自己开工，关机后任务仍在云端跑。</dd></dl>
+      <dl><dt>语义层</dt><dd>把「活跃用户」「营收」这类业务口径统一定义的一层，让代理查数时用的是公司的定义。</dd></dl>
+      <dl><dt>审计记录</dt><dd>还原「谁发起、谁批准、何时停止、停前做了什么」的日志。能回溯不等于能撤销。</dd></dl>
+      <dl><dt>形式化证明</dt><dd>用机器可逐步检查的严格语言写出的证明。它理论上能被验证器逐行核对，与「解出难题」对证据的要求不同。</dd></dl>
+    </div>
+  </div>
