@@ -1,6 +1,6 @@
 /* 由 tools/build_index.py 自动生成，请勿手工编辑 */
 window.AI_DAILY_ISSUES = {
-  "generatedAt": "2026-11-13 11:03",
+  "generatedAt": "2026-11-13 11:11",
   "issues": [
     {
       "date": "2026-11-13",
@@ -15,7 +15,7 @@ window.AI_DAILY_ISSUES = {
       "deck": "模型这一侧，Gemini 4 Hydrogen 把每百万输入 token 压到 1.5 美元厂商口径；硬件这一侧，一张 RTX 5090 在华强北仍报 4.8 万元公开报道。同一份算力，两个市场，两种走向。",
       "kicker": "头版头条 · 算力的两张价签来源 · 第三方信息网",
       "file": "AI晨报-2026-11-13.html",
-      "size": 148070
+      "size": 148080
     },
     {
       "date": "2026-11-12",

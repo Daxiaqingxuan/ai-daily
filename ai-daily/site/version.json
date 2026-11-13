@@ -1,10 +1,10 @@
 {
   "schema": 1,
-  "code": 26111301,
-  "name": "1.3.009.1",
+  "code": 26111302,
+  "name": "1.3.009.2",
   "file": "ai-daily.apk",
   "bytes": 506671,
-  "sha256": "c47faabb92fb00f1fda90f43f10f04125cee5a864f390b08b6312cb94caf7da3",
+  "sha256": "845814ab9385797fcea13e1eed59a1016f7d1b34670decad93416173cf909008",
   "issue": "009",
-  "builtAt": "2026-11-13 11:03:21"
+  "builtAt": "2026-11-13 11:11:49"
 }

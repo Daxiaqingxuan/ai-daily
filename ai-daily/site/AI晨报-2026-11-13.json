@@ -5,9 +5,9 @@
   "file": "AI晨报-2026-11-13.html",
   "title": "AI 晨报 · 2026年11月13日 · 第 009 期 · 算力的两张价签（共 16 版）",
   "pages": 16,
-  "bytes": 148070,
-  "sha256": "59bca9f0d704babf0453a4b311724c2527dae6716c0e173f42cfc4d8e1a6bf3c",
-  "chars": 25618,
+  "bytes": 148080,
+  "sha256": "bf367c2ecc9fe353bf0d4b3628835044b850ae14760bf7e4219f49368bf4a14e",
+  "chars": 25621,
   "terms": 14,
   "glossary": 14,
   "facts": {
@@ -58,7 +58,7 @@
     ]
   },
   "missing_terms": [],
-  "generatedAt": "2026-11-13 11:03",
+  "generatedAt": "2026-11-13 11:11",
   "checks": {
     "pages_eq_nav": true,
     "nav_matches_sections": true,
