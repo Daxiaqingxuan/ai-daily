@@ -1,0 +1,22 @@
+{
+  "legend": "版级来源说明这一版的信息主要来自哪里；执笔一律是 AI，报尾有内容声明。逐句出处见正文的论据标记，逐条归属见报尾信源表。",
+  "maxAiPages": 4,
+  "pages": {
+    "p01": { "origin": "thirdparty", "note": "厂商定价公告与渠道报价报道并列" },
+    "p02": { "origin": "ai", "note": "社论，本报观点，无外部信源" },
+    "p03": { "origin": "official", "note": "Google 发布博客、模型卡与定价页" },
+    "p04": { "origin": "official", "note": "百度、字节、MiniMax 的发布材料" },
+    "p05": { "origin": "thirdparty", "note": "渠道走访、供给报道、驱动说明与拆卡研究报道" },
+    "p06": { "origin": "ai", "note": "方法论，本报自设的三笔账" },
+    "p07": { "origin": "official", "note": "模型卡、部署文档与各仓库说明" },
+    "p08": { "origin": "thirdparty", "note": "监管文件报道、厂商安全披露与立法报道" },
+    "p09": { "origin": "thirdparty", "note": "DeepMind 发布与国内研究、融资报道" },
+    "p10": { "origin": "thirdparty", "note": "并购、财报与融资的财经报道" },
+    "p11": { "origin": "official", "note": "AMD 的 MI400 产品说明与 MLPerf 口径" },
+    "p12": { "origin": "official", "note": "Google、OpenAI、浏览器厂商的工具说明" },
+    "p13": { "origin": "thirdparty", "note": "词元所机制、整机配置与压缩模型的媒体报道" },
+    "p14": { "origin": "thirdparty", "note": "GitHub star 增速榜与项目说明" },
+    "p15": { "origin": "thirdparty", "note": "多家媒体报道聚合" },
+    "p16": { "origin": "ai", "note": "编辑部提案，本期自设" }
+  }
+}

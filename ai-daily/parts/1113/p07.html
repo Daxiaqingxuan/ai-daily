@@ -1,0 +1,39 @@
+<section class="section" id="p07">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">开源清单 · 这周能下载的权重，和三个不能下载的</span>
+      <span class="sec-page">第 07 版 / 共 16 版</span>
+    </div>
+    <p class="sec-lede">本版按「拿到手要不要付代价」分两类：<b>能下载的权重</b>，和只能装进工具链、装不进机箱的技能包。前者的门槛在硬盘和显存，后者的门槛在你愿不愿意改工作流。</p>
+
+    <p><b>能下载的第一件，是本周最重的一件。</b>MiniMax H3-Image 权重发布于 Hugging Face，DiT 与文本编码器分两个仓库，首次运行要下约 <b>135GB</b>；官方部署文档写明 Auto 模式要单卡可用显存不低于 130GiB 才保留常驻，不够就退回逐层卸载<span class="src-tag">厂商口径</span>。真跑通过的配置是 H200、B300、RTX PRO 6000 96GB 这一档，<b>消费卡官方只给了推导配置、没有实测数据</b><span class="src-tag">公开报道</span>。许可写的是 other：年营收超 100 万美元、或对外提供托管服务，都要先拿书面授权<span class="src-tag">厂商口径</span>。<b>换句话说，它开源的是「能不能自己跑」，不是「能不能拿去卖」。</b></p>
+
+    <p><b>第二件小得多，但更贴合日常。</b>aiXcoder 的 aiXcompact-4B 用「教师模型蒸馏 + 微调 + 结构化压缩决策」做上下文压缩，官方称可把编程智能体的历史上下文平均压到原长的 <b>25.89%</b>，同时保留工具调用配对与任务摘要；单张 A100-40GB 即可私有化部署<span class="src-tag">厂商口径</span>。<b>它解决的是第 04 版那张乘法表里最容易被忽略的一项：轮数。</b>压掉历史长度，等于把每一轮的单价乘上一个更小的系数。</p>
+
+    <p><b>三件装不进机箱的，全是「给智能体的技能」。</b>Chrome、Edge、Firefox 与 MDN 团队联合维护的 modern-web-guidance 把现代 Web 平台指南做成可被编码智能体消费的技能包，自带 CLI 能按 ID 取单篇、也能扫代码库里的旧写法；OpenAI 的 codex-security 把漏洞扫描、验证与修复建议做成命令行与 TypeScript SDK，适合接进流水线；pingdotgg/t3code 则用一个控制面管本机已装的所有编码智能体，从手机、网页或桌面都能连<span class="src-tag">公开报道</span>。<b>三件的共同点是：它们不改一个权重，只改模型外面那一圈。</b></p>
+
+    <div class="table-wrap">
+      <table>
+        <caption>本周清单：拿到手要付什么代价</caption>
+        <thead><tr><th>项目</th><th>是什么</th><th>许可 / 形态</th><th>本报保留意见</th></tr></thead>
+        <tbody>
+          <tr><td>MiniMax H3-Image</td><td>4K 图像生成与编辑</td><td>自定义社区协议（other）</td><td>130GiB 级显存门槛，消费卡无实测</td></tr>
+          <tr><td>aiXcompact-4B</td><td>智能体上下文压缩</td><td>权重开放，单卡可跑</td><td>压缩比是官方自述，任务类型有限定</td></tr>
+          <tr><td>Lara Mini</td><td>0.6B 激活多语基座</td><td>研究与非商业许可</td><td>商用要另谈，语种覆盖是卖点</td></tr>
+          <tr><td>modern-web-guidance</td><td>Web 平台技能包</td><td>浏览器厂商策展</td><td>只覆盖现代 Web，框架层不管</td></tr>
+          <tr><td>codex-security</td><td>漏洞扫描 CLI 与 SDK</td><td>开源 CLI / npm 包</td><td>误报率决定它能不能进 CI 卡口</td></tr>
+          <tr><td>t3code</td><td>多智能体统一控制面</td><td>开源，桌面 / 网页 / 手机</td><td>依赖各家订阅，不是替代品</td></tr>
+          <tr><td>janestreet/agent_skills</td><td>苏格拉底式教学技能</td><td>SKILL.md 技能包</td><td>目前只有一个技能，样本太小</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p><b>本版的读法只有一句：先看许可，再看体积。</b>「权重能下」和「能商用」是两件事，「能跑」和「跑得动」也是两件事。本期第 06 版那三笔账里，第一笔就是从这里开始的——<b>先量常驻集合，再谈性能。</b></p>
+
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版开源清单</span>
+      </div>
+      <p>模型卡第一行写的是体积，最后一行才是许可；而决定你能不能用的，往往是最后那一行。<b>把阅读顺序倒过来，能省掉大部分白下的 135GB。</b></p>
+    </aside>
+  </section>

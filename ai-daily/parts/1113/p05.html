@@ -1,0 +1,37 @@
+<section class="section" id="p05">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">显卡 · 每日行情：一张卡的三重价</span>
+      <span class="sec-page">第 05 版 / 共 16 版</span>
+    </div>
+    <p class="sec-lede">从本期起，显卡行情固定占一版：<b>现货价、供给、驱动</b>三张表，加一条当天最值得记的硬件新闻。今天的三重价是——渠道价在退烧、供给仍然紧、二手与拆卡在另开一个市场。<span class="src-tag">公开报道</span></p>
+
+    <div class="table-wrap">
+      <table class="rank">
+        <caption>11 月 13 日可见报价：渠道价、海外低点与峰值</caption>
+        <thead><tr><th>型号 / 口径</th><th class="p">今日</th><th class="p">近期峰值</th><th class="rz">相对首发价</th></tr></thead>
+        <tbody>
+          <tr class="hi"><td class="name">RTX 5090（华强北现货）</td><td class="num">4.8 万元</td><td class="num">5.8 万元</td><td class="rz">约 2.2 倍</td></tr>
+          <tr><td class="name">RTX 5080（华强北现货）</td><td class="num">1.48 万元</td><td class="num">1.8 万元</td><td class="rz">约 1.9 倍</td></tr>
+          <tr><td class="name">RTX 5090（美国最低报价）</td><td class="num">9,400 美元</td><td class="num">—</td><td class="rz">对 1,999 美元约 4.7 倍</td></tr>
+          <tr><td class="name">RTX 50 系列均价</td><td class="num">—</td><td class="num">—</td><td class="rz">约 1.7 倍</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p><b>价是怎么走到今天的。</b>RTX 5090 在今年 1 月 1 日卖 2.2 万元，10 月初到 4 万元，10 月 12 日起几乎每天涨 1500 元，半个月冲到 <b>5.8 万元</b>；10 月 28 日行情掉头，进入 11 月回落加快，双 11 当天报 <b>4.8 万元</b>，较高点降了一万元<span class="src-tag">公开报道</span>。RTX 5080 的曲线更陡：10 月从 8000 元直接翻到 1.8 万元，如今回到 1.48 万元<span class="src-tag">公开报道</span>。<b>但「降价」和「便宜」是两件事</b>——即便回调两成，主流型号均价仍是建议零售价的 <b>1.7 倍</b>，这个<span class="term" tabindex="0">溢价<i class="tip">成交价高出官方指导价的那部分。它通常来自缺货、渠道囤货与套利，不来自产品升级。</i></span>没有被消化掉。</p>
+
+    <p><b>供给端没有任何一条在放松。</b><span class="term" tabindex="0">GDDR7<i class="tip">消费级显卡用的第七代显存，由显存厂商单独供货。它与 HBM 抢同一条产线，是这一轮缺货最直接的原因。</i></span> 显存被数据中心需求抽走，AIB 伙伴拿不到整卡与显存套件；AMD 从 10 月起把中国的游戏卡供应削减了 <b>20% 到 50%</b>，月度配额还在往下走，渠道预计紧张持续到 1 月<span class="src-tag">公开报道</span>。英伟达否认了 5090 停产的传闻，但承认供应链产能存在限制<span class="src-tag">公开报道</span>。<b>这里有一处口径没对齐，本报不替它挑一个：</b>一家财经媒体算 10 月均价较建议零售价高 44%，另一家走访口径是 1.7 倍<span class="src-tag">公开报道</span>。两者不是同一个分母——前者可能按型号加权，后者按门店报价——但都没有公布算法。<b>本报按「1.7 倍」记，因为它是走访口径、能被复述；44% 保留在信源表里，等下一个月的同一口径再比。</b></p>
+
+    <p><b>驱动这一栏，今天两条都是「修体验」。</b>AMD 发布 Adrenalin 26.11.1 可选版，修复 RX 7000 及以上显卡在系统空闲时持续写系统盘的问题——此前实测写入速率 0.3MB/s 到 5MB/s，单日累计最高超过 <b>400GB</b>，会影响固态寿命；同时修掉拖动窗口时的同类写入<span class="src-tag">公开报道</span>。NVIDIA 发布 Game Ready <b>621.24</b> WHQL，为《燕云十六声》加入 DLSS 5 的 3D 引导神经渲染，并修两处显示问题<span class="src-tag">公开报道</span>。<b>两条都不提性能提升，这在一向以「帧数」做卖点的驱动更新里并不常见</b>：一个是硬件寿命，一个是画面正确性。</p>
+
+    <p><b>今天最值得记的一条硬件新闻，是拆卡。</b>研究者 Kate 用电压<span class="term" tabindex="0">故障注入<i class="tip">在芯片供电的瞬间制造一次可控的电压毛刺，让某条保护判断失效，从而改写原本锁死的配置。</i></span>绕过 GPU 内部负责配置硬件功能的<span class="term" tabindex="0">电子熔丝<i class="tip">芯片出厂时一次性烧写的开关，用来永久禁用部分单元。厂商靠它把同一块晶圆切成不同档次的产品。</i></span>控制器，把标称 8GB 显存的 CMP 170HX 矿卡改成了 80GB：不是焊新颗粒，而是把封装里本来就有、被屏蔽的 HBM 重新启用。10 张里 <b>9 张</b>成功，另一张只能到 64GB；解锁后在 OpenCL FP16 测试中约 <b>85.9 TFLOPS</b>，高于研究者测得的 A100 约 72.5 TFLOPS<span class="src-tag">公开报道</span>。卡本身二手约 3,000 美元，而 A100 80GB PCIe 报价可到 20,000 美元以上<span class="src-tag">公开报道</span>。</p>
+    <p><b>本报不鼓励任何人照做，理由不是道德，是风险结构。</b>这类改造动的是硬件配置、不可逆，失败就是一张废卡；研究者也说明已在公布前向厂商安全团队披露<span class="src-tag">公开报道</span>。<b>它的价值在于提供了一个判断：</b>「显存不够」有时不是物理上限，而是产品分层。这句话对采购有含义——<b>你付的那部分钱，有一部分买的是「被允许使用」，不是「有没有」。</b></p>
+
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版显卡行情</span>
+      </div>
+      <p>价格回落两成，媒体就说「退烧」；可它仍是指导价的一点七倍。<b>把「从高点下来」说成「便宜了」，是这一轮行情里最省力、也最误导的一句话。</b></p>
+    </aside>
+  </section>

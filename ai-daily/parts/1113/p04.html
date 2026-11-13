@@ -1,0 +1,38 @@
+<section class="section" id="p04">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">产品生态 · 同一天，三家都在改计价单位</span>
+      <span class="sec-page">第 04 版 / 共 16 版</span>
+    </div>
+    <p class="sec-lede">百度把模型摆上货架，字节把视频按秒计价，MiniMax 把 4K 图按张卖。<b>三家降的不是同一个东西，但降的都是「单位产出」的价格</b>——这是本期两张价签里往下走的那一张。</p>
+
+    <p><b>百度：从发模型转向建市场。</b>百度世界 2026 发布 <b>2800 亿</b>参数的 ERNIE 5.5 Flash Preview，支持最长 100 万 token 上下文<span class="src-tag">厂商口径</span>；同场推出大模型交易平台「词元所」，用指纹比对、能力与可用性测试做准入，按服务质量、兑现度、安全合规与商业履约给供应方打信用评级<span class="src-tag">厂商口径</span>。官方称上线一个月入驻供应资源超过 100 个、日均调用 token 突破 <b>7000 亿</b><span class="src-tag">公开报道</span>。基础设施侧同时发布天池 1024 卡超节点与昆仑芯新一轮产品计划<span class="src-tag">公开报道</span>。<b>「词元所」这个名字本身就是判断</b>：它把模型当可挂牌、可评级、可追责的标的，而不是当一篇发布博客。</p>
+
+    <p><b>字节：把视频的计价单位压到「秒」。</b>火山引擎推出视频模型 Seedance 2.5 flash，官方称生成速度提升一倍、价格更低；以 720P 文生视频与图生视频为例，生成价格约 <b>0.99 元/秒</b>，较 Seedance 2.5 降低约 34%<span class="src-tag">厂商口径</span>。单段最长 30 秒，单次最多输入 10 张图片、5 段视频与 5 段音频，提供 480P 与 720P 两档；即日上线即梦等平台，API 于 11 月 15 日上线火山方舟<span class="src-tag">厂商口径</span>。<b>按秒计价的意义在于可预算</b>：一段 30 秒的片子，成本可以先算出来，而不是先跑一次再看账单。</p>
+
+    <p><b>MiniMax：把 4K 图从「放大」变成「直出」。</b>H3-Image 采用 331 亿参数的<span class="term" tabindex="0">稠密扩散 Transformer<i class="tip">一种图像生成架构，全部参数都参与每一次计算，不像 MoE 那样只激活一部分。代价是推理成本高，好处是画面细节稳定。</i></span>，共 50 层，文本编码器沿用 H3 的 Qwen3-VL，可在 10 秒内直出 <b>4096×4096</b> 的一整张图，最多吃 16 张参考图<span class="src-tag">厂商口径</span>。权重发布当天上线 Hugging Face，Artificial Analysis 的文生图与图像编辑两项开放权重榜均列第一<span class="src-tag">公开报道</span>。<b>但「<span class="term" tabindex="0">开放权重<i class="tip">模型参数可以下载到本地跑。它不等于开源许可：能不能商用、能不能拿来做成托管服务卖，要看协议原文。</i></span>」不等于「开源」</b>：许可写的是 other，年营收超 100 万美元或对外提供托管服务需书面授权，输出也不许拿去训练别的模型<span class="src-tag">厂商口径</span>。</p>
+
+    <div class="table-wrap">
+      <table>
+        <caption>三家降的是同一个词：单位产出的价格。但单位不同，不能直接比</caption>
+        <thead><tr><th>发布方</th><th>计价单位</th><th>今天的数</th><th>要读清的附带条件</th></tr></thead>
+        <tbody>
+          <tr><td>Google</td><td>每百万 token</td><td>输入 1.5 / 输出 7.5 美元</td><td>不分段计价，优惠期后是否调整未写</td></tr>
+          <tr><td>百度</td><td>每百万 token</td><td>输入 2 元、输出 8 元（闲时减半）</td><td>预览版；权重计划 11 月 25 日开放</td></tr>
+          <tr><td>字节</td><td>每秒视频</td><td>720P 约 0.99 元/秒</td><td>限 480P / 720P 两档，单段 30 秒</td></tr>
+          <tr><td>MiniMax</td><td>每张图</td><td>4K 首周五折约 0.2261 元</td><td>许可为 other；本地跑要 130GiB 级显存</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p><b>表中的两处要打折扣读。</b>百度的价格与「11 月 25 日开放权重」来自媒体转述，官方发布没有逐条列出，且预览版随时可能改价<span class="src-tag">公开报道</span>；MiniMax 的 0.2261 元是首周五折价，原价约 0.4522 元，五折结束后的账要另算<span class="src-tag">厂商口径</span>。<b>本报把折扣条件写在数字旁边，是因为「降价」这个词最容易被单独摘出来传播。</b></p>
+
+    <p><b>本报的读法：这三个单位不能相加，但可以换算成同一件事——一次任务要花多少钱。</b>写一段代码、生成一段 30 秒视频、出一张 4K 图，各自的价格今天都被重新写了一遍。<b>危险在于把「单价降了」直接读成「成本降了」</b>：视频按秒计，但重跑三次才满意就是三倍；图按张计，但参考图给不够、出十张像十个人，摊销下来并不便宜；token 更便宜，可智能体一次任务要跑几十轮，轮数才是乘数。<b>本期第 06 版那三笔账，正是从这个乘法开始算的。</b></p>
+
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版产品生态</span>
+      </div>
+      <p>按 token、按秒、按张——三家各挑了一个对自己最有利的单位来宣布降价。<b>读者要做的不是记住哪个数字最小，而是把自己真实的重跑次数代进去再算一遍。</b></p>
+    </aside>
+  </section>

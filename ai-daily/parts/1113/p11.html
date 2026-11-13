@@ -1,0 +1,35 @@
+<section class="section" id="p11">
+    <div class="section-head">
+        <span class="sec-label" role="heading" aria-level="2">算力本地 · 机房侧的另一半</span>
+      <span class="sec-page">第 11 版 / 共 16 版</span>
+    </div>
+    <p class="sec-lede">消费卡的价签按张算，数据中心的价签按机柜算。<b>今天 AMD 把 MI400 系列的三款卡和一组可比的推理数字一起摆了出来</b>——它是本期第二张价签的上游。<span class="src-tag">厂商口径</span></p>
+
+    <p><b>先把三款卡的分工说清。</b>MI455X 面向<span class="term" tabindex="0">机架级<i class="tip">以整个机柜为单位交付与组网的方案，卡、交换与供电一起设计；对客户来说，买的是机柜而不是单卡。</i></span>推理，配套 Helios 方案；MI450X 同样面向 Helios；MI430X 走科学计算，保留原生双精度，配备 <b>432GB</b> <span class="term" tabindex="0">HBM4<i class="tip">第四代高带宽显存，用在数据中心加速卡上。容量决定能放多大的模型，带宽决定吐字速度。</i></span>与最高 <b>23.3TB/s</b> 的显存带宽<span class="src-tag">厂商口径</span>。AMD 同时公布了一项针对 11 款应用、47 种工作负载配置的研究，用来说明哪些科学代码仍必须依赖原生双精度<span class="src-tag">厂商口径</span>。<b>这条比跑分有意思</b>：它在承认「不是所有科学计算都能降精度」。</p>
+
+    <div class="table-wrap">
+      <table>
+        <caption>MI400 三款：同一代架构，三种交付场景</caption>
+        <thead><tr><th>型号</th><th>面向</th><th>关键配置</th><th>本报要核的</th></tr></thead>
+        <tbody>
+          <tr><td>MI455X</td><td>Helios 机架推理</td><td>官方称 DeepSeek-R1 离线配置下每卡每秒 21333 token</td><td>对手口径是否为同一版本、同一精度</td></tr>
+          <tr><td>MI450X</td><td>Helios 机架</td><td>与 MI455X 同代，定位略低</td><td>与 455X 的差价和配额</td></tr>
+          <tr><td>MI430X</td><td>科学计算 / AI for Science</td><td>原生 FP64，432GB HBM4，23.3TB/s</td><td>实际交付时间与整机报价</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p><b>那组推理数字要连条件一起读。</b>AMD 称 MI455X 驱动的 Helios 在 DeepSeek-R1 的 MLPerf 推理离线配置下达到每 GPU 每秒 <b>21333</b> token，较英伟达 Vera Rubin 最新公开结果的吞吐高出至多 30%；Helios 在 HBM 带宽与扩展带宽上较 Vera Rubin 也有至多 20% 的提升<span class="src-tag">厂商口径</span>。<b>这是「自家测试对别家公开结果」的比较，不是同一台机器、同一套参数的复跑</b>，本报未独立复现。它足以说明方向——机架级方案的竞争已经从「单卡算力」转到「带宽与扩展」——但不足以说明谁更快。</p>
+
+    <p><b>另一条更贴地的消息：把 API 换成机房。</b>AMD 与 Spectro Cloud 发布企业级本地编程平台 Instinct Coder 355：8 张 MI355X、2 颗 64 核 EPYC 9575F、3TB DDR5-6400 内存与 63.36TB 固态，本地跑 GLM-5.3 推理，称性能逼近前沿模型的 98%，单节点最多服务 85 名开发者、50 人可同时在线编码<span class="src-tag">公开报道</span>。<b>「不出门」是它的卖点</b>：敏感代码与数据不必外送，配套的推理平台默认调用本地算力而不是云 API。<b>这是「本地部署」在组织层面的版本</b>——第 06 版那三笔账，在这一档变成了「一台机器 vs 一年 API 账单」。</p>
+
+    <p><b>本报的读法：机房侧和消费侧抢的是同一批产能。</b>同一片晶圆、同一批 HBM、同一条先进封装线，做成数据中心卡还是消费卡，取决于毛利与订单密度。<b>所以第 05 版那张 4.8 万元的报价，与这一版的机柜报价，是同一个决定的两种结果。</b>看懂这一层，就不会把「显卡贵」当成经销商的问题——它更像是一个分配问题。</p>
+
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版算力本地</span>
+      </div>
+      <p>「每卡每秒多少 token」是给采购看的，「整柜多少钱、什么时候到货」才是给财务看的。<b>两份文件之间，通常隔着一个季度的产能。</b></p>
+    </aside>
+  </section>

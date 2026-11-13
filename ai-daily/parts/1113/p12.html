@@ -1,0 +1,37 @@
+<section class="section" id="p12">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">工具链 · 把「选谁」变成默认值</span>
+      <span class="sec-page">第 12 版 / 共 16 版</span>
+    </div>
+    <p class="sec-lede">这一版的三件工具分别做调度、判断与扫描，共同点是：<b>它们都在替你做选择，而且默认开着。</b>默认值一旦定了，后面所有人都按它跑。<span class="src-tag">厂商口径</span></p>
+
+    <p><b>调度：不用再手选模型。</b>Antigravity 的 Orchestrator 在同一次会话里按任务复杂度在 Carbon 与 Hydrogen 之间切换，用户不再手动指定。官方内部测试称任务成功率接近全程用 Carbon，同时平均减少 24% 的配额消耗、速度提升 19%<span class="src-tag">厂商口径</span>。对开发者的实际变化是：<b>以前你在代码里写死一个模型名，现在这个位置可能被一个调度器接管。</b>好处是省钱，代价是同一段代码的行为会随调度策略变化——版本号没变，结果可能变了。</p>
+
+    <p><b>判断：把「是 / 否」单独定价。</b>Decisions API 单次调用可对最多 1,000 个封闭式问题输出概率化置信分，延迟 150 到 250 毫秒，成本约为 Gemini 3.5 Flash-Lite 的五分之一<span class="src-tag">公开报道</span>。它适合的场景很具体：一批候选要不要继续、一批工单要不要转人工、一批生成结果要不要重跑。<b>这类判断过去被塞进对话里问，或者干脆写成规则；现在被单独做成一次廉价调用</b>——而「廉价」会鼓励人多问几次，这是它真正的行为影响。</p>
+
+    <p><b>扫描：把安全审查接进流水线。</b>OpenAI 的 codex-security 以命令行与 TypeScript SDK 的形式提供漏洞发现、验证与修复建议，定位是减少误报、可接进 CI；Chrome、Edge、Firefox 与 MDN 团队维护的 modern-web-guidance 则给编码智能体喂现代 Web 平台指南，并能扫出代码库里的旧写法<span class="src-tag">公开报道</span>。<b>两件东西的方向相反却互补</b>：一个查「有没有洞」，一个防「写出过时的洞」。</p>
+
+    <div class="table-wrap">
+      <table>
+        <caption>三件工具各自替你决定了什么，以及代价</caption>
+        <thead><tr><th>工具</th><th>替你决定</th><th>省下</th><th>代价</th></tr></thead>
+        <tbody>
+          <tr><td>Orchestrator</td><td>这一步用哪个模型</td><td>配额与人工调参</td><td>行为随策略漂移，需记录策略版本</td></tr>
+          <tr><td>Decisions API</td><td>一批是非判断的倾向</td><td>大模型对话式询问</td><td>置信分不等于正确率</td></tr>
+          <tr><td>codex-security</td><td>哪些问题值得报</td><td>人工初筛</td><td>误报率决定它能否卡住合并</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p><b>还有一条和成本直接相关：同一代高效模型在合作方测试里，复杂图表、SQL 与数据密集任务上的 token 消耗最多降低 23%</b><span class="src-tag">厂商口径</span>。<b>「更少的 token」比「更低的单价」更难被察觉</b>，因为它不出现在价目表上，只出现在月底账单里。本报建议把这一项写进自己的评测：同一个任务，比单价之前先比消耗。</p>
+
+    <p><b>本报的读法：默认值就是治理。</b>一个团队用什么模型、走不走安全扫描、是否允许自动切换，最终都落在几个默认开关上。<b>这些开关通常由工具方设定，而不是由使用方设定</b>。所以本版留一个具体建议：把「默认值变更」当成一次依赖升级来对待——记录版本、跑一遍回归、确认行为没漂。<b>它比在事故后复盘「为什么它自己换了模型」便宜得多。</b></p>
+
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版工具链</span>
+      </div>
+      <p>工具替你做的每一个决定，都会在某天变成一个你解释不了的结果。<b>把默认值写进变更记录，是这一代工程团队最便宜的一份保险。</b></p>
+    </aside>
+  </section>

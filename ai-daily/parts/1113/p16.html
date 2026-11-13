@@ -1,0 +1,103 @@
+<section class="section" id="p16">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">本报提案 · 这一期想怎么改</span>
+      <span class="sec-page">第 16 版 / 共 16 版</span>
+    </div>
+
+    <p class="sec-lede">本版每期由四个身份各提一条改动建议，编号 <b>P010-1…4</b>：<b>读者</b>说哪里读着费劲，<b>编辑</b>说哪里做起来费劲，<b>创刊人</b>说哪里该往前一步，<b>AI</b> 说哪里可以自动化。<b>默认不执行</b>——创刊人点名「采纳 P010-2」才进施工；没人提，挂满三期自动记「否决（沉默）」。</p>
+
+    <div class="props">
+      <article class="prop">
+        <div class="prop-h"><span class="prop-role">读者</span><span class="prop-id">P010-1</span></div>
+        <h4>显卡版的每个价，都带上「哪天、什么渠道」</h4>
+        <p>第 05 版那张表里，4.8 万元是走访价，9,400 美元是海外最低报价，均价是加权口径。<b>三个数放在一张表里，读者很容易横向比</b>。建议每个价格后面固定跟两个字段：报价日期、渠道类型（门店 / 电商 / 二手 / 海外最低），缺一个就标「未注明」。这样下一期涨跌才有得比。</p>
+        <dl class="prop-meta">
+          <dt>为什么</dt><dd>本期两条均价口径（44% 与 1.7 倍）打架，根因就是分母与渠道没写清</dd>
+          <dt>成本</dt><dd>小 · 两小时 · 表格加两列 + 信源表加一个渠道字段</dd>
+        </dl>
+        <div class="prop-st">待定 · <b>沉默即否决</b></div>
+      </article>
+
+      <article class="prop">
+        <div class="prop-h"><span class="prop-role">编辑</span><span class="prop-id">P010-2</span></div>
+        <h4>「本期五个数」要分清存量与当日读数</h4>
+        <p>头版那五个数里，有的是一旦公布就不再变的存量（比如某公司的收入占比），有的是每天都在动的读数（显卡报价）。<b>它们并排放在一个框里，读者会以为同一时效。</b>建议给每个数标一个标记：「存量」或「当日」，并注明截止日。过期最快的那个，下一期必须重取。</p>
+        <dl class="prop-meta">
+          <dt>为什么</dt><dd>报价类数字一周就会失真，而头版是读者唯一必读的一屏</dd>
+          <dt>成本</dt><dd>小 · 一小时 · 只改头版模板与写作规范</dd>
+        </dl>
+        <div class="prop-st">待定 · <b>沉默即否决</b></div>
+      </article>
+
+      <article class="prop">
+        <div class="prop-h"><span class="prop-role">创刊人</span><span class="prop-id">P010-3</span></div>
+        <h4>显卡版每周固定一次「同型号同渠道」复查</h4>
+        <p>本期把显卡做成固定版面，但如果每次换一个口径，几期之后就比不出趋势。<b>建议钉死三个观察点</b>：一张旗舰卡、一张次旗舰卡、一个海外最低价，每周同一天、同一渠道类型取一次，形成连续序列。换口径要写明原因，不许静默替换。</p>
+        <dl class="prop-meta">
+          <dt>为什么</dt><dd>没有固定口径的「每日行情」，做满一个月也只是一堆无法比较的数字</dd>
+          <dt>成本</dt><dd>中 · 半天 · 新增一份 price-log 数据文件 + 版面读取</dd>
+        </dl>
+        <div class="prop-st">待定 · <b>沉默即否决</b></div>
+      </article>
+
+      <article class="prop">
+        <div class="prop-h"><span class="prop-role">AI</span><span class="prop-id">P010-4</span></div>
+        <h4>事实卡加两个字段，自动生成本期「价签对比」</h4>
+        <p>本期两张价签的对比是靠人写的。建议给事实卡加 <code>unit</code>（计价单位）与 <code>compareTo</code>（可比对象）两个可选字段，拼版时自动汇总成一张「同一件事、不同单位」的小表，附在第 05 版末尾。<b>它不做判断，只把散在各版的数字按单位归拢</b>，让「不能直接比」这件事一眼可见。</p>
+        <dl class="prop-meta">
+          <dt>为什么</dt><dd>本期第 04 版已经出现过「按 token / 按秒 / 按张」三种单位并列，靠文字解释很费劲</dd>
+          <dt>成本</dt><dd>中 · 一天 · 事实卡扩展字段 + 生成器 + 自检加一条对账</dd>
+        </dl>
+        <div class="prop-st">待定 · <b>沉默即否决</b></div>
+      </article>
+    </div>
+
+    <p class="prop-rule"><b>怎么算采纳：</b>创刊人在当期明确说「采纳 P010-2」才算；说「先放着」算待定，最多挂三期；<b>没说就是否决，不再追问</b>。已采纳的写进 <code>提案台账.md</code>，在下一期的台账里标「已落地」。</p>
+
+    <div class="table-wrap">
+      <table class="prop-ledger">
+        <caption>提案台账 · 全量明细见 <code>提案台账.md</code>，本表只放最近 8 条</caption>
+        <thead>
+          <tr><th>编号</th><th>视角</th><th>一句话</th><th>状态</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="id">P009-1</td><td>读者</td><td>版本号后面跟一句是哪条路径</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P009-2</td><td>编辑</td><td>接口变更五问固化成核查表</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P009-3</td><td>创刊人</td><td>口径打架要标「未对齐」</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P009-4</td><td>AI</td><td>自动生成一页版本矩阵</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P010-1</td><td>读者</td><td>显卡价的每个数都带日期与渠道</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P010-2</td><td>编辑</td><td>五个数要分清存量与当日读数</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P010-3</td><td>创刊人</td><td>显卡版每周固定口径复查</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P010-4</td><td>AI</td><td>事实卡加单位字段，自动出对比表</td><td class="st-wait">待定</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版四条提案</span>
+      </div>
+      <p>这一期四条提案，三条都和「能不能比」有关。<b>一份每天更新的行情版，最怕的不是写错一个数，是每期都换一把尺子。</b></p>
+    </aside>
+  </section>
+
+  <div class="gloss" id="gloss">
+    <h5>名词速查 · 本期出现的 14 个词<span>正文里带虚线的词点一下就地解释；这张表留作索引</span></h5>
+    <div class="gloss-grid">
+      <dl><dt>建议零售价（MSRP）</dt><dd>厂商公布的官方指导价，不是成交价。所有「溢价几倍」的说法，都以它为分母。</dd></dl>
+      <dl><dt>显存</dt><dd>显卡上专门存模型权重与中间结果的内存。容量决定能不能装下，带宽决定跑得多快。</dd></dl>
+      <dl><dt>溢价</dt><dd>成交价高出指导价的部分。通常来自缺货、囤货与套利，不来自产品升级。</dd></dl>
+      <dl><dt>GDDR7</dt><dd>消费级显卡用的第七代显存，由显存厂商单独供货，与 HBM 争同一条产线。</dd></dl>
+      <dl><dt>HBM4</dt><dd>第四代高带宽显存，用在数据中心加速卡上，容量与带宽都远高于消费级显存。</dd></dl>
+      <dl><dt>机架级</dt><dd>以整个机柜为单位交付与组网的方案，卡、交换与供电一起设计，按柜报价。</dd></dl>
+      <dl><dt>故障注入</dt><dd>在芯片上制造一次可控的电压毛刺，让某条保护判断失效，从而改写被锁死的配置。</dd></dl>
+      <dl><dt>电子熔丝</dt><dd>出厂时一次性烧写的硬件开关，用来永久禁用部分单元；同一块晶圆靠它切成不同档次。</dd></dl>
+      <dl><dt>后门</dt><dd>模型在特定输入下才会触发的隐藏行为，可以被训练进去，也可以在权重里被手工改写出来。</dd></dl>
+      <dl><dt>休眠神经元</dt><dd>平时几乎不参与输出的神经元。改写它们不影响常规表现，却能在特定输入下改变行为。</dd></dl>
+      <dl><dt>熔断</dt><dd>发现异常后立刻切断执行的机制。关键不是有没有开关，而是从发现到切断用了多久。</dd></dl>
+      <dl><dt>思考档位</dt><dd>同一模型可以要求它想多久。档位越高越慢越贵，默认档通常是性价比最高的一档。</dd></dl>
+      <dl><dt>稠密扩散 Transformer</dt><dd>每次计算都用到全部参数的图像生成架构，不像 MoE 那样只激活一部分，细节更稳、成本更高。</dd></dl>
+      <dl><dt>开放权重</dt><dd>参数可以下载到本地跑。它不等于开源许可，能不能商用、能不能转卖要看协议原文。</dd></dl>
+    </div>
+  </div>

@@ -1,0 +1,39 @@
+<section class="section" id="p03">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">能力底座 · Hydrogen：把旗舰压到 1.5 美元</span>
+      <span class="sec-page">第 03 版 / 共 16 版</span>
+    </div>
+    <p class="sec-lede">Google 在 11 月 12 日发布 Gemini 4 Hydrogen，同时把沿用了几代的「Flash」这个名字废掉。<b>改名不是重点，定价才是</b>：每百万输入 1.5 美元、输出 7.5 美元，100 万 token 上下文不分段计价<span class="src-tag">厂商口径</span>。</p>
+
+    <p><b>先把这一档的定位说清楚。</b>Gemini 4 系列现在按元素分工：Carbon 与 Argon 承担深度推理，Hydrogen 承接高频执行——日常编码、智能体工作流、多步骤数据处理。官方给的说法是「为所有人带来前沿智能」，落到参数上就是三件事：<b>足够便宜、足够快、够用</b><span class="src-tag">厂商口径</span>。它不追旗舰分数，它追的是把同一件活的总花费压下来。</p>
+
+    <div class="table-wrap">
+      <table>
+        <caption>同一系列三档：Hydrogen 换掉的是速度与价格，不是上限</caption>
+        <thead><tr><th>口径</th><th>Gemini 3.8 Flash</th><th>Gemini 4 Hydrogen</th><th>Gemini 4 Argon</th></tr></thead>
+        <tbody>
+          <tr><td>任务速度</td><td>基准</td><td>2.5 倍</td><td>较慢，偏深度推理</td></tr>
+          <tr><td>Terminal-Bench 4.1</td><td>18.2%</td><td>57%</td><td>未并排给出</td></tr>
+          <tr><td>智能指数（默认档）</td><td>未列</td><td>51 分</td><td>50 分</td></tr>
+          <tr><td>上下文</td><td>未列</td><td>100 万 token</td><td>100 万 token</td></tr>
+          <tr><td>输入 / 输出价</td><td>未列</td><td>1.5 / 7.5 美元</td><td>未列</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p><b>两个数字要连起来读。</b>Terminal-Bench 4.1 从 18.2% 到 <b>57%</b><span class="src-tag">厂商口径</span>，涨的不是知识，是在终端里把一串命令真的跑完的能力；智能指数默认档 <b>51 分</b>，比同门旗舰 Argon 的 50 分高一分<span class="src-tag">公开报道</span>，最高<span class="term" tabindex="0">思考档位<i class="tip">同一模型可以要求它想多久。档位越高越慢越贵，默认档通常是性价比最高的一档。</i></span>可到 54 分。<b>一个「便宜档」在综合分上压过自家旗舰，说明这一代的差距已经不在通用智力，而在长链推理与专业任务。</b>第三方也给出了分歧：Artificial Analysis 认为它仍略低于 Claude Sonnet 5.5 与 GPT-6.1 Sol，成本约为前者的三分之一，却是后者的 2.5 倍<span class="src-tag">公开报道</span>。</p>
+
+    <p><b>更值得记的是调度层。</b>Google 同日在 Antigravity 里推出 Orchestrator：同一次会话中，系统按任务复杂度在 Carbon 与 Hydrogen 之间自动切换，用户不必手选模型<span class="src-tag">厂商口径</span>。官方内部测试称，Orchestrator 的任务成功率接近全程用 Carbon，同时平均减少 <b>24%</b> 的配额消耗、速度提升 19%<span class="src-tag">厂商口径</span>。<b>这条比模型本身重要</b>——它把「选哪个模型」从人的判断变成系统的成本函数，本期第 12 版会接着算这笔账。</p>
+
+    <p><b>还有一件顺带发布的小东西：Decisions API。</b>由 Gemini Decision 1 驱动，单次调用可对最多 1,000 个封闭式问题输出概率化置信分，延迟 150 到 250 毫秒，成本约为 Gemini 3.5 Flash-Lite 的五分之一<span class="src-tag">公开报道</span>。<b>它的用途不是聊天，是给智能体做「批量是非判断」</b>：一批候选要不要继续、一批工单要不要转人工。这类调用过去要么被塞进对话里硬问，要么干脆写规则；现在被单独定价了。</p>
+
+    <p><b>本报的读法。</b>Hydrogen 这一刀砍在「单价的绝对值」上，Orchestrator 砍在「用错模型的浪费」上，Decisions 砍在「不值得用大模型的那类判断」上。<b>三件事合起来，是把模型从「一个要挑对的东西」变成「一个会自己分层的东西」</b>。这既是降价，也是把选择权从用户手里拿走一部分——第 06 版那份三笔账里，第一笔就是「你到底需不需要那个最强的」。</p>
+
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版能力底座</span>
+      </div>
+      <p>把旗舰能力打到五分之一价，听起来是让利；把模型选择收进调度器，听起来是省心。<b>两件事同时发生时，用户省下的是钱，交出去的是判断权。</b>这笔交换值不值，得看你有没有在记账。</p>
+    </aside>
+  </section>

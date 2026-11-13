@@ -1,0 +1,57 @@
+<section class="lead" id="p01">
+    <article class="lead-main">
+      <div class="kicker">头版头条 · 算力的两张价签</div>
+      <h2>算力的两张价签<br><span class="h2-sub">一张按 token 计，一张按显存计</span></h2>
+      <p class="deck">模型这一侧，Gemini 4 Hydrogen 把每百万输入 token 压到 <b>1.5 美元</b><span class="src-tag">厂商口径</span>；硬件这一侧，一张 RTX 5090 在华强北仍报 <b>4.8 万元</b><span class="src-tag">公开报道</span>。同一份算力，两个市场，两种走向。</p>
+      <div class="digest">
+        <div class="digest-h"><span>三行摘要 · 九十秒读完这一期</span><em>009 期</em></div>
+        <ol>
+          <li><i>01</i><span><b>模型更便宜</b>：Hydrogen 定价 1.5 / 7.5 美元，执行速度 2.5 倍。</span></li>
+          <li><i>02</i><span><b>显卡仍然贵</b>：5090 均价仍是建议零售价的 1.7 倍，显存缺货。</span></li>
+          <li><i>03</i><span><b>签字人换了</b>：黄仁勋辞任，CFO 代任，17 日发财报。</span></li>
+        </ol>
+      </div>
+      <div class="byline">本报编辑部　综合报道　2026-11-13</div>
+      <div class="lead-body">
+        <p class="dropcap">11 月 12 日到 13 日，算力被贴上了两张互不相干的价签。一张按 token 计：Google 的 Gemini 4 Hydrogen 定价每百万输入 <b>1.5 美元</b>、每百万输出 <b>7.5 美元</b>，字节的 Seedance 2.5 flash 把 720P 视频打到 <b>0.99 元/秒</b>，MiniMax 的 H3-Image 把一张 4K 图打到两毛二。这张价签在往下走。另一张按显存计：一张 RTX 5090 在华强北报 <b>4.8 万元</b>，主流显卡均价仍是<span class="term" tabindex="0">建议零售价<i class="tip">厂商公布的官方指导价，英文缩写 MSRP。它不是成交价，只是所有加价幅度的分母。</i></span>的 <b>1.7 倍</b>。这张价签还悬在高处。</p>
+        <p><b>两张价签之间没有传导关系，这正是今天最该记下的事。</b>模型侧降价靠的是调度、蒸馏与推理优化，硬件侧涨价靠的是<span class="term" tabindex="0">显存<i class="tip">显卡上专门存模型权重和中间结果的内存，GDDR7 用于消费卡，HBM 用于数据中心卡。它现在是整条链上最紧的一环。</i></span>缺货与产能倾斜。前者的成本曲线朝下，后者的供给曲线朝上，两条线画在同一张图上，就成了一个说不通的画面：<b>用模型越来越便宜，买卡越来越贵。</b></p>
+        <p><b>模型这一侧的三个数值得并排看。</b>Hydrogen 在 Terminal-Bench 4.1 上从上一代的 18.2% 升到 <b>57%</b><span class="src-tag">厂商口径</span>，速度提升 2.5 倍，虚构陈述率降到原来的五分之一以下；官方同时把「智能体越权」这类行为压低了最高 81%<span class="src-tag">厂商口径</span>。本报没有复现这些数字，但方向可以核：<b>这一代高效模型争的不是「最强」，是「同样的活少花多少钱」</b>。第 03 版拆它的调度层，第 12 版算它的接口账。</p>
+        <p><b>硬件这一侧的同一条曲线要难看得多。</b>RTX 5090 从 10 月中旬的 5.8 万元回落到 4.8 万元，回调约两成，但仍是官方定价的 <b>1.7 倍</b><span class="src-tag">公开报道</span>；美国市场的低点一度到 9,400 美元，是 1,999 美元首发价的近五倍<span class="src-tag">公开报道</span>。供给端两个动作同时发生：GDDR7 显存被数据中心需求抽走，AMD 从 10 月起把中国的游戏卡供应削减了 20% 到 50%<span class="src-tag">公开报道</span>。第 05 版把今天的行情、驱动与拆卡新闻放在一版，逐日记录这张价签。</p>
+        <p><b>而给第二张价签签字的人，昨天换了一个。</b>英伟达 11 月 12 日公告，联合创始人黄仁勋辞去总裁、CEO 与董事职务并即刻生效，执行副总裁兼 CFO 科莱特·克雷斯出任临时 CEO，前新思科技 CEO 哈维·琼斯出任公司史上首位董事会主席<span class="src-tag">厂商口径</span>。财报口径已经把重心写得很清楚：上一季数据中心业务占营收 <b>92.5%</b><span class="src-tag">公开报道</span>，游戏卡从 2027 财年一季度起不再单列。<b>玩家关心的不是情怀，是队列里的位置</b>——第 02 版与第 10 版各写一半。</p>
+        <p><b>两张价签为什么要放一起读。</b>因为「用得起」是一道乘法题：单位任务成本 = 消耗的 token 数 × 单价 + 摊到每次任务上的硬件钱。模型侧把第一项压下去，本地部署场景却会被第二项拦住：H3-Image 权重下载 135GB，Auto 模式要单卡可用显存不低于 130GiB 才保留常驻<span class="src-tag">厂商口径</span>。<b>这就是为什么「模型降价」和「人人用得起」之间还隔着一张显卡。</b>第 06 版给一份买卡前的三笔账，第 11 版写机房侧的另一半。</p>
+        <p>本期不预测价格，也不给「该不该现在买」的结论。<b>只做一件更笨的事：把两张价签今天各自的读数记下来，并写清是谁在签。</b>下周同一时间再读一次，涨跌自然看得出来。</p>
+      </div>
+      <p class="jump">相关报道见第 02 版《换帅那天，玩家排在队列第几位》、第 05 版《显卡日报：一张卡的三重价》、第 06 版《买卡之前，先算三笔账》、第 11 版《机房侧的另一半》</p>
+      <aside class="razor">
+        <div class="razor-h">
+          <span class="razor-mark">锐评</span>
+          <span class="razor-src">本报评论员 · 针对本版头条</span>
+        </div>
+        <p>同一份算力，卖 token 的人在降价，卖卡的人在缺货，这两件事可以不矛盾——只要产能继续往数据中心倾斜。<b>问题在于，报纸若只写降价那一半，读者会以为门槛已经没了。</b></p>
+      </aside>
+    </article>
+
+    <aside class="lead-side">
+      <div class="side-block">
+        <h3>本期要闻</h3>
+        <ol class="headlines">
+          <li><b>模型</b>Gemini 4 Hydrogen 上线：100 万 token 上下文，1.5 / 7.5 美元</li>
+          <li><b>调度</b>Antigravity 加 Orchestrator，Carbon 与 Hydrogen 同会话切换</li>
+          <li><b>显卡</b>5090 华强北回落到 4.8 万元，均价仍是官方价 1.7 倍</li>
+          <li><b>供给</b>AMD 削减中国游戏卡供应两到五成，GDDR7 持续缺货</li>
+          <li><b>换帅</b>黄仁勋辞任，克雷斯任临时 CEO，17 日发布财报</li>
+          <li><b>驱动</b>AMD 26.11.1 修复空闲写入，NVIDIA 621.24 支持 DLSS 5</li>
+          <li><b>资本</b>Stripe 以约 75 到 80 亿美元收购 OpenRouter</li>
+          <li><b>治理</b>工信部就智能体终端进网管理发文，安全能力国标征求意见</li>
+        </ol>
+      </div>
+      <div class="side-block">
+        <h3>本期五个数</h3>
+        <div class="stat"><div class="line"><span class="num">1.5</span><span class="unit">美元 / 百万 token</span></div><span class="cap">Hydrogen 输入价，输出为 7.5 美元<span class="src-tag">厂商口径</span></span></div>
+        <div class="stat"><div class="line"><span class="num">4.8</span><span class="unit">万元</span></div><span class="cap">华强北 RTX 5090 现货报价，10 月峰值 5.8 万元<span class="src-tag">公开报道</span></span></div>
+        <div class="stat"><div class="line"><span class="num">57</span><span class="unit">%</span></div><span class="cap">Hydrogen 在 Terminal-Bench 4.1 的厂商自述得分<span class="src-tag">厂商口径</span></span></div>
+        <div class="stat"><div class="line"><span class="num">130</span><span class="unit">GiB</span></div><span class="cap">H3-Image 本地常驻所需的单卡可用显存<span class="src-tag">厂商口径</span></span></div>
+        <div class="stat"><div class="line"><span class="num">75</span><span class="unit">至 80 亿美元</span></div><span class="cap">Stripe 收购 OpenRouter 的交易金额，媒体口径<span class="src-tag">公开报道</span></span></div>
+      </div>
+    </aside>
+  </section>
