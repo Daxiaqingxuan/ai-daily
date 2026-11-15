@@ -1,0 +1,55 @@
+<section class="lead" id="p01">
+    <article class="lead-main">
+      <div class="kicker">头版头条 · 开源了，门槛还在</div>
+      <h2>开源了，门槛还在<br><span class="h2-sub">一天三个 Apache 2.0，跑起来的条件没一起给</span></h2>
+      <p class="deck">Cloudflare 把智能体浏览器引擎 Kitesurf 以 <b>Apache 2.0</b><span class="src-tag">厂商口径</span> 开源；同日 Runway 与 Perplexity 也放出权重。<b>门槛没跟着消失：能下载，不等于跑得起。</b></p>
+      <div class="digest">
+        <div class="digest-h"><span>三行摘要 · 九十秒读完这一期</span><em>010 期</em></div>
+        <ol>
+          <li><i>01</i><span><b>开放的是文件</b>：三个项目同日开放。</span></li>
+          <li><i>02</i><span><b>没开的是条件</b>：付费、显存、许可边界。</span></li>
+          <li><i>03</i><span><b>显卡同款句式</b>：不放弃，但没说便宜。</span></li>
+        </ol>
+      </div>
+      <div class="byline">本报编辑部　综合报道　2026-11-14</div>
+      <div class="lead-body">
+        <p class="dropcap">11 月 14 日这一天，开放是密集的。Cloudflare 开源了 <b>Apache 2.0</b><span class="src-tag">厂商口径</span> 许可的 <span class="term" tabindex="0">无状态<i class="tip">不保存会话状态，每次请求都可以从零开始。对智能体来说，好处是能并发开很多个互不干扰的浏览器；代价是记忆要另外存。</i></span>浏览器引擎 Kitesurf；Runway 把机器人世界模型 Praxis-1 的权重按 Apache 2.0 放出，允许免费商用；Perplexity 把 Decider v1.3 与 Flash 版放上 Hugging Face。三个项目分属浏览器、机器人、分类决策，彼此不相干，却在同一天用同一个动作回答同一个问题：<b>智能体这层基础设施，开始按「可下载」而不是「可调用」来提供。</b></p>
+        <p><b>但把许可协议读到底，三家的门都只开了一半。</b>Kitesurf 的代码是 Apache 2.0，自己部署却需要 Cloudflare 的 <span class="term" tabindex="0">Workers Paid<i class="tip">Cloudflare 的付费版无服务器运行计划。代码免费，但把它跑在官方网络上要按调用计费，这就是「开源但不自带运行环境」的典型形态。</i></span> 计划；Praxis-1 权重免费，可要复现 46.2% 的成绩得有对应的机器人测试环境；Decider 是轻量模型，却仍要接进别人的路由与评估链路才有意义。<b>公开的是文件，没公开的是把文件变成服务的那套条件</b>——第 03 版拆浏览器，第 07 版拆模型。</p>
+        <p><b>同一天，显卡行业给了一句结构相同的话。</b>面对「英伟达是不是要放弃游戏显卡」的追问，GeForce 品牌负责人 Jacob Freeman 的回答是一个「Nope」；但他只承诺产品线还在，没有承诺价格会下来。报道同时算了一笔账：RTX 5090 从 1,999 美元的首发价走到 9,000 美元，涨幅 <b>370%</b><span class="src-tag">公开报道</span>。<b>「不放弃」和「买得起」是两件事</b>，这与「开源」和「跑得起」是同一道门。第 05 版逐日记价，第 06 版给一份拿到源码之后的三问清单。</p>
+        <p><b>为什么值得把这条线单独拎出来。</b>过去一年，「开放」常常被当成一个开关：开源或闭源。今天这批发布说明它其实是一串条件——<span class="term" tabindex="0">许可条款<i class="tip">规定你能不能商用、能不能改、改完要不要同样公开。开放权重只说明文件能下载，商用边界要看这一份。</i></span>、运行环境、硬件门槛、数据依赖，任何一项没给，能力就仍然托管在别人手里。第 08 版写政策开始给智能体定「准入」，第 10 版写资本往这一层砸钱，两边其实都在争同一件事：<b>谁决定准入。</b></p>
+        <p>本期不做「该不该用」的推荐，也不预测哪家会赢。<b>只把今天能下载的东西、以及下载之后还缺什么，一条条列清楚。</b>下一期再用同样的口径复查一次，才知道门是在开还是在关。</p>
+      </div>
+      <p class="jump">相关报道见第 03 版《给机器造的浏览器》、第 05 版《显卡 · 每日行情：不放弃，不等于便宜》、第 07 版《今天放出来的四份权重》、第 16 版《四条提案》</p>
+      <aside class="razor">
+        <div class="razor-h">
+          <span class="razor-mark">锐评</span>
+          <span class="razor-src">本报评论员 · 针对本版头条</span>
+        </div>
+        <p>开源公告最好写的永远是「免费」两个字，最难写的是「要跑起来还得什么」。<b>把后者省略，读者会以为门槛已经拆了；其实只是门槛从账单上挪到了文档里。</b></p>
+      </aside>
+    </article>
+
+    <aside class="lead-side">
+      <div class="side-block">
+        <h3>本期要闻</h3>
+        <ol class="headlines">
+          <li><b>浏览器</b>Cloudflare 开源 Kitesurf，Chrome 团队 MCP 工具登顶趋势榜</li>
+          <li><b>世界模型</b>Runway 免费放出 Praxis-1，普通视频也能训机器人</li>
+          <li><b>小模型</b>Perplexity 开源 Decider v1.3，专做批量是非判断</li>
+          <li><b>显卡</b>欧洲 16GB 卡一周齐涨，5090 报价一周回落 33.6%</li>
+          <li><b>官方</b>英伟达回应「不放弃游戏 GPU」，未承诺降价</li>
+          <li><b>治理</b>智能体互联系列国标发布，19 个领域获政策鼓励</li>
+          <li><b>资本</b>LangChain 融资 3 亿美元，Mercor 估值 200 亿美元</li>
+          <li><b>算力</b>AMD Zen 6 首份独立实测：双路 1,024 线程</li>
+        </ol>
+      </div>
+      <div class="side-block">
+        <h3>本期五个数</h3>
+        <div class="stat"><div class="line"><span class="num">3</span><span class="unit">个 Apache 2.0</span></div><span class="cap">同日放出的浏览器引擎、世界模型与决策模型<span class="src-tag">公开报道</span></span></div>
+        <div class="stat"><div class="line"><span class="num">46.2</span><span class="unit">%</span></div><span class="cap">Praxis-1 在 RoboLab-120 的厂商自述得分<span class="src-tag">厂商口径</span></span></div>
+        <div class="stat"><div class="line"><span class="num">14.3</span><span class="unit">%</span></div><span class="cap">欧洲 RTX 5060 Ti 16GB 一周涨幅<span class="src-tag">公开报道</span></span></div>
+        <div class="stat"><div class="line"><span class="num">16</span><span class="unit">个记忆 token</span></div><span class="cap">Memorilla 把文档集压进去的长度<span class="src-tag">预印本</span></span></div>
+        <div class="stat"><div class="line"><span class="num">370</span><span class="unit">%</span></div><span class="cap">RTX 5090 相对首发价的报道涨幅<span class="src-tag">公开报道</span></span></div>
+      </div>
+    </aside>
+  </section>

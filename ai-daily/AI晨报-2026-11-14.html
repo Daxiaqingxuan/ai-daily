@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 晨报 · 2026年11月14日 · 第 010 期 · 开源了，门槛还在（共 16 版）</title>
+<style>
+  :root{
+    --ink:#1b1a17;
+    --ink-soft:#3a3934;
+    --muted:#6d6a60;
+    --paper:#fbf8f0;
+    --paper-edge:#efeadd;
+    --rule:#1b1a17;
+    --rule-soft:#cfc8b6;
+    --accent:#8c1d18;
+    --serif:"Songti SC","STSong","Noto Serif SC","Source Han Serif SC","SimSun",Georgia,"Times New Roman",serif;
+    --sans:"Microsoft YaHei","PingFang SC","Hiragino Sans GB","Helvetica Neue",Arial,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
+  body{
+    margin:0;
+    background:var(--paper-edge);
+    color:var(--ink);
+    font-family:var(--serif);
+    font-size:14px;
+    line-height:1.78;
+  }
+  .page{
+    max-width:1180px;
+    margin:26px auto;
+    background:var(--paper);
+    padding:30px 46px 24px;
+    box-shadow:0 0 0 1px #e2dbca, 0 1px 2px rgba(0,0,0,.06);
+  }
+
+  /* ---------- 报头 ---------- */
+  .masthead{padding-bottom:10px;}
+  .mast-rule{height:3px;background:var(--rule);}
+  .mast-rule.double{height:1px;margin-top:6px;box-shadow:0 3px 0 var(--rule);}
+  .mast-top{
+    display:flex;justify-content:space-between;align-items:baseline;
+    font-family:var(--sans);font-size:11px;letter-spacing:.12em;
+    color:var(--muted);padding:9px 2px 2px;
+  }
+  .paper-name{
+    margin:6px 0 2px;
+    text-align:center;
+    font-size:72px;
+    line-height:1.1;
+    letter-spacing:.16em;
+    font-weight:700;
+    text-indent:.16em;
+  }
+  .paper-sub{
+    text-align:center;
+    font-family:var(--sans);
+    font-size:11px;
+    letter-spacing:.3em;
+    color:var(--muted);
+    text-indent:.3em;
+    padding-bottom:9px;
+  }
+  .mast-nav{
+    display:flex;justify-content:center;gap:15px;flex-wrap:wrap;
+    border-top:1px solid var(--rule-soft);
+    border-bottom:1px solid var(--rule);
+    padding:7px 0 6px;
+    font-family:var(--sans);font-size:10.5px;letter-spacing:.1em;color:var(--ink-soft);
+  }
+  .mast-nav a{color:inherit;text-decoration:none;white-space:nowrap;}
+  .mast-nav a:hover{color:var(--accent);}
+  .mast-nav b{color:var(--accent);font-weight:700;margin-right:3px;font-size:9.5px;vertical-align:1px;}
+
+  /* ---------- 头版 ---------- */
+  .lead{
+    display:grid;
+    grid-template-columns:1fr 306px;
+    gap:0;
+    border-bottom:2px solid var(--rule);
+    padding:22px 0 20px;
+  }
+  .lead-main{padding-right:30px;border-right:1px solid var(--rule-soft);}
+  .kicker{
+    font-family:var(--sans);font-size:10.5px;letter-spacing:.2em;
+    color:var(--accent);padding-bottom:6px;font-weight:700;
+  }
+  .lead h2{
+    margin:0 0 9px;
+    font-size:35px;line-height:1.32;letter-spacing:.01em;font-weight:700;
+  }
+  .lead h2 .h2-sub{font-size:26px;font-weight:700;letter-spacing:.02em;color:var(--ink-soft);}
+  .deck{
+    margin:0 0 9px;font-size:15.5px;line-height:1.7;color:var(--ink-soft);
+    padding-bottom:9px;border-bottom:1px solid var(--rule-soft);
+  }
+  .byline{
+    font-family:var(--sans);font-size:10.5px;letter-spacing:.1em;color:var(--muted);
+    margin-bottom:12px;
+  }
+  .lead-body{columns:2;column-gap:30px;column-rule:1px solid var(--rule-soft);text-align:justify;}
+  .lead-body p{margin:0 0 9px;font-size:13.8px;line-height:1.9;}
+  .dropcap::first-letter{
+    float:left;font-size:50px;line-height:.92;padding:2px 7px 0 0;font-weight:700;
+  }
+  .jump{
+    font-family:var(--sans);font-size:10.5px;letter-spacing:.06em;color:var(--muted);
+    margin-top:2px;padding-top:7px;border-top:1px solid var(--rule-soft);
+  }
+  .lead-side{padding-left:24px;}
+  .side-block{margin-bottom:20px;}
+  .side-block:last-child{margin-bottom:0;}
+  .side-block h3{
+    margin:0 0 8px;padding-bottom:5px;border-bottom:2px solid var(--rule);
+    font-family:var(--sans);font-size:11px;letter-spacing:.22em;font-weight:700;
+  }
+  .headlines{margin:0;padding:0;list-style:none;counter-reset:hn;}
+  .headlines li{
+    counter-increment:hn;
+    position:relative;
+    padding:5px 0 5px 22px;
+    border-bottom:1px dotted var(--rule-soft);
+    font-size:12.6px;line-height:1.62;
+  }
+  .headlines li::before{
+    content:counter(hn);
+    position:absolute;left:0;top:6px;
+    font-family:var(--sans);font-size:10px;color:var(--accent);font-weight:700;
+  }
+  .headlines li:last-child{border-bottom:none;}
+  .board{background:#f3eee1;padding:11px 12px 8px;border:1px solid var(--rule-soft);}
+  .stat{padding:6px 0;border-bottom:1px dotted var(--rule-soft);}
+  .stat:last-child{border-bottom:none;}
+  .stat .line{display:flex;align-items:baseline;gap:4px;}
+  .stat .num{font-family:Georgia,serif;font-size:23px;line-height:1.1;font-weight:700;letter-spacing:-.02em;}
+  .stat .unit{font-family:var(--sans);font-size:10px;color:var(--accent);letter-spacing:.06em;}
+  .stat .cap{display:block;font-family:var(--sans);font-size:10px;color:var(--muted);line-height:1.5;margin-top:1px;}
+
+  /* ---------- 版块通用 ---------- */
+  .section{border-bottom:2px solid var(--rule);padding:18px 0 16px;}
+  .section:target{background:#fdfbf4;}
+  .section-head{
+    display:flex;justify-content:space-between;align-items:center;
+    border-bottom:1px solid var(--rule);padding-bottom:6px;margin-bottom:13px;
+  }
+  .sec-label{
+    font-family:var(--sans);font-size:12px;letter-spacing:.24em;font-weight:700;
+  }
+  .sec-label::before{content:"";display:inline-block;width:9px;height:9px;background:var(--accent);margin-right:9px;vertical-align:1px;}
+  .sec-page{font-family:var(--sans);font-size:10px;letter-spacing:.12em;color:var(--muted);}
+
+  .cols-3{columns:3;column-gap:27px;column-rule:1px solid var(--rule-soft);}
+  .cols-2{columns:2;column-gap:30px;column-rule:1px solid var(--rule-soft);}
+  .story{break-inside:avoid;margin:0 0 15px;}
+  .story h4{margin:0 0 4px;font-size:17.5px;line-height:1.45;font-weight:700;}
+  .story h4.sm{font-size:15px;}
+  .story .tag{
+    font-family:var(--sans);font-size:10px;letter-spacing:.14em;color:var(--accent);
+    display:block;margin-bottom:3px;
+  }
+  .story p{margin:0 0 6px;font-size:13.1px;line-height:1.82;text-align:justify;color:var(--ink-soft);}
+  .story p:last-child{margin-bottom:0;}
+  .pullquote{
+    border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+    padding:8px 0;margin:8px 0 12px;
+    font-size:14px;line-height:1.7;font-weight:700;text-align:center;
+  }
+
+  /* ---------- 社论 ---------- */
+  .ed-title{font-size:31px;line-height:1.34;margin:0 0 8px;font-weight:700;letter-spacing:.01em;}
+  .ed-deck{
+    font-size:15px;line-height:1.7;color:var(--ink-soft);margin:0 0 10px;
+    padding-bottom:10px;border-bottom:1px solid var(--rule-soft);
+  }
+  .ed-body{columns:2;column-gap:30px;column-rule:1px solid var(--rule-soft);}
+  .ed-body p{margin:0 0 9px;font-size:13.6px;line-height:1.92;text-align:justify;}
+  .ed-sign{
+    font-family:var(--sans);font-size:10.5px;letter-spacing:.12em;color:var(--muted);
+    text-align:right;margin-top:4px;padding-top:6px;border-top:1px solid var(--rule-soft);
+  }
+
+  /* ---------- 图表 ---------- */
+  .figure{
+    margin:0 0 15px;border:1px solid var(--rule-soft);background:#f6f1e4;
+    padding:13px 16px 10px;break-inside:avoid;
+  }
+  .fig-title{
+    font-family:var(--sans);font-size:10.5px;letter-spacing:.16em;color:var(--accent);
+    font-weight:700;margin-bottom:11px;
+  }
+  .fig-cap{
+    font-family:var(--sans);font-size:10.2px;color:var(--muted);line-height:1.65;
+    margin-top:9px;padding-top:7px;border-top:1px solid var(--rule-soft);
+  }
+  .fig-cap b{color:var(--accent);}
+
+  /* ---------- 榜单表 ---------- */
+  .rank{width:100%;border-collapse:collapse;font-family:var(--sans);font-size:11.8px;}
+  .rank caption{
+    caption-side:top;text-align:left;font-family:var(--sans);font-size:10.3px;
+    letter-spacing:.06em;color:var(--muted);padding-bottom:6px;
+  }
+  .rank th{
+    text-align:left;font-size:10.3px;letter-spacing:.1em;color:var(--muted);
+    font-weight:700;padding:0 7px 6px 0;border-bottom:1.5px solid var(--rule);
+  }
+  .rank td{padding:6px 7px 6px 0;border-bottom:1px solid #ddd6c3;vertical-align:top;line-height:1.55;}
+  .rank th:last-child,.rank td:last-child{padding-right:0;}
+  .rank td.name{font-family:var(--serif);font-size:12.8px;font-weight:700;}
+  .rank td.num{font-family:Georgia,serif;white-space:nowrap;}
+  .rank td.up{color:var(--accent);white-space:nowrap;font-weight:700;}
+  .rank td.p{font-family:Georgia,serif;white-space:nowrap;text-align:right;padding-right:14px;}
+  .rank th.p{text-align:right;padding-right:14px;}
+  .rank tr:last-child td{border-bottom:none;}
+  .rank tr.hi td{background:#f4ecdc;}
+  .rank td.rz{font-family:var(--sans);font-size:10.5px;letter-spacing:.06em;color:var(--muted);text-align:right;white-space:nowrap;padding-right:0;}
+  .rank th.rz{text-align:right;padding-right:0;}
+  .rank.echo td{font-size:11.5px;}
+  .rank.echo td.name{font-size:13px;}
+  .sec-lede{
+    margin:0 0 14px;font-size:13.6px;line-height:1.78;color:var(--ink-soft);
+    text-align:justify;padding-bottom:10px;border-bottom:1px solid var(--rule-soft);
+  }
+
+  /* ---------- 行情注解 ---------- */
+  .note-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:14px;}
+  .note-box{border-left:2px solid var(--accent);padding:1px 0 1px 12px;}
+  .note-box h5{
+    margin:0 0 5px;font-family:var(--sans);font-size:10.5px;letter-spacing:.16em;font-weight:700;
+  }
+  .note-box ul{margin:0;padding-left:14px;}
+  .note-box li{font-size:12.4px;line-height:1.75;color:var(--ink-soft);margin-bottom:4px;}
+  .cost{margin:0;padding:0;list-style:none;}
+  .cost li{
+    display:flex;justify-content:space-between;gap:10px;
+    font-size:12.3px;padding:4px 0;border-bottom:1px dotted var(--rule-soft);
+  }
+  .cost li:last-child{border-bottom:none;}
+  .cost .v{font-family:Georgia,serif;font-weight:700;white-space:nowrap;}
+
+  /* ---------- 快讯与预告 ---------- */
+  .briefs{columns:3;column-gap:26px;column-rule:1px solid var(--rule-soft);margin:0;padding:0;list-style:none;}
+  .briefs li{
+    break-inside:avoid;padding:4px 0 4px 12px;position:relative;
+    font-size:12.4px;line-height:1.7;color:var(--ink-soft);
+  }
+  .briefs li::before{content:"";position:absolute;left:0;top:12px;width:4px;height:4px;background:var(--accent);}
+  .briefs b{color:var(--ink);}
+
+  .watch{margin-top:15px;border:1px solid var(--rule);padding:11px 14px 9px;}
+  .watch h5{
+    margin:0 0 7px;padding-bottom:5px;border-bottom:1px solid var(--rule);
+    font-family:var(--sans);font-size:11px;letter-spacing:.2em;font-weight:700;
+  }
+  .watch ul{margin:0;padding:0;list-style:none;}
+  .watch li{
+    display:flex;gap:14px;padding:5px 0;border-bottom:1px dotted var(--rule-soft);
+    font-size:12.4px;line-height:1.68;color:var(--ink-soft);
+  }
+  .watch li:last-child{border-bottom:none;}
+  .watch .d{
+    font-family:var(--sans);font-size:11px;color:var(--accent);font-weight:700;
+    white-space:nowrap;flex:0 0 66px;
+  }
+
+  /* ---------- 报尾 ---------- */
+  .colophon{
+    border-top:3px solid var(--rule);margin-top:16px;padding-top:10px;
+    font-family:var(--sans);font-size:10.3px;line-height:1.75;color:var(--muted);
+  }
+  .colophon .row{display:flex;justify-content:space-between;gap:20px;border-bottom:1px solid var(--rule-soft);padding-bottom:8px;margin-bottom:8px;flex-wrap:wrap;}
+  .colophon strong{color:var(--ink-soft);letter-spacing:.1em;}
+  .colophon p{margin:0 0 4px;}
+  .errata{border-left:2px solid var(--accent);padding:1px 0 1px 9px;margin:7px 0;}
+
+  /* ---------- 锐评 ---------- */
+  .razor{
+    margin:16px 0 0;padding:1px 0 2px 14px;
+    border-left:3px solid var(--accent);
+    break-inside:avoid;
+  }
+  .razor-h{
+    display:flex;align-items:center;gap:9px;flex-wrap:wrap;
+    font-family:var(--sans);margin-bottom:5px;
+  }
+  .razor-mark{
+    background:var(--accent);color:var(--paper);
+    font-size:10px;font-weight:700;letter-spacing:.18em;
+    padding:2px 8px 2px 9px;flex:0 0 auto;
+  }
+  .razor-src{font-size:9.8px;letter-spacing:.09em;color:var(--muted);}
+  .razor p{margin:0;font-size:13.2px;line-height:1.88;text-align:justify;color:var(--ink);}
+  .razor p b{color:var(--accent);}
+  .razor--reader .razor-mark{
+    background:transparent;color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent);
+    padding:1px 8px 1px 9px;
+  }
+
+  /* ---------- 右侧快捷目录 ---------- */
+  .rail{
+    position:fixed; left:50%; margin-left:602px; top:50%;
+    transform:translateY(-50%);
+    width:78px; z-index:60;
+    max-height:calc(100vh - 24px); overflow:auto;
+    background:var(--paper); border:1px solid #c9c1ad;
+    box-shadow:0 1px 4px rgba(0,0,0,.10);
+    font-family:var(--sans);
+    padding:5px 0 3px;
+  }
+  .rail-head{
+    font-size:9px;letter-spacing:.2em;color:var(--muted);text-align:left;
+    padding:1px 0 5px 9px;border-bottom:1px solid var(--rule-soft);margin-bottom:3px;
+    white-space:nowrap;
+  }
+  .rail-list{list-style:none;margin:0;padding:0;}
+  .rail-list a{
+    display:flex;align-items:center;gap:5px;text-decoration:none;color:var(--ink-soft);
+    padding:3px 0 3px 9px;font-size:10.5px;white-space:nowrap;line-height:1.55;
+  }
+  .rail-list a i{font-style:normal;font-size:9px;color:var(--accent);font-weight:700;width:13px;flex:0 0 13px;}
+  .rail-list a:hover{background:#f3eee1;}
+  .rail-list a.active{background:#f0e6d2;}
+  .rail-list a.active span{font-weight:700;color:var(--accent);}
+  .rail-top{
+    display:block;text-align:center;font-size:10.5px;color:var(--muted);text-decoration:none;
+    border-top:1px solid var(--rule-soft);margin-top:3px;padding:4px 0 1px;
+  }
+  .rail-top:hover{color:var(--accent);}
+
+  /* ---------- 深读卡 ---------- */
+  .deep{border-top:1px solid var(--rule-soft);padding-top:13px;margin-bottom:16px;}
+  .deep:first-of-type{border-top:none;padding-top:0;}
+  .deep-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
+  .deep-idx{
+    font-family:Georgia,serif;font-size:26px;font-weight:700;color:var(--accent);
+    line-height:1;letter-spacing:-.02em;
+  }
+  .deep-title{margin:0;font-size:23px;line-height:1.38;font-weight:700;}
+  .deep-repo{
+    font-family:var(--sans);font-size:10px;letter-spacing:.04em;color:var(--muted);
+    margin:3px 0 8px;
+  }
+  .deep-repo b{color:var(--ink-soft);}
+  .deep-tag{
+    display:inline-block;font-family:var(--sans);font-size:9.5px;letter-spacing:.12em;
+    color:var(--accent);border:1px solid var(--accent);padding:1px 6px;margin-bottom:5px;
+  }
+  .deep-body{columns:2;column-gap:28px;column-rule:1px solid var(--rule-soft);}
+  .deep-body p{margin:0 0 8px;font-size:13px;line-height:1.85;text-align:justify;color:var(--ink-soft);}
+  .deep-body p b{color:var(--ink);}
+  .k{
+    font-family:var(--sans);font-size:10px;letter-spacing:.14em;color:var(--muted);
+    display:block;margin-bottom:2px;
+  }
+  .cmd{
+    font-family:Consolas,"Courier New",monospace;font-size:11.6px;line-height:1.75;
+    background:#f4efe2;border-left:2px solid var(--accent);
+    margin:6px 0 9px;padding:7px 10px;white-space:pre-wrap;word-break:break-all;
+    color:#2b2a26;break-inside:avoid;
+  }
+  .cmd .c{color:#8a8577;}
+  .deep-warn{
+    font-size:12px;line-height:1.8;color:#3a3934;background:#f7ead9;
+    border-left:2px solid var(--accent);padding:6px 10px;margin:6px 0 0;break-inside:avoid;
+  }
+  .more-box{
+    margin-top:14px;border:1px solid var(--rule);padding:11px 14px 8px;break-inside:avoid;
+  }
+  .more-box h5{
+    margin:0 0 7px;padding-bottom:5px;border-bottom:1px solid var(--rule-soft);
+    font-family:var(--sans);font-size:11px;letter-spacing:.2em;font-weight:700;
+  }
+  .more-box p{margin:0 0 6px;font-size:12.4px;line-height:1.78;color:var(--ink-soft);}
+  .more-box p:last-child{margin-bottom:0;}
+  .more-box b{color:var(--ink);}
+
+  /* ---------- 思路拆解（第 06 版） ---------- */
+  .idea-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 30px;}
+  .idea{border-top:1px solid var(--rule);padding:11px 0 12px;break-inside:avoid;}
+  .idea-h{display:flex;align-items:baseline;gap:8px;margin-bottom:3px;}
+  .idea-idx{font-family:Georgia,serif;font-size:19px;font-weight:700;color:var(--accent);line-height:1;}
+  .idea-name{font-family:var(--sans);font-size:12.5px;font-weight:700;letter-spacing:.02em;color:var(--ink);}
+  .idea .idea-swap{margin:0 0 5px;font-size:15px;line-height:1.58;font-weight:700;color:var(--ink);text-align:left;}
+  .idea .idea-swap em{font-style:normal;color:var(--accent);}
+  .idea p{margin:0 0 4px;font-size:12.7px;line-height:1.78;color:var(--ink-soft);text-align:justify;}
+  .idea p b.lbl{font-family:var(--sans);font-size:10px;letter-spacing:.1em;color:var(--muted);font-weight:700;margin-right:5px;}
+  .idea p.take{margin:7px 0 0;padding:5px 0 0 9px;border-left:2px solid var(--accent);font-size:12.5px;line-height:1.7;color:var(--ink);}
+  .idea p.take b{display:block;font-family:var(--sans);font-size:9.6px;letter-spacing:.12em;color:var(--accent);font-weight:700;margin:0 0 1px;}
+
+  /* ---------- 平台回声：平台名即链接 ---------- */
+  .rank.echo td.name a{color:inherit;text-decoration:underline;text-decoration-style:dotted;text-decoration-color:#8f8674;text-decoration-thickness:1px;text-underline-offset:4px;}
+  .rank.echo td.name a:hover,.rank.echo td.name a:focus{color:var(--accent);text-decoration-color:var(--accent);}
+  .rank.echo td.name a:active{color:var(--accent);}
+
+  /* ---------- 宽表格与宽图：窄屏横向滚动，不挤压字 ---------- */
+  .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  .fig-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  .fig-hint{display:none;margin:7px 0 0;font-family:var(--sans);font-size:9.5px;color:var(--muted);text-align:center;letter-spacing:.06em;}
+
+  /* ---------- 窄屏目录（平板 / 手机） ---------- */
+  .mob-btn,.mob-panel{display:none;}
+
+  /* ---------- 怎么读（小白导航） ---------- */
+  .read-guide{
+    display:flex;flex-wrap:wrap;align-items:stretch;
+    border-bottom:1px solid var(--rule);background:#f6f1e4;
+    font-family:var(--sans);font-size:10.5px;color:var(--ink-soft);
+  }
+  .read-guide .rg-lead{
+    display:flex;align-items:center;padding:7px 13px;
+    background:var(--accent);color:var(--paper);
+    letter-spacing:.18em;font-weight:700;font-size:10px;white-space:nowrap;
+  }
+  .read-guide a{
+    flex:1 1 0;min-width:160px;padding:6px 13px;border-right:1px solid var(--rule-soft);
+    text-decoration:none;color:inherit;line-height:1.6;
+  }
+  .read-guide a:last-child{border-right:none;}
+  .read-guide a b{display:block;color:var(--accent);font-size:9.5px;letter-spacing:.12em;margin-bottom:1px;}
+  .read-guide a:hover{background:#efe8d6;}
+
+  /* ---------- 说人话 ---------- */
+  .plain{
+    margin:9px 0 12px;padding:8px 12px 8px 13px;background:#f6f1e4;
+    border-left:2px solid var(--ink);break-inside:avoid;
+  }
+  .plain .p-h{
+    display:block;font-family:var(--sans);font-size:9.5px;letter-spacing:.18em;
+    color:var(--accent);font-weight:700;margin-bottom:3px;
+  }
+  .plain p{margin:0;font-size:12.6px;line-height:1.82;color:var(--ink-soft);text-align:justify;}
+  .plain p b{color:var(--ink);}
+
+  /* ---------- 星探 ---------- */
+  .scout{display:grid;grid-template-columns:308px 1fr;border-bottom:1px solid var(--rule-soft);}
+  .scout-card{padding:2px 24px 14px 0;border-right:1px solid var(--rule-soft);}
+  .scout-card h5{
+    margin:0 0 8px;padding-bottom:5px;border-bottom:1px solid var(--rule);
+    font-family:var(--sans);font-size:10.5px;letter-spacing:.18em;font-weight:700;
+  }
+  .scout-row{
+    display:grid;grid-template-columns:66px 1fr 26px;align-items:center;gap:8px;
+    padding:4px 0;border-bottom:1px dotted var(--rule-soft);
+  }
+  .scout-row .lb{font-family:var(--sans);font-size:10.4px;color:var(--ink-soft);white-space:nowrap;}
+  .scout-row .bar{height:7px;background:#e7e0cf;position:relative;}
+  .scout-row .bar i{position:absolute;left:0;top:0;bottom:0;background:var(--accent);}
+  .scout-row .vl{font-family:Georgia,serif;font-size:12px;font-weight:700;text-align:right;}
+  .scout-total{
+    display:flex;align-items:baseline;justify-content:space-between;gap:8px;
+    margin-top:9px;padding-top:7px;border-top:1.5px solid var(--rule);
+  }
+  .scout-total .tn{font-family:Georgia,serif;font-size:31px;font-weight:700;line-height:1;letter-spacing:-.02em;}
+  .scout-total .tn em{font-style:normal;font-size:11.5px;color:var(--muted);letter-spacing:0;}
+  .scout-total .tt{font-family:var(--sans);font-size:9.6px;color:var(--muted);line-height:1.6;text-align:right;}
+  .veto{margin-top:11px;padding-top:8px;border-top:1px solid var(--rule-soft);}
+  .veto h6{
+    margin:0 0 5px;font-family:var(--sans);font-size:9.5px;letter-spacing:.16em;
+    color:var(--accent);font-weight:700;
+  }
+  .veto ul{margin:0;padding-left:13px;}
+  .veto li{font-family:var(--sans);font-size:10.2px;line-height:1.68;color:var(--muted);margin-bottom:2px;}
+  .veto li b{color:var(--ink-soft);}
+  .veto .out{margin-top:7px;font-family:var(--sans);font-size:9.8px;line-height:1.6;color:var(--ink-soft);}
+  .scout-main{padding:0 0 12px 26px;}
+  .scout-main .story h4{font-size:22px;line-height:1.36;}
+  .scout-body{columns:2;column-gap:26px;column-rule:1px solid var(--rule-soft);}
+  .scout-body p{margin:0 0 8px;font-size:12.9px;line-height:1.84;text-align:justify;color:var(--ink-soft);}
+  .scout-body p b{color:var(--ink);}
+
+  /* ---------- 名词速查 ---------- */
+  .gloss{border:1px solid var(--rule);padding:12px 15px 6px;margin-top:16px;break-inside:avoid;}
+  .gloss h5{
+    margin:0 0 8px;padding-bottom:5px;border-bottom:1px solid var(--rule);
+    font-family:var(--sans);font-size:11px;letter-spacing:.2em;font-weight:700;
+  }
+  .gloss h5 span{float:right;letter-spacing:.06em;font-size:9.6px;color:var(--muted);font-weight:400;}
+  .gloss-grid{columns:3;column-gap:26px;}
+  .gloss dl{margin:0;break-inside:avoid;}
+  .gloss dt{font-family:var(--sans);font-size:11.4px;font-weight:700;color:var(--accent);margin-top:6px;}
+  .gloss dd{margin:0 0 6px;font-size:12.1px;line-height:1.74;color:var(--ink-soft);}
+
+  @media (max-width:1389px){
+    .rail{display:none;}
+    .mob-btn{
+      display:flex;align-items:center;gap:7px;
+      position:fixed;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:90;
+      background:var(--paper);border:1px solid var(--rule);color:var(--ink);
+      font-family:var(--sans);font-size:12px;letter-spacing:.06em;
+      padding:9px 13px;box-shadow:0 2px 8px rgba(0,0,0,.18);cursor:pointer;
+      -webkit-tap-highlight-color:transparent;
+    }
+    .mob-btn i{font-style:normal;color:var(--accent);font-weight:700;font-size:14px;line-height:1;}
+    body.mob-open .mob-btn{background:var(--accent);border-color:var(--accent);color:#fbf8f0;}
+    body.mob-open .mob-btn i{color:#fbf8f0;}
+    .mob-panel{
+      display:none;position:fixed;left:0;right:0;bottom:0;z-index:89;
+      background:var(--paper);border-top:3px solid var(--rule);
+      max-height:78vh;overflow:auto;-webkit-overflow-scrolling:touch;
+      padding:14px 18px 20px;box-shadow:0 -8px 24px rgba(0,0,0,.22);
+    }
+    body.mob-open .mob-panel{display:block;}
+    .mob-panel h6{margin:0 0 8px;font-family:var(--sans);font-size:10px;letter-spacing:.2em;color:var(--muted);font-weight:400;}
+    .mob-panel .mob-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 18px;}
+    .mob-panel .mob-grid a{display:flex;align-items:baseline;gap:8px;text-decoration:none;color:var(--ink-soft);font-family:var(--sans);font-size:13px;padding:9px 0;border-bottom:1px solid var(--rule-soft);}
+    .mob-panel .mob-grid a i{font-style:normal;color:var(--accent);font-weight:700;font-size:10px;width:15px;flex:0 0 15px;}
+    .mob-panel .mob-grid a:active{background:#f3eee1;}
+    .mob-panel .mob-tip{margin:12px 0 0;font-family:var(--sans);font-size:10.5px;line-height:1.6;color:var(--muted);letter-spacing:.04em;}
+    .mob-panel .mob-top{
+      display:block;margin-top:10px;text-align:center;text-decoration:none;
+      font-family:var(--sans);font-size:12px;letter-spacing:.1em;color:var(--accent);
+      border:1px solid var(--rule-soft);padding:9px 0;
+    }
+    .mob-panel .mob-top:active{background:#f3eee1;}
+  }
+  @media (max-width:900px){
+    .page{padding:20px 18px 64px;}
+    .mast-nav{display:grid;grid-template-columns:repeat(5,1fr);justify-items:center;gap:5px 10px;}
+    .deep-body{columns:1;}
+    .deep-title{font-size:19px;}
+    .paper-name{font-size:42px;}
+    .lead{grid-template-columns:1fr;}
+    .lead-main{padding-right:0;border-right:none;}
+    .lead-side{padding-left:0;border-top:1px solid var(--rule-soft);padding-top:14px;}
+    .lead h2{font-size:27px;}
+    .lead-body,.cols-3,.cols-2,.briefs,.ed-body{columns:1;}
+    .note-grid{grid-template-columns:1fr;}
+    .ed-title{font-size:23px;}
+    .read-guide .rg-lead{flex:1 0 100%;justify-content:center;}
+    .read-guide a{flex:1 0 100%;border-right:none;border-bottom:1px solid var(--rule-soft);}
+    .scout{grid-template-columns:1fr;}
+    .scout-card{padding:0 0 12px;border-right:none;border-bottom:1px solid var(--rule-soft);}
+    .scout-main{padding:12px 0 0;}
+    .scout-body{columns:1;}
+    .gloss-grid{columns:1;}
+    .idea-grid{grid-template-columns:1fr;}
+    .idea .idea-swap{font-size:14.5px;}
+  }
+  @media (max-width:620px){
+    /* 报头：三块信息改为三行竖排，避免挤成一团 */
+    .mast-top{flex-direction:column;align-items:center;gap:1px;text-align:center;letter-spacing:.06em;line-height:1.7;}
+    .paper-sub{font-size:9.6px;letter-spacing:.14em;text-indent:.14em;}
+    .lead h2{font-size:23px;line-height:1.36;}
+    .lead h2 .h2-sub{font-size:19px;}
+    .ed-title{font-size:20px;}
+    .mast-nav{gap:4px 6px;font-size:10px;}
+    /* 宽表与宽图：保持可读字号，改为横向滑动 */
+    .rank{min-width:720px;}
+    .rank.echo{min-width:680px;}
+    .fig-scroll svg{min-width:780px;}
+    .fig-hint{display:block;}
+  }
+  @media print{
+    @page{margin:16mm 0;}
+    body{background:#fff;font-size:10.5pt;}
+    .page{box-shadow:none;margin:0;max-width:none;padding:0 12mm;}
+    .rail,.mob-btn,.mob-panel,.read-guide{display:none;}
+    .story,.figure,.deep,.idea,.razor,.plain,.note-box,.more-box,.watch,.gloss{break-inside:avoid;}
+    .section-head{break-after:avoid;}
+    .story h4,.deep-title,.ed-title,.lead h2{break-after:avoid;}
+    thead{display:table-header-group;}
+    a{color:inherit;text-decoration:none;}
+  }
+
+/* ---------- 特刊追加样式：第 16 版决议 + 头版三行摘要 + 术语注解 ---------- */
+
+/* 第 16 版：提案 / 决议卡 */
+.props{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:2px 0 16px;}
+.prop{border:1px solid var(--rule-soft);background:#f8f4e9;padding:12px 14px 9px;break-inside:avoid;
+      display:flex;flex-direction:column;}
+.prop-h{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--sans);font-size:10px;letter-spacing:.16em;color:var(--muted);}
+.prop-role{color:var(--accent);font-weight:700;letter-spacing:.18em;}
+.prop-role::before{content:"";display:inline-block;width:7px;height:7px;background:var(--accent);margin-right:7px;vertical-align:1px;}
+.prop-id{font-family:ui-monospace,Consolas,"Courier New",monospace;letter-spacing:.06em;}
+.prop h4{margin:6px 0 5px;font-size:15.5px;line-height:1.45;font-weight:700;}
+.prop p{margin:0 0 8px;font-size:12.4px;line-height:1.8;text-align:justify;color:var(--ink-soft);}
+.prop p b{color:var(--ink);}
+.prop code{font-family:ui-monospace,Consolas,"Courier New",monospace;font-size:11.2px;background:#efe9da;padding:0 3px;}
+.prop-meta{display:grid;grid-template-columns:auto 1fr;gap:2px 9px;margin:0 0 8px;font-size:11px;line-height:1.7;}
+.prop-meta dt{font-family:var(--sans);color:var(--muted);letter-spacing:.1em;white-space:nowrap;}
+.prop-meta dd{margin:0;color:var(--ink-soft);}
+.prop-st{font-family:var(--sans);font-size:10px;letter-spacing:.12em;color:var(--muted);border-top:1px dotted var(--rule-soft);padding-top:6px;margin-top:auto;}
+.prop-st b{letter-spacing:.06em;}
+.prop-st.ok b{color:#1f6b3a;}
+.prop-st.no b{color:var(--accent);}
+
+/* 第 16 版：决议表 */
+.prop-ledger{width:100%;border-collapse:collapse;font-size:11.5px;min-width:520px;}
+.prop-ledger caption{caption-side:top;text-align:left;font-family:var(--sans);font-size:10.5px;letter-spacing:.1em;color:var(--muted);padding-bottom:6px;}
+.prop-ledger th,.prop-ledger td{border-bottom:1px solid var(--rule-soft);padding:5px 10px 5px 0;text-align:left;vertical-align:top;}
+.prop-ledger th{font-family:var(--sans);font-size:10px;letter-spacing:.14em;color:var(--muted);font-weight:400;border-bottom:1px solid var(--rule);}
+.prop-ledger td.id{font-family:ui-monospace,Consolas,"Courier New",monospace;white-space:nowrap;}
+.prop-ledger tr:last-child td{border-bottom:none;}
+.prop-ledger .st-ok{color:#1f6b3a;font-weight:700;}
+.prop-ledger .st-no{color:var(--accent);}
+.prop-rule{margin:0 0 12px;font-size:11.5px;line-height:1.8;color:var(--muted);border-left:3px solid var(--rule-soft);padding-left:11px;}
+.prop-rule b{color:var(--ink);}
+
+/* 头版三行摘要（P004-1） */
+.digest{border-top:2px solid var(--rule);border-bottom:1px solid var(--rule-soft);margin:11px 0 6px;padding:8px 0 9px;}
+.digest-h{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--sans);font-size:9.5px;letter-spacing:.22em;color:var(--muted);margin-bottom:7px;}
+.digest-h em{font-style:normal;letter-spacing:.06em;color:var(--accent);}
+.digest ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:0 18px;}
+.digest li{display:flex;gap:8px;font-size:12.2px;line-height:1.72;color:var(--ink-soft);}
+.digest li+li{border-left:1px solid var(--rule-soft);padding-left:18px;}
+.digest li i{font-style:normal;font-family:var(--sans);font-size:10px;letter-spacing:.1em;color:var(--accent);padding-top:3px;}
+.digest li b{color:var(--ink);}
+
+/* 术语注解（P004-2）：虚线词，悬停 / 聚焦 / 点一下展开 */
+.term{position:relative;border-bottom:1px dashed var(--accent);cursor:help;color:inherit;}
+.term .tip{
+  position:fixed;left:0;top:0;z-index:40;
+  width:max-content;max-width:min(268px,74vw);
+  background:#241f16;color:#f7f2e4;
+  font-family:var(--sans);font-size:11.5px;font-style:normal;letter-spacing:0;line-height:1.7;
+  text-align:left;padding:8px 10px;border-radius:2px;
+  box-shadow:0 4px 14px rgba(0,0,0,.22);
+  opacity:0;visibility:hidden;pointer-events:none;transition:opacity .12s ease;
+}
+.term .tip::after{
+  content:"";position:absolute;top:100%;left:14px;
+  border:5px solid transparent;border-top-color:#241f16;
+}
+.term:hover .tip,.term:focus .tip,.term.on .tip{opacity:1;visibility:visible;}
+.term:focus{outline:none;}
+.term:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+
+@media (max-width:900px){
+  .props{grid-template-columns:1fr;}
+}
+/* 论据标记（P005-2）：一句话说清这个数字是谁说的、本报核没核过。
+   六档词表固定在 assemble_issue.SRC_LABELS，页面里不许自造说法。 */
+.src-tag{display:inline-block;font-family:var(--sans);font-size:9.3px;line-height:1.55;
+         letter-spacing:.06em;color:var(--muted);background:#f1ece0;
+         border:1px solid var(--rule-soft);padding:0 4px;margin:0 2px;
+         vertical-align:1px;white-space:nowrap;}
+.src-tag.low{color:var(--accent);border-color:#d8bbae;background:#fbf1ea;}
+.src-legend{display:flex;flex-wrap:wrap;gap:3px 12px;align-items:baseline;
+            border-top:1px dotted var(--rule-soft);margin:0 0 9px;padding-top:7px;
+            font-size:10.4px;line-height:1.95;color:var(--muted);}
+.src-legend b{font-family:var(--sans);letter-spacing:.12em;color:var(--ink-soft);font-weight:400;}
+.src-legend i{font-style:normal;flex:1 1 260px;}
+
+@media (max-width:720px){
+  /* 16 项导航：5 列会剩 1 个孤儿，改 4 列正好 4×4 */
+  .mast-nav{grid-template-columns:repeat(4,1fr);}
+  .digest ol{grid-template-columns:1fr;gap:0;}
+  .digest li+li{border-left:none;padding-left:0;border-top:1px dotted var(--rule-soft);margin-top:6px;padding-top:6px;}
+  .digest li{font-size:12.6px;}
+  /* 速查在手机上被压成 88px 窄条：显式给满宽 + 单列 */
+  .gloss-grid{columns:1;width:100%;column-gap:0;}
+  .gloss h5 span{float:none;display:block;margin-top:3px;line-height:1.6;}
+  /* 手机放不下五列：藏掉「落在哪」，四列才读得清（位置在下面卡片里都写了） */
+  .prop-ledger{min-width:0;font-size:11px;}
+  .prop-ledger th:nth-child(5),.prop-ledger td:nth-child(5){display:none;}
+  .prop-ledger th,.prop-ledger td{padding-right:8px;}
+  .prop-ledger td.id{font-size:10.5px;}
+  /* 手机首屏必须露出三行摘要：报头压到 400px 以内，读报指南只留「只有 3 分钟」 */
+  .mast-top{justify-content:center;gap:1px 12px;font-size:10px;letter-spacing:.06em;}
+  .mast-top span:nth-child(2){display:none;}
+  .paper-name{font-size:34px;}
+  .paper-sub{font-size:9.5px;letter-spacing:.08em;}
+  .read-guide a:nth-of-type(n+2){display:none;}
+  .read-guide{padding:7px 0 8px;}
+  /* 论据标记在 390px 上别把行撑开 */
+  .src-tag{font-size:8.8px;letter-spacing:0;margin:0 1px;}
+  .src-legend{font-size:10px;gap:2px 8px;}
+}
+@media print{
+  .props{grid-template-columns:1fr 1fr;}
+  .term .tip{display:none;}
+}
+
+/* 标签与它的解释必须同进同退，不能在中间折行（390px 上会拆成两半） */
+.src-legend .src-item{display:inline-flex;align-items:baseline;gap:4px;white-space:nowrap;}
+
+/* 板块来源（P006）：每版版头一个小标，说明这一版的信息主要来自哪里。
+   四档词表固定在 assemble_issue.ORG_LABELS；标的是「信息来自哪」，不是「谁执笔」。 */
+.sec-right{display:inline-flex;align-items:center;gap:9px;}
+.src-org{display:inline-block;font-family:var(--sans);font-size:9.5px;line-height:1.7;
+         letter-spacing:.08em;padding:0 6px;border:1px solid var(--rule-soft);
+         background:#f1ece0;color:var(--ink-soft);white-space:nowrap;}
+.src-org-official{background:#eaf1f8;border-color:#c4d6e8;color:#22506f;}
+.src-org-thirdparty{background:#f1ece0;border-color:var(--rule-soft);color:var(--muted);}
+.src-org-measured{background:#eaf3e6;border-color:#c6dcc0;color:#2c5c2a;}
+/* AI 生成用醒目的暖底：读者一眼能数出这期有多少版没有外部信源 */
+.src-org-ai{background:#fbf0e4;border-color:#d9b58f;color:#8a4a1c;}
+
+/* 报尾信源表：一条一行，带归属方与被引内容 */
+.sources{border-top:1px dotted var(--rule-soft);margin:0 0 9px;padding-top:7px;}
+.sources-h{display:flex;flex-wrap:wrap;gap:2px 10px;align-items:baseline;margin-bottom:4px;}
+.sources-h b{font-family:var(--sans);font-size:10.4px;letter-spacing:.12em;
+             font-weight:400;color:var(--ink-soft);}
+.sources-h i{font-style:normal;flex:1 1 320px;font-size:10.4px;line-height:1.8;color:var(--muted);}
+.sources ul{list-style:none;margin:0;padding:0;
+            columns:2;column-gap:22px;font-size:10.4px;line-height:1.85;}
+/* 每条用普通行内排版，不用 flex：flex + margin-left:auto 会把类型标签推到列右边界，
+   长条目（The Register 那条）只剩 40px，标签被拆成「官方发 / 布」竖着排。 */
+.sources li{break-inside:avoid;color:var(--ink-soft);padding-left:0;}
+.sources .src-out{color:var(--ink);font-weight:700;white-space:nowrap;margin-right:5px;}
+.sources .src-what{color:var(--ink-soft);}
+.sources .src-kind{font-family:var(--sans);font-size:9px;letter-spacing:.06em;
+                   color:var(--muted);border:1px solid var(--rule-soft);
+                   padding:0 3px;white-space:nowrap;margin-left:5px;
+                   display:inline-block;vertical-align:1px;}
+.sources-note{margin:5px 0 0;font-size:10px;line-height:1.8;color:var(--muted);}
+
+@media (max-width:720px){
+  .sec-right{gap:6px;}
+  .src-org{font-size:8.6px;letter-spacing:0;padding:0 5px;}
+  .sources ul{columns:1;}
+}
+@media print{
+  .sources ul{columns:2;}
+}
+
+/* ---------- 窄屏目录按钮：别压住正文 ----------
+   原来是 78×36 的常驻药丸，固定在右下角，手机首屏正好盖住三行摘要的末行。
+   现在改成 42×42 圆点、静止时略透明；向下滚动时收起，向上滚或回到顶部再出来。
+   写在这里而不是 00-style.html：那份逐期复制、没有模板源，而本文件模板里也有一份。 */
+@media (max-width:1389px){
+  .mob-btn{
+    width:42px;height:42px;padding:0;gap:0;justify-content:center;
+    font-size:0;border-radius:50%;opacity:.72;
+    transition:opacity .18s ease,transform .22s ease,background-color .18s ease;
+  }
+  .mob-btn i{font-size:16px;line-height:1;}
+  .mob-btn:hover,.mob-btn:active{opacity:1;}
+  .mob-btn:focus-visible{opacity:1;outline:2px solid var(--accent);outline-offset:2px;}
+  /* 收起：让开正文。mob-open 的规则放在后面，打开面板时一定可见。 */
+  body.mob-btn-tuck .mob-btn{opacity:0;transform:translateY(150%);pointer-events:none;}
+  body.mob-open .mob-btn{opacity:1;transform:none;pointer-events:auto;}
+  @media (prefers-reduced-motion:reduce){
+    .mob-btn{transition:none;}
+  }
+}
+</style>
+</head>
+<body>
+<div class="page" id="top">
+  <header class="masthead" data-thread="开源了，门槛还在">
+    <div class="mast-rule"></div>
+    <div class="mast-top">
+      <span>2026 年 11 月 14 日　星期六　北京时间 08:00</span>
+      <span>每版附锐评 · 第 16 版结算本期提案</span>
+      <span>第 010 期　开源了，门槛还在　共 16 版</span>
+    </div>
+    <h1 class="paper-name">AI 晨报</h1>
+    <div class="paper-sub">AI MORNING POST · 每日人工智能与智能体要闻 · 开源了，门槛还在</div>
+    <div class="mast-rule double"></div>
+    <nav class="mast-nav">
+      <a href="#p01"><b>01</b>头条</a>
+      <a href="#p02"><b>02</b>社论</a>
+      <a href="#p03"><b>03</b>浏览器</a>
+      <a href="#p04"><b>04</b>世界模型</a>
+      <a href="#p05"><b>05</b>显卡</a>
+      <a href="#p06"><b>06</b>清单</a>
+      <a href="#p07"><b>07</b>开源</a>
+      <a href="#p08"><b>08</b>治理</a>
+      <a href="#p09"><b>09</b>研究</a>
+      <a href="#p10"><b>10</b>资本</a>
+      <a href="#p11"><b>11</b>算力</a>
+      <a href="#p12"><b>12</b>工具链</a>
+      <a href="#p13"><b>13</b>落地</a>
+      <a href="#p14"><b>14</b>星探</a>
+      <a href="#p15"><b>15</b>快讯</a>
+      <a href="#p16"><b>16</b>提案</a>
+    </nav>
+    <div class="read-guide">
+      <span class="rg-lead">怎么读</span>
+      <a href="#p01"><b>只有 3 分钟</b>头版「三行摘要」看清一天三个 Apache 2.0，以及没跟着开放的那部分</a>
+      <a href="#p05"><b>只想看显卡</b>第 05 版是今日行情：欧洲 16GB 卡齐涨、旗舰回落、官方说「不放弃」</a>
+      <a href="#gloss"><b>术语看不懂</b>正文带虚线的词点一下就地解释；报尾 14 词表留作索引</a>
+      <a href="#p16"><b>想改这份报纸</b>第 16 版四视角提建议，点名采纳才动工</a>
+    </div>
+  </header>
+<section class="lead" id="p01">
+    <article class="lead-main">
+      <div class="kicker">头版头条 · 开源了，门槛还在<span class="src-org src-org-thirdparty" title="开源公告与硬件渠道报道并列">来源 · 第三方信息网</span></div>
+      <h2>开源了，门槛还在<br><span class="h2-sub">一天三个 Apache 2.0，跑起来的条件没一起给</span></h2>
+      <p class="deck">Cloudflare 把智能体浏览器引擎 Kitesurf 以 <b>Apache 2.0</b><span class="src-tag">厂商口径</span> 开源；同日 Runway 与 Perplexity 也放出权重。<b>门槛没跟着消失：能下载，不等于跑得起。</b></p>
+      <div class="digest">
+        <div class="digest-h"><span>三行摘要 · 九十秒读完这一期</span><em>010 期</em></div>
+        <ol>
+          <li><i>01</i><span><b>开放的是文件</b>：三个项目同日开放。</span></li>
+          <li><i>02</i><span><b>没开的是条件</b>：付费、显存、许可边界。</span></li>
+          <li><i>03</i><span><b>显卡同款句式</b>：不放弃，但没说便宜。</span></li>
+        </ol>
+      </div>
+      <div class="byline">本报编辑部　综合报道　2026-11-14</div>
+      <div class="lead-body">
+        <p class="dropcap">11 月 14 日这一天，开放是密集的。Cloudflare 开源了 <b>Apache 2.0</b><span class="src-tag">厂商口径</span> 许可的 <span class="term" tabindex="0">无状态<i class="tip">不保存会话状态，每次请求都可以从零开始。对智能体来说，好处是能并发开很多个互不干扰的浏览器；代价是记忆要另外存。</i></span>浏览器引擎 Kitesurf；Runway 把机器人世界模型 Praxis-1 的权重按 Apache 2.0 放出，允许免费商用；Perplexity 把 Decider v1.3 与 Flash 版放上 Hugging Face。三个项目分属浏览器、机器人、分类决策，彼此不相干，却在同一天用同一个动作回答同一个问题：<b>智能体这层基础设施，开始按「可下载」而不是「可调用」来提供。</b></p>
+        <p><b>但把许可协议读到底，三家的门都只开了一半。</b>Kitesurf 的代码是 Apache 2.0，自己部署却需要 Cloudflare 的 <span class="term" tabindex="0">Workers Paid<i class="tip">Cloudflare 的付费版无服务器运行计划。代码免费，但把它跑在官方网络上要按调用计费，这就是「开源但不自带运行环境」的典型形态。</i></span> 计划；Praxis-1 权重免费，可要复现 46.2% 的成绩得有对应的机器人测试环境；Decider 是轻量模型，却仍要接进别人的路由与评估链路才有意义。<b>公开的是文件，没公开的是把文件变成服务的那套条件</b>——第 03 版拆浏览器，第 07 版拆模型。</p>
+        <p><b>同一天，显卡行业给了一句结构相同的话。</b>面对「英伟达是不是要放弃游戏显卡」的追问，GeForce 品牌负责人 Jacob Freeman 的回答是一个「Nope」；但他只承诺产品线还在，没有承诺价格会下来。报道同时算了一笔账：RTX 5090 从 1,999 美元的首发价走到 9,000 美元，涨幅 <b>370%</b><span class="src-tag">公开报道</span>。<b>「不放弃」和「买得起」是两件事</b>，这与「开源」和「跑得起」是同一道门。第 05 版逐日记价，第 06 版给一份拿到源码之后的三问清单。</p>
+        <p><b>为什么值得把这条线单独拎出来。</b>过去一年，「开放」常常被当成一个开关：开源或闭源。今天这批发布说明它其实是一串条件——<span class="term" tabindex="0">许可条款<i class="tip">规定你能不能商用、能不能改、改完要不要同样公开。开放权重只说明文件能下载，商用边界要看这一份。</i></span>、运行环境、硬件门槛、数据依赖，任何一项没给，能力就仍然托管在别人手里。第 08 版写政策开始给智能体定「准入」，第 10 版写资本往这一层砸钱，两边其实都在争同一件事：<b>谁决定准入。</b></p>
+        <p>本期不做「该不该用」的推荐，也不预测哪家会赢。<b>只把今天能下载的东西、以及下载之后还缺什么，一条条列清楚。</b>下一期再用同样的口径复查一次，才知道门是在开还是在关。</p>
+      </div>
+      <p class="jump">相关报道见第 03 版《给机器造的浏览器》、第 05 版《显卡 · 每日行情：不放弃，不等于便宜》、第 07 版《今天放出来的四份权重》、第 16 版《四条提案》</p>
+      <aside class="razor">
+        <div class="razor-h">
+          <span class="razor-mark">锐评</span>
+          <span class="razor-src">本报评论员 · 针对本版头条</span>
+        </div>
+        <p>开源公告最好写的永远是「免费」两个字，最难写的是「要跑起来还得什么」。<b>把后者省略，读者会以为门槛已经拆了；其实只是门槛从账单上挪到了文档里。</b></p>
+      </aside>
+    </article>
+
+    <aside class="lead-side">
+      <div class="side-block">
+        <h3>本期要闻</h3>
+        <ol class="headlines">
+          <li><b>浏览器</b>Cloudflare 开源 Kitesurf，Chrome 团队 MCP 工具登顶趋势榜</li>
+          <li><b>世界模型</b>Runway 免费放出 Praxis-1，普通视频也能训机器人</li>
+          <li><b>小模型</b>Perplexity 开源 Decider v1.3，专做批量是非判断</li>
+          <li><b>显卡</b>欧洲 16GB 卡一周齐涨，5090 报价一周回落 33.6%</li>
+          <li><b>官方</b>英伟达回应「不放弃游戏 GPU」，未承诺降价</li>
+          <li><b>治理</b>智能体互联系列国标发布，19 个领域获政策鼓励</li>
+          <li><b>资本</b>LangChain 融资 3 亿美元，Mercor 估值 200 亿美元</li>
+          <li><b>算力</b>AMD Zen 6 首份独立实测：双路 1,024 线程</li>
+        </ol>
+      </div>
+      <div class="side-block">
+        <h3>本期五个数</h3>
+        <div class="stat"><div class="line"><span class="num">3</span><span class="unit">个 Apache 2.0</span></div><span class="cap">同日放出的浏览器引擎、世界模型与决策模型<span class="src-tag">公开报道</span></span></div>
+        <div class="stat"><div class="line"><span class="num">46.2</span><span class="unit">%</span></div><span class="cap">Praxis-1 在 RoboLab-120 的厂商自述得分<span class="src-tag">厂商口径</span></span></div>
+        <div class="stat"><div class="line"><span class="num">14.3</span><span class="unit">%</span></div><span class="cap">欧洲 RTX 5060 Ti 16GB 一周涨幅<span class="src-tag">公开报道</span></span></div>
+        <div class="stat"><div class="line"><span class="num">16</span><span class="unit">个记忆 token</span></div><span class="cap">Memorilla 把文档集压进去的长度<span class="src-tag">预印本</span></span></div>
+        <div class="stat"><div class="line"><span class="num">370</span><span class="unit">%</span></div><span class="cap">RTX 5090 相对首发价的报道涨幅<span class="src-tag">公开报道</span></span></div>
+      </div>
+    </aside>
+  </section>
+
+<section class="section" id="p02">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">社论 · 门槛搬了个家</span>
+      <span class="sec-right"><span class="src-org src-org-ai" title="社论，本报观点，无外部信源">来源 · AI 生成</span><span class="sec-page">第 02 版 / 共 16 版</span></span>
+    </div>
+    <p class="sec-lede">这一期不评哪家更慷慨。<b>只记一个变化：门槛从「能不能拿到」搬到了「拿到之后能不能用」。</b></p>
+    <p>把源码放出来，是一件有明确边界的事：一行许可声明、一个仓库地址、一次发布公告。把运行条件放出来，则没有这么整齐的动作——它散在定价页、部署文档、模型卡的硬件要求里，不会出现在公告标题上。<b>于是读者看到的永远是前半句，要自己翻三四页才能补齐后半句。</b></p>
+    <p>今天这批发布把这个落差摆得很清楚。浏览器引擎开源了，但它的天然宿主是付费的无服务器平台；权重放出来了，但模型卡写明首次下载上百 GB、常驻显存上百 GiB；小模型免费了，可它只有在路由、评估与重试链路里才产生价值。<b>这三样都不是缺点，而是「开放」这个词的真实体积。</b></p>
+    <p>本报的态度是：不必因此怀疑开放的诚意，但也不该把开放当成终点。<b>一份对读者有用的清单，应该同时写「给了什么」和「还缺什么」</b>——第 06 版那份三问清单就是按这个原则写的，它不打分、不排名，只把条件列齐。</p>
+    <p>另一处值得留意的是显卡。同一天官方说产品线不会消失，却没有说价格会回来。<b>「继续存在」与「可以被使用」之间的那段距离，和开源与可运行之间的距离，是同一种距离。</b>把这两件事放在同一期读，比分别看两条行业新闻更有用。</p>
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版</span>
+      </div>
+      <p>公告负责宣布门开了，文档负责说明门有多重。<b>只看公告，就会把「可以」误读成「已经」。</b></p>
+    </aside>
+  </section>
+
+<section class="section" id="p03">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">给机器造的浏览器 · Kitesurf 与它的邻居</span>
+      <span class="sec-right"><span class="src-org src-org-official" title="Cloudflare 开源说明与项目 README">来源 · 官方</span><span class="sec-page">第 03 版 / 共 16 版</span></span>
+    </div>
+    <p class="sec-lede">Cloudflare 把 Workers 上的浏览器引擎 Kitesurf 以 Apache 2.0 开源：读页面、跑脚本、截图都在无服务器环境里完成，因为说 Chrome 的 <span class="term" tabindex="0">CDP<i class="tip">Chrome DevTools Protocol，浏览器对外暴露的调试与控制协议。Puppeteer、Playwright 这类工具都靠它驱动浏览器。</i></span>，Puppeteer 等现成工具可以直接接<span class="src-tag">厂商口径</span>。</p>
+    <div class="table-wrap"><table><caption>同一天出现的三种「给智能体的浏览器」</caption><thead><tr><th>项目</th><th>形态</th><th>关键限制</th></tr></thead><tbody><tr class="hi"><td>Kitesurf（Cloudflare）</td><td>服务端无状态引擎，Rust 组件 + Firefox 样式引擎</td><td>自部署需要 <b>Workers Paid</b> 计划<span class="src-tag">厂商口径</span></td></tr><tr><td>agweb（Mac）</td><td>给编码智能体用的独立浏览器，不抢键盘、密码由密码管理器直填</td><td>只用 Safari 引擎，Chrome 专属工具接不上</td></tr><tr><td>chrome-devtools-mcp</td><td>Chrome 团队的项目，让智能体检查与控制 Chrome</td><td>要装完整浏览器，内存开销大</td></tr></tbody></table></div>
+    <p><b>三条路线争的不是渲染速度，是「谁拥有这个窗口」。</b>服务端方案把浏览器拆成一次请求，好处是能并发开很多个、互不污染；代价是登录态、Cookie 与会话记忆都得另找地方存。桌面方案反过来：agweb 让智能体在后台开标签页，人不被打断，README 给的对比是五个空闲页面约 <b>590 MB</b>，而 Playwright 驱动的 Chrome 约 1.6 GB<span class="src-tag">公开报道</span>。<b>这份数字来自项目自述，本报未复现</b><span class="src-tag">本报未复现</span>。</p>
+    <p><b>「不抢焦点」听着像体验细节，其实是准入设计。</b>智能体要替人操作浏览器，最麻烦的从来不是点按钮，而是登录：密码、二次验证、企业单点登录，任何一步把人踢开，自动化就断在那里。agweb 的做法是把凭据留在密码管理器里、由人填给窗口，智能体只看它该看的部分<span class="src-tag">公开报道</span>。<b>换句话说，门不是拆掉，是加了一道只让特定东西通过的缝。</b></p>
+    <p><b>把第 01 版那句话落到这一版：</b>Kitesurf 的代码可以下载，但它最顺的运行环境仍是一家公司的付费网络；MCP 工具完全免费，却要你自己养一个完整的 Chrome 进程。<b>开源的边界，在这里被画成了「计算谁出」。</b>第 12 版接着看工具链怎么把这笔成本摊开。</p>
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版</span>
+      </div>
+      <p>智能体终于有了自己的浏览器，第一件事却是被提醒：登录态属于人，算力属于账单。<b>这两样都没有被开源。</b></p>
+    </aside>
+  </section>
+
+<section class="section" id="p04">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">世界模型与记忆 · 免费权重、昂贵条件</span>
+      <span class="sec-right"><span class="src-org src-org-thirdparty" title="厂商发布材料与研究论文口径">来源 · 第三方信息网</span><span class="sec-page">第 04 版 / 共 16 版</span></span>
+    </div>
+    <p class="sec-lede">Runway 把 Praxis-1 按 Apache 2.0 放出，称可免费商用；斯坦福团队的 Memorilla 把一整份文档集压成极短的记忆表示。两件事都在降低「让模型动手」的成本，但降低的是不同那一半。</p>
+    <p><b>先看能拿到的部分。</b>Praxis-1 同时预测机器人下一帧会看到什么、下一步该做什么，在 Nvidia 的 RoboLab-120 世界动作模型测试上厂商自述 <b>46.2%</b>，高于它自己列出的对比模型<span class="src-tag">厂商口径</span>。更值得注意的是训练数据：报道称普通网络视频与专门的机器人采集视频效果相当，这把数据采集这一项从成本表里划掉了一大块<span class="src-tag">公开报道</span>。<b>但它还不能自己规划复杂动作序列</b>，官方也没把这一点藏起来。</p>
+    <p><b>再看被压掉的部分。</b>Memorilla 把文档集合压进 <b>16 个</b>记忆 token，喂给冻结的 Qwen3-8B，在 FactKG 上报告 <b>84.33%</b>，所用文档 token 比全上下文提示少 108 倍<span class="src-tag">预印本</span>。这是研究论文口径，未经同行评审，本报未复现<span class="src-tag">本报未复现</span>。<b>它的意义不在分数，而在把「记忆」明码标价</b>：上下文不再是越长越好，而是可以压缩、可以计量的一种资源。</p>
+    <p><b>两个项目放在一起，才能看清门槛搬去了哪里。</b>Praxis-1 免了数据费，却把评测环境留在机器人硬件上；Memorilla 省了上下文，却要求你先有一套能生成与校验记忆的训练流程。<b>权重免费，验证成本没有免费。</b>这正是第 06 版三问清单里第二问要处理的东西。</p>
+    <p>Vercel Labs 同日放出的 UI SDK 是第三个例子：Apache-2.0 测试版，50 多种 UI 行为，覆盖 React、Vue、Svelte、Solid 与 Web Components，让编码智能体把界面拼成可访问组件<span class="src-tag">厂商口径</span>。<b>它开放的是「零件」，不开放的是「审美与取舍」</b>——拼出来的页面合不合用，仍然要人判断。</p>
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版</span>
+      </div>
+      <p>免费的是权重，收费的是复现。<b>一个项目若只公布分数、不公布跑出这个分数要什么，那分数就只是广告词。</b></p>
+    </aside>
+  </section>
+
+<section class="section" id="p05">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">显卡 · 每日行情：不放弃，不等于便宜</span>
+      <span class="sec-right"><span class="src-org src-org-thirdparty" title="欧洲周度价格表、电商比价与驱动说明">来源 · 第三方信息网</span><span class="sec-page">第 05 版 / 共 16 版</span></span>
+    </div>
+    <p class="sec-lede">本期固定行情版。<b>11 月 14 日的可比读数来自欧洲周度价格表与美国电商当日挂牌价</b>；周末渠道不开新报价，本报只记已公开的数值，不用估计值填空<span class="src-tag">公开报道</span>。</p>
+    <div class="table-wrap"><table class="rank"><caption>欧洲周度价格表 · 11 月 14 日读数（欧元）</caption><thead><tr><th>型号</th><th class="p">11 月 6 日</th><th class="p">11 月 14 日</th><th class="rz">7 日变化</th></tr></thead><tbody><tr class="hi"><td class="name">RTX 5090</td><td class="num">8,449.90</td><td class="num"><b>5,609.90</b></td><td class="rz">-2,840（-33.6%）</td></tr><tr><td class="name">RTX 5080</td><td class="num">1,799.90</td><td class="num"><b>1,899.90</b></td><td class="rz">+100（+5.6%）</td></tr><tr><td class="name">RTX 5060 Ti 16GB</td><td class="num">699.90</td><td class="num">799.90</td><td class="rz">+100（<b>14.3%</b>）</td></tr><tr><td class="name">RX 9060 XT 16GB</td><td class="num">574.90</td><td class="num">649.90</td><td class="rz">+75（<b>13.0%</b>）</td></tr><tr><td class="name">RX 9070 XT</td><td class="num">932.90</td><td class="num">932.90</td><td class="rz">持平</td></tr><tr><td class="name">Intel Arc B580 12GB</td><td class="num">488.90</td><td class="num">493.90</td><td class="rz">+5（+1.0%）</td></tr></tbody></table></div>
+    <p><b>旗舰那一格最容易被读错。</b>5090 一周掉 2,840 欧元，看上去是「退烧」，报道给出的解释却是：少数官方零售货源进来，把最离谱的第三方挂单挤出了样本，卡片因此回到 <b>5,609.90 欧元</b>，仍接近原始旗舰基准的三倍<span class="src-tag">公开报道</span>。<b>这是样本结构变了，不是所有人都能用这个价买到。</b>相反，真正面向主流玩家的 16GB 两档同时上涨，涨幅 <b>14.3%</b> 与 <b>13.0%</b><span class="src-tag">公开报道</span>，报道把原因指向 GDDR7 与 GDDR6 合约价、以及黑五前的基准价上调<span class="src-tag">公开报道</span>。</p>
+    <p><b>美国当日的挂牌价是另一个口径。</b>11 月 14 日的电商比价里，最便宜的 PNY RTX 5090 报 <b>6,495 美元</b>，华硕 TUF 5090 报 7,450 美元，ROG Astral 5080 报 2,099.99 美元；同月渠道涨价幅度被记为 5090 近 500 美元、5080 约 380 到 450 美元<span class="src-tag">公开报道</span>。<b>这些是挂牌价，不是成交价，与欧洲周度表不能横向相加</b>，本报只把它们并列摆出，不做换算。</p>
+    <p><b>今天最该记的一句话，来自英伟达。</b>被问到会不会停掉游戏 GPU，GeForce 品牌负责人 Jacob Freeman 答「Nope」；报道随即补了一句：他只保证产品线存在，没有承诺更便宜，并列出 RTX 5090 从 1,999 美元到 9,000 美元、约 <b>370%</b> 的涨幅<span class="src-tag">公开报道</span>。<b>「不放弃」是一项供给承诺，「买得起」是另一件事</b>，两者之间正是这一轮行情里最常被省略的一行。</p>
+    <p><b>驱动栏沿用本周两条已确认的说明。</b>AMD Adrenalin 26.11.1 修的是空闲与拖动窗口时持续写系统盘的问题，官方说明点名 RX 7000 及以上，但没有给出写入量数字；NVIDIA 621.24 WHQL 给《燕云十六声》加 DLSS 5 的 3D 引导神经渲染，并为《战锤 40K：战争黎明 IV》与《神力科莎：拉力》加支持<span class="src-tag">公开报道</span>。<b>两条都没有帧数承诺</b>，一条管磁盘寿命，一条管功能可用性。</p>
+    <p>本周还有一条被反复转述、但口径不稳的消息：RTX 5080 的 24GB 版本据称取消。<b>本报没有找到厂商公告，只在周度硬件汇总里看到转述，因此不列入今日价表</b>，只在此登记一句「待一手确认」。</p>
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版</span>
+      </div>
+      <p>旗舰跌三成，主流涨一成。<b>把这两行压成一个「显卡降价」的标题，等于替渠道做了广告。</b></p>
+    </aside>
+  </section>
+
+<section class="section" id="p06">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">拿到源码之后 · 一份三问清单</span>
+      <span class="sec-right"><span class="src-org src-org-ai" title="方法论，本报自设的三问清单">来源 · AI 生成</span><span class="sec-page">第 06 版 / 共 16 版</span></span>
+    </div>
+    <p class="sec-lede">本版是本报自设方法，不打分、不排名。<b>它只回答一件事：看到「开源」两个字之后，还该问哪三句。</b></p>
+    <div class="table-wrap"><table><caption>三问清单 · 本报自设，非第三方评级</caption><thead><tr><th>问什么</th><th>要找的答案在哪</th><th>答不出来意味着什么</th></tr></thead><tbody><tr class="hi"><td>一、许可允许我做什么</td><td>许可证原文、商用条款、专利与商标例外</td><td>能下载不等于能上线，权重与代码不是一回事</td></tr><tr><td>二、跑起来还缺什么</td><td>模型卡的显存与磁盘要求、部署文档、依赖版本</td><td>公告里的分数是在别家的机器上得到的</td></tr><tr><td>三、坏了能不能带走</td><td>导出格式、状态存放位置、有没有私有服务依赖</td><td>迁移成本会变成下一轮议价筹码</td></tr></tbody></table></div>
+    <p><b>第一问专治「开放权重」与「开源」混用。</b>权重能下载，只说明文件在你硬盘上；能不能商用、改完要不要公开、能不能转售，全写在许可条款里。今天这批项目多数给了明确协议，这是好事，但读者仍要自己看一眼那几行字。</p>
+    <p><b>第二问专治「分数幻觉」。</b>一份模型卡若公布了成绩却没公布硬件，读者就只能猜。把显存、磁盘、依赖服务三项列齐，才知道那个成绩与自己手上的机器有没有关系。<b>这一问不要求厂商自曝全部细节，只要求读者别把缺项当成零。</b></p>
+    <p><b>第三问最容易被跳过。</b>无状态引擎把会话记忆留在外部，服务端浏览器把登录态留在别处，托管工具把审计日志留在平台内；平时不觉得，一旦要换供应商，这些「留在别处」的东西全都是成本。<b>门槛常常不在入口，而在出口。</b></p>
+    <p>三问都不需要额外工具，也不产出评分。<b>它们的作用是把一句形容词拆成三条可核对的陈述</b>——这和第 05 版坚持「报价要带日期与口径」是同一种笨办法。</p>
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版</span>
+      </div>
+      <p>清单不提供结论，只提供漏项。<b>大多数「用了才发现不对」的事，都能在第一页文档里被问出来。</b></p>
+    </aside>
+  </section>
+
+<section class="section" id="p07">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">今天放出来的四份权重</span>
+      <span class="sec-right"><span class="src-org src-org-official" title="Perplexity、Baseten 等发布材料">来源 · 官方</span><span class="sec-page">第 07 版 / 共 16 版</span></span>
+    </div>
+    <p class="sec-lede">模型侧这一天的开放同样密集：<b>专做判断的小模型、推理引擎、标记语言与多模态智能体模型</b>，各自补的是智能体流水线里不同的一格。</p>
+    <p><b>Perplexity 的 Decider v1.3 与 Flash v1.3 走的是「分工」路线。</b>两个模型专做二分类与多分类，返回概率供上层做路由、排序与评估，采用双向注意力，Flash 版由 v1.3 <span class="term" tabindex="0">蒸馏<i class="tip">用大模型产出的数据去训练小模型，让小模型在特定任务上学到接近的判断力，代价是能力范围被收窄。</i></span>而来；模型以 <b>Apache 协议</b> 在 Hugging Face 放出，同时上 OpenRouter 与 Decisions API<span class="src-tag">厂商口径</span>。<b>它不打算替你思考，只替你拍板</b>——把最便宜的判断从最贵的模型里拆出来。</p>
+    <p><b>Baseten 的 DeepSeek Ultrafast 是另一端的活。</b>它服务 DeepSeek-V4.1-Flash，在四张 GB300 上厂商自测约 <b>1,740 token/s</b>，并让会话能在不同服务器之间接续、每台直接从别处拉记忆，因而不需要专门的路由层<span class="src-tag">厂商口径</span>。项目说明还提到，底层代码由编码智能体参与调优<span class="src-tag">公开报道</span>。<b>同样是「开放」，这里交出来的是速度，而速度绑定的是特定芯片。</b></p>
+    <p><b>另外两项更小，但方向一致。</b>Hugging Face 介绍的 LLMON 是一种给大模型读的标记语言，已进 IBM Granite 4.1 的 3B 与 8B 模型；国内团队开源的 Nex-N2.6 是 321B 多模态智能体模型，发布方称重复推理下降约 90%<span class="src-tag">公开报道</span>。<b>前者改的是输入格式，后者改的是推理次数</b>，都不是「更大的模型」。</p>
+    <p><b>把四份权重摆在一起看，今天开放的其实不是能力，是可替换性。</b>当判断、推理、格式与记忆都能换件，任何一家模型厂商都不再是唯一的入口；但每换一件，都要重新回答第 06 版的第二问：<b>新零件在我这台机器上，跑得动吗。</b></p>
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版</span>
+      </div>
+      <p>小模型负责拍板、推理引擎负责快、标记语言负责好读。<b>智能体正在被拆成一排可换的零件，而装配说明书还没开源。</b></p>
+    </aside>
+  </section>
+
+<section class="section" id="p08">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">治理 · 从「能不能做」转到「准不准进」</span>
+      <span class="sec-right"><span class="src-org src-org-thirdparty" title="政策与行业边界的媒体汇总">来源 · 第三方信息网</span><span class="sec-page">第 08 版 / 共 16 版</span></span>
+    </div>
+    <p class="sec-lede">政策这一侧的关键词今天不是能力，而是<b>准入</b>：智能体互联的系列国标、白宫的追责口径、以及行业自己划的使用边界，都在回答「谁可以接进来」。</p>
+    <p><b>国内：智能体互联系列国标发布。</b>据行业日报汇总，系列标准覆盖 <b>19 个领域</b>，被解读为智能体落地「有章可循」；同期上海为科学数据的 AI 应用立规矩<span class="src-tag">公开报道</span>。<b>标准的意义不在鼓励，而在给「能不能接」一个共同说法</b>——不同厂商的智能体要互相调用，先得对身份、权限与日志有一致定义。本报未核到标准全文，此处按媒体汇总口径记录<span class="src-tag">本报未复现</span>。</p>
+    <p><b>美国：白宫 AI 工作组据报拟放宽安全追责上限，换取企业主动上报事件</b><span class="src-tag">公开报道</span>。思路是把「出事之后罚多少」让一步，换「出事之前说不说」进一步。<b>这是典型的准入交换</b>：门槛没有消失，只是从审批口挪到了信息披露口。该条同样未见一手文件，按报道口径记录<span class="src-tag">本报未复现</span>。</p>
+    <p><b>行业侧的三条边界更具体。</b>美联航将禁止未经授权的第三方 AI 助手代订机票；Anthropic 的「最严封号」开始穿透审查壳公司与代理中转；微软就全球服务中断道歉，称故障非网络攻击所致<span class="src-tag">公开报道</span>。<b>前两条是把智能体挡在业务系统外面，第三条是提醒所有人：上层再自动，也压在基础设施的可用性上。</b></p>
+    <p><b>与头条那条线合起来读。</b>厂商在开放文件，政策在定义谁能接进来，平台在决定谁会被拦住。<b>「开放」从来不是单方面动作，它是三方各自守着一段门的结果。</b>第 13 版看这些规则落到具体产品上是什么样子。</p>
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版</span>
+      </div>
+      <p>标准、豁免与封号，看起来是三件事，其实都在写同一句话：<b>可以进来，但要按我的方式进来。</b></p>
+    </aside>
+  </section>
+
+<section class="section" id="p09">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">研究 · 给最响的承诺标个刻度</span>
+      <span class="sec-right"><span class="src-org src-org-thirdparty" title="研究转述与行业图表">来源 · 第三方信息网</span><span class="sec-page">第 09 版 / 共 16 版</span></span>
+    </div>
+    <p class="sec-lede">这一版不追新模型，只记三份给热度过降温的材料：<b>能干多久、成功率多少、以及一个常被提到的时间表</b>。</p>
+    <p><b>自主时长的刻度。</b>一份客服行业的图表被分析师反复引用：AI 智能体现在可以连续工作约 <b>16 小时</b>，但成功率只有 <b>50%</b>，分析师直接把这个数称为「客服场景不可接受」<span class="src-tag">公开报道</span>。<b>「能跑 16 小时」和「跑完 16 小时有人敢用」是两条完全不同的曲线</b>，把后者省略，前者就成了宣传语。</p>
+    <p><b>基础设施的时间表。</b>一份被转述的研究认为，太空数据中心在 2030 年前不太可能产生实质影响，前提是发射成本要先降约 <b>15 倍</b><span class="src-tag">公开报道</span>。礼来 CEO 对「十年内终结重大疾病」的回应也类似：人体临床试验是「帐篷里最长的那根杆」<span class="src-tag">公开报道</span>。<b>两条都不是否定技术，而是在给叙事补一个物理约束。</b></p>
+    <p><b>学术侧仍有硬进展。</b>Google DeepMind 的 AlphaGenome 2 被报道为覆盖 98% 的基因「暗物质」、致病变异识别率翻倍；另有团队在 TorchTitan 上用 <b>384 块</b> GH200 训练 1T 参数 MoE<span class="src-tag">公开报道</span>。<b>前者是评测口径、后者是工程规模</b>，两者都不宜与临床或商业可用性直接画等号。</p>
+    <p><b>本报的记法。</b>凡是「多久、多少、多快」的承诺，都补一栏「代价或失败率」；补不出来的，就标「未给出」。<b>这比替读者判断真假更笨，但更不容易过期。</b></p>
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版</span>
+      </div>
+      <p>一个只报时长不报成功率的数字，本质上是在卖耐心。<b>研究版的价值，就是把被省略的那一栏补回表格里。</b></p>
+    </aside>
+  </section>
+
+<section class="section" id="p10">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">资本 · 钱流向了「中间那一层」</span>
+      <span class="sec-right"><span class="src-org src-org-thirdparty" title="融资与并购的财经报道">来源 · 第三方信息网</span><span class="sec-page">第 10 版 / 共 16 版</span></span>
+    </div>
+    <p class="sec-lede">这一天的融资与并购几乎不投模型本身：<b>编排、治理、安全、人力平台</b>，全是智能体跑起来之前要先有的东西。</p>
+    <div class="table-wrap"><table><caption>11 月 13–14 日公开披露的资本动作（媒体口径）</caption><thead><tr><th>对象</th><th>动作</th><th>报道口径</th></tr></thead><tbody><tr class="hi"><td>LangChain</td><td>C 轮</td><td><b>3 亿美元</b>，估值 30 亿美元，主打智能体治理工具<span class="src-tag">公开报道</span></td></tr><tr><td>Mercor</td><td>融资</td><td>7.5 亿美元，估值 <b>200 亿美元</b><span class="src-tag">公开报道</span></td></tr><tr><td>CrowdStrike</td><td>收购两家智能体安全初创</td><td>合计 <b>4.95 亿美元</b><span class="src-tag">公开报道</span></td></tr><tr><td>IBM × Microsoft</td><td>联合推出 Imagine Enterprise</td><td>预置智能体 + 云基础设施，做集成与管理</td></tr><tr><td>OpenAI × Databricks</td><td>企业数据接入合作</td><td>在受治理的数据上调用 ChatGPT、Codex 与 GPT 模型</td></tr></tbody></table></div>
+    <p><b>三笔钱的共同点是「不生产智能，负责让智能可用」。</b>LangChain 卖治理，CrowdStrike 买的是「谁替智能体的行为负责」，Mercor 则押注人力市场会被重新组织<span class="src-tag">公开报道</span>。<b>当基础能力趋于可替换，溢价就会往编排与问责这两端移动。</b></p>
+    <p><b>两项合作补的是同一块拼图：准入。</b>IBM 与微软把预置智能体绑进企业云，OpenAI 与 Databricks 把模型接到「受治理的数据」上<span class="src-tag">公开报道</span>。<b>措辞都是「治理」，实质都是让模型能进原本进不去的系统</b>——与第 08 版的政策线正好对上。</p>
+    <p>腾讯云面向海外企业推出 WorkBuddy AI Agent 也被列在同一天的汇总里，报道称海外活跃客户数翻倍<span class="src-tag">公开报道</span>。<b>本报没有独立核到该口径的统计方法，只按报道登记。</b></p>
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版</span>
+      </div>
+      <p>模型层在打价格战，中间层在抬估值。<b>钱最清楚哪一层还没被压成通用件。</b></p>
+    </aside>
+  </section>
+
+<section class="section" id="p11">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">算力本地 · 服务器那一头先换了代</span>
+      <span class="sec-right"><span class="src-org src-org-official" title="AMD 产品说明与第三方实测">来源 · 官方</span><span class="sec-page">第 11 版 / 共 16 版</span></span>
+    </div>
+    <p class="sec-lede">显卡行情之外，本周更硬的读数来自服务器 CPU：<b>AMD Zen 6 的首份独立实测</b>，以及它给本地推理带来的另一条约束。</p>
+    <p><b>先把数字摆齐。</b>EPYC「Venice」旗舰 9996 在双路配置下给出 <b>1,024</b> 线程，Tom’s Hardware 实测 SPEC CPU 2026 整数吞吐较上一代 768 线程产品高 93%；AMD 自述对第五代 Turin 为 2.0 倍 SPECint、2.4 倍 SPECfp、2.7 倍内存带宽，架构层平均 IPC 提升 <b>27%</b>，最大加速 5.3 GHz<span class="src-tag">厂商口径</span>。<b>厂商数字与第三方数字要分开看</b>，本报没有复跑。</p>
+    <p><b>同一份实测里的另一个对照更有意思：</b>96 核 EPYC 9686F 在同一篇评测中比英伟达自家的 Vera CPU 整数快 17%、浮点快 40%<span class="src-tag">公开报道</span>。<b>这不是显卡对 CPU 的比较，而是「主机这一侧谁更强」的比较</b>——本地推理的瓶颈常常不在加速卡，而在喂数据的那头。</p>
+    <p><b>为什么放在「开源了，门槛还在」这一期。</b>今天放出的权重能下载，但能跑起来的机器规格正在往上走：四张 GB300 的推理引擎、上百 GiB 常驻显存的图像模型、384 块加速卡的训练作业<span class="src-tag">公开报道</span>。<b>硬件门槛不是背景，它是开放条件的一部分。</b></p>
+    <p>对普通读者更实际的一句是：服务器 Silicon 的换代通常先于桌面，Zen 6 的核心复合体改动与 3D V-Cache 变体被视作下一代桌面 X3D 的预览<span class="src-tag">公开报道</span>。<b>这条属于路线推断，不是发布承诺</b>，本报按推断标注，不与已实测数字混列。</p>
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版</span>
+      </div>
+      <p>权重人人可下载，机器不是人人都有。<b>把「开放」写成一句公告很容易，把「跑得动」写清楚要难得多。</b></p>
+    </aside>
+  </section>
+
+<section class="section" id="p12">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">工具链 · 给智能体装表、装闸、装账单</span>
+      <span class="sec-right"><span class="src-org src-org-official" title="AWS 指南与工具项目说明">来源 · 官方</span><span class="sec-page">第 12 版 / 共 16 版</span></span>
+    </div>
+    <p class="sec-lede">工具这一层的更新今天格外务实：<b>能看、能控、能算出花了多少钱</b>，三件事分别对应调试、权限与成本。</p>
+    <p><b>能看。</b>Chrome 团队的 chrome-devtools-mcp 当日登上 GitHub 趋势榜首位，让智能体直接检查与控制 Chrome；NiCE 的 Cognigy 新版本加入逐步追踪，并可同时模拟最多 10 个版本做对比<span class="src-tag">公开报道</span>。<b>智能体一旦会自己连点十几步，「每一步做了什么」就从调试便利变成了必需。</b></p>
+    <p><b>能控。</b>AWS 给出在 Fargate 上用 LiteLLM 搭自助式 LLM 网关的做法：开发者只拿一把 API Key，平台侧按人做成本上限与配额隔离<span class="src-tag">厂商口径</span>。<b>这是把「准不准进」写进基础设施</b>——与第 08 版的准入线是同一件事，只是执行方换成了平台团队。</p>
+    <p><b>能算账。</b>AWS 另一篇指南把 Amazon Bedrock 上的真实每任务成本拆成 <b>4 个</b>隐藏驱动，并建议用缓存、路由与输出上限压成本，再用人工基线与留出测试证明智能体的投入产出<span class="src-tag">厂商口径</span>。<b>本报特别记下「人工基线」这一项</b>：没有对照组的效率提升，无法证伪。</p>
+    <p>同日的小更新还有：Kiro 的 AI 编码工具上线 Android；Google AI Pro / Ultra 订阅者可以在 AI Studio 里领月度云额度；Vercel UI SDK 让智能体把界面拼成可访问组件<span class="src-tag">公开报道</span>。<b>三项都在把「能不能用」变成「用多少、谁付钱」。</b></p>
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版</span>
+      </div>
+      <p>调试、权限、账单，是智能体从演示走到生产要补的三张表。<b>模型能力决定它能不能做，这三张表决定敢不敢让它做。</b></p>
+    </aside>
+  </section>
+
+<section class="section" id="p13">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">落地 · 智能体开始碰钱、碰会议、碰店铺</span>
+      <span class="sec-right"><span class="src-org src-org-thirdparty" title="产品发布的媒体汇总">来源 · 第三方信息网</span><span class="sec-page">第 13 版 / 共 16 版</span></span>
+    </div>
+    <p class="sec-lede">今天的产品消息有一个共同点：<b>智能体不再只产文本，开始进入有权限、有责任、有交易的流程</b>。</p>
+    <p><b>碰钱。</b>OpenAI 上线 ChatGPT Wallet，让 Dots 智能体在获得授权后代为付款；相关报道把这一动作描述为「AI 消费闭环」<span class="src-tag">公开报道</span>。<b>授权两个字是关键</b>：付款不是生成一段文字，错了不能靠「重新回答一次」撤回。</p>
+    <p><b>碰会议。</b>Claude Meetings 开启测试，可加入视频会议并实时干活<span class="src-tag">公开报道</span>。<b>会议里有在场的人、有临时决定、有不能外传的内容</b>，这比把文档丢进对话框复杂得多，也更容易踩到第 08 版那些准入规则。</p>
+    <p><b>碰店铺。</b>OpenAI 推出 Businesses in ChatGPT 测试版：企业认领并验证自己的资料、同步商品目录，与 Shopify 打通；配套的企业智能代理先向美国部分电商与在线服务企业开放。报道同时给出 ChatGPT <b>12 亿</b>周活跃用户的量级<span class="src-tag">公开报道</span>。<b>这一步把「被 AI 提到」变成了一项需要经营的资产</b>，也让第 10 版的资本动作有了落点。</p>
+    <p><b>搜索侧也在换位。</b>Google 把 Gemini 4 Hydrogen 全量推送并接进搜索的 AI 模式，报道称比 3.8 Flash 快 2.5 倍；腾讯元宝搜索上线独立网页版，把原先面向 B 端的搜索能力放到 C 端入口<span class="src-tag">公开报道</span>。<b>入口一变，谁被引用、谁被跳过，就成了一件要重新谈的事。</b></p>
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版</span>
+      </div>
+      <p>从生成文字到代为付款，中间隔的不是能力，是授权与撤回。<b>产品越像「办事」，越需要写清办错了怎么办。</b></p>
+    </aside>
+  </section>
+
+<section class="section" id="p14">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">星探 · 这天的仓库都在做同一件事</span>
+      <span class="sec-right"><span class="src-org src-org-thirdparty" title="GitHub 趋势榜与项目说明">来源 · 第三方信息网</span><span class="sec-page">第 14 版 / 共 16 版</span></span>
+    </div>
+    <p class="sec-lede">不看 star 总数，只看当日增速榜的构成：<b>给智能体用的浏览器、给智能体用的引擎、给智能体用的审查工具</b>。</p>
+    <div class="table-wrap"><table><caption>11 月 14 日前后趋势榜上的项目（公开榜单与媒体汇总）</caption><thead><tr><th>项目</th><th>它在补哪一格</th><th>本报备注</th></tr></thead><tbody><tr class="hi"><td>chrome-devtools-mcp</td><td>让智能体检查与控制 Chrome</td><td>当日榜首，官方团队项目<span class="src-tag">公开报道</span></td></tr><tr><td>agweb</td><td>给编码智能体的独立浏览器</td><td>只支持 Safari 引擎，工具兼容性受限</td></tr><tr><td>basetenlabs/deepseek-ultrafast</td><td>面向新加速卡的推理引擎</td><td>速度绑定特定硬件</td></tr><tr><td>open-code-review</td><td>代码审查自动化</td><td>阿里开源，登上趋势榜<span class="src-tag">公开报道</span></td></tr><tr><td>Brandrail</td><td>约束 AI 生成代码的设计系统</td><td>把「风格」变成可检查的规则</td></tr></tbody></table></div>
+    <p><b>榜单的构成比名次更有信息量。</b>前五名里有 <b>3 个</b>直接服务于编码智能体<span class="src-tag">公开报道</span>；剩下的也多在做「约束」与「可观测」。<b>这一波开源不是再造一个模型，而是围着模型补零件。</b></p>
+    <p><b>本报看项目只用三把筛子：</b>问题是不是真的存在、作者会不会继续维护、跑起来要什么条件。今天这批项目在第一把筛子上都很扎实——登录态、内存占用、跨机会话，都是写工具的人天天碰到的事。<b>第三把筛子则普遍写得含糊</b>，这正是第 06 版三问清单存在的原因。</p>
+    <p>顺带记一句：CMP 170HX 拆卡那条研究在上期已被 broad 转述，本周仍有人拿来论证「显存是分层而不是上限」。<b>本报不重复计数，也不把它当作行情数据。</b></p>
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版</span>
+      </div>
+      <p>趋势榜上最热的不是更聪明的模型，是更听话的工具。<b>这通常是基础设施成熟的信号，而不是能力突破的信号。</b></p>
+    </aside>
+  </section>
+
+<section class="section" id="p15">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">快讯 · 这一天剩下的十条</span>
+      <span class="sec-right"><span class="src-org src-org-thirdparty" title="多家媒体报道聚合">来源 · 第三方信息网</span><span class="sec-page">第 15 版 / 共 16 版</span></span>
+    </div>
+    <p class="sec-lede">按本报口径逐条登记，<b>只写能复述的事实，不把汇总里的形容词搬过来</b>。</p>
+    <ul class="briefs"><li><b>模型</b>　Google 全量推送 Gemini 4 Hydrogen 并接入搜索 AI 模式，报道称较 3.8 Flash 快 2.5 倍<span class="src-tag">公开报道</span>。</li><li><b>国内</b>　百度世界 2026 发布文心 5.5 flash 与模型交易平台「词元所」<span class="src-tag">公开报道</span>。</li><li><b>研究</b>　DeepMind 发布 AlphaGenome 2；Liquid AI 推出 74M 参数流式音频编解码器<span class="src-tag">公开报道</span>。</li><li><b>算力</b>　有团队在 TorchTitan 上用 <b>384 块</b> GH200 训练 1T 参数 MoE<span class="src-tag">公开报道</span>。</li><li><b>论文</b>　有报道称 AI 辅助破解哥德尔千页手稿，含数百条已证明定理；本报未见论文原文<span class="src-tag">公开报道</span>。</li><li><b>开源</b>　阿里开源代码审查工具 open-code-review，登上 GitHub 趋势榜<span class="src-tag">公开报道</span>。</li><li><b>产品</b>　Claude Meetings 开启测试；OpenAI 上线 ChatGPT Wallet<span class="src-tag">公开报道</span>。</li><li><b>治理</b>　智能体互联系列国标发布；白宫 AI 工作组据报拟调整安全追责口径<span class="src-tag">公开报道</span>。</li><li><b>基础设施</b>　微软就全球服务中断道歉，称非网络攻击所致<span class="src-tag">公开报道</span>。</li><li><b>硬件</b>　Zen 6 EPYC 9996 首份独立实测：双路 <b>1,024</b> 线程<span class="src-tag">厂商口径</span>。</li></ul>
+    <p><b>快讯里最需要小心的是「已发布」与「据报道」。</b>本版十条中，模型与驱动类多为厂商可查材料，政策与融资类多为媒体汇总；<b>本报按来源分别标注，不把两者混成同一种确定度。</b></p>
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版</span>
+      </div>
+      <p>十条快讯里，真正能当结论用的没几条。<b>把它们按来源分档摆出来，比挑一个最响的做标题更有用。</b></p>
+    </aside>
+  </section>
+
+<section class="section" id="p16">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">本报提案 · 这一期想怎么改</span>
+      <span class="sec-right"><span class="src-org src-org-ai" title="编辑部提案，本期自设">来源 · AI 生成</span><span class="sec-page">第 16 版 / 共 16 版</span></span>
+    </div>
+
+    <p class="sec-lede">本版每期由四个身份各提一条改动建议，编号 <b>P011-1…4</b>：<b>读者</b>说哪里读着费劲，<b>编辑</b>说哪里做起来费劲，<b>创刊人</b>说哪里该往前一步，<b>AI</b> 说哪里可以自动化。<b>默认不执行</b>——创刊人点名「采纳 P011-2」才进施工；没人提，挂满三期自动记「否决（沉默）」。</p>
+
+    <div class="props">
+      <article class="prop">
+        <div class="prop-h"><span class="prop-role">读者</span><span class="prop-id">P011-1</span></div>
+        <h4>每个「开源」后面补一行「跑起来还缺什么」</h4>
+        <p>本期第 03、04、07 版都写了开放，但运行条件散在正文各处。<b>建议每个开源条目固定跟一行小字</b>：许可、硬件或付费依赖、能否商用；三项缺一项就写「未注明」。读者不必翻到部署文档才能判断自己用不用得上。</p>
+        <dl class="prop-meta">
+          <dt>为什么</dt><dd>本期主线就是「文件开放、条件没开放」，报纸自己却把条件写散了</dd>
+          <dt>成本</dt><dd>小 · 两小时 · 加一个可复用的信息条 + 写作规范</dd>
+        </dl>
+        <div class="prop-st">待定 · <b>沉默即否决</b></div>
+      </article>
+
+      <article class="prop">
+        <div class="prop-h"><span class="prop-role">编辑</span><span class="prop-id">P011-2</span></div>
+        <h4>行情版加一行「与上期同口径差多少」</h4>
+        <p>第 05 版第一次用欧洲周度表，与上期的华强北走访价不能直接比。<b>建议每期价表下方固定留一行同口径环比</b>：口径没换就写涨跌，口径换了就写「不可比」并说明换了哪一项。没有这一行，连续出版反而会制造假趋势。</p>
+        <dl class="prop-meta">
+          <dt>为什么</dt><dd>本期旗舰 -33.6% 与主流 +14.3% 同时出现，容易被读成「整体降价」</dd>
+          <dt>成本</dt><dd>小 · 一小时 · 版面固定一行 + 事实卡加同口径标记</dd>
+        </dl>
+        <div class="prop-st">待定 · <b>沉默即否决</b></div>
+      </article>
+
+      <article class="prop">
+        <div class="prop-h"><span class="prop-role">创刊人</span><span class="prop-id">P011-3</span></div>
+        <h4>补刊要写清「补的是哪一天、内容截到哪一天」</h4>
+        <p>本期是 11 月 15 日补齐的 11 月 14 日刊。<b>建议补刊固定两处声明</b>：报头标注「补刊」，报尾写清内容截止时点与补刊日期，并且不把补刊日之后才出现的消息倒填进去。否则「每日」两个字会慢慢失去意义。</p>
+        <dl class="prop-meta">
+          <dt>为什么</dt><dd>漏刊后补齐是常态需求，但读者有权知道这一期不是当天编的</dd>
+          <dt>成本</dt><dd>中 · 半天 · 拼版参数加一个补刊标记 + 报尾模板分支</dd>
+        </dl>
+        <div class="prop-st">待定 · <b>沉默即否决</b></div>
+      </article>
+
+      <article class="prop">
+        <div class="prop-h"><span class="prop-role">AI</span><span class="prop-id">P011-4</span></div>
+        <h4>自动扫出「宣布了但没给条件」的条目</h4>
+        <p>本期三问清单靠人填。建议拼版前扫一遍信源表，把带「开源 / 免费 / 上线」却没有对应条件字段的条目列成一页待补清单，交给编辑逐条确认。<b>它只做发现，不自动补内容</b>，避免猜出根本没有的条件。</p>
+        <dl class="prop-meta">
+          <dt>为什么</dt><dd>本期至少四处出现「免费」而硬件或付费依赖写在别的段落</dd>
+          <dt>成本</dt><dd>中 · 一天 · 关键字扫描 + 待补清单 + 自检加一条覆盖率对账</dd>
+        </dl>
+        <div class="prop-st">待定 · <b>沉默即否决</b></div>
+      </article>
+    </div>
+
+    <p class="prop-rule"><b>怎么算采纳：</b>创刊人在当期明确说「采纳 P011-2」才算；说「先放着」算待定，最多挂三期；<b>没说就是否决，不再追问</b>。已采纳的写进 <code>提案台账.md</code>，在下一期的台账里标「已落地」。</p>
+
+    <div class="table-wrap">
+      <table class="prop-ledger">
+        <caption>提案台账 · 全量明细见 <code>提案台账.md</code>，本表只放最近 8 条</caption>
+        <thead>
+          <tr><th>编号</th><th>视角</th><th>一句话</th><th>状态</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="id">P009-1</td><td>读者</td><td>版本号后面跟一句是哪条路径</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P009-4</td><td>AI</td><td>自动生成一页版本矩阵</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P010-1</td><td>读者</td><td>显卡价的每个数都带日期与渠道</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P010-3</td><td>创刊人</td><td>显卡版每周固定口径复查</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P011-1</td><td>读者</td><td>开源条目补一行运行条件</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P011-2</td><td>编辑</td><td>行情版写同口径环比</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P011-3</td><td>创刊人</td><td>补刊标注日期与内容截止</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P011-4</td><td>AI</td><td>自动扫「没给条件」的条目</td><td class="st-wait">待定</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版四条提案</span>
+      </div>
+      <p>四条里有三条在说同一件事：<b>把省略掉的条件写回纸面</b>。这活儿不聪明，但比再写一版观点有用。</p>
+    </aside>
+  </section>
+
+  <div class="gloss" id="gloss">
+    <h5>名词速查 · 本期出现的 14 个词<span>正文里带虚线的词点一下就地解释；这张表留作索引</span></h5>
+    <div class="gloss-grid">
+      <dl><dt>无状态</dt><dd>不保存会话状态，每次请求都能从零开始。便于并发，代价是记忆要另外存。</dd></dl>
+      <dl><dt>CDP（调试协议）</dt><dd>Chrome DevTools Protocol，浏览器对外暴露的调试与控制协议，自动化工具靠它驱动浏览器。</dd></dl>
+      <dl><dt>Workers Paid</dt><dd>Cloudflare 的付费版无服务器运行计划。代码免费，跑在官方网络上要按调用计费。</dd></dl>
+      <dl><dt>Apache 2.0</dt><dd>一种宽松开源许可，允许商用与修改，要求保留版权与许可声明；它不等于「托管免费」。</dd></dl>
+      <dl><dt>开放权重</dt><dd>参数文件可以下载到本地跑。能否商用、能否转售，要看随附的许可原文。</dd></dl>
+      <dl><dt>许可条款</dt><dd>规定能做什么、不能做什么的那份法律文本，是「可下载」与「可使用」之间的分界。</dd></dl>
+      <dl><dt>蒸馏</dt><dd>用大模型的输出训练小模型，让它在特定任务上学到接近的判断力，能力范围随之收窄。</dd></dl>
+      <dl><dt>世界模型</dt><dd>预测环境下一状态并给出动作的模型，常用于机器人控制，评测要依赖具体硬件。</dd></dl>
+      <dl><dt>上下文压缩</dt><dd>把长文档压成更短的表示再交给模型，用更少的 token 保留任务所需信息。</dd></dl>
+      <dl><dt>推理引擎</dt><dd>负责把模型跑起来、批请求、管显存的软件层，速度往往与特定加速卡绑定。</dd></dl>
+      <dl><dt>显存</dt><dd>显卡上存模型权重与中间结果的内存。容量决定能否装下，带宽决定跑得多快。</dd></dl>
+      <dl><dt>建议零售价（MSRP）</dt><dd>厂商公布的官方指导价，不是成交价。所有「溢价几倍」都以它为分母。</dd></dl>
+      <dl><dt>溢价</dt><dd>成交价高出指导价的部分，通常来自缺货、渠道囤货与套利，不来自产品升级。</dd></dl>
+      <dl><dt>预印本</dt><dd>尚未经过同行评审的研究论文，数字可以引用，但不能当成已确立的结论。</dd></dl>
+    </div>
+  </div>
+
+  <footer class="colophon">
+    <div class="row">
+      <span><b>AI 晨报</b>　第 010 期　2026-11-14　共 16 版</span>
+      <span>本报由 AI 自动编撰　内容截至 11 月 14 日　<b>本期主线：开源了，门槛还在</b></span>
+    </div>
+    <div class="sources" data-slot="sources">
+      <div class="sources-h"><b>信息源与归属</b><i>逐条登记「谁给的、给了什么、哪一类、怎么用的」。url 只为能确认对应到这一条的单一页面填写；汇总栏目、频道首页、搜索页一律留空，不用猜出来的地址凑数。</i></div>
+      <ul>
+        <li class="src-li"><span class="src-out">Cloudflare</span><span class="src-what">Kitesurf 开源：Workers 上的无状态浏览器引擎，Apache 2.0，兼容 CDP / Puppeteer</span><span class="src-kind">官方发布</span></li>
+        <li class="src-li"><span class="src-out">AI Agents Directory</span><span class="src-what">11 月 14 日简报：Kitesurf、CrowdStrike 收购、IBM × Microsoft、LangChain 融资</span><span class="src-kind">媒体报道</span></li>
+        <li class="src-li"><span class="src-out">GenAI Secret Sauce</span><span class="src-what">11 月 14 日汇总：agweb、Kitesurf、chrome-devtools-mcp、Praxis-1、DeepSeek Ultrafast、Memorilla</span><span class="src-kind">媒体报道</span></li>
+        <li class="src-li"><span class="src-out">AI News Brief</span><span class="src-what">11 月 14 日晨间汇总：Memorilla 84.33%、Praxis-1、Vercel UI SDK、Hydrogen 全量推送</span><span class="src-kind">媒体报道</span></li>
+        <li class="src-li"><span class="src-out">稀土掘金 · 衍辉 AI 速递</span><span class="src-what">11 月 14 日 11 条：Perplexity Decider v1.3、ChatGPT Wallet、Claude Meetings、384 块 GH200</span><span class="src-kind">媒体报道</span></li>
+        <li class="src-li"><span class="src-out">今日头条 · AI 行业日报</span><span class="src-what">11 月 14 日：智能体互联国标 19 领域、白宫工作组、AlphaGenome 2、Nex-N2.6、Liquid AI</span><span class="src-kind">媒体报道</span></li>
+        <li class="src-li"><span class="src-out">Runway</span><span class="src-what">Praxis-1：Apache 2.0 开放权重、RoboLab-120 46.2%、普通网络视频可用于训练</span><span class="src-kind">官方发布</span></li>
+        <li class="src-li"><span class="src-out">斯坦福团队（研究论文）</span><span class="src-what">Memorilla：16 个记忆 token、Qwen3-8B 冻结、FactKG 84.33%、文档 token 少 108 倍</span><span class="src-kind">预印本</span></li>
+        <li class="src-li"><span class="src-out">Vercel Labs</span><span class="src-what">Vercel UI SDK：Apache-2.0 测试版、50+ UI 行为、跨五个前端框架</span><span class="src-kind">官方发布</span></li>
+        <li class="src-li"><span class="src-out">Perplexity</span><span class="src-what">Decider v1.3 与 Flash v1.3：Apache 协议、二分类与多分类概率输出、双向注意力</span><span class="src-kind">官方发布</span></li>
+        <li class="src-li"><span class="src-out">Baseten</span><span class="src-what">DeepSeek Ultrafast：四张 GB300 约 1,740 token/s、跨服会话记忆、编码智能体参与调优</span><span class="src-kind">官方发布</span></li>
+        <li class="src-li"><span class="src-out">Hugging Face / IBM</span><span class="src-what">LLMON：面向大模型的标记语言，进入 Granite 4.1 的 3B 与 8B 模型</span><span class="src-kind">官方发布</span></li>
+        <li class="src-li"><span class="src-out">pro-gamer.gg</span><span class="src-what">欧洲 GPU 周度价格表（11 月 14 日）：5090 5,609.90 欧元、5080 1,899.90 欧元、16GB 卡齐涨</span><span class="src-kind">公开榜单</span></li>
+        <li class="src-li"><span class="src-out">NXplace</span><span class="src-what">11 月 14 日硬件周报：美国电商挂牌价、ChannelGate 涨价潮、Zen 6 首份独立实测</span><span class="src-kind">媒体报道</span></li>
+        <li class="src-li"><span class="src-out">快科技 / 网易</span><span class="src-what">英伟达回应不放弃游戏 GPU：Jacob Freeman 答「Nope」，5090 从 1,999 到 9,000 美元</span><span class="src-kind">媒体报道</span></li>
+        <li class="src-li"><span class="src-out">Guru3D</span><span class="src-what">AMD 26.11.1 与 NVIDIA 621.24 驱动说明；黄仁勋卸任后的亚洲供应回应</span><span class="src-kind">媒体报道</span></li>
+        <li class="src-li"><span class="src-out">AMD / Tom’s Hardware</span><span class="src-what">EPYC Venice 9996：双路 1,024 线程、SPEC CPU 2026 吞吐 +93%、Zen 6 IPC +27%</span><span class="src-kind">官方发布</span></li>
+        <li class="src-li"><span class="src-out">AWS</span><span class="src-what">Fargate 上的 LiteLLM 自助网关；Bedrock 每任务真实成本的四个隐藏驱动</span><span class="src-kind">官方发布</span></li>
+        <li class="src-li"><span class="src-out">NiCE / SiliconANGLE</span><span class="src-what">Cognigy 新版本加入逐步追踪与十版本模拟；智能体 16 小时自主、成功率 50%</span><span class="src-kind">媒体报道</span></li>
+        <li class="src-li"><span class="src-out">Forethought / Gary Marcus 转述</span><span class="src-what">太空数据中心 2030 年前影响有限，发射成本需降约 15 倍；礼来 CEO 谈临床试验周期</span><span class="src-kind">媒体报道</span></li>
+        <li class="src-li"><span class="src-out">OpenAI / Databricks</span><span class="src-what">企业可在受治理数据上调用 ChatGPT、Codex 与 GPT 模型</span><span class="src-kind">官方发布</span></li>
+        <li class="src-li"><span class="src-out">公众号 · 模达科技</span><span class="src-what">11 月 15 日行业汇总：Businesses in ChatGPT、Gemini 接入 CarPlay、元宝搜索网页版</span><span class="src-kind">媒体报道</span></li>
+        <li class="src-li"><span class="src-out">GhTrends / GitHub Trending</span><span class="src-what">11 月 14 日前后 star 增速榜：chrome-devtools-mcp、agweb、deepseek-ultrafast、open-code-review</span><span class="src-kind">公开榜单</span></li>
+        <li class="src-li"><span class="src-out">微软 / 21 世纪经济报道</span><span class="src-what">微软就全球服务中断道歉，称非网络攻击所致；美联航与 Anthropic 的准入动作</span><span class="src-kind">媒体报道</span></li>
+      </ul>
+      <p class="sources-note">以上名称与商标归各权利人；本报只引用事实，不使用其原文表述，也不代表其立场。</p>
+    </div>
+<p><b>编辑说明：</b>本期为 11 月 14 日晨报，内容截至 11 月 14 日，于 11 月 15 日补齐（补刊）；主线是「开源了，门槛还在」——同日三个 Apache 2.0 开放的是文件，运行条件、硬件门槛与付费依赖没有一起开放。所有参数、价格、涨幅与调查比例均为厂商或媒体口径，正文已逐处标注；<b>Praxis-1 的 46.2%、Memorilla 的 84.33%、欧洲价格表各项读数、EPYC 9996 的 1,024 线程与 27% 等数字，本报均未独立复现</b>。第 06 版的三问清单、第 14 版的三把筛子与第 16 版的四条提案为本报自设方法，非第三方评级；本期没有本报自行折算的系数。</p>
+<p class="errata"><b>补刊说明：</b>11 月 14 日未出刊，本期于 11 月 15 日补齐，日期仍按 11 月 14 日记，内容只收 11 月 14 日及此前已公开的材料，不倒填 11 月 15 日的消息；11 月 15 日的正刊另出。第 16 版提案编号为 P011-1…4；P008-1…4 已挂满三期，本期按「沉默即否决」结算。本期的「来源 · X」版级标、事实卡与信源归属表沿用前几期口径，改一处要三处同改。</p>
+    <div class="src-legend">
+      <b>论据标记</b>
+      <i>正文里的小标说明这个数字是谁说的、本报核过没有：</i>
+      <span class="src-item"><span class="src-tag">厂商口径</span>厂商或发布材料自述</span>
+      <span class="src-item"><span class="src-tag low">本报未复现</span>本报没有独立重跑</span>
+      <span class="src-item"><span class="src-tag">预印本</span>未经同行评审</span>
+      <span class="src-item"><span class="src-tag">公开报道</span>媒体报道，未核一手文件</span>
+      <span class="src-item"><span class="src-tag">本报实测</span>本报自己跑出来的</span>
+      <span class="src-item"><span class="src-tag low">本报自设</span>本报的评分或推算</span>
+    </div>
+    <div class="src-legend">
+      <b>板块来源</b>
+      <i>每版版头的标说明这一版的信息主要来自哪里——不是谁执笔（全部版面都由 AI 执笔）：</i>
+      <span class="src-item"><span class="src-org src-org-official">来源 · 官方</span>发布方原文、公告、文档</span>
+      <span class="src-item"><span class="src-org src-org-thirdparty">来源 · 第三方信息网</span>媒体、榜单、预印本</span>
+      <span class="src-item"><span class="src-org src-org-measured">来源 · 本报实测</span>本报自己跑出来的</span>
+      <span class="src-item"><span class="src-org src-org-ai">来源 · AI 生成</span>无外部信源的观点与提案</span>
+      <span class="src-item">本期 AI 生成 3 版，上限 4 版</span>
+    </div>
+    <p><b>往期：</b>第 001 期（2026-11-04）　第 002 期（2026-11-05）　第 003 期与特刊（2026-11-06）　第 004 期（2026-11-07）　第 005 期（2026-11-08）　第 006 期（2026-11-09）　第 007 期（2026-11-11）　第 008 期（2026-11-12）　第 009 期（2026-11-13）　本报每日 08:00 出刊，节假日不休。</p>
+    <p class="disclaimer">本报内容由 AI 自动生成，用于产品演示，不构成事实报道。</p>
+  </footer>
+
+<nav class="rail" aria-label="版面快捷目录">
+  <div class="rail-head">目录</div>
+  <ol class="rail-list">
+    <li><a href="#p01"><i>01</i><span>头条</span></a></li>
+    <li><a href="#p02"><i>02</i><span>社论</span></a></li>
+    <li><a href="#p03"><i>03</i><span>模型</span></a></li>
+    <li><a href="#p04"><i>04</i><span>产品</span></a></li>
+    <li><a href="#p05"><i>05</i><span>显卡</span></a></li>
+    <li><a href="#p06"><i>06</i><span>选购</span></a></li>
+    <li><a href="#p07"><i>07</i><span>开源</span></a></li>
+    <li><a href="#p08"><i>08</i><span>安全</span></a></li>
+    <li><a href="#p09"><i>09</i><span>学术</span></a></li>
+    <li><a href="#p10"><i>10</i><span>资本</span></a></li>
+    <li><a href="#p11"><i>11</i><span>算力</span></a></li>
+    <li><a href="#p12"><i>12</i><span>工具链</span></a></li>
+    <li><a href="#p13"><i>13</i><span>落地</span></a></li>
+    <li><a href="#p14"><i>14</i><span>星探</span></a></li>
+    <li><a href="#p15"><i>15</i><span>快讯</span></a></li>
+    <li><a href="#p16"><i>16</i><span>提案</span></a></li>
+  </ol>
+  <a class="rail-top" href="#top" title="回到顶部">↑ 顶</a>
+</nav>
+
+<button class="mob-btn" id="mobBtn" type="button" aria-label="版面目录" aria-controls="mobPanel" aria-expanded="false"><i>☰</i>目录</button>
+<div class="mob-panel" id="mobPanel" role="dialog" aria-label="版面目录">
+  <h6>版面目录 · 共 16 版 · 点一下跳过去</h6>
+  <div class="mob-grid">
+    <a href="#p01"><i>01</i>头条</a>
+    <a href="#p02"><i>02</i>社论</a>
+    <a href="#p03"><i>03</i>能力底座</a>
+    <a href="#p04"><i>04</i>产品生态</a>
+    <a href="#p05"><i>05</i>显卡</a>
+    <a href="#p06"><i>06</i>选购</a>
+    <a href="#p07"><i>07</i>开源清单</a>
+    <a href="#p08"><i>08</i>安全治理</a>
+    <a href="#p09"><i>09</i>学术前沿</a>
+    <a href="#p10"><i>10</i>商业资本</a>
+    <a href="#p11"><i>11</i>算力本地</a>
+    <a href="#p12"><i>12</i>工具链</a>
+    <a href="#p13"><i>13</i>落地案例</a>
+    <a href="#p14"><i>14</i>星探</a>
+    <a href="#p15"><i>15</i>快讯</a>
+    <a href="#p16"><i>16</i>提案</a>
+  </div>
+  <p class="mob-tip">宽屏时目录固定在右侧；窄屏（平板、手机）右侧放不下，改用这个面板。点任意一项会自动收起。</p>
+  <a class="mob-top" href="#top">↑ 回到顶部</a>
+</div>
+
+<script>
+(function(){
+  var links = Array.prototype.slice.call(document.querySelectorAll('.rail-list a'));
+  var secs = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  var ticking = false;
+  function update(){
+    var mark = window.pageYOffset + window.innerHeight * 0.35;
+    var idx = 0;
+    for (var i = 0; i < secs.length; i++){
+      if (secs[i] && secs[i].offsetTop <= mark) idx = i;
+    }
+    links.forEach(function(a, i){ a.classList.toggle('active', i === idx); });
+    ticking = false;
+  }
+  function onScroll(){ if(!ticking){ ticking = true; window.requestAnimationFrame(update); } }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  update();
+
+  // 窄屏目录面板
+  var mb = document.getElementById('mobBtn');
+  var mp = document.getElementById('mobPanel');
+  if (mb && mp){
+    // 阅读时让开正文：向下滚收起，向上滚或回到顶部再出来。
+    // 按钮是 fixed 的，不收起就一定会在某个滚动位置压住某行字。
+    var lastY = window.pageYOffset, tucked = false, queued = false;
+    function tuckOnScroll(){
+      var y = window.pageYOffset, d = y - lastY;
+      lastY = y; queued = false;
+      if (document.body.classList.contains('mob-open')) return;
+      if (tucked && (d < -8 || y < 80)){
+        tucked = false; document.body.classList.remove('mob-btn-tuck');
+      } else if (!tucked && d > 8 && y > 200){
+        tucked = true; document.body.classList.add('mob-btn-tuck');
+      }
+    }
+    window.addEventListener('scroll', function(){
+      if (!queued){ queued = true; window.requestAnimationFrame(tuckOnScroll); }
+    }, { passive: true });
+
+    function setOpen(open){
+      document.body.classList.toggle('mob-open', open);
+      mb.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (open){
+        tucked = false; document.body.classList.remove('mob-btn-tuck');
+      }
+    }
+    mb.addEventListener('click', function(){
+      setOpen(!document.body.classList.contains('mob-open'));
+    });
+    mp.addEventListener('click', function(e){
+      var t = e.target;
+      while (t && t !== mp){
+        if (t.tagName === 'A'){ setOpen(false); break; }
+        t = t.parentNode;
+      }
+    });
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape') setOpen(false);
+    });
+  }
+
+  // 术语注解（P004-2）：桌面悬停、键盘聚焦、触摸点击都能展开；再点一次或点别处收起。
+  // 气泡会按视口右边界往回缩，避免在窄屏上撑出横向滚动。
+  var terms = Array.prototype.slice.call(document.querySelectorAll('.term'));
+  function place(el){
+    var tip = el.querySelector('.tip');
+    if (!tip) return;
+    var r = el.getBoundingClientRect();
+    var w = tip.offsetWidth || 0, h = tip.offsetHeight || 0;
+    var left = Math.max(10, Math.min(r.left, window.innerWidth - w - 10));
+    var top = r.top - h - 9;
+    if (top < 6) top = r.bottom + 9;
+    tip.style.left = left + 'px';
+    tip.style.top = top + 'px';
+  }
+  terms.forEach(function(el){
+    el.setAttribute('tabindex', '0');
+    el.setAttribute('role', 'button');
+    el.addEventListener('mouseenter', function(){ place(el); });
+    el.addEventListener('focus', function(){ place(el); });
+    el.addEventListener('click', function(e){
+      e.preventDefault();
+      var on = el.classList.contains('on');
+      terms.forEach(function(o){ o.classList.remove('on'); });
+      if (!on){ el.classList.add('on'); place(el); }
+    });
+  });
+  window.addEventListener('resize', function(){
+    terms.forEach(function(o){ if (o.classList.contains('on')) place(o); });
+  });
+  document.addEventListener('click', function(e){
+    if (!e.target.closest || !e.target.closest('.term')){
+      terms.forEach(function(o){ o.classList.remove('on'); });
+    }
+  });
+})();
+</script>
+<script type="application/json" id="ai-daily-facts">{"asOf":"2026-11-14","facts":[{"asOf":"2026-11-14","claim":"Kitesurf 的开源许可","id":"F01","page":"p01","reproduced":false,"source":"Cloudflare 开源公告与媒体汇总","strength":"vendor","value":"Apache 2.0"},{"asOf":"2026-11-14","claim":"RTX 5090 相对首发价的报道涨幅","id":"F02","page":"p01","reproduced":false,"source":"快科技 / 网易报道","strength":"media","value":"370%"},{"asOf":"2026-11-14","claim":"Kitesurf 自部署所需的计划","id":"F03","page":"p03","reproduced":false,"source":"Cloudflare 开源说明","strength":"vendor","value":"Workers Paid"},{"asOf":"2026-11-14","claim":"agweb 五个空闲页面的内存占用","id":"F04","page":"p03","reproduced":false,"source":"项目 README 与当日汇总","strength":"media","value":"590 MB"},{"asOf":"2026-11-14","claim":"Praxis-1 在 RoboLab-120 的厂商自述得分","id":"F05","page":"p04","reproduced":false,"source":"Runway 发布材料","strength":"vendor","value":"46.2%"},{"asOf":"2026-11-14","claim":"Memorilla 把文档集压成的记忆 token 数","id":"F06","page":"p04","reproduced":false,"source":"斯坦福团队研究论文","strength":"preprint","value":"16 个"},{"asOf":"2026-11-14","claim":"Memorilla 在 FactKG 上的报告得分","id":"F07","page":"p04","reproduced":false,"source":"斯坦福团队研究论文","strength":"preprint","value":"84.33%"},{"asOf":"2026-11-14","claim":"欧洲 11 月 14 日 RTX 5090 报价","id":"F08","page":"p05","reproduced":false,"source":"欧洲 GPU 周度价格表","strength":"media","value":"5,609.90 欧元"},{"asOf":"2026-11-14","claim":"欧洲 11 月 14 日 RTX 5080 报价（欧元）","id":"F09","page":"p05","reproduced":false,"source":"欧洲 GPU 周度价格表","strength":"media","value":"1,899.90"},{"asOf":"2026-11-14","claim":"RTX 5060 Ti 16GB 一周涨幅","id":"F10","page":"p05","reproduced":false,"source":"欧洲 GPU 周度价格表","strength":"media","value":"14.3%"},{"asOf":"2026-11-14","claim":"RX 9060 XT 16GB 一周涨幅","id":"F11","page":"p05","reproduced":false,"source":"欧洲 GPU 周度价格表","strength":"media","value":"13.0%"},{"asOf":"2026-11-14","claim":"11 月 14 日美国电商最便宜的 PNY RTX 5090 挂牌价","id":"F12","page":"p05","reproduced":false,"source":"电商比价汇总","strength":"media","value":"6,495 美元"},{"asOf":"2026-11-14","claim":"Decider v1.3 的开源许可","id":"F13","page":"p07","reproduced":false,"source":"Perplexity 发布材料","strength":"vendor","value":"Apache 协议"},{"asOf":"2026-11-14","claim":"DeepSeek Ultrafast 在四张 GB300 上的厂商自测吞吐","id":"F14","page":"p07","reproduced":false,"source":"Baseten 项目说明","strength":"vendor","value":"1,740 token/s"},{"asOf":"2026-11-14","claim":"智能体互联系列国标覆盖的领域数","id":"F15","page":"p08","reproduced":false,"source":"行业日报汇总","strength":"media","value":"19 个领域"},{"asOf":"2026-11-14","claim":"客服行业图表给出的智能体连续工作时长","id":"F16","page":"p09","reproduced":false,"source":"NiCE Cognigy 图表转述","strength":"media","value":"16 小时"},{"asOf":"2026-11-14","claim":"同一图表给出的任务成功率","id":"F17","page":"p09","reproduced":false,"source":"NiCE Cognigy 图表转述","strength":"media","value":"50%"},{"asOf":"2026-11-14","claim":"太空数据中心研究认为发射成本需下降的倍数","id":"F18","page":"p09","reproduced":false,"source":"Forethought 研究转述","strength":"media","value":"15 倍"},{"asOf":"2026-11-14","claim":"LangChain C 轮融资额","id":"F19","page":"p10","reproduced":false,"source":"财经媒体报道","strength":"media","value":"3 亿美元"},{"asOf":"2026-11-14","claim":"Mercor 本轮估值","id":"F20","page":"p10","reproduced":false,"source":"财经媒体报道","strength":"media","value":"200 亿美元"},{"asOf":"2026-11-14","claim":"CrowdStrike 收购两家智能体安全初创的金额","id":"F21","page":"p10","reproduced":false,"source":"财经媒体报道","strength":"media","value":"4.95 亿美元"},{"asOf":"2026-11-14","claim":"EPYC 9996 双路配置的线程数","id":"F22","page":"p11","reproduced":false,"source":"AMD 产品说明与独立实测","strength":"vendor","value":"1,024"},{"asOf":"2026-11-14","claim":"Zen 6 相对 Zen 5 的平均 IPC 提升","id":"F23","page":"p11","reproduced":false,"source":"AMD 架构说明","strength":"vendor","value":"27%"},{"asOf":"2026-11-14","claim":"AWS 指南拆出的每任务隐藏成本驱动数","id":"F24","page":"p12","reproduced":false,"source":"AWS 成本指南","strength":"vendor","value":"4 个"},{"asOf":"2026-11-14","claim":"报道给出的 ChatGPT 周活跃用户量级","id":"F25","page":"p13","reproduced":false,"source":"公众号行业汇总","strength":"media","value":"12 亿"},{"asOf":"2026-11-14","claim":"趋势榜前五名里服务编码智能体的项目数","id":"F26","page":"p14","reproduced":false,"source":"当日趋势榜汇总","strength":"media","value":"3 个"},{"asOf":"2026-11-14","claim":"TorchTitan 训练 1T 参数 MoE 所用加速卡数","id":"F27","page":"p15","reproduced":false,"source":"行业日报汇总","strength":"media","value":"384 块"}]}</script></div>
+</body>
+</html>

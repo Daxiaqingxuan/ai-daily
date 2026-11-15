@@ -1,0 +1,18 @@
+<section class="section" id="p11">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">算力本地 · 服务器那一头先换了代</span>
+      <span class="sec-page">第 11 版 / 共 16 版</span>
+    </div>
+    <p class="sec-lede">显卡行情之外，本周更硬的读数来自服务器 CPU：<b>AMD Zen 6 的首份独立实测</b>，以及它给本地推理带来的另一条约束。</p>
+    <p><b>先把数字摆齐。</b>EPYC「Venice」旗舰 9996 在双路配置下给出 <b>1,024</b> 线程，Tom’s Hardware 实测 SPEC CPU 2026 整数吞吐较上一代 768 线程产品高 93%；AMD 自述对第五代 Turin 为 2.0 倍 SPECint、2.4 倍 SPECfp、2.7 倍内存带宽，架构层平均 IPC 提升 <b>27%</b>，最大加速 5.3 GHz<span class="src-tag">厂商口径</span>。<b>厂商数字与第三方数字要分开看</b>，本报没有复跑。</p>
+    <p><b>同一份实测里的另一个对照更有意思：</b>96 核 EPYC 9686F 在同一篇评测中比英伟达自家的 Vera CPU 整数快 17%、浮点快 40%<span class="src-tag">公开报道</span>。<b>这不是显卡对 CPU 的比较，而是「主机这一侧谁更强」的比较</b>——本地推理的瓶颈常常不在加速卡，而在喂数据的那头。</p>
+    <p><b>为什么放在「开源了，门槛还在」这一期。</b>今天放出的权重能下载，但能跑起来的机器规格正在往上走：四张 GB300 的推理引擎、上百 GiB 常驻显存的图像模型、384 块加速卡的训练作业<span class="src-tag">公开报道</span>。<b>硬件门槛不是背景，它是开放条件的一部分。</b></p>
+    <p>对普通读者更实际的一句是：服务器 Silicon 的换代通常先于桌面，Zen 6 的核心复合体改动与 3D V-Cache 变体被视作下一代桌面 X3D 的预览<span class="src-tag">公开报道</span>。<b>这条属于路线推断，不是发布承诺</b>，本报按推断标注，不与已实测数字混列。</p>
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版</span>
+      </div>
+      <p>权重人人可下载，机器不是人人都有。<b>把「开放」写成一句公告很容易，把「跑得动」写清楚要难得多。</b></p>
+    </aside>
+  </section>

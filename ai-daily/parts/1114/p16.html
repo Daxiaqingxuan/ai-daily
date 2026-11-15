@@ -1,0 +1,103 @@
+<section class="section" id="p16">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">本报提案 · 这一期想怎么改</span>
+      <span class="sec-page">第 16 版 / 共 16 版</span>
+    </div>
+
+    <p class="sec-lede">本版每期由四个身份各提一条改动建议，编号 <b>P011-1…4</b>：<b>读者</b>说哪里读着费劲，<b>编辑</b>说哪里做起来费劲，<b>创刊人</b>说哪里该往前一步，<b>AI</b> 说哪里可以自动化。<b>默认不执行</b>——创刊人点名「采纳 P011-2」才进施工；没人提，挂满三期自动记「否决（沉默）」。</p>
+
+    <div class="props">
+      <article class="prop">
+        <div class="prop-h"><span class="prop-role">读者</span><span class="prop-id">P011-1</span></div>
+        <h4>每个「开源」后面补一行「跑起来还缺什么」</h4>
+        <p>本期第 03、04、07 版都写了开放，但运行条件散在正文各处。<b>建议每个开源条目固定跟一行小字</b>：许可、硬件或付费依赖、能否商用；三项缺一项就写「未注明」。读者不必翻到部署文档才能判断自己用不用得上。</p>
+        <dl class="prop-meta">
+          <dt>为什么</dt><dd>本期主线就是「文件开放、条件没开放」，报纸自己却把条件写散了</dd>
+          <dt>成本</dt><dd>小 · 两小时 · 加一个可复用的信息条 + 写作规范</dd>
+        </dl>
+        <div class="prop-st">待定 · <b>沉默即否决</b></div>
+      </article>
+
+      <article class="prop">
+        <div class="prop-h"><span class="prop-role">编辑</span><span class="prop-id">P011-2</span></div>
+        <h4>行情版加一行「与上期同口径差多少」</h4>
+        <p>第 05 版第一次用欧洲周度表，与上期的华强北走访价不能直接比。<b>建议每期价表下方固定留一行同口径环比</b>：口径没换就写涨跌，口径换了就写「不可比」并说明换了哪一项。没有这一行，连续出版反而会制造假趋势。</p>
+        <dl class="prop-meta">
+          <dt>为什么</dt><dd>本期旗舰 -33.6% 与主流 +14.3% 同时出现，容易被读成「整体降价」</dd>
+          <dt>成本</dt><dd>小 · 一小时 · 版面固定一行 + 事实卡加同口径标记</dd>
+        </dl>
+        <div class="prop-st">待定 · <b>沉默即否决</b></div>
+      </article>
+
+      <article class="prop">
+        <div class="prop-h"><span class="prop-role">创刊人</span><span class="prop-id">P011-3</span></div>
+        <h4>补刊要写清「补的是哪一天、内容截到哪一天」</h4>
+        <p>本期是 11 月 15 日补齐的 11 月 14 日刊。<b>建议补刊固定两处声明</b>：报头标注「补刊」，报尾写清内容截止时点与补刊日期，并且不把补刊日之后才出现的消息倒填进去。否则「每日」两个字会慢慢失去意义。</p>
+        <dl class="prop-meta">
+          <dt>为什么</dt><dd>漏刊后补齐是常态需求，但读者有权知道这一期不是当天编的</dd>
+          <dt>成本</dt><dd>中 · 半天 · 拼版参数加一个补刊标记 + 报尾模板分支</dd>
+        </dl>
+        <div class="prop-st">待定 · <b>沉默即否决</b></div>
+      </article>
+
+      <article class="prop">
+        <div class="prop-h"><span class="prop-role">AI</span><span class="prop-id">P011-4</span></div>
+        <h4>自动扫出「宣布了但没给条件」的条目</h4>
+        <p>本期三问清单靠人填。建议拼版前扫一遍信源表，把带「开源 / 免费 / 上线」却没有对应条件字段的条目列成一页待补清单，交给编辑逐条确认。<b>它只做发现，不自动补内容</b>，避免猜出根本没有的条件。</p>
+        <dl class="prop-meta">
+          <dt>为什么</dt><dd>本期至少四处出现「免费」而硬件或付费依赖写在别的段落</dd>
+          <dt>成本</dt><dd>中 · 一天 · 关键字扫描 + 待补清单 + 自检加一条覆盖率对账</dd>
+        </dl>
+        <div class="prop-st">待定 · <b>沉默即否决</b></div>
+      </article>
+    </div>
+
+    <p class="prop-rule"><b>怎么算采纳：</b>创刊人在当期明确说「采纳 P011-2」才算；说「先放着」算待定，最多挂三期；<b>没说就是否决，不再追问</b>。已采纳的写进 <code>提案台账.md</code>，在下一期的台账里标「已落地」。</p>
+
+    <div class="table-wrap">
+      <table class="prop-ledger">
+        <caption>提案台账 · 全量明细见 <code>提案台账.md</code>，本表只放最近 8 条</caption>
+        <thead>
+          <tr><th>编号</th><th>视角</th><th>一句话</th><th>状态</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="id">P009-1</td><td>读者</td><td>版本号后面跟一句是哪条路径</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P009-4</td><td>AI</td><td>自动生成一页版本矩阵</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P010-1</td><td>读者</td><td>显卡价的每个数都带日期与渠道</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P010-3</td><td>创刊人</td><td>显卡版每周固定口径复查</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P011-1</td><td>读者</td><td>开源条目补一行运行条件</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P011-2</td><td>编辑</td><td>行情版写同口径环比</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P011-3</td><td>创刊人</td><td>补刊标注日期与内容截止</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P011-4</td><td>AI</td><td>自动扫「没给条件」的条目</td><td class="st-wait">待定</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版四条提案</span>
+      </div>
+      <p>四条里有三条在说同一件事：<b>把省略掉的条件写回纸面</b>。这活儿不聪明，但比再写一版观点有用。</p>
+    </aside>
+  </section>
+
+  <div class="gloss" id="gloss">
+    <h5>名词速查 · 本期出现的 14 个词<span>正文里带虚线的词点一下就地解释；这张表留作索引</span></h5>
+    <div class="gloss-grid">
+      <dl><dt>无状态</dt><dd>不保存会话状态，每次请求都能从零开始。便于并发，代价是记忆要另外存。</dd></dl>
+      <dl><dt>CDP（调试协议）</dt><dd>Chrome DevTools Protocol，浏览器对外暴露的调试与控制协议，自动化工具靠它驱动浏览器。</dd></dl>
+      <dl><dt>Workers Paid</dt><dd>Cloudflare 的付费版无服务器运行计划。代码免费，跑在官方网络上要按调用计费。</dd></dl>
+      <dl><dt>Apache 2.0</dt><dd>一种宽松开源许可，允许商用与修改，要求保留版权与许可声明；它不等于「托管免费」。</dd></dl>
+      <dl><dt>开放权重</dt><dd>参数文件可以下载到本地跑。能否商用、能否转售，要看随附的许可原文。</dd></dl>
+      <dl><dt>许可条款</dt><dd>规定能做什么、不能做什么的那份法律文本，是「可下载」与「可使用」之间的分界。</dd></dl>
+      <dl><dt>蒸馏</dt><dd>用大模型的输出训练小模型，让它在特定任务上学到接近的判断力，能力范围随之收窄。</dd></dl>
+      <dl><dt>世界模型</dt><dd>预测环境下一状态并给出动作的模型，常用于机器人控制，评测要依赖具体硬件。</dd></dl>
+      <dl><dt>上下文压缩</dt><dd>把长文档压成更短的表示再交给模型，用更少的 token 保留任务所需信息。</dd></dl>
+      <dl><dt>推理引擎</dt><dd>负责把模型跑起来、批请求、管显存的软件层，速度往往与特定加速卡绑定。</dd></dl>
+      <dl><dt>显存</dt><dd>显卡上存模型权重与中间结果的内存。容量决定能否装下，带宽决定跑得多快。</dd></dl>
+      <dl><dt>建议零售价（MSRP）</dt><dd>厂商公布的官方指导价，不是成交价。所有「溢价几倍」都以它为分母。</dd></dl>
+      <dl><dt>溢价</dt><dd>成交价高出指导价的部分，通常来自缺货、渠道囤货与套利，不来自产品升级。</dd></dl>
+      <dl><dt>预印本</dt><dd>尚未经过同行评审的研究论文，数字可以引用，但不能当成已确立的结论。</dd></dl>
+    </div>
+  </div>

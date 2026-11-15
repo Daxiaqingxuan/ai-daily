@@ -1,0 +1,18 @@
+<section class="section" id="p03">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">给机器造的浏览器 · Kitesurf 与它的邻居</span>
+      <span class="sec-page">第 03 版 / 共 16 版</span>
+    </div>
+    <p class="sec-lede">Cloudflare 把 Workers 上的浏览器引擎 Kitesurf 以 Apache 2.0 开源：读页面、跑脚本、截图都在无服务器环境里完成，因为说 Chrome 的 <span class="term" tabindex="0">CDP<i class="tip">Chrome DevTools Protocol，浏览器对外暴露的调试与控制协议。Puppeteer、Playwright 这类工具都靠它驱动浏览器。</i></span>，Puppeteer 等现成工具可以直接接<span class="src-tag">厂商口径</span>。</p>
+    <div class="table-wrap"><table><caption>同一天出现的三种「给智能体的浏览器」</caption><thead><tr><th>项目</th><th>形态</th><th>关键限制</th></tr></thead><tbody><tr class="hi"><td>Kitesurf（Cloudflare）</td><td>服务端无状态引擎，Rust 组件 + Firefox 样式引擎</td><td>自部署需要 <b>Workers Paid</b> 计划<span class="src-tag">厂商口径</span></td></tr><tr><td>agweb（Mac）</td><td>给编码智能体用的独立浏览器，不抢键盘、密码由密码管理器直填</td><td>只用 Safari 引擎，Chrome 专属工具接不上</td></tr><tr><td>chrome-devtools-mcp</td><td>Chrome 团队的项目，让智能体检查与控制 Chrome</td><td>要装完整浏览器，内存开销大</td></tr></tbody></table></div>
+    <p><b>三条路线争的不是渲染速度，是「谁拥有这个窗口」。</b>服务端方案把浏览器拆成一次请求，好处是能并发开很多个、互不污染；代价是登录态、Cookie 与会话记忆都得另找地方存。桌面方案反过来：agweb 让智能体在后台开标签页，人不被打断，README 给的对比是五个空闲页面约 <b>590 MB</b>，而 Playwright 驱动的 Chrome 约 1.6 GB<span class="src-tag">公开报道</span>。<b>这份数字来自项目自述，本报未复现</b><span class="src-tag">本报未复现</span>。</p>
+    <p><b>「不抢焦点」听着像体验细节，其实是准入设计。</b>智能体要替人操作浏览器，最麻烦的从来不是点按钮，而是登录：密码、二次验证、企业单点登录，任何一步把人踢开，自动化就断在那里。agweb 的做法是把凭据留在密码管理器里、由人填给窗口，智能体只看它该看的部分<span class="src-tag">公开报道</span>。<b>换句话说，门不是拆掉，是加了一道只让特定东西通过的缝。</b></p>
+    <p><b>把第 01 版那句话落到这一版：</b>Kitesurf 的代码可以下载，但它最顺的运行环境仍是一家公司的付费网络；MCP 工具完全免费，却要你自己养一个完整的 Chrome 进程。<b>开源的边界，在这里被画成了「计算谁出」。</b>第 12 版接着看工具链怎么把这笔成本摊开。</p>
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版</span>
+      </div>
+      <p>智能体终于有了自己的浏览器，第一件事却是被提醒：登录态属于人，算力属于账单。<b>这两样都没有被开源。</b></p>
+    </aside>
+  </section>

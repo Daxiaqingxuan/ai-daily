@@ -1,0 +1,18 @@
+<section class="section" id="p04">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">世界模型与记忆 · 免费权重、昂贵条件</span>
+      <span class="sec-page">第 04 版 / 共 16 版</span>
+    </div>
+    <p class="sec-lede">Runway 把 Praxis-1 按 Apache 2.0 放出，称可免费商用；斯坦福团队的 Memorilla 把一整份文档集压成极短的记忆表示。两件事都在降低「让模型动手」的成本，但降低的是不同那一半。</p>
+    <p><b>先看能拿到的部分。</b>Praxis-1 同时预测机器人下一帧会看到什么、下一步该做什么，在 Nvidia 的 RoboLab-120 世界动作模型测试上厂商自述 <b>46.2%</b>，高于它自己列出的对比模型<span class="src-tag">厂商口径</span>。更值得注意的是训练数据：报道称普通网络视频与专门的机器人采集视频效果相当，这把数据采集这一项从成本表里划掉了一大块<span class="src-tag">公开报道</span>。<b>但它还不能自己规划复杂动作序列</b>，官方也没把这一点藏起来。</p>
+    <p><b>再看被压掉的部分。</b>Memorilla 把文档集合压进 <b>16 个</b>记忆 token，喂给冻结的 Qwen3-8B，在 FactKG 上报告 <b>84.33%</b>，所用文档 token 比全上下文提示少 108 倍<span class="src-tag">预印本</span>。这是研究论文口径，未经同行评审，本报未复现<span class="src-tag">本报未复现</span>。<b>它的意义不在分数，而在把「记忆」明码标价</b>：上下文不再是越长越好，而是可以压缩、可以计量的一种资源。</p>
+    <p><b>两个项目放在一起，才能看清门槛搬去了哪里。</b>Praxis-1 免了数据费，却把评测环境留在机器人硬件上；Memorilla 省了上下文，却要求你先有一套能生成与校验记忆的训练流程。<b>权重免费，验证成本没有免费。</b>这正是第 06 版三问清单里第二问要处理的东西。</p>
+    <p>Vercel Labs 同日放出的 UI SDK 是第三个例子：Apache-2.0 测试版，50 多种 UI 行为，覆盖 React、Vue、Svelte、Solid 与 Web Components，让编码智能体把界面拼成可访问组件<span class="src-tag">厂商口径</span>。<b>它开放的是「零件」，不开放的是「审美与取舍」</b>——拼出来的页面合不合用，仍然要人判断。</p>
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版</span>
+      </div>
+      <p>免费的是权重，收费的是复现。<b>一个项目若只公布分数、不公布跑出这个分数要什么，那分数就只是广告词。</b></p>
+    </aside>
+  </section>

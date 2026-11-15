@@ -1,0 +1,172 @@
+/* ---------- 特刊追加样式：第 16 版决议 + 头版三行摘要 + 术语注解 ---------- */
+
+/* 第 16 版：提案 / 决议卡 */
+.props{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:2px 0 16px;}
+.prop{border:1px solid var(--rule-soft);background:#f8f4e9;padding:12px 14px 9px;break-inside:avoid;
+      display:flex;flex-direction:column;}
+.prop-h{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--sans);font-size:10px;letter-spacing:.16em;color:var(--muted);}
+.prop-role{color:var(--accent);font-weight:700;letter-spacing:.18em;}
+.prop-role::before{content:"";display:inline-block;width:7px;height:7px;background:var(--accent);margin-right:7px;vertical-align:1px;}
+.prop-id{font-family:ui-monospace,Consolas,"Courier New",monospace;letter-spacing:.06em;}
+.prop h4{margin:6px 0 5px;font-size:15.5px;line-height:1.45;font-weight:700;}
+.prop p{margin:0 0 8px;font-size:12.4px;line-height:1.8;text-align:justify;color:var(--ink-soft);}
+.prop p b{color:var(--ink);}
+.prop code{font-family:ui-monospace,Consolas,"Courier New",monospace;font-size:11.2px;background:#efe9da;padding:0 3px;}
+.prop-meta{display:grid;grid-template-columns:auto 1fr;gap:2px 9px;margin:0 0 8px;font-size:11px;line-height:1.7;}
+.prop-meta dt{font-family:var(--sans);color:var(--muted);letter-spacing:.1em;white-space:nowrap;}
+.prop-meta dd{margin:0;color:var(--ink-soft);}
+.prop-st{font-family:var(--sans);font-size:10px;letter-spacing:.12em;color:var(--muted);border-top:1px dotted var(--rule-soft);padding-top:6px;margin-top:auto;}
+.prop-st b{letter-spacing:.06em;}
+.prop-st.ok b{color:#1f6b3a;}
+.prop-st.no b{color:var(--accent);}
+
+/* 第 16 版：决议表 */
+.prop-ledger{width:100%;border-collapse:collapse;font-size:11.5px;min-width:520px;}
+.prop-ledger caption{caption-side:top;text-align:left;font-family:var(--sans);font-size:10.5px;letter-spacing:.1em;color:var(--muted);padding-bottom:6px;}
+.prop-ledger th,.prop-ledger td{border-bottom:1px solid var(--rule-soft);padding:5px 10px 5px 0;text-align:left;vertical-align:top;}
+.prop-ledger th{font-family:var(--sans);font-size:10px;letter-spacing:.14em;color:var(--muted);font-weight:400;border-bottom:1px solid var(--rule);}
+.prop-ledger td.id{font-family:ui-monospace,Consolas,"Courier New",monospace;white-space:nowrap;}
+.prop-ledger tr:last-child td{border-bottom:none;}
+.prop-ledger .st-ok{color:#1f6b3a;font-weight:700;}
+.prop-ledger .st-no{color:var(--accent);}
+.prop-rule{margin:0 0 12px;font-size:11.5px;line-height:1.8;color:var(--muted);border-left:3px solid var(--rule-soft);padding-left:11px;}
+.prop-rule b{color:var(--ink);}
+
+/* 头版三行摘要（P004-1） */
+.digest{border-top:2px solid var(--rule);border-bottom:1px solid var(--rule-soft);margin:11px 0 6px;padding:8px 0 9px;}
+.digest-h{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--sans);font-size:9.5px;letter-spacing:.22em;color:var(--muted);margin-bottom:7px;}
+.digest-h em{font-style:normal;letter-spacing:.06em;color:var(--accent);}
+.digest ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:0 18px;}
+.digest li{display:flex;gap:8px;font-size:12.2px;line-height:1.72;color:var(--ink-soft);}
+.digest li+li{border-left:1px solid var(--rule-soft);padding-left:18px;}
+.digest li i{font-style:normal;font-family:var(--sans);font-size:10px;letter-spacing:.1em;color:var(--accent);padding-top:3px;}
+.digest li b{color:var(--ink);}
+
+/* 术语注解（P004-2）：虚线词，悬停 / 聚焦 / 点一下展开 */
+.term{position:relative;border-bottom:1px dashed var(--accent);cursor:help;color:inherit;}
+.term .tip{
+  position:fixed;left:0;top:0;z-index:40;
+  width:max-content;max-width:min(268px,74vw);
+  background:#241f16;color:#f7f2e4;
+  font-family:var(--sans);font-size:11.5px;font-style:normal;letter-spacing:0;line-height:1.7;
+  text-align:left;padding:8px 10px;border-radius:2px;
+  box-shadow:0 4px 14px rgba(0,0,0,.22);
+  opacity:0;visibility:hidden;pointer-events:none;transition:opacity .12s ease;
+}
+.term .tip::after{
+  content:"";position:absolute;top:100%;left:14px;
+  border:5px solid transparent;border-top-color:#241f16;
+}
+.term:hover .tip,.term:focus .tip,.term.on .tip{opacity:1;visibility:visible;}
+.term:focus{outline:none;}
+.term:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+
+@media (max-width:900px){
+  .props{grid-template-columns:1fr;}
+}
+/* 论据标记（P005-2）：一句话说清这个数字是谁说的、本报核没核过。
+   六档词表固定在 assemble_issue.SRC_LABELS，页面里不许自造说法。 */
+.src-tag{display:inline-block;font-family:var(--sans);font-size:9.3px;line-height:1.55;
+         letter-spacing:.06em;color:var(--muted);background:#f1ece0;
+         border:1px solid var(--rule-soft);padding:0 4px;margin:0 2px;
+         vertical-align:1px;white-space:nowrap;}
+.src-tag.low{color:var(--accent);border-color:#d8bbae;background:#fbf1ea;}
+.src-legend{display:flex;flex-wrap:wrap;gap:3px 12px;align-items:baseline;
+            border-top:1px dotted var(--rule-soft);margin:0 0 9px;padding-top:7px;
+            font-size:10.4px;line-height:1.95;color:var(--muted);}
+.src-legend b{font-family:var(--sans);letter-spacing:.12em;color:var(--ink-soft);font-weight:400;}
+.src-legend i{font-style:normal;flex:1 1 260px;}
+
+@media (max-width:720px){
+  /* 16 项导航：5 列会剩 1 个孤儿，改 4 列正好 4×4 */
+  .mast-nav{grid-template-columns:repeat(4,1fr);}
+  .digest ol{grid-template-columns:1fr;gap:0;}
+  .digest li+li{border-left:none;padding-left:0;border-top:1px dotted var(--rule-soft);margin-top:6px;padding-top:6px;}
+  .digest li{font-size:12.6px;}
+  /* 速查在手机上被压成 88px 窄条：显式给满宽 + 单列 */
+  .gloss-grid{columns:1;width:100%;column-gap:0;}
+  .gloss h5 span{float:none;display:block;margin-top:3px;line-height:1.6;}
+  /* 手机放不下五列：藏掉「落在哪」，四列才读得清（位置在下面卡片里都写了） */
+  .prop-ledger{min-width:0;font-size:11px;}
+  .prop-ledger th:nth-child(5),.prop-ledger td:nth-child(5){display:none;}
+  .prop-ledger th,.prop-ledger td{padding-right:8px;}
+  .prop-ledger td.id{font-size:10.5px;}
+  /* 手机首屏必须露出三行摘要：报头压到 400px 以内，读报指南只留「只有 3 分钟」 */
+  .mast-top{justify-content:center;gap:1px 12px;font-size:10px;letter-spacing:.06em;}
+  .mast-top span:nth-child(2){display:none;}
+  .paper-name{font-size:34px;}
+  .paper-sub{font-size:9.5px;letter-spacing:.08em;}
+  .read-guide a:nth-of-type(n+2){display:none;}
+  .read-guide{padding:7px 0 8px;}
+  /* 论据标记在 390px 上别把行撑开 */
+  .src-tag{font-size:8.8px;letter-spacing:0;margin:0 1px;}
+  .src-legend{font-size:10px;gap:2px 8px;}
+}
+@media print{
+  .props{grid-template-columns:1fr 1fr;}
+  .term .tip{display:none;}
+}
+
+/* 标签与它的解释必须同进同退，不能在中间折行（390px 上会拆成两半） */
+.src-legend .src-item{display:inline-flex;align-items:baseline;gap:4px;white-space:nowrap;}
+
+/* 板块来源（P006）：每版版头一个小标，说明这一版的信息主要来自哪里。
+   四档词表固定在 assemble_issue.ORG_LABELS；标的是「信息来自哪」，不是「谁执笔」。 */
+.sec-right{display:inline-flex;align-items:center;gap:9px;}
+.src-org{display:inline-block;font-family:var(--sans);font-size:9.5px;line-height:1.7;
+         letter-spacing:.08em;padding:0 6px;border:1px solid var(--rule-soft);
+         background:#f1ece0;color:var(--ink-soft);white-space:nowrap;}
+.src-org-official{background:#eaf1f8;border-color:#c4d6e8;color:#22506f;}
+.src-org-thirdparty{background:#f1ece0;border-color:var(--rule-soft);color:var(--muted);}
+.src-org-measured{background:#eaf3e6;border-color:#c6dcc0;color:#2c5c2a;}
+/* AI 生成用醒目的暖底：读者一眼能数出这期有多少版没有外部信源 */
+.src-org-ai{background:#fbf0e4;border-color:#d9b58f;color:#8a4a1c;}
+
+/* 报尾信源表：一条一行，带归属方与被引内容 */
+.sources{border-top:1px dotted var(--rule-soft);margin:0 0 9px;padding-top:7px;}
+.sources-h{display:flex;flex-wrap:wrap;gap:2px 10px;align-items:baseline;margin-bottom:4px;}
+.sources-h b{font-family:var(--sans);font-size:10.4px;letter-spacing:.12em;
+             font-weight:400;color:var(--ink-soft);}
+.sources-h i{font-style:normal;flex:1 1 320px;font-size:10.4px;line-height:1.8;color:var(--muted);}
+.sources ul{list-style:none;margin:0;padding:0;
+            columns:2;column-gap:22px;font-size:10.4px;line-height:1.85;}
+/* 每条用普通行内排版，不用 flex：flex + margin-left:auto 会把类型标签推到列右边界，
+   长条目（The Register 那条）只剩 40px，标签被拆成「官方发 / 布」竖着排。 */
+.sources li{break-inside:avoid;color:var(--ink-soft);padding-left:0;}
+.sources .src-out{color:var(--ink);font-weight:700;white-space:nowrap;margin-right:5px;}
+.sources .src-what{color:var(--ink-soft);}
+.sources .src-kind{font-family:var(--sans);font-size:9px;letter-spacing:.06em;
+                   color:var(--muted);border:1px solid var(--rule-soft);
+                   padding:0 3px;white-space:nowrap;margin-left:5px;
+                   display:inline-block;vertical-align:1px;}
+.sources-note{margin:5px 0 0;font-size:10px;line-height:1.8;color:var(--muted);}
+
+@media (max-width:720px){
+  .sec-right{gap:6px;}
+  .src-org{font-size:8.6px;letter-spacing:0;padding:0 5px;}
+  .sources ul{columns:1;}
+}
+@media print{
+  .sources ul{columns:2;}
+}
+
+/* ---------- 窄屏目录按钮：别压住正文 ----------
+   原来是 78×36 的常驻药丸，固定在右下角，手机首屏正好盖住三行摘要的末行。
+   现在改成 42×42 圆点、静止时略透明；向下滚动时收起，向上滚或回到顶部再出来。
+   写在这里而不是 00-style.html：那份逐期复制、没有模板源，而本文件模板里也有一份。 */
+@media (max-width:1389px){
+  .mob-btn{
+    width:42px;height:42px;padding:0;gap:0;justify-content:center;
+    font-size:0;border-radius:50%;opacity:.72;
+    transition:opacity .18s ease,transform .22s ease,background-color .18s ease;
+  }
+  .mob-btn i{font-size:16px;line-height:1;}
+  .mob-btn:hover,.mob-btn:active{opacity:1;}
+  .mob-btn:focus-visible{opacity:1;outline:2px solid var(--accent);outline-offset:2px;}
+  /* 收起：让开正文。mob-open 的规则放在后面，打开面板时一定可见。 */
+  body.mob-btn-tuck .mob-btn{opacity:0;transform:translateY(150%);pointer-events:none;}
+  body.mob-open .mob-btn{opacity:1;transform:none;pointer-events:auto;}
+  @media (prefers-reduced-motion:reduce){
+    .mob-btn{transition:none;}
+  }
+}

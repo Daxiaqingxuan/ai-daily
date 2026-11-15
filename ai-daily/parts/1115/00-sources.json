@@ -1,0 +1,186 @@
+{
+  "asOf": "2026-11-15",
+  "policy": "逐条登记「谁给的、给了什么、哪一类、怎么用的」。url 只为能确认对应到这一条的单一页面填写；汇总栏目、频道首页、搜索页一律留空，不用猜出来的地址凑数。",
+  "sources": [
+    {
+      "id": "S01",
+      "outlet": "21 世纪经济报道 / 网易",
+      "item": "四组织起诉五家 AI 公司：诉求、法律依据、原告名单、诉状引用的高管表态",
+      "kind": "媒体报道",
+      "usage": "事实性引用，未转载全文",
+      "url": "https://www.163.com/dy/article/LBP8M6UF05199NPP.html"
+    },
+    {
+      "id": "S02",
+      "outlet": "TechFlow / Decrypt 转述",
+      "item": "英文口径：请求禁令禁止开发与部署强于 11 月 12 日水平的模型，被告尚未担责",
+      "kind": "媒体报道",
+      "usage": "事实性引用，未转载全文",
+      "url": "https://www.techflowpost.com/en-US/newsletter/144666"
+    },
+    {
+      "id": "S03",
+      "outlet": "读懂 AI 时代 · 当日汇总",
+      "item": "11 月 15 日：Anthropic 预计 11 月 19 日交易、MathArena 成本对照、亚洲各国回应",
+      "kind": "媒体报道",
+      "usage": "事实性引用，未转载全文",
+      "url": "https://www.readaitime.com/zh-hant/digests"
+    },
+    {
+      "id": "S04",
+      "outlet": "公众号 · 模达科技",
+      "item": "11 月 15 日行业汇总：Fable 5.2、Businesses in ChatGPT、Gemini CarPlay、智能眼镜、元宝搜索",
+      "kind": "媒体报道",
+      "usage": "事实性引用，未转载全文",
+      "url": "http://mp.weixin.qq.com/s?__biz=MzkwMjcyMzc5OA==&mid=2247490100&idx=1&sn=eb4a3e8547146ff176f0c1f534d6cac6"
+    },
+    {
+      "id": "S05",
+      "outlet": "AgentKernel · 综合榜",
+      "item": "11 月 15 日：Fable 5.2 64.6 分榜首、Carbon 60 分、Kimi K3.1 Pro 46.5 分为开放权重最佳",
+      "kind": "公开榜单",
+      "usage": "事实性引用，未转载全文",
+      "url": "https://www.agentkernel.si/best-ai/overall"
+    },
+    {
+      "id": "S06",
+      "outlet": "The Decoder / 当日汇总",
+      "item": "Gemini 4 Carbon 登顶 MathArena：85.4%、15.70 美元，超时为最常见失败模式",
+      "kind": "媒体报道",
+      "usage": "事实性引用，未转载全文"
+    },
+    {
+      "id": "S07",
+      "outlet": "Yahoo Finance / 财经媒体",
+      "item": "Anthropic 发行：高盛与摩根士丹利牵头、认购约 6 倍、定价 70 到 78 美元",
+      "kind": "媒体报道",
+      "usage": "事实性引用，未转载全文"
+    },
+    {
+      "id": "S08",
+      "outlet": "百度文心官方博客",
+      "item": "ERNIE 5.5 Flash Preview：280B / 14B 激活、1M 上下文、承诺 11 月 25 日前开源权重",
+      "kind": "官方发布",
+      "usage": "事实性引用，未转载全文"
+    },
+    {
+      "id": "S09",
+      "outlet": "TechCrunch / 当日汇总",
+      "item": "黄仁勋离任后亚洲各国回应：韩国 26 万颗 GPU、台北市海外总部、日本、中国外交部、新加坡",
+      "kind": "媒体报道",
+      "usage": "事实性引用，未转载全文"
+    },
+    {
+      "id": "S10",
+      "outlet": "pro-gamer.gg",
+      "item": "欧洲 GPU 周度价格表（11 月 14 日）：5090 5,609.90 欧元、16GB 卡齐涨",
+      "kind": "公开榜单",
+      "usage": "事实性引用，未转载全文",
+      "url": "https://pro-gamer.gg/graphics-card-prices-geforce-rtx-5090-drops-2840-euros-rtx-5080-rx-9060-xt-climb"
+    },
+    {
+      "id": "S11",
+      "outlet": "NXplace",
+      "item": "11 月 14 日硬件周报：美国电商挂牌价、ChannelGate 涨价、Zen 6 实测 93% 与 17%",
+      "kind": "媒体报道",
+      "usage": "事实性引用，未转载全文",
+      "url": "https://www.nxplace.com/post/pc-hardware-news-this-week-nov-14-2026-nvidia-ceo-resigns-rtx-5080-24gb-cancelled-zen-6-benchmarks-land-794668651156"
+    },
+    {
+      "id": "S12",
+      "outlet": "AI Agents Directory",
+      "item": "11 月 14 日：CrowdStrike 4.95 亿美元收购、IBM × Microsoft、LangChain 3 亿美元 C 轮、Mercor 7.5 亿美元",
+      "kind": "媒体报道",
+      "usage": "事实性引用，未转载全文",
+      "url": "https://aiagentsdirectory.com/news/ai-agents-news-brief-2026-11-14"
+    },
+    {
+      "id": "S13",
+      "outlet": "GenAI Secret Sauce",
+      "item": "11 月 14 日：Kitesurf、Praxis-1、DeepSeek Ultrafast、NiCE Cognigy 的 16 小时 / 50% 图表",
+      "kind": "媒体报道",
+      "usage": "事实性引用，未转载全文",
+      "url": "https://genaisecretsauce.com/genai-secret-sauce-daily-digest-2026-11-14"
+    },
+    {
+      "id": "S14",
+      "outlet": "稀土掘金 · 衍辉 AI 速递",
+      "item": "11 月 14 日：Decider v1.3、ChatGPT Wallet、Claude Meetings、词元所、384 块 GH200",
+      "kind": "媒体报道",
+      "usage": "事实性引用，未转载全文",
+      "url": "https://juejin.cn/post/7707550758484639780"
+    },
+    {
+      "id": "S15",
+      "outlet": "今日头条 · AI 行业日报",
+      "item": "11 月 14 日：智能体互联国标 19 领域、白宫工作组、Anthropic 认购与估值、萝卜快跑 28 城",
+      "kind": "媒体报道",
+      "usage": "事实性引用，未转载全文",
+      "url": "https://www.toutiao.com/a1881820337420300"
+    },
+    {
+      "id": "S16",
+      "outlet": "AWS",
+      "item": "Bedrock 每任务真实成本的四个隐藏驱动；Fargate + LiteLLM 自助网关与配额隔离",
+      "kind": "官方发布",
+      "usage": "事实性引用，未转载全文"
+    },
+    {
+      "id": "S17",
+      "outlet": "OpenAI",
+      "item": "Businesses in ChatGPT：Business Hub、Shopify Catalog 同步、Business Agents、认证标识",
+      "kind": "官方发布",
+      "usage": "事实性引用，未转载全文"
+    },
+    {
+      "id": "S18",
+      "outlet": "谷歌 / 公众号转述",
+      "item": "Gemini 语音模式接入 CarPlay；Intelligent Eyewear 预售 395 美元起与双向隐私条款",
+      "kind": "媒体报道",
+      "usage": "事实性引用，未转载全文"
+    },
+    {
+      "id": "S19",
+      "outlet": "腾讯 / 公众号转述",
+      "item": "元宝搜索独立网页版 so.qq.com：AI 模式、参考资料并列、公众号与视频号单独检索",
+      "kind": "媒体报道",
+      "usage": "事实性引用，未转载全文"
+    },
+    {
+      "id": "S20",
+      "outlet": "GhTrends / GitHub Trending",
+      "item": "11 月 15 日前后 star 增速榜：chrome-devtools-mcp、Kitesurf、agweb、open-code-review",
+      "kind": "公开榜单",
+      "usage": "事实性引用，未转载全文",
+      "url": "https://ghtrends.dev/zh/daily"
+    },
+    {
+      "id": "S21",
+      "outlet": "IT之家 / 财经媒体",
+      "item": "Stripe 收购 OpenRouter 约 75 到 80 亿美元；台积电批准最高 10 亿美元入股两家实验室",
+      "kind": "媒体报道",
+      "usage": "事实性引用，未转载全文"
+    },
+    {
+      "id": "S22",
+      "outlet": "微软 / 21 世纪经济报道",
+      "item": "微软就全球服务中断道歉称非网络攻击；美联航、猫王权利方与盖茨的同期动态",
+      "kind": "媒体报道",
+      "usage": "事实性引用，未转载全文"
+    },
+    {
+      "id": "S23",
+      "outlet": "Cloudflare / Runway / Perplexity",
+      "item": "11 月 14 日三项 Apache 2.0 或开放权重发布，供本期第 14 版榜单对照",
+      "kind": "官方发布",
+      "usage": "事实性引用，未转载全文"
+    },
+    {
+      "id": "S24",
+      "outlet": "Guru3D",
+      "item": "AMD 26.11.1 与 NVIDIA 621.24 驱动说明；英伟达 11 月 17 日季报安排",
+      "kind": "媒体报道",
+      "usage": "事实性引用，未转载全文"
+    }
+  ]
+}

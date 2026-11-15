@@ -1,0 +1,275 @@
+{
+  "asOf": "2026-11-14",
+  "facts": [
+    {
+      "id": "F01",
+      "claim": "Kitesurf 的开源许可",
+      "value": "Apache 2.0",
+      "page": "p01",
+      "source": "Cloudflare 开源公告与媒体汇总",
+      "asOf": "2026-11-14",
+      "strength": "vendor",
+      "reproduced": false
+    },
+    {
+      "id": "F02",
+      "claim": "RTX 5090 相对首发价的报道涨幅",
+      "value": "370%",
+      "page": "p01",
+      "source": "快科技 / 网易报道",
+      "asOf": "2026-11-14",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F03",
+      "claim": "Kitesurf 自部署所需的计划",
+      "value": "Workers Paid",
+      "page": "p03",
+      "source": "Cloudflare 开源说明",
+      "asOf": "2026-11-14",
+      "strength": "vendor",
+      "reproduced": false
+    },
+    {
+      "id": "F04",
+      "claim": "agweb 五个空闲页面的内存占用",
+      "value": "590 MB",
+      "page": "p03",
+      "source": "项目 README 与当日汇总",
+      "asOf": "2026-11-14",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F05",
+      "claim": "Praxis-1 在 RoboLab-120 的厂商自述得分",
+      "value": "46.2%",
+      "page": "p04",
+      "source": "Runway 发布材料",
+      "asOf": "2026-11-14",
+      "strength": "vendor",
+      "reproduced": false
+    },
+    {
+      "id": "F06",
+      "claim": "Memorilla 把文档集压成的记忆 token 数",
+      "value": "16 个",
+      "page": "p04",
+      "source": "斯坦福团队研究论文",
+      "asOf": "2026-11-14",
+      "strength": "preprint",
+      "reproduced": false
+    },
+    {
+      "id": "F07",
+      "claim": "Memorilla 在 FactKG 上的报告得分",
+      "value": "84.33%",
+      "page": "p04",
+      "source": "斯坦福团队研究论文",
+      "asOf": "2026-11-14",
+      "strength": "preprint",
+      "reproduced": false
+    },
+    {
+      "id": "F08",
+      "claim": "欧洲 11 月 14 日 RTX 5090 报价",
+      "value": "5,609.90 欧元",
+      "page": "p05",
+      "source": "欧洲 GPU 周度价格表",
+      "asOf": "2026-11-14",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F09",
+      "claim": "欧洲 11 月 14 日 RTX 5080 报价（欧元）",
+      "value": "1,899.90",
+      "page": "p05",
+      "source": "欧洲 GPU 周度价格表",
+      "asOf": "2026-11-14",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F10",
+      "claim": "RTX 5060 Ti 16GB 一周涨幅",
+      "value": "14.3%",
+      "page": "p05",
+      "source": "欧洲 GPU 周度价格表",
+      "asOf": "2026-11-14",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F11",
+      "claim": "RX 9060 XT 16GB 一周涨幅",
+      "value": "13.0%",
+      "page": "p05",
+      "source": "欧洲 GPU 周度价格表",
+      "asOf": "2026-11-14",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F12",
+      "claim": "11 月 14 日美国电商最便宜的 PNY RTX 5090 挂牌价",
+      "value": "6,495 美元",
+      "page": "p05",
+      "source": "电商比价汇总",
+      "asOf": "2026-11-14",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F13",
+      "claim": "Decider v1.3 的开源许可",
+      "value": "Apache 协议",
+      "page": "p07",
+      "source": "Perplexity 发布材料",
+      "asOf": "2026-11-14",
+      "strength": "vendor",
+      "reproduced": false
+    },
+    {
+      "id": "F14",
+      "claim": "DeepSeek Ultrafast 在四张 GB300 上的厂商自测吞吐",
+      "value": "1,740 token/s",
+      "page": "p07",
+      "source": "Baseten 项目说明",
+      "asOf": "2026-11-14",
+      "strength": "vendor",
+      "reproduced": false
+    },
+    {
+      "id": "F15",
+      "claim": "智能体互联系列国标覆盖的领域数",
+      "value": "19 个领域",
+      "page": "p08",
+      "source": "行业日报汇总",
+      "asOf": "2026-11-14",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F16",
+      "claim": "客服行业图表给出的智能体连续工作时长",
+      "value": "16 小时",
+      "page": "p09",
+      "source": "NiCE Cognigy 图表转述",
+      "asOf": "2026-11-14",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F17",
+      "claim": "同一图表给出的任务成功率",
+      "value": "50%",
+      "page": "p09",
+      "source": "NiCE Cognigy 图表转述",
+      "asOf": "2026-11-14",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F18",
+      "claim": "太空数据中心研究认为发射成本需下降的倍数",
+      "value": "15 倍",
+      "page": "p09",
+      "source": "Forethought 研究转述",
+      "asOf": "2026-11-14",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F19",
+      "claim": "LangChain C 轮融资额",
+      "value": "3 亿美元",
+      "page": "p10",
+      "source": "财经媒体报道",
+      "asOf": "2026-11-14",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F20",
+      "claim": "Mercor 本轮估值",
+      "value": "200 亿美元",
+      "page": "p10",
+      "source": "财经媒体报道",
+      "asOf": "2026-11-14",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F21",
+      "claim": "CrowdStrike 收购两家智能体安全初创的金额",
+      "value": "4.95 亿美元",
+      "page": "p10",
+      "source": "财经媒体报道",
+      "asOf": "2026-11-14",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F22",
+      "claim": "EPYC 9996 双路配置的线程数",
+      "value": "1,024",
+      "page": "p11",
+      "source": "AMD 产品说明与独立实测",
+      "asOf": "2026-11-14",
+      "strength": "vendor",
+      "reproduced": false
+    },
+    {
+      "id": "F23",
+      "claim": "Zen 6 相对 Zen 5 的平均 IPC 提升",
+      "value": "27%",
+      "page": "p11",
+      "source": "AMD 架构说明",
+      "asOf": "2026-11-14",
+      "strength": "vendor",
+      "reproduced": false
+    },
+    {
+      "id": "F24",
+      "claim": "AWS 指南拆出的每任务隐藏成本驱动数",
+      "value": "4 个",
+      "page": "p12",
+      "source": "AWS 成本指南",
+      "asOf": "2026-11-14",
+      "strength": "vendor",
+      "reproduced": false
+    },
+    {
+      "id": "F25",
+      "claim": "报道给出的 ChatGPT 周活跃用户量级",
+      "value": "12 亿",
+      "page": "p13",
+      "source": "公众号行业汇总",
+      "asOf": "2026-11-14",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F26",
+      "claim": "趋势榜前五名里服务编码智能体的项目数",
+      "value": "3 个",
+      "page": "p14",
+      "source": "当日趋势榜汇总",
+      "asOf": "2026-11-14",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F27",
+      "claim": "TorchTitan 训练 1T 参数 MoE 所用加速卡数",
+      "value": "384 块",
+      "page": "p15",
+      "source": "行业日报汇总",
+      "asOf": "2026-11-14",
+      "strength": "media",
+      "reproduced": false
+    }
+  ]
+}

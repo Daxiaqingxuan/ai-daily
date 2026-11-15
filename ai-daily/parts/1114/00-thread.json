@@ -1,0 +1,18 @@
+{
+  "thread": "开源了，门槛还在",
+  "note": "11 月 14 日，Cloudflare 的 Kitesurf、Runway 的 Praxis-1、Perplexity 的 Decider v1.3 同日以 Apache 2.0 或开放权重形式放出；但自部署需要 Workers Paid、评测要机器人硬件、推理要特定加速卡，公开的是文件，没公开的是把文件变成服务的条件。同日英伟达回应「不放弃游戏 GPU」却不承诺降价，是同一句式。本期把显卡行情做成固定第 05 版，逐日记价；第 06 版给一份拿到源码之后的三问清单。",
+  "offTopicTerms": [
+    "费半",
+    "纳指",
+    "标普",
+    "A股",
+    "沪指",
+    "沪深",
+    "涨停",
+    "收盘",
+    "恒生",
+    "道指"
+  ],
+  "maxOffTopicPages": 7,
+  "exemptPages": []
+}

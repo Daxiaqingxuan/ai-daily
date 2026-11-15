@@ -1,0 +1,18 @@
+<section class="section" id="p07">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">今天放出来的四份权重</span>
+      <span class="sec-page">第 07 版 / 共 16 版</span>
+    </div>
+    <p class="sec-lede">模型侧这一天的开放同样密集：<b>专做判断的小模型、推理引擎、标记语言与多模态智能体模型</b>，各自补的是智能体流水线里不同的一格。</p>
+    <p><b>Perplexity 的 Decider v1.3 与 Flash v1.3 走的是「分工」路线。</b>两个模型专做二分类与多分类，返回概率供上层做路由、排序与评估，采用双向注意力，Flash 版由 v1.3 <span class="term" tabindex="0">蒸馏<i class="tip">用大模型产出的数据去训练小模型，让小模型在特定任务上学到接近的判断力，代价是能力范围被收窄。</i></span>而来；模型以 <b>Apache 协议</b> 在 Hugging Face 放出，同时上 OpenRouter 与 Decisions API<span class="src-tag">厂商口径</span>。<b>它不打算替你思考，只替你拍板</b>——把最便宜的判断从最贵的模型里拆出来。</p>
+    <p><b>Baseten 的 DeepSeek Ultrafast 是另一端的活。</b>它服务 DeepSeek-V4.1-Flash，在四张 GB300 上厂商自测约 <b>1,740 token/s</b>，并让会话能在不同服务器之间接续、每台直接从别处拉记忆，因而不需要专门的路由层<span class="src-tag">厂商口径</span>。项目说明还提到，底层代码由编码智能体参与调优<span class="src-tag">公开报道</span>。<b>同样是「开放」，这里交出来的是速度，而速度绑定的是特定芯片。</b></p>
+    <p><b>另外两项更小，但方向一致。</b>Hugging Face 介绍的 LLMON 是一种给大模型读的标记语言，已进 IBM Granite 4.1 的 3B 与 8B 模型；国内团队开源的 Nex-N2.6 是 321B 多模态智能体模型，发布方称重复推理下降约 90%<span class="src-tag">公开报道</span>。<b>前者改的是输入格式，后者改的是推理次数</b>，都不是「更大的模型」。</p>
+    <p><b>把四份权重摆在一起看，今天开放的其实不是能力，是可替换性。</b>当判断、推理、格式与记忆都能换件，任何一家模型厂商都不再是唯一的入口；但每换一件，都要重新回答第 06 版的第二问：<b>新零件在我这台机器上，跑得动吗。</b></p>
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版</span>
+      </div>
+      <p>小模型负责拍板、推理引擎负责快、标记语言负责好读。<b>智能体正在被拆成一排可换的零件，而装配说明书还没开源。</b></p>
+    </aside>
+  </section>

@@ -1,0 +1,305 @@
+{
+  "asOf": "2026-11-15",
+  "facts": [
+    {
+      "id": "F01",
+      "claim": "诉状设定的冻结基准日",
+      "value": "11 月 12 日",
+      "page": "p01",
+      "source": "21 世纪经济报道 / TechFlow 转述",
+      "asOf": "2026-11-15",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F02",
+      "claim": "媒体报道的 Anthropic 股票开始交易日",
+      "value": "11 月 19 日",
+      "page": "p01",
+      "source": "Yahoo Finance / 读懂 AI 时代汇总",
+      "asOf": "2026-11-15",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F03",
+      "claim": "媒体报道的 IPO 认购需求倍数",
+      "value": "6 倍",
+      "page": "p01",
+      "source": "财经媒体援引承销信息",
+      "asOf": "2026-11-15",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F04",
+      "claim": "MathArena 上 Carbon 相对 Sol 的成本倍数",
+      "value": "15 倍",
+      "page": "p01",
+      "source": "The Decoder / 当日汇总",
+      "asOf": "2026-11-15",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F05",
+      "claim": "联合提起诉讼的非营利组织数",
+      "value": "四家",
+      "page": "p03",
+      "source": "21 世纪经济报道",
+      "asOf": "2026-11-15",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F06",
+      "claim": "受理诉讼的法院",
+      "value": "旧金山高等法院",
+      "page": "p03",
+      "source": "21 世纪经济报道 / TechFlow",
+      "asOf": "2026-11-15",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F07",
+      "claim": "报道给出的 IPO 定价区间",
+      "value": "70 到 78 美元",
+      "page": "p04",
+      "source": "财经媒体转述",
+      "asOf": "2026-11-15",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F08",
+      "claim": "第三方榜单上 Fable 5.2 的综合指数",
+      "value": "64.6 分",
+      "page": "p04",
+      "source": "AgentKernel 综合榜",
+      "asOf": "2026-11-15",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F09",
+      "claim": "媒体给出的 Anthropic 估值口径",
+      "value": "1.4 万亿美元",
+      "page": "p04",
+      "source": "行业日报汇总",
+      "asOf": "2026-11-15",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F10",
+      "claim": "报道给出的 ChatGPT 周活跃用户量级",
+      "value": "12 亿",
+      "page": "p04",
+      "source": "公众号行业汇总",
+      "asOf": "2026-11-15",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F11",
+      "claim": "韩国科技部转述的先进 GPU 供应承诺",
+      "value": "26 万颗",
+      "page": "p05",
+      "source": "TechCrunch / 当日汇总",
+      "asOf": "2026-11-15",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F12",
+      "claim": "沿用 11 月 14 日欧洲价格表的 5090 读数",
+      "value": "5,609.90 欧元",
+      "page": "p05",
+      "source": "欧洲 GPU 周度价格表",
+      "asOf": "2026-11-14",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F13",
+      "claim": "英伟达季报日期",
+      "value": "11 月 17 日",
+      "page": "p05",
+      "source": "英伟达公告的媒体转述",
+      "asOf": "2026-11-15",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F14",
+      "claim": "ERNIE 5.5 Flash Preview 的总参数",
+      "value": "280B",
+      "page": "p07",
+      "source": "百度文心官方博客",
+      "asOf": "2026-11-15",
+      "strength": "vendor",
+      "reproduced": false
+    },
+    {
+      "id": "F15",
+      "claim": "百度承诺开源权重的期限",
+      "value": "11 月 25 日",
+      "page": "p07",
+      "source": "百度文心官方博客",
+      "asOf": "2026-11-15",
+      "strength": "vendor",
+      "reproduced": false
+    },
+    {
+      "id": "F16",
+      "claim": "开放权重最佳档 Kimi K3.1 Pro 的指数",
+      "value": "46.5",
+      "page": "p07",
+      "source": "AgentKernel 综合榜",
+      "asOf": "2026-11-15",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F17",
+      "claim": "智能体互联系列国标覆盖的领域数",
+      "value": "19 个",
+      "page": "p08",
+      "source": "行业日报汇总",
+      "asOf": "2026-11-14",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F18",
+      "claim": "Gemini 4 Carbon 在 MathArena 的预期得分",
+      "value": "85.4%",
+      "page": "p09",
+      "source": "The Decoder / 当日汇总",
+      "asOf": "2026-11-15",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F19",
+      "claim": "Gemini 4 Carbon 的单次成本",
+      "value": "15.70 美元",
+      "page": "p09",
+      "source": "The Decoder / 当日汇总",
+      "asOf": "2026-11-15",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F20",
+      "claim": "GPT-6.1 Sol 的单次成本",
+      "value": "1.07 美元",
+      "page": "p09",
+      "source": "The Decoder / 当日汇总",
+      "asOf": "2026-11-15",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F21",
+      "claim": "Claude Fable 5.2 的单次成本",
+      "value": "40.20 美元",
+      "page": "p09",
+      "source": "The Decoder / 当日汇总",
+      "asOf": "2026-11-15",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F22",
+      "claim": "台积电批准入股两家实验室的金额上限",
+      "value": "10 亿美元",
+      "page": "p10",
+      "source": "财经媒体报道",
+      "asOf": "2026-11-13",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F23",
+      "claim": "Stripe 收购 OpenRouter 的报道金额",
+      "value": "75 到 80 亿美元",
+      "page": "p10",
+      "source": "IT之家等媒体报道",
+      "asOf": "2026-11-13",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F24",
+      "claim": "EPYC 9996 相对上一代的整数吞吐提升",
+      "value": "93%",
+      "page": "p11",
+      "source": "Tom’s Hardware 实测",
+      "asOf": "2026-11-14",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F25",
+      "claim": "EPYC 9686F 相对 Vera CPU 的整数领先",
+      "value": "17%",
+      "page": "p11",
+      "source": "Tom’s Hardware 实测",
+      "asOf": "2026-11-14",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F26",
+      "claim": "AWS 成本指南里的隐藏成本驱动数",
+      "value": "4 个",
+      "page": "p12",
+      "source": "AWS 成本指南",
+      "asOf": "2026-11-14",
+      "strength": "vendor",
+      "reproduced": false
+    },
+    {
+      "id": "F27",
+      "claim": "企业商品目录同步的目标系统",
+      "value": "Shopify Catalog",
+      "page": "p12",
+      "source": "OpenAI 产品说明的媒体转述",
+      "asOf": "2026-11-15",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F28",
+      "claim": "谷歌智能眼镜预售起价",
+      "value": "395 美元",
+      "page": "p13",
+      "source": "公众号行业汇总",
+      "asOf": "2026-11-15",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F29",
+      "claim": "萝卜快跑累计里程的报道口径",
+      "value": "3.5 亿公里",
+      "page": "p13",
+      "source": "行业日报汇总",
+      "asOf": "2026-11-14",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F30",
+      "claim": "萝卜快跑覆盖城市数",
+      "value": "28 城",
+      "page": "p15",
+      "source": "行业日报汇总",
+      "asOf": "2026-11-14",
+      "strength": "media",
+      "reproduced": false
+    }
+  ]
+}

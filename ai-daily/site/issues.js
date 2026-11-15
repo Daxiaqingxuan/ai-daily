@@ -1,7 +1,37 @@
 /* 由 tools/build_index.py 自动生成，请勿手工编辑 */
 window.AI_DAILY_ISSUES = {
-  "generatedAt": "2026-11-13 11:11",
+  "generatedAt": "2026-11-15 20:32",
   "issues": [
+    {
+      "date": "2026-11-15",
+      "dateCn": "2026年11月15日",
+      "dateShort": "11月15日",
+      "weekday": "星期日",
+      "issue": "011",
+      "isSpecial": false,
+      "issueLabel": "第 011 期",
+      "pages": 16,
+      "headline": "暂停键与上市钟 · 同一周，法院被要求叫停，交易所排好了敲钟",
+      "deck": "四家非营利组织向旧金山高等法院起诉五家 AI 公司，要求冻结比 11 月 12 日 更强模型的研发公开报道；同一周，Anthropic 的股票预计 11 月 19 日 开始交易公开报道。一个要慢下来，一个正要加速。",
+      "kicker": "头版头条 · 暂停键与上市钟来源 · 第三方信息网",
+      "file": "AI晨报-2026-11-15.html",
+      "size": 114921
+    },
+    {
+      "date": "2026-11-14",
+      "dateCn": "2026年11月14日",
+      "dateShort": "11月14日",
+      "weekday": "星期六",
+      "issue": "010",
+      "isSpecial": false,
+      "issueLabel": "第 010 期",
+      "pages": 16,
+      "headline": "开源了，门槛还在 · 一天三个 Apache 2.0，跑起来的条件没一起给",
+      "deck": "Cloudflare 把智能体浏览器引擎 Kitesurf 以 Apache 2.0厂商口径 开源；同日 Runway 与 Perplexity 也放出权重。门槛没跟着消失：能下载，不等于跑得起。",
+      "kicker": "头版头条 · 开源了，门槛还在来源 · 第三方信息网",
+      "file": "AI晨报-2026-11-14.html",
+      "size": 116392
+    },
     {
       "date": "2026-11-13",
       "dateCn": "2026年11月13日",
