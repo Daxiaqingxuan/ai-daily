@@ -1,0 +1,127 @@
+{
+  "asOf": "2026-11-17",
+  "policy": "逐条登记「谁给的、给了什么、哪一类、怎么用的」。url 只为能确认对应到这一条的单一页面填写；汇总栏目、频道首页、搜索页一律留空，不用猜出来的地址凑数。",
+  "sources": [
+    {
+      "id": "S01",
+      "outlet": "TechCrunch / aiinsiders",
+      "item": "Vals 测试：生成图像叠加真实乌克兰与伊朗影像，商用模型在游戏化框架下标出平民与投降士兵，69%/72%、无提示触发分类器",
+      "kind": "媒体报道",
+      "usage": "事实性引用，未转载全文",
+      "url": "https://aiinsiders.net/article/vals-test-calling-a-war-a-game-got-some-ai-models-to-mark"
+    },
+    {
+      "id": "S02",
+      "outlet": "彭博（媒体转述）",
+      "item": "伊朗学校 2026 年 2 月遭轰炸、逾 150 平民死亡，报道称过度依赖 AI 是因素之一",
+      "kind": "媒体报道",
+      "usage": "事实性引用，未核一手报道原文"
+    },
+    {
+      "id": "S03",
+      "outlet": "sixsixai · 11 月 17 日汇总",
+      "item": "OpenAI 与 Apollo Research 试点嵌入式安全评估：六名外部评估员，覆盖训练激励、评估诱导、内部部署与推理链可检测性",
+      "kind": "媒体报道",
+      "usage": "事实性引用，未转载全文",
+      "url": "https://sixsixai.com/news/2026-11-17-ai-news"
+    },
+    {
+      "id": "S04",
+      "outlet": "sixsixai · 11 月 17 日汇总",
+      "item": "OpenAI 面向获批机构的图像分类器：CSAM 与 AI 生成 CSAM 双信号、API 免费、公司测试称送审图片可减 48%",
+      "kind": "媒体报道",
+      "usage": "事实性引用，未转载全文",
+      "url": "https://sixsixai.com/news/2026-11-17-ai-news"
+    },
+    {
+      "id": "S05",
+      "outlet": "sixsixai · 11 月 17 日汇总",
+      "item": "Anthropic 缩短漏洞披露窗口：2027-01-01 起高危 90→30 天、其他 90→45 天，无响应维护者 15 天升级",
+      "kind": "媒体报道",
+      "usage": "事实性引用，未转载全文",
+      "url": "https://sixsixai.com/news/2026-11-17-ai-news"
+    },
+    {
+      "id": "S06",
+      "outlet": "Google / 媒体汇总",
+      "item": "Ask Maps：Android 与 iOS 上创建多日行程、编号地图钉、实时路线与途中调整",
+      "kind": "媒体报道",
+      "usage": "事实性引用，未转载全文",
+      "url": "https://sixsixai.com/news/2026-11-17-ai-news"
+    },
+    {
+      "id": "S07",
+      "outlet": "whatisthelatest · 11 月 17 日汇总",
+      "item": "GPT-6.2 四款上架 OpenRouter、ChatGPT for Sales、Put Gemini to work for you、开发者版本发布与融资清单",
+      "kind": "媒体报道",
+      "usage": "事实性引用，未转载全文",
+      "url": "https://whatisthelatest.ai/digest"
+    },
+    {
+      "id": "S08",
+      "outlet": "Text Arena / WebDev Arena",
+      "item": "Text Arena 第一 Gemini 4 Carbon (High) 1538；WebDev Arena 第一 Claude Fable 5.2 (xHigh) 1826",
+      "kind": "公开榜单",
+      "usage": "事实性引用，未转载全文"
+    },
+    {
+      "id": "S09",
+      "outlet": "ainativeengineering",
+      "item": "行业规则观察：Fable/Mythos 规则版本、六个 API 端点退役、Cursor 密钥事件、加州总检察长起诉 OpenAI",
+      "kind": "媒体报道",
+      "usage": "事实性引用，未转载全文",
+      "url": "https://ainativeengineering.net/article/a0eba6ea-8247-41e1-a89c-7c0901e3d4a7"
+    },
+    {
+      "id": "S10",
+      "outlet": "Anthropic（政策公告）",
+      "item": "Fable 5.2 开放 $8/$40，Mythos 5.2 限审核机构；披露窗口调整公告",
+      "kind": "官方发布",
+      "usage": "事实性引用，未转载全文"
+    },
+    {
+      "id": "S11",
+      "outlet": "OpenAI（产品与政策说明）",
+      "item": "嵌入式评估试点范围说明、图像分类器信号设计、ChatGPT 中断式警告",
+      "kind": "官方发布",
+      "usage": "事实性引用，未转载全文"
+    },
+    {
+      "id": "S12",
+      "outlet": "网易 · 杭州颐高数码港走访",
+      "item": "11 月 16 日门店报价：5080 16900 元、5070 8000 元；店主编号「一天涨三五百」「涨了也没人买」",
+      "kind": "媒体报道",
+      "usage": "事实性引用，未转载全文",
+      "url": "https://www.163.com/dy/article/LBV12LF4053469LG.html"
+    },
+    {
+      "id": "S13",
+      "outlet": "nuaxi · MLID 说法转述",
+      "item": "爆料称 RTX 5080 24GB 或因 GDDR7 高价搁置，16GB 版供货改善但 Newegg 仍约 2000 美元；厂商未证实",
+      "kind": "媒体报道",
+      "usage": "事实性引用，明确标注为爆料",
+      "url": "https://nuaxi.com/zh/share/74170"
+    },
+    {
+      "id": "S14",
+      "outlet": "媒体转述（未独立核实）",
+      "item": "Cursor 称攻击者利用其发给 Fireworks AI 的访问密钥复制 traces，并发布植入 SSH 后门的 Claude Code 扩展，波及最多 5000 名开发者",
+      "kind": "媒体报道",
+      "usage": "事实性引用，未独立核实"
+    },
+    {
+      "id": "S15",
+      "outlet": "媒体转述",
+      "item": "加州总检察长 Rob Bonta 起诉 OpenAI，称其未充分安全监督",
+      "kind": "媒体报道",
+      "usage": "事实性引用，未核诉状原文"
+    },
+    {
+      "id": "S16",
+      "outlet": "美国国会研究处报告（媒体转述）",
+      "item": "报告称未发现五角大楼直接在自主武器中使用前沿模型",
+      "kind": "媒体报道",
+      "usage": "事实性引用，未核报告原文"
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+<section class="section" id="p16">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">本报提案 · 这一期想怎么改</span>
+      <span class="sec-page">第 16 版 / 共 16 版</span>
+    </div>
+
+    <p class="sec-lede">本版每期由四个身份各提一条改动建议，编号 <b>P015-1…4</b>：<b>读者</b>说哪里读着费劲，<b>编辑</b>说哪里做起来费劲，<b>创刊人</b>说哪里该往前一步，<b>AI</b> 说哪里可以自动化。<b>默认不执行</b>——创刊人点名「采纳 P015-1」才进施工；没人提，挂满三期自动记「否决（沉默）」。</p>
+
+    <div class="props">
+      <article class="prop">
+        <div class="prop-h"><span class="prop-role">读者</span><span class="prop-id">P015-1</span></div>
+        <h4>「租」和「买」的价签必须分栏，别混成一张表</h4>
+        <p>本期第 05 版里，财报电话会的重签价、新卡涨幅和 RTX 5080 的传闻挤在同一屏。<b>建议行情版固定分「可核读数 / 传闻」两栏</b>：前者要带出处与口径，后者必须写明未证实，且不得进入对照表。</p>
+        <dl class="prop-meta">
+          <dt>为什么</dt><dd>租价与挂牌价本来就是两个市场，混排会让人以为同一张卡既涨了又没涨</dd>
+          <dt>成本</dt><dd>小 · 两小时 · 行情版加一栏 + 预检检查传闻是否带未证实标</dd>
+        </dl>
+        <div class="prop-st">待定 · <b>沉默即否决</b></div>
+      </article>
+
+      <article class="prop">
+        <div class="prop-h"><span class="prop-role">编辑</span><span class="prop-id">P015-2</span></div>
+        <h4>补刊与正刊同批出时，首页要写清两期关系</h4>
+        <p>11 月 16 日、11 月 17 日两期已于 11 月 18 日同批补齐。<b>建议索引与首页在这种情形下补一句「含补刊」</b>，按日期分别列出，不合并，也不让补刊盖住当天正刊；补刊内容不倒填到正刊。</p>
+        <dl class="prop-meta">
+          <dt>为什么</dt><dd>漏刊补齐以后可能成为常态，读者需要知道哪一期是当天编的</dd>
+          <dt>成本</dt><dd>中 · 半天 · 索引生成加分批标记 + 首页提示</dd>
+        </dl>
+        <div class="prop-st">待定 · <b>沉默即否决</b></div>
+      </article>
+
+      <article class="prop">
+        <div class="prop-h"><span class="prop-role">创刊人</span><span class="prop-id">P015-3</span></div>
+        <h4>财报数字要标「已披露 / 电话会 / 分析师」三档</h4>
+        <p>第 10 版把营收、积压订单和目标价排成一列，但三者的时间尺度完全不同。<b>建议给财报类版面固定三档状态标</b>：已披露的是过去，电话会的是计划，分析师的是观点；读者一眼能看出哪句能当结论。</p>
+        <dl class="prop-meta">
+          <dt>为什么</dt><dd>本期最容易被写歪的，就是把不同时间尺度的数字读成同一年</dd>
+          <dt>成本</dt><dd>中 · 半天 · 财报版模板加三档标 + 写作规范</dd>
+        </dl>
+        <div class="prop-st">待定 · <b>沉默即否决</b></div>
+      </article>
+
+      <article class="prop">
+        <div class="prop-h"><span class="prop-role">AI</span><span class="prop-id">P015-4</span></div>
+        <h4>自动核对事实卡的 strength 与正文标记</h4>
+        <p>本期事实卡按厂商、媒体、榜单分档，正文逐处标注。<b>建议拼版前跑一段脚本</b>：读 <code>00-facts.json</code>，逐条确认数值出现在指定版、对应档的标记也在该版；AI 生成版不许挂外部标记。<b>它只做对账，不改稿</b>。</p>
+        <dl class="prop-meta">
+          <dt>为什么</dt><dd>机器最容易漏的不是数字，而是「写了数字却忘了标是谁说的」</dd>
+          <dt>成本</dt><dd>中 · 一天 · 对账脚本 + 自检接入 + 失败即停</dd>
+        </dl>
+        <div class="prop-st">待定 · <b>沉默即否决</b></div>
+      </article>
+    </div>
+
+    <p class="prop-rule"><b>怎么算采纳：</b>创刊人在当期明确说「采纳 P015-1」才算；说「先放着」算待定，最多挂三期；<b>没说就是否决，不再追问</b>。已采纳的写进 <code>提案台账.md</code>，在下一期的台账里标「已落地」。</p>
+
+    <div class="table-wrap">
+      <table class="prop-ledger">
+        <caption>提案台账 · 全量明细见 <code>提案台账.md</code>，本表只放最近 8 条</caption>
+        <thead>
+          <tr><th>编号</th><th>视角</th><th>一句话</th><th>状态</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="id">P012-2</td><td>编辑</td><td>无新报价也要占一行</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P012-4</td><td>AI</td><td>自动出同周不同时钟时间线</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P013-1</td><td>读者</td><td>补刊标注日期与内容截止</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P013-2</td><td>编辑</td><td>提案台账只放最近八条</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P013-3</td><td>创刊人</td><td>同批出刊时首页标两期关系</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P013-4</td><td>AI</td><td>事实卡与正文数值自动对账</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P015-1</td><td>读者</td><td>租和买的价签分两栏</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P015-2</td><td>编辑</td><td>补刊与正刊同批时首页标关系</td><td class="st-wait">待定</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版四条提案</span>
+      </div>
+      <p>四条里有两条是在给「没写清楚」留位置。<b>一份日报若只给确定的事留版面，日子久了就会把传闻也写成确定。</b></p>
+    </aside>
+  </section>
+
+  <div class="gloss" id="gloss">
+    <h5>名词速查 · 本期出现的 14 个词<span>正文里带虚线的词点一下就地解释；这张表留作索引</span></h5>
+    <div class="gloss-grid">
+      <dl><dt>Engram 记忆</dt><dd>把知识以可寻址方式存起来的结构，参数量大但调用稀疏；因此总参数可以很大而每次推理不必全用。</dd></dl>
+      <dl><dt>激活参数</dt><dd>处理一个 token 时真正参与计算的参数子集。总参数大、激活参数小，是用稀疏换效率，不能直接和 dense 模型比大小。</dd></dl>
+      <dl><dt>开放权重</dt><dd>参数文件可以下载到本地跑。它降低的是采购与锁定成本；能否商用、要不要授权，仍要看随附的许可原文。</dd></dl>
+      <dl><dt>百万上下文</dt><dd>一次能放进窗口的 token 长度。长上下文方便处理整本书或整个代码库，但注意力成本会随长度上升。</dd></dl>
+      <dl><dt>本地部署</dt><dd>把模型权重放在自己的机器上推理，数据不出本机。代价是显存、电力与维护都要自己承担。</dd></dl>
+      <dl><dt>量化版本（FP8）</dt><dd>用 8 位浮点表示权重以降低显存与带宽占用，换来更低的部署门槛，代价是精度可能与原版不同。</dd></dl>
+      <dl><dt>推理成本</dt><dd>把模型真正跑起来完成一次任务的总花费，包含显存、时长与重试，通常高于模型标价给人的直觉。</dd></dl>
+      <dl><dt>租赁价</dt><dd>按使用时长租用算力的价格。它受合同期限与供给约束，和买卡的挂牌价不是同一个市场。</dd></dl>
+      <dl><dt>积压订单</dt><dd>已签约但尚未确认为收入的合同总额。它说明需求储备，不等于当期到账的现金。</dd></dl>
+      <dl><dt>毛利率</dt><dd>营收减去成本后的比例。电话会给出的 Q4 区间低于本季，公司称那是阶段低点。</dd></dl>
+      <dl><dt>非 GAAP</dt><dd>剔除股权激励等特定项目后的会计口径，更接近经营表现，但不能替代 GAAP 利润。</dd></dl>
+      <dl><dt>目标价</dt><dd>分析师对未来一段时间股价的估计值，是观点而非事实，随假设变化，也可能被后续报告更新。</dd></dl>
+      <dl><dt>传闻口径</dt><dd>爆料人说法，厂商未证实。本报把它与可核的财报数字分开登记，不作为采购依据。</dd></dl>
+      <dl><dt>基准评测</dt><dd>用统一题目与评分规则给模型排队的测试集；分数只在其自身协议内可比，换脚本就要重新看。</dd></dl>
+    </div>
+  </div>

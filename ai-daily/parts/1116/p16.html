@@ -1,0 +1,105 @@
+<section class="section" id="p16">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">本报提案 · 这一期想怎么改</span>
+      <span class="sec-page">第 16 版 / 共 16 版</span>
+    </div>
+
+    <p class="sec-lede">本版每期由四个身份各提一条改动建议，编号 <b>P013-1…4</b>：<b>读者</b>说哪里读着费劲，<b>编辑</b>说哪里做起来费劲，<b>创刊人</b>说哪里该往前一步，<b>AI</b> 说哪里可以自动化。<b>默认不执行</b>——创刊人点名「采纳 P013-2」才进施工；没人提，挂满三期自动记「否决（沉默）」。</p>
+
+    <div class="props">
+      <article class="prop">
+        <div class="prop-h"><span class="prop-role">读者</span><span class="prop-id">P013-1</span></div>
+        <h4>「低至」价格旁边必须写出限定条件</h4>
+        <p>本期第 03 版的缓存命中价写的是「低至每百万 tokens 0.5 元」，但命中率与未命中部分的计费没有被放在同一行。<b>建议发布稿价格一律附一行限定条件</b>：什么情况下成立、哪些调用不适用。读者要的不是更小的数字，而是能判断这个数字会不会出现在自己账单上的条件。</p>
+        <dl class="prop-meta">
+          <dt>为什么</dt><dd>降价是本期主线，也最容易因为省略限定条件而被读成普遍价格</dd>
+          <dt>成本</dt><dd>小 · 两小时 · 价格表模板加一行「适用条件」</dd>
+        </dl>
+        <div class="prop-st">待定 · <b>沉默即否决</b></div>
+      </article>
+
+      <article class="prop">
+        <div class="prop-h"><span class="prop-role">编辑</span><span class="prop-id">P013-2</span></div>
+        <h4>补刊在报头与报尾都要写明内容截止日</h4>
+        <p>本期于 11 月 18 日补齐，但内容只收 11 月 16 日及此前已公开材料。<b>建议在报头日期行与报尾补刊说明里各加一个「内容截至」标记</b>，并在索引中把出刊日与内容截止日分列。这样回看时不会把补齐那天才出现的消息误算进本期。</p>
+        <dl class="prop-meta">
+          <dt>为什么</dt><dd>补刊最怕时间错位：出刊日、内容截止日与复核日混成一个日期</dd>
+          <dt>成本</dt><dd>小 · 一小时 · 报头模板加字段 + 自检检查三处日期一致</dd>
+        </dl>
+        <div class="prop-st">待定 · <b>沉默即否决</b></div>
+      </article>
+
+      <article class="prop">
+        <div class="prop-h"><span class="prop-role">创刊人</span><span class="prop-id">P013-3</span></div>
+        <h4>把「采纳率」与「回报率」固定成一对</h4>
+        <p>本期第 08、10 版反复出现 88% 与 24%。<b>建议凡是写到智能体接入比例的地方，强制并列回报比例</b>；没有回报数据时写明「回报口径缺」。这一对数字比任何单独的采纳率都更能说明「便宜了，还没赚到」。</p>
+        <dl class="prop-meta">
+          <dt>为什么</dt><dd>单写采纳率会天然偏向乐观叙事，并列回报率才能呈现缺口</dd>
+          <dt>成本</dt><dd>中 · 半天 · 写作规范加一条 + 事实卡加关联字段</dd>
+        </dl>
+        <div class="prop-st">待定 · <b>沉默即否决</b></div>
+      </article>
+
+      <article class="prop">
+        <div class="prop-h"><span class="prop-role">AI</span><span class="prop-id">P013-4</span></div>
+        <h4>自动核对事实卡数值是否落在指定版面</h4>
+        <p>本期事实卡逐条标了 <code>page</code> 与 <code>value</code>。建议拼版前自动做一次对账：把每张卡的数值在他的版面正文里逐字查找，找不到就报警；同时检查该版的 <code>strength</code> 对应标记是否出现。<b>它只查一致性，不判断数字真假。</b></p>
+        <dl class="prop-meta">
+          <dt>为什么</dt><dd>正文改数而卡片没改，是事实卡体系最常见的漂移</dd>
+          <dt>成本</dt><dd>中 · 一天 · 预检脚本 + 与拼版断言对齐 + 报告输出</dd>
+        </dl>
+        <div class="prop-st">待定 · <b>沉默即否决</b></div>
+      </article>
+    </div>
+
+    <p class="prop-rule"><b>怎么算采纳：</b>创刊人在当期明确说「采纳 P013-2」才算；说「先放着」算待定，最多挂三期；<b>没说就是否决，不再追问</b>。已采纳的写进 <code>提案台账.md</code>，在下一期的台账里标「已落地」。</p>
+
+    <div class="table-wrap">
+      <table class="prop-ledger">
+        <caption>提案台账 · 全量明细见 <code>提案台账.md</code>，本表只放最近 10 条</caption>
+        <thead>
+          <tr><th>编号</th><th>视角</th><th>一句话</th><th>状态</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="id">P011-2</td><td>编辑</td><td>补刊标注日期与内容截止</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P011-4</td><td>AI</td><td>事实卡加单位字段自动出对比表</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P012-1</td><td>读者</td><td>法律与资本消息标进行到哪步</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P012-2</td><td>编辑</td><td>无新报价也要占一行</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P012-3</td><td>创刊人</td><td>补刊与正刊同批时首页标关系</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P012-4</td><td>AI</td><td>自动出同周不同时钟时间线</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P013-1</td><td>读者</td><td>低至价旁写清限定条件</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P013-2</td><td>编辑</td><td>补刊报头报尾都标内容截止日</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P013-3</td><td>创刊人</td><td>采纳率与回报率固定成一对</td><td class="st-wait">待定</td></tr>
+          <tr><td class="id">P013-4</td><td>AI</td><td>自动核对事实卡数值与版面一致</td><td class="st-wait">待定</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版四条提案</span>
+      </div>
+      <p>四条里有两条是在给「没有发生的事」留位置。<b>一份补刊若只给已发生的事留版面，回看时就会分不清哪句当时已经公开、哪句是后来补上的。</b></p>
+    </aside>
+  </section>
+
+  <div class="gloss" id="gloss">
+    <h5>名词速查 · 本期出现的 14 个词<span>正文里带虚线的词点一下就地解释；这张表留作索引</span></h5>
+    <div class="gloss-grid">
+      <dl><dt>缓存命中</dt><dd>相同前缀的内容直接复用已缓存结果，不必重复计算。命中率越高这部分越便宜，未命中部分仍按正常价计费。</dd></dl>
+      <dl><dt>上下文窗口</dt><dd>模型一次能处理的 token 上限。窗口越大能塞进的材料越多，但不等于对窗口内每处信息都同等注意。</dd></dl>
+      <dl><dt>基准</dt><dd>一组固定任务与评分方法，用来横向比较模型。同一模型在不同基准上名次可能差很多，引用时要连基准名一起写。</dd></dl>
+      <dl><dt>厂商自测</dt><dd>由发布方自己设计并运行一次的实验。适合展示方向，不适合当成可推广的结论，因为缺少独立复现与多次采样。</dd></dl>
+      <dl><dt>预印本</dt><dd>尚未经过同行评审的研究论文。数字可以引用，但不能当成已确立的结论，尤其当实验条件由发布方自己掌握时。</dd></dl>
+      <dl><dt>单位任务成本</dt><dd>完成一件具体工作的总花费，包含重试与长上下文调用，通常高于单价乘一次调用给人的直觉。</dd></dl>
+      <dl><dt>混合专家</dt><dd>把大模型拆成多个子网络，每次只调用其中一部分。总参数很大，但单次计算只走少数专家。</dd></dl>
+      <dl><dt>激活参数</dt><dd>每次前向计算真正参与的子网络参数量。它比总参数更接近推理算力开销，但显存仍要装下整个模型。</dd></dl>
+      <dl><dt>开放权重</dt><dd>参数文件可以下载到本地部署。能否商用、是否要求署名，仍要看随附的许可原文。</dd></dl>
+      <dl><dt>可验证证明</dt><dd>能被形式化检查的推导过程。给出可验证证明说明步骤可查，但不等于模型独立发现了新的数学结论。</dd></dl>
+      <dl><dt>扩展效率</dt><dd>卡数增加时算力被有效利用的比例。越接近百分之百，新增的卡越能等比变成产能。</dd></dl>
+      <dl><dt>每瓦吞吐</dt><dd>每消耗一瓦电能处理多少 token。它比峰值算力更接近机房真实成本，因为电力与散热是长期运行的主要开销。</dd></dl>
+      <dl><dt>留出测试</dt><dd>预留一部分不参与调优的样本，最后只用来检验效果，防止把测试题记熟当成能力提升。</dd></dl>
+      <dl><dt>全双工语音</dt><dd>可以边听边说的语音交互方式，不必等一方说完再轮到另一方，但对延迟与回声处理要求更高。</dd></dl>
+    </div>
+  </div>

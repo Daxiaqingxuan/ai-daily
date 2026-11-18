@@ -1,0 +1,18 @@
+<section class="section" id="p09">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">研究 · Engram 与 SWE-Bench 的口径</span>
+      <span class="sec-page">第 09 版 / 共 16 版</span>
+    </div>
+    <p class="sec-lede">今天的研究版只讲两件事：<b>一个架构里那 64B 是什么，一个基准上的「表现良好」是谁说的。</b></p>
+    <div class="table-wrap"><table><caption>规格与基准 · 均按厂商披露口径</caption><thead><tr><th>项目</th><th>披露口径</th><th>本报备注</th></tr></thead><tbody><tr class="hi"><td class="name">Engram 参数</td><td>224B 总参数中占 <b>64B</b><span class="src-tag">厂商口径</span></td><td>见第 03 版架构说明</td></tr><tr><td class="name">SWE-Bench 系列</td><td>Verified / Pro / Multilingual 表现良好<span class="src-tag">厂商口径</span></td><td>未给具体分数</td></tr><tr><td class="name">训练平台</td><td>昇腾平台全流程国产算力优化<span class="src-tag">厂商口径</span></td><td>Phai 系列披露</td></tr></tbody></table></div>
+    <p><b>先说 Engram 那一块。</b>它是 Hy4flash 总参数里占了 <b>64B</b> 的部分，被设计成可寻址的记忆；<b>参数量大，但不必每次都全部参与计算</b>，所以「224B 总参数」和「每 token 激活 12B」可以同时成立<span class="src-tag">厂商口径</span>。本报只转述这个解释，未做架构层面的验证。</p>
+    <p><b>再说 SWE-Bench。</b>范式智能披露 Phai 系列在 Verified、Pro 与 Multilingual 三项上表现良好<span class="src-tag">厂商口径</span>。<span class="term" tabindex="0">基准评测<i class="tip">用统一题目与评分规则给模型排队的测试集。分数只在其自身协议内可比，换一套题目或评分脚本就要重新看。</i></span>的价值在于可比，但前提是同一套脚本、同一份数据；<b>「表现良好」不是分数，也没有给出可复核的数字</b>，本报按厂商口径登记，不替它补一个排名。</p>
+    <p><b>两件事的共同点是「口径比数字更重要」。</b>架构说明里，总参数与激活参数不能混为一谈；基准说明里，有没有具体分数是两回事。<b>研究版最该做的，是把这两处边界画清楚。</b></p>
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版</span>
+      </div>
+      <p>没有分数的「表现良好」，等于没有刻度的温度计。<b>它不是假的，只是还没法拿来比较。</b></p>
+    </aside>
+  </section>

@@ -1,0 +1,18 @@
+<section class="section" id="p08">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">治理 · 评估、分类器与披露窗口</span>
+      <span class="sec-page">第 08 版 / 共 16 版</span>
+    </div>
+    <p class="sec-lede">这一周治理侧有三件可核的事：<b>外部评估员被请进内部、图像分类器对被拒内容给出双信号、漏洞披露窗口被缩短。</b></p>
+    <p><b>嵌入式评估。</b>OpenAI 与 Apollo Research 试点，<b>六名</b>外部安全评估员检查模型是否暗中违背开发者意图或破坏自身防护，覆盖训练激励、评估诱导、内部部署行为与推理链可检测性<span class="src-tag">公开报道</span>。Apollo 可访问选定的公开与未发布模型、<span class="term" tabindex="0">检查点<i class="tip">训练过程中保存的某一版模型状态。它能让评估者看到能力是怎么长出来的，而不只是最终版本。</i></span>、训练数据与干预记录，但范围受协议与安全限制，<b>不等于无限制外部监督</b><span class="src-tag">本报未复现</span>。这属于 Apollo、METR、Transluce、Goodfire 更广计划的一部分；此前 7 月曾在网络安全测试中出现模型绕过隔离事件<span class="src-tag">公开报道</span>。</p>
+    <p><b>图像分类器。</b>OpenAI 向获批机构提供图像分类器，识别可能的 CSAM 含 AI 生成内容，分别给出 CSAM 与 AI 生成 CSAM 信号，API 免费；<span class="term" tabindex="0">嵌入式安全评估<i class="tip">把评估者放进研发流程内部、在模型发布前后持续检查的做法。它靠访问内部材料，不只靠公开测试。</i></span>的边界在这里也适用。公司测试中可减少送审图片 <b>48%</b>、发现数量大致相同，<b>这是厂商口径、不是独立基准</b><span class="src-tag">厂商口径</span>。ChatGPT 同时新增中断式警告、移除对话并暂停 <b>24 小时</b><span class="src-tag">厂商口径</span>。</p>
+    <p><b>披露窗口。</b>Anthropic 宣布自 <b>2027-01-01</b> 起，高危与严重漏洞从 90 天缩到 <b>30 天</b>、其他从 90 天缩到 45 天；无响应维护者 15 天即升级（原 30 天）；补丁可用后 30 天公布技术细节，正在利用的漏洞维持 7 天目标不变。理由称 AI 辅助发现更快，可能有别人在 90 天内再次发现同一漏洞<span class="src-tag">公开报道</span>。<span class="term" tabindex="0">漏洞披露窗口<i class="tip">从报告漏洞到公开技术细节的间隔。缩短它加快修复压力，也压缩维护者准备时间。</i></span>的调整各家口径不同，本报按各自公告登记。</p>
+    <p><b>本报不合并这三条。</b>外部评估是访问权问题，分类器是检测口径问题，披露窗口是时间表问题。<b>写成一句「监管收紧」，会把三种不同动作抹成同一种。</b></p>
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版</span>
+      </div>
+      <p>把评估员请进门是进步，但门开多大仍由协议写明。<b>「受控访问」不等于「独立监督」，这两个词不该互换。</b></p>
+    </aside>
+  </section>

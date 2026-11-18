@@ -1,0 +1,78 @@
+{
+  "asOf": "2026-11-16",
+  "policy": "逐条登记「谁给的、给了什么、哪一类、怎么用的」。url 只为能确认对应到这一条的单一页面填写；汇总栏目、频道首页、搜索页一律留空，不用猜出来的地址凑数。",
+  "sources": [
+    {
+      "id": "S01",
+      "outlet": "网易科技（转阿里发布稿）",
+      "item": "Qwen4-Max：2.4T 参数、原生视觉、100 万上下文、缓存命中每百万 tokens 低至 0.5 元、单任务费用降六成、CodeArena 第六、ALE / Vals Index 领先梯队、中小尺寸模型陆续开源",
+      "kind": "媒体报道",
+      "usage": "事实性引用，未转载全文",
+      "url": "https://www.163.com/dy/article/LBRPFMV30519APGA.html"
+    },
+    {
+      "id": "S02",
+      "outlet": "中国网信网",
+      "item": "企业智能体采纳率 17.3%→40.3%、AI 原生应用月活 4.99 亿同比增 85.4%、19 个典型场景、7 项智能体互联国标、毕马威 88% 接入 / 24% 回报、腾讯 WorkBuddy 奶牛诊疗 1.5 天→2 小时",
+      "kind": "官方发布",
+      "usage": "事实性引用，未转载全文",
+      "url": "https://www.cac.gov.cn/2026-11/16/c_1796583868371122.htm"
+    },
+    {
+      "id": "S03",
+      "outlet": "Silicon Noon · 11 月 16 日汇总",
+      "item": "NVIDIA Vera Rubin 首次 MLPerf 提交、每 GPU 最高 2× GB300 NVL72、每瓦吞吐 >10×；DeepSeek-V3 约 97% 扩展效率、16→4 分钟、20 家机构；Kimi K3 的 10× 为 provisional；Anthropic 记忆研究两组对照",
+      "kind": "媒体报道",
+      "usage": "事实性引用，未转载全文",
+      "url": "https://siliconnoon.com/today-in-ai-november-16-2026"
+    },
+    {
+      "id": "S04",
+      "outlet": "Agentic AI News · 11 月 16 日",
+      "item": "美团 LongCat 1.6T MoE、每 token 激活 48B、全程国产硬件训练、100 万上下文；Qwen3.8-27B 无审查权重合并；4B 专用模型与 350M 变体；Tofu-1 / Haru-4B 全双工语音",
+      "kind": "媒体报道",
+      "usage": "事实性引用，未转载全文",
+      "url": "https://agentic-ai-news.uk/?date=2026-11-16&lang=it"
+    },
+    {
+      "id": "S05",
+      "outlet": "网易（杭州颐高记者走访）",
+      "item": "11 月 16 日门店报价：RTX 5080 报 16900 元、RTX 5070 报 8000 元；店主报价频率与需求表述；华强北 5080 与 RTX 5060 价格轨迹；10 月下旬连涨 11 个交易日",
+      "kind": "媒体报道",
+      "usage": "事实性引用，未转载全文",
+      "url": "https://www.163.com/dy/article/LBV12LF4053469LG.html"
+    },
+    {
+      "id": "S06",
+      "outlet": "当日行业汇总（未核到单一页面）",
+      "item": "Claude 的 HTML-in-canvas：Chrome / Edge 157、桌面 5.11492，内容可选中可点击，Google 推动 web 标准；Moonshot 称编码增益趋平转向生物 / 化学 / 制药",
+      "kind": "媒体报道",
+      "usage": "事实性引用，未转载全文",
+      "url": ""
+    },
+    {
+      "id": "S07",
+      "outlet": "DP Technology 发布口径（当日汇总转述）",
+      "item": "BioMaster 用 Kimi K3.1 Pro 在 90 分钟内从 3696 个小鼠胰腺细胞数据标出 100 个候选基因，人工约 4 小时",
+      "kind": "官方发布",
+      "usage": "事实性引用，未转载全文",
+      "url": ""
+    },
+    {
+      "id": "S08",
+      "outlet": "TCSExam（当日汇总转述）",
+      "item": "100 题理论计算机科学基准：模型可给出可验证证明，但未独立解决开放猜想",
+      "kind": "公开榜单",
+      "usage": "事实性引用，未转载全文",
+      "url": ""
+    },
+    {
+      "id": "S09",
+      "outlet": "MLCommons / MLPerf（汇总口径）",
+      "item": "Vera Rubin 与 DeepSeek-V3 的首次提交口径，以及 Kimi K3 数字仍为 provisional、待验证的状态",
+      "kind": "公开榜单",
+      "usage": "事实性引用，未转载全文",
+      "url": ""
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+<section class="section" id="p11">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">算力本地 · 每瓦十倍之后</span>
+      <span class="sec-page">第 11 版 / 共 16 版</span>
+    </div>
+    <p class="sec-lede">Silicon Noon 11 月 16 日汇总的 MLPerf 提交，是这一轮算力叙事里少见的、带测试框架的数字。<b>本报按提交口径登记，并逐项标出哪些还待验证。</b></p>
+    <div class="table-wrap"><table><caption>MLPerf 首次提交要点（厂商提交口径）</caption><thead><tr><th>项目</th><th>提交口径</th><th>状态</th></tr></thead><tbody><tr class="hi"><td>NVIDIA Vera Rubin</td><td>首次 MLPerf 训练与 Endpoints 提交，每 GPU 性能最高 <b>2×</b> GB300 NVL72<span class="src-tag">厂商口径</span></td><td>已提交</td></tr><tr><td>智能体推理</td><td>每瓦吞吐 <b>>10×</b><span class="src-tag">厂商口径</span></td><td>Kimi K3 数字为 provisional</td></tr><tr><td>DeepSeek-V3 基准</td><td>256→1024 GPU 约 <b>97%</b> <span class="term" tabindex="0">扩展效率<i class="tip">卡数增加时算力被有效利用的比例。效率接近百分之百意味着新增的卡几乎等比变成产能，掉得越快说明通信与调度开销越大。</i></span><span class="src-tag">厂商口径</span></td><td>已提交</td></tr><tr><td>训练时长</td><td>16 分钟→约 <b>4 分钟</b>，<b>20 家</b>机构提交<span class="src-tag">厂商口径</span></td><td>多机构参与</td></tr></tbody></table></div>
+    <p><b>先讲「每瓦」这个单位。</b><span class="term" tabindex="0">每瓦吞吐<i class="tip">每消耗一瓦电能够处理多少 token。它比峰值算力更接近机房的真实成本，因为电力与散热通常是长期运行的主要开销。</i></span>与峰值跑分不同，它把电力成本放进了分母。<b>超过 10 倍的说法意味着同样一度电可以跑出更多推理</b>，这对「便宜了」这条主线是直接的供给侧解释。但数字来自厂商提交，本报没有独立重跑<span class="src-tag">本报未复现</span>。</p>
+    <p><b>Kimi K3 那个 10× 要单独标状态。</b>汇总明确写着 provisional、待 MLCommons 验证；<b>本报把它登记为待验证，不写进已确认结论</b>。同一份提交里 20 家机构参与，说明测试框架本身有广泛参与，但参与广不等于单个读数已定稿。</p>
+    <p><b>扩展效率这一行给了一个可复核的方法。</b>256 卡到 1024 卡，卡数增加到四倍，效率约 97%，训练时间从 16 分钟压到约 4 分钟。<b>这组数字的价值不在「快」，而在它给出了卡数、效率与时长三者的对应关系</b>，读者可以自己判断新增的卡有没有等比变成产能。</p>
+    <p><b>和本期主线接起来。</b>每瓦吞吐提高解决的是供给端的成本，扩展效率提高解决的是规模化时的浪费；<b>两者都让「便宜了」更可信，但都不直接回答「赚到没有」</b>。回报那一栏仍在第 08、10 版那两个比例里。</p>
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版</span>
+      </div>
+      <p>每瓦十倍是供给端的胜利，provisional 三个字是它还没盖完的章。<b>把状态标出来，比把数字写得更大更负责任。</b></p>
+    </aside>
+  </section>

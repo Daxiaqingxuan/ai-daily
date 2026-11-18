@@ -1,0 +1,19 @@
+<section class="section" id="p03">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">224B 是怎么放出来的</span>
+      <span class="sec-page">第 03 版 / 共 16 版</span>
+    </div>
+    <p class="sec-lede">把规格表抄一遍很容易，难的是说清「224B」到底意味着什么。<b>本报按厂商公告口径逐项登记，未做独立复现。</b></p>
+    <div class="table-wrap"><table><caption>Hy4flash 开源规格（据 11 月 18 日厂商公告与报道）</caption><thead><tr><th>项目</th><th>口径</th></tr></thead><tbody><tr class="hi"><td>总参数</td><td><b>224B</b>，其中含 <b>64B</b> 的 Engram 参数<span class="src-tag">厂商口径</span></td></tr><tr><td>每 token 激活</td><td>仅 <b>12B</b><span class="src-tag">厂商口径</span></td></tr><tr><td>原生上下文</td><td><b>100 万 token</b><span class="src-tag">厂商口径</span></td></tr><tr><td>模态</td><td>原生多模态</td></tr><tr><td>开源版本</td><td>Hy4flash / Hy4flash-FP8 / Hy4flash Base<span class="src-tag">厂商口径</span></td></tr><tr><td>下载平台</td><td>GitHub、Hugging Face、ModelScope、GitCode；社区提供 GGUF</td></tr></tbody></table></div>
+    <p><b>先解释那个最反直觉的数字。</b>总参数 224B，每 token 却只激活 12B——这是<span class="term" tabindex="0">激活参数<i class="tip">混合架构里，处理一个 token 时真正参与计算的参数子集。总参数大、激活参数小，是用稀疏换效率，和 dense 模型不能直接比大小；它不等于模型「有多大」。</i></span>的思路。<b>体量与每次实际吃掉的资源，是两件事</b>；这也是为什么开源公告同时强调总参数与激活参数。</p>
+    <p><b>Engram 那一块值得单独说。</b>224B 里有 64B 是<span class="term" tabindex="0">Engram 记忆<i class="tip">一种把知识以可寻址方式存起来的结构，参数量大但调用稀疏。它让总参数上升，却不必同比推高每次推理成本。</i></span>。换句话说，这一版的「大」有相当部分放在记忆侧，而不是堆在每一层的计算上<span class="src-tag">厂商口径</span>。<b>本报不评价架构优劣，只提醒读者别把总参数直接当成账单。</b></p>
+    <p><b>上下文与版本是两条并行的线。</b>原生 <span class="term" tabindex="0">百万上下文<i class="tip">一次能放进窗口的 token 长度。长上下文方便处理整本书或整个代码库，但注意力成本会随长度上升，不是越长越省。</i></span>决定了它能吃下多大的输入；三个版本则决定了它落在什么硬件上。<span class="term" tabindex="0">量化版本（FP8）<i class="tip">用 8 位浮点表示权重以降低显存与带宽占用。换来了更低的部署门槛，代价是精度可能与原版不同。</i></span>就是给显存有限的设备准备的<span class="src-tag">厂商口径</span>。<b>「开源」从来不是一个文件，而是一组运行条件。</b></p>
+    <p><b>四平台可下、社区补上 GGUF，是另一层信息。</b>发布方把权重分发到多个平台，社区再补上本地运行格式；<b>这降低了获取的门槛，却不改变第 01 版那句话——真正稀缺的还是算力。</b></p>
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版</span>
+      </div>
+      <p>224B 听着吓人，12B 才是账单上的那个数。<b>把「模型多大」和「一次花多少」分开写，是读规格表最基本的一条纪律。</b></p>
+    </aside>
+  </section>

@@ -1,0 +1,18 @@
+<section class="section" id="p07">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">开源清单 · 这一天的四个条目</span>
+      <span class="sec-page">第 07 版 / 共 16 版</span>
+    </div>
+    <p class="sec-lede">Agentic AI News 11 月 16 日汇总里，有四组条目可直接核对规格。<b>本报只登记参数与许可描述，不替它们预估性能。</b></p>
+    <div class="table-wrap"><table><caption>11 月 16 日可核对的开放条目（汇总口径）</caption><thead><tr><th>条目</th><th>已公开规格</th><th>本报备注</th></tr></thead><tbody><tr class="hi"><td>美团 LongCat</td><td><b>1.6T</b> MoE 智能体模型，每 token 激活 <b>48B</b><span class="src-tag">公开报道</span></td><td>全程国产硬件训练</td></tr><tr><td>Qwen3.8-27B</td><td>无审查权重可合并，<b>16GB</b> 显存本地运行<span class="src-tag">公开报道</span></td><td>合并后许可随原权重</td></tr><tr><td>专用小模型</td><td>4B 专用模型与 <b>350M</b> 变体<span class="src-tag">公开报道</span></td><td>面向端侧场景</td></tr><tr><td>语音项目</td><td>Tofu-1 / Haru-4B 全双工语音</td><td>详见第 14 版</td></tr></tbody></table></div>
+    <p><b>先说 LongCat 的架构。</b>1.6T 是总参数量，<span class="term" tabindex="0">混合专家<i class="tip">把大模型拆成多个子网络，每次只调用其中一部分。总参数很大，但单次计算只走少数专家，因此推理成本低于同等总参数的稠密模型。</i></span>说的是结构；真正决定单次计算量的是<span class="term" tabindex="0">激活参数<i class="tip">每次前向计算真正参与的子网络参数量。它比总参数更接近推理时的算力开销，但显存仍要装下整个模型。</i></span>48B。<b>把 1.6T 读成「跑一次要算 1.6T」，是 MoE 最常见的误读。</b>报道同时写明全程国产硬件训练，这一点与规格一样被登记为汇总口径<span class="src-tag">公开报道</span>。</p>
+    <p><b>Qwen3.8-27B 这条要分清两件事。</b>「无审查权重合并」描述的是权重可以被合并，<b>不等于许可被改写</b>；「16GB 显存本地运行」描述的是部署门槛。<span class="term" tabindex="0">开放权重<i class="tip">参数文件可以下载到本地部署。能否商用、是否要求署名，仍要看随附的许可原文，不能从「能下载」直接推出「可商用」。</i></span>降低的是获取门槛，不是授权边界。</p>
+    <p><b>小模型这条最容易被忽略。</b>4B 专用模型与 350M 变体意味着同一能力栈开始向端侧下沉；<b>在降本主线里，这类条目比旗舰参数更贴近「便宜了」这三个字。</b>另据阿里 11 月 16 日发布稿，Qwen4 的中小尺寸模型将陆续开源<span class="src-tag">厂商口径</span>，但没有给出日期与许可，本报按承诺登记。</p>
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版</span>
+      </div>
+      <p>总参数万亿、激活四百八十亿，两个数字说的是两件事。<b>把它们分开写，才不会把架构新闻读成性能承诺。</b></p>
+    </aside>
+  </section>

@@ -1,0 +1,485 @@
+{
+  "asOf": "2026-11-17",
+  "facts": [
+    {
+      "id": "F01",
+      "claim": "Vals 测试中普通框架下学校被选为目标的比率",
+      "value": "69%",
+      "page": "p01",
+      "source": "TechCrunch / aiinsiders 转述",
+      "asOf": "2026-11-17",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F02",
+      "claim": "同一所学校在游戏化框架下的选中率",
+      "value": "72%",
+      "page": "p01",
+      "source": "TechCrunch / aiinsiders 转述",
+      "asOf": "2026-11-17",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F03",
+      "claim": "两种框架之间的差距",
+      "value": "3 个百分点",
+      "page": "p01",
+      "source": "TechCrunch / aiinsiders 转述",
+      "asOf": "2026-11-17",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F04",
+      "claim": "遭轰炸学校的平民死亡人数下限",
+      "value": "150 平民",
+      "page": "p01",
+      "source": "彭博报道的媒体转述",
+      "asOf": "2026-11-17",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F05",
+      "claim": "该校遭轰炸的月份",
+      "value": "2026 年 2 月",
+      "page": "p01",
+      "source": "彭博报道的媒体转述",
+      "asOf": "2026-11-17",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F06",
+      "claim": "Vals 构造场景所用的真实图像来源地区",
+      "value": "乌克兰和伊朗",
+      "page": "p03",
+      "source": "TechCrunch / aiinsiders 转述",
+      "asOf": "2026-11-17",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F07",
+      "claim": "被测商用模型名单中的一家",
+      "value": "DeepSeek",
+      "page": "p03",
+      "source": "TechCrunch / aiinsiders 转述",
+      "asOf": "2026-11-17",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F08",
+      "claim": "直接要求打击时的拒绝情况",
+      "value": "拒绝极少",
+      "page": "p03",
+      "source": "TechCrunch / aiinsiders 转述",
+      "asOf": "2026-11-17",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F09",
+      "claim": "测试中触发安全分类器的提示数",
+      "value": "无一条",
+      "page": "p03",
+      "source": "TechCrunch / aiinsiders 转述",
+      "asOf": "2026-11-17",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F10",
+      "claim": "Text Arena 第一名的得分",
+      "value": "1538",
+      "page": "p04",
+      "source": "whatisthelatest 11-17 汇总",
+      "asOf": "2026-11-17",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F11",
+      "claim": "WebDev Arena 第一名的得分",
+      "value": "1826",
+      "page": "p04",
+      "source": "whatisthelatest 11-17 汇总",
+      "asOf": "2026-11-17",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F12",
+      "claim": "杭州渠道 RTX 5080 报价",
+      "value": "16900 元",
+      "page": "p05",
+      "source": "网易报道的门店走访",
+      "asOf": "2026-11-16",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F13",
+      "claim": "杭州渠道 RTX 5070 报价",
+      "value": "8000 元",
+      "page": "p05",
+      "source": "网易报道的门店走访",
+      "asOf": "2026-11-16",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F14",
+      "claim": "华强北 RTX 5080 当前报价",
+      "value": "1.4 万",
+      "page": "p05",
+      "source": "网易报道的渠道转述",
+      "asOf": "2026-11-16",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F15",
+      "claim": "华强北 RTX 5060 当前报价区间",
+      "value": "3000 到 3700",
+      "page": "p05",
+      "source": "网易报道的渠道转述",
+      "asOf": "2026-11-16",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F16",
+      "claim": "爆料人称可能被搁置的显存规格",
+      "value": "24GB",
+      "page": "p05",
+      "source": "MLID 说法，nuaxi 转述",
+      "asOf": "2026-11-17",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F17",
+      "claim": "Newegg 上 16GB 版的挂牌价量级",
+      "value": "2000 美元",
+      "page": "p05",
+      "source": "MLID 说法，nuaxi 转述",
+      "asOf": "2026-11-17",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F18",
+      "claim": "Fable 规则版本的输入价格",
+      "value": "$8",
+      "page": "p07",
+      "source": "ainativeengineering 行业汇总",
+      "asOf": "2026-11-17",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F19",
+      "claim": "Anthropic 退役的 API 端点数",
+      "value": "六个",
+      "page": "p07",
+      "source": "ainativeengineering 行业汇总",
+      "asOf": "2026-11-17",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F20",
+      "claim": "OpenAI 图像分类器可减少的送审图片比例",
+      "value": "48%",
+      "page": "p08",
+      "source": "OpenAI 公司测试口径",
+      "asOf": "2026-11-16",
+      "strength": "vendor",
+      "reproduced": false
+    },
+    {
+      "id": "F21",
+      "claim": "ChatGPT 移除对话后的暂停时长",
+      "value": "24 小时",
+      "page": "p08",
+      "source": "OpenAI 产品说明",
+      "asOf": "2026-11-16",
+      "strength": "vendor",
+      "reproduced": false
+    },
+    {
+      "id": "F22",
+      "claim": "高危与严重漏洞的新披露窗口",
+      "value": "30 天",
+      "page": "p08",
+      "source": "Anthropic 政策公告的媒体转述",
+      "asOf": "2026-11-16",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F23",
+      "claim": "披露窗口新政策生效日",
+      "value": "2027-01-01",
+      "page": "p08",
+      "source": "Anthropic 政策公告的媒体转述",
+      "asOf": "2026-11-16",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F24",
+      "claim": "正在被利用漏洞的公布目标天数",
+      "value": "7 天",
+      "page": "p08",
+      "source": "Anthropic 政策公告的媒体转述",
+      "asOf": "2026-11-16",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F25",
+      "claim": "Apollo 试点投入的外部安全评估员人数",
+      "value": "六名",
+      "page": "p08",
+      "source": "OpenAI / Apollo 试点的媒体转述",
+      "asOf": "2026-11-13",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F26",
+      "claim": "报告中称未发现五角大楼直接使用前沿模型的领域",
+      "value": "五角大楼",
+      "page": "p09",
+      "source": "美国国会研究处报告的媒体转述",
+      "asOf": "2026-11-17",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F27",
+      "claim": "Vals 认为限制模型自行飞无人机的因素之一",
+      "value": "机载算力",
+      "page": "p09",
+      "source": "TechCrunch / aiinsiders 转述",
+      "asOf": "2026-11-17",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F28",
+      "claim": "遭轰炸学校事件的月份",
+      "value": "2026 年 2 月",
+      "page": "p09",
+      "source": "彭博报道的媒体转述",
+      "asOf": "2026-11-17",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F29",
+      "claim": "Isomorphic Labs 融资金额",
+      "value": "50 亿美元",
+      "page": "p10",
+      "source": "whatisthelatest 11-17 汇总",
+      "asOf": "2026-11-17",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F30",
+      "claim": "Genesis AI 的估值口径",
+      "value": "35 亿",
+      "page": "p10",
+      "source": "whatisthelatest 11-17 汇总",
+      "asOf": "2026-11-17",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F31",
+      "claim": "Genesis AI 融资金额",
+      "value": "5 亿美元",
+      "page": "p10",
+      "source": "whatisthelatest 11-17 汇总",
+      "asOf": "2026-11-17",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F32",
+      "claim": "Model ML 融资金额",
+      "value": "2.5 亿",
+      "page": "p10",
+      "source": "whatisthelatest 11-17 汇总",
+      "asOf": "2026-11-17",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F33",
+      "claim": "LanceDB 融资金额",
+      "value": "5750 万",
+      "page": "p10",
+      "source": "whatisthelatest 11-17 汇总",
+      "asOf": "2026-11-17",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F34",
+      "claim": "Voyage Labs 融资金额",
+      "value": "1200 万",
+      "page": "p10",
+      "source": "whatisthelatest 11-17 汇总",
+      "asOf": "2026-11-17",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F35",
+      "claim": "Pedestal AI 融资金额",
+      "value": "470 万",
+      "page": "p10",
+      "source": "whatisthelatest 11-17 汇总",
+      "asOf": "2026-11-17",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F36",
+      "claim": "此前公开材料记下的英伟达季报日期",
+      "value": "11 月 17 日",
+      "page": "p11",
+      "source": "英伟达公告的媒体转述",
+      "asOf": "2026-11-15",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F37",
+      "claim": "Newegg 挂牌价量级",
+      "value": "2000 美元",
+      "page": "p11",
+      "source": "MLID 说法，nuaxi 转述",
+      "asOf": "2026-11-17",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F38",
+      "claim": "被爆料称可能搁置的显存规格",
+      "value": "24GB",
+      "page": "p11",
+      "source": "MLID 说法，nuaxi 转述",
+      "asOf": "2026-11-17",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F39",
+      "claim": "Claude Code 版本号",
+      "value": "v2.1.327",
+      "page": "p12",
+      "source": "whatisthelatest 11-17 汇总",
+      "asOf": "2026-11-17",
+      "strength": "vendor",
+      "reproduced": false
+    },
+    {
+      "id": "F40",
+      "claim": "Codex CLI 版本号",
+      "value": "rust-v0.169.1",
+      "page": "p12",
+      "source": "whatisthelatest 11-17 汇总",
+      "asOf": "2026-11-17",
+      "strength": "vendor",
+      "reproduced": false
+    },
+    {
+      "id": "F41",
+      "claim": "langchain-core 版本号",
+      "value": "1.8.2",
+      "page": "p12",
+      "source": "whatisthelatest 11-17 汇总",
+      "asOf": "2026-11-17",
+      "strength": "vendor",
+      "reproduced": false
+    },
+    {
+      "id": "F42",
+      "claim": "OpenAI Agents SDK 的 Python 版本号",
+      "value": "v0.25.0",
+      "page": "p12",
+      "source": "whatisthelatest 11-17 汇总",
+      "asOf": "2026-11-17",
+      "strength": "vendor",
+      "reproduced": false
+    },
+    {
+      "id": "F43",
+      "claim": "ChatGPT 中断式警告后的暂停时长",
+      "value": "24 小时",
+      "page": "p13",
+      "source": "OpenAI 产品说明",
+      "asOf": "2026-11-16",
+      "strength": "vendor",
+      "reproduced": false
+    },
+    {
+      "id": "F44",
+      "claim": "Cursor 事件波及的开发者上限",
+      "value": "5000 名",
+      "page": "p13",
+      "source": "媒体转述，未独立核实",
+      "asOf": "2026-11-17",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F45",
+      "claim": "Text Arena 榜首得分",
+      "value": "1538",
+      "page": "p14",
+      "source": "whatisthelatest 11-17 汇总",
+      "asOf": "2026-11-17",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F46",
+      "claim": "WebDev Arena 榜首得分",
+      "value": "1826",
+      "page": "p14",
+      "source": "whatisthelatest 11-17 汇总",
+      "asOf": "2026-11-17",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F47",
+      "claim": "无响应维护者的升级天数",
+      "value": "15 天",
+      "page": "p15",
+      "source": "Anthropic 政策公告的媒体转述",
+      "asOf": "2026-11-16",
+      "strength": "media",
+      "reproduced": false
+    },
+    {
+      "id": "F48",
+      "claim": "其他漏洞的新公布窗口",
+      "value": "45 天",
+      "page": "p15",
+      "source": "Anthropic 政策公告的媒体转述",
+      "asOf": "2026-11-16",
+      "strength": "media",
+      "reproduced": false
+    }
+  ]
+}

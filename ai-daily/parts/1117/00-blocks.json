@@ -1,0 +1,70 @@
+{
+  "legend": "版级来源说明这一版的信息主要来自哪里；执笔一律是 AI，报尾有内容声明。逐句出处见正文的论据标记，逐条归属见报尾信源表。",
+  "maxAiPages": 4,
+  "pages": {
+    "p01": {
+      "origin": "thirdparty",
+      "note": "Vals 测试的媒体转述与公司回应并列"
+    },
+    "p02": {
+      "origin": "ai",
+      "note": "社论，本报观点，无外部信源"
+    },
+    "p03": {
+      "origin": "thirdparty",
+      "note": "Vals 方法报道与边界提示"
+    },
+    "p04": {
+      "origin": "thirdparty",
+      "note": "模型上架与榜单汇总"
+    },
+    "p05": {
+      "origin": "thirdparty",
+      "note": "杭州渠道走访与华强北报价转述"
+    },
+    "p06": {
+      "origin": "ai",
+      "note": "方法论，本报自设的护栏三问"
+    },
+    "p07": {
+      "origin": "thirdparty",
+      "note": "规则版本与 API 退役的行业汇总"
+    },
+    "p08": {
+      "origin": "thirdparty",
+      "note": "嵌入式评估、分类器与披露窗口的报道汇总"
+    },
+    "p09": {
+      "origin": "thirdparty",
+      "note": "测试方法与拒绝行为的研究转述"
+    },
+    "p10": {
+      "origin": "thirdparty",
+      "note": "融资汇总的媒体报道"
+    },
+    "p11": {
+      "origin": "thirdparty",
+      "note": "季报前夜与显存供货的媒体转述"
+    },
+    "p12": {
+      "origin": "thirdparty",
+      "note": "地图产品与开发者版本发布汇总"
+    },
+    "p13": {
+      "origin": "thirdparty",
+      "note": "分类器落地、平台事件与诉讼转述"
+    },
+    "p14": {
+      "origin": "thirdparty",
+      "note": "模型四款与两份榜单的汇总"
+    },
+    "p15": {
+      "origin": "thirdparty",
+      "note": "多家媒体报道聚合"
+    },
+    "p16": {
+      "origin": "ai",
+      "note": "编辑部提案，本期自设"
+    }
+  }
+}

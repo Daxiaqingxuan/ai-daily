@@ -1,0 +1,22 @@
+{
+  "legend": "版级来源说明这一版的信息主要来自哪里；执笔一律是 AI，报尾有内容声明。逐句出处见正文的论据标记，逐条归属见报尾信源表。",
+  "maxAiPages": 4,
+  "pages": {
+    "p01": { "origin": "thirdparty", "note": "发布稿、榜单汇总与官方站点材料并列" },
+    "p02": { "origin": "ai", "note": "社论，本报观点，无外部信源" },
+    "p03": { "origin": "official", "note": "Qwen4-Max 发布稿与第三方榜单" },
+    "p04": { "origin": "thirdparty", "note": "Anthropic 记忆研究的媒体汇总" },
+    "p05": { "origin": "thirdparty", "note": "杭州颐高走访与华强北行情报道" },
+    "p06": { "origin": "ai", "note": "方法论，本报自设的三笔账" },
+    "p07": { "origin": "thirdparty", "note": "开源汇总与厂商发布稿" },
+    "p08": { "origin": "official", "note": "中国网信网发布材料" },
+    "p09": { "origin": "thirdparty", "note": "两项研究进展的发布与汇总" },
+    "p10": { "origin": "thirdparty", "note": "当日降价与回报口径的行业观察" },
+    "p11": { "origin": "thirdparty", "note": "MLPerf 提交汇总与厂商口径" },
+    "p12": { "origin": "thirdparty", "note": "工具版本与企业方向的自述和汇总" },
+    "p13": { "origin": "thirdparty", "note": "可核对案例与未核实条目的分档登记" },
+    "p14": { "origin": "thirdparty", "note": "开源项目清单与汇总口径" },
+    "p15": { "origin": "thirdparty", "note": "多家媒体与官方材料聚合" },
+    "p16": { "origin": "ai", "note": "编辑部提案与名词速查，本期自设" }
+  }
+}

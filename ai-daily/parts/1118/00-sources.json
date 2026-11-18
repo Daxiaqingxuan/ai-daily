@@ -1,0 +1,90 @@
+{
+  "asOf": "2026-11-18",
+  "policy": "逐条登记「谁给的、给了什么、哪一类、怎么用的」。url 只为能确认对应到这一条的单一页面填写；汇总栏目、频道首页、搜索页一律留空，不用猜出来的地址凑数。",
+  "sources": [
+    {
+      "id": "S01",
+      "outlet": "AIbase 新闻",
+      "item": "腾讯 Hy4flash 开源：224B 总参数、64B Engram、每 token 激活 12B、100 万 token 上下文、三版本与四平台下载",
+      "kind": "媒体报道",
+      "usage": "事实性引用，未转载全文",
+      "url": "https://news.aibase.cn/news/32381"
+    },
+    {
+      "id": "S02",
+      "outlet": "站长之家 · 11 月 18 日日报",
+      "item": "微软 MAI Image 2.7 局部编辑与成本口径；DeepSeek 超长上下文限流争议",
+      "kind": "媒体报道",
+      "usage": "事实性引用，未转载全文",
+      "url": "https://www.chinaz.com/feed/1118/1789132.shtml"
+    },
+    {
+      "id": "S03",
+      "outlet": "What Is The Latest · 日报",
+      "item": "OpenAI 双模型 Astra 与 Sol 官宣、API 成本降幅、四款上架 OpenRouter",
+      "kind": "媒体报道",
+      "usage": "事实性引用，未转载全文",
+      "url": "https://whatisthelatest.ai/digest"
+    },
+    {
+      "id": "S04",
+      "outlet": "极客公园",
+      "item": "范式智能 Phai-A1 与 Phai-M1：原生百万上下文、国产算力训练、8–10 倍响应提速、SWE-Bench 口径",
+      "kind": "媒体报道",
+      "usage": "事实性引用，未转载全文",
+      "url": "https://www.geekpark.net/news/374133"
+    },
+    {
+      "id": "S05",
+      "outlet": "新浪财经",
+      "item": "英伟达 2027 财年第三财季财报：营收、数据中心、利润率、Q4 指引与电话会价格表述",
+      "kind": "媒体报道",
+      "usage": "事实性引用，未转载全文",
+      "url": "https://finance.sina.com.cn/stock/marketresearch/2026-11-18/doc-inizcexp7062303.shtml"
+    },
+    {
+      "id": "S06",
+      "outlet": "新浪财经 · 移动端",
+      "item": "英伟达财报电话会实录转述：重签价、B300 涨幅、积压订单、新云协议与继任表态",
+      "kind": "媒体报道",
+      "usage": "事实性引用，未转载全文",
+      "url": "https://cj.sina.cn/articles/view/4053300158/f19873be07201gc04"
+    },
+    {
+      "id": "S07",
+      "outlet": "NUAXI · 硬件爆料转述",
+      "item": "Moore's Law Is Dead 称 RTX 5080 24GB 或因显存价与人事变动搁置，厂商未证实",
+      "kind": "媒体报道",
+      "usage": "传闻性引用，明确标注未证实",
+      "url": "https://nuaxi.com/zh/share/74170"
+    },
+    {
+      "id": "S08",
+      "outlet": "腾讯",
+      "item": "Hy4flash 开源公告：模型规格、开源版本、下载平台、API 价格与接入入口",
+      "kind": "官方发布",
+      "usage": "事实性引用，未转载全文"
+    },
+    {
+      "id": "S09",
+      "outlet": "OpenAI",
+      "item": "Astra 与 Sol 双模型官宣及成本说明",
+      "kind": "官方发布",
+      "usage": "事实性引用，未转载全文"
+    },
+    {
+      "id": "S10",
+      "outlet": "英伟达",
+      "item": "2027 财年第三财季业绩公告与电话会产品路线图",
+      "kind": "官方发布",
+      "usage": "事实性引用，未转载全文"
+    },
+    {
+      "id": "S11",
+      "outlet": "图像编辑评测榜（日报转述）",
+      "item": "MAI Image 2.7 以约 GPT Image 2.6 五分之一成本登顶图像编辑评测的榜单口径",
+      "kind": "公开榜单",
+      "usage": "事实性引用，未独立复现"
+    }
+  ]
+}

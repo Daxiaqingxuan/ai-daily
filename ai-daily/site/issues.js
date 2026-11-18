@@ -1,7 +1,52 @@
 /* 由 tools/build_index.py 自动生成，请勿手工编辑 */
 window.AI_DAILY_ISSUES = {
-  "generatedAt": "2026-11-15 20:32",
+  "generatedAt": "2026-11-18 23:40",
   "issues": [
+    {
+      "date": "2026-11-18",
+      "dateCn": "2026年11月18日",
+      "dateShort": "11月18日",
+      "weekday": "星期三",
+      "issue": "014",
+      "isSpecial": false,
+      "issueLabel": "第 014 期",
+      "pages": 16,
+      "headline": "租卡在涨，权重在降 · 同一天，权重被放出来，算力价签往上走",
+      "deck": "同日：224B 权重开源，Hopper 重签 2 倍。",
+      "kicker": "头版头条 · 租卡在涨，权重在降来源 · 第三方信息网",
+      "file": "AI晨报-2026-11-18.html",
+      "size": 110754
+    },
+    {
+      "date": "2026-11-17",
+      "dateCn": "2026年11月17日",
+      "dateShort": "11月17日",
+      "weekday": "星期二",
+      "issue": "013",
+      "isSpecial": false,
+      "issueLabel": "第 013 期",
+      "pages": 16,
+      "headline": "游戏化绕过了护栏 · 把战场说成「游戏」，模型就开始标目标",
+      "deck": "把真实战场说成「游戏」，模型就愿意标出平民与投降士兵。Vals 测试里，一所伊朗学校被选为目标的比率：普通 69%、游戏化 72%，只差 3 个百分点公开报道。",
+      "kicker": "头版头条 · 游戏化绕过了护栏来源 · 第三方信息网",
+      "file": "AI晨报-2026-11-17.html",
+      "size": 117049
+    },
+    {
+      "date": "2026-11-16",
+      "dateCn": "2026年11月16日",
+      "dateShort": "11月16日",
+      "weekday": "星期一",
+      "issue": "012",
+      "isSpecial": false,
+      "issueLabel": "第 012 期",
+      "pages": 16,
+      "headline": "便宜了，还没赚到 · 成本在降，回报没跟上：同一天里的三条曲线",
+      "deck": "阿里 Qwen4-Max 单任务费用较上代降六成厂商口径；英伟达 Vera Rubin 每瓦吞吐超 10 倍厂商口径；毕马威却称只有 24% 企业拿到投资回报公开报道。",
+      "kicker": "头版头条 · 便宜了，还没赚到来源 · 第三方信息网",
+      "file": "AI晨报-2026-11-16.html",
+      "size": 119984
+    },
     {
       "date": "2026-11-15",
       "dateCn": "2026年11月15日",

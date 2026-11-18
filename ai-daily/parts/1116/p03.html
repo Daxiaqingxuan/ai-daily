@@ -1,0 +1,19 @@
+<section class="section" id="p03">
+    <div class="section-head">
+      <span class="sec-label" role="heading" aria-level="2">Qwen4 深读 · 便宜在哪里</span>
+      <span class="sec-page">第 03 版 / 共 16 版</span>
+    </div>
+    <p class="sec-lede">把发布稿拆成可核对的几项。<b>参数、上下文、价格、榜单名次分四行写，哪一行是厂商自述、哪一行需要外部复核，分开标注。</b></p>
+    <div class="table-wrap"><table><caption>Qwen4-Max 发布要点（11 月 16 日厂商口径）</caption><thead><tr><th>项目</th><th>发布口径</th></tr></thead><tbody><tr class="hi"><td>总参数</td><td><b>2.4T</b>，原生视觉<span class="src-tag">厂商口径</span></td></tr><tr><td>上下文</td><td><b>100 万</b> tokens<span class="src-tag">厂商口径</span></td></tr><tr><td>缓存命中价</td><td>每百万 tokens 低至 <b>0.5 元</b><span class="src-tag">厂商口径</span></td></tr><tr><td>单任务费用</td><td>平均较上代降六成<span class="src-tag">厂商口径</span></td></tr><tr><td>编程盲测</td><td>CodeArena 全球前端编程盲测<b>第六</b><span class="src-tag">厂商口径</span></td></tr><tr><td>智能体评测</td><td>ALE、Vals Index 等处领先梯队<span class="src-tag">厂商口径</span></td></tr><tr><td>开源安排</td><td>中小尺寸模型将陆续开源<span class="src-tag">厂商口径</span></td></tr></tbody></table></div>
+    <p><b>价格这一行最值得停一下。</b>「缓存命中每百万 tokens 0.5 元」描述的是命中缓存时的单价，<span class="term" tabindex="0">缓存命中<i class="tip">相同前缀的内容不必重复计算，直接复用已缓存的结果。命中率越高，这部分调用越便宜；未命中的部分仍按正常价计费。</i></span>不是所有调用都能落到这个价。<b>它压低的是重复前缀的成本，不是每次调用的总成本</b>；把「低至 0.5 元」读成「每次只要 0.5 元」，是发布稿最常见的误读。</p>
+    <p><b>上下文这一行同理。</b><span class="term" tabindex="0">上下文窗口<i class="tip">模型一次能处理的 token 上限。窗口越大，能塞进来的材料越多，但不等于模型对窗口内每处信息都同等注意。</i></span>给到 100 万 tokens，意味着一次可以塞进很长的代码库或文档；<b>它描述的是容量，不是理解力</b>。真实任务里，把多少内容放进窗口、放的顺序如何，仍由调用方决定。</p>
+    <p><b>榜单这一行要标清是谁的榜。</b>CodeArena 的「全球前端编程盲测第六」与 ALE、Vals Index 的「领先梯队」都是发布稿引用的第三方结果；<span class="term" tabindex="0">基准<i class="tip">一组固定任务与评分方法，用来横向比较模型。同一模型在不同基准上名次可能差很多，引用时要连基准名一起写。</i></span>名次离开具体榜单就没有意义。<b>本报不重跑这些测试</b><span class="src-tag">本报未复现</span>，按厂商口径登记，等独立复现出现再更新。</p>
+    <p><b>开源安排是承诺，不是现状。</b>「中小尺寸模型将陆续开源」写的是未来动作，没有给出具体日期与许可条款；<b>本报按承诺登记，不把它记成已开放权重</b>。第 07 版把当天能核对的开源条目单独列了一张清单。</p>
+    <aside class="razor">
+      <div class="razor-h">
+        <span class="razor-mark">锐评</span>
+        <span class="razor-src">本报评论员 · 针对本版</span>
+      </div>
+      <p>发布稿里最贵的那句话，往往是没写条件的那个价格。<b>「低至」两个字后面跟着的限定条件，比数字本身更该被印出来。</b></p>
+    </aside>
+  </section>
